@@ -1,0 +1,109 @@
+<div align="center">
+  <center>
+  <table border="0" width="500" cellspacing="1" cellpadding="4">
+
+<FORM id="form_add_guest" METHOD="post" ACTION="<mx:text id="action_url"/>" onsubmit="javascript:return verif_add();">
+ <tr>
+<td width="500" colspan="2" class="row_bleu">
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+ <tr>
+<td width="56%"><img border="0" src="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/write.gif" width="10" height="11"> <b><mx:text id="addMessageBlocAdd"/></b></td>
+ </center>
+ <td width="44%">
+<p align="right"><img src="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/bout.gif" WIDTH="13" HEIGHT="11" BORDER=0> <a href="<mx:text id="pageReload"/>?skin=<mx:text id="skin"/>&lang=<mx:text id="lang"/>"><b><mx:text id="seeMessages"/></b></a></td>
+  </tr>
+</table>
+ </td>
+  </tr>
+  <center>
+<mx:bloc id="bloc_pseudo">
+  <tr>
+ <td width="203" height="35" class="row_gris"><img src="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/name.gif" WIDTH="16" HEIGHT="15" BORDER=0> <font class="Verdana_Noir"><mx:text id="nom_pseudo_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris"><p><input type="text" name="nom" size="34" maxlength="50"<mx:text id="value_nom"/>/></p></td>
+  </tr>
+</mx:bloc id="bloc_pseudo">
+<mx:bloc id="bloc_email">
+  <tr>
+ <td width="203" height="35" class="row_gris"><IMG SRC="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/email.gif" WIDTH="15" HEIGHT="15" BORDER=0> <font class="Verdana_Noir"><mx:text id="email_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris"><input type="text" name="email" size="34" maxlength="150"<mx:text id="value_email"/>/></td>
+  </tr>
+</mx:bloc id="bloc_email">
+
+<mx:bloc id="bloc_site">
+  <tr>
+ <td width="203" height="35" class="row_gris"><IMG SRC="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/url.gif" WIDTH="14" HEIGHT="14" BORDER=0> <font class="Verdana_Noir"><mx:text id="site_web_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris"><input type="text" name="site" size="34" maxlength="150"<mx:text id="value_site"/>/>
+</td>
+  </tr>
+</mx:bloc id="bloc_site">
+
+<!-- city -->
+<mx:bloc id="bloc_ville">
+  <tr>
+ <td width="203" height="35" class="row_gris"><IMG SRC="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/location.gif" WIDTH="16" HEIGHT="16" BORDER=0> <font class="Verdana_Noir"><mx:text id="ville_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris"><input type="text" name="ville" size="34" maxlength="60"<mx:text id="value_ville"/>></td>
+  </tr>
+</mx:bloc id="bloc_ville">
+<!-- country -->
+<mx:bloc id="bloc_pays">
+  <tr>
+ <td width="203" height="35" class="row_gris"><IMG SRC="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/location.gif" WIDTH="16" HEIGHT="16" BORDER=0> <font class="Verdana_Noir"><mx:text id="pays_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris"><select size="1" name="pays" onchange="update_flag(this)"><option value="">-</option><mx:text id="select_pays"/></select> <img id="img_flags" src="<mx:text id="chem_absolu"/>images/<mx:text id="img_flags"/>" width="18" height="12" title="<mx:text id="flag"/>" align="absmiddle" style="border: 0px"></td>
+  </tr>
+</mx:bloc id="bloc_pays">
+
+<mx:bloc id="bloc_note">
+  <tr>
+ <td width="203" height="35" class="row_gris"><IMG SRC="<mx:text id="chem_absolu"/>templates/skins/double_NewLook/images/vote.gif" WIDTH="15" HEIGHT="12" BORDER=0> <font class="Verdana_Noir"><mx:text id="note_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></font></td>
+ <td width="297" class="row_gris">
+ <p><select size="1" name="note_site">
+<option value=""<mx:text id="select_note_none"/>>-</option>
+<option value="10"<mx:text id="select_note_10"/>>10<mx:text id="note_super"/></option>
+<option value="9"<mx:text id="select_note_9"/>>9</option>
+<option value="8"<mx:text id="select_note_8"/>>8</option>
+<option value="7"<mx:text id="select_note_7"/>>7</option> 
+<option value="6"<mx:text id="select_note_6"/>>6</option>
+<option value="5"<mx:text id="select_note_5"/>>5<mx:text id="note_moyen"/></option>
+<option value="4"<mx:text id="select_note_4"/>>4</option>
+<option value="3"<mx:text id="select_note_3"/>>3</option> 
+<option value="2"<mx:text id="select_note_2"/>>2</option>
+<option value="1"<mx:text id="select_note_1"/>>1</option>
+<option value="0"<mx:text id="select_note_0"/>>0<mx:text id="note_rate"/></option>
+</select></p>
+ </td>
+  </tr>
+</mx:bloc id="bloc_note">
+
+  <tr>
+ <td width="500" colspan="2" class="row_gris"><p align="center"><font class="Verdana_Noir"><mx:text id="message_visiteur"/> <mx:text id="symbole_champ_obligatoire"/></font><br>
+ <mx:text id="chaine_smileys"/><textarea id="message_textarea" rows="8" cols="69" onselect="verifCar(this); storeCaret(this); " onclick="verifCar(this); storeCaret(this);" onkeyup="verifCar(this); storeCaret(this);" onFocus="verifCar(this)" onKeyDown="verifCar(this)" onBlur="verifCar(this)" name="message_textarea" /><mx:text id="value_message_textarea"/></textarea><br>
+ 
+<mx:bloc id="bloc_max_car">
+<input type="text" name="reste_car" value="<mx:text id="value_max_car"/>" size="100" style="border: 0; background: transparent; font-size: 10px; color: #A1A1A1; text-align: center; width: 100%" readonly />
+</mx:bloc id="bloc_max_car">
+</p>
+ </td>
+  </tr>
+
+<mx:bloc id="bloc_code_securite">
+<tr>
+<td width="500" class="row_gris" colspan="2">
+<p align="center"><font class="Verdana_Noir"><mx:text id="veuillez_taper_code"/> : (<a href="javascript:script_popup('<mx:text id="chem_absolu"/>infos_code.php?lang=<mx:text id="lang"/>', 'down', 350, 280, 'scrollbars=yes')" style="color: #000000"><mx:text id="a_quoi_ca_sert"/></a>)</font><br>
+ <img width="82" height="20" align="absmiddle" border="0" src="<mx:text id="chem_absolu"/>genImg/index.php?id=<mx:text id="id_genImg"/>" />
+<input class="large" maxlength="4" type="text" name="code_securite" size="5" style="font-family: Courier New; font-size: 10pt; text-align: center" />
+</p>
+</td>
+</tr>
+</mx:bloc id="bloc_code_securite">
+<input type="hidden" name="num_id" value="<mx:text id="id_genImg"/>" />
+
+<tr>
+<td width="500" colspan="2" class="row_gris" height="40">
+<p align="center">&nbsp;<br><input type="submit" value="<mx:text id="ajouter_message_visiteur"/>" name="ajouter" id="ajouter" class="normal" /></p>
+</td>
+</tr>
+  </FORM>
+
+  </table>
+  </center>
+</div>

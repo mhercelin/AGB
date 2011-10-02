@@ -1,0 +1,165 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif_aj(){
+	var name_admin = document.aj.name_admin.value;
+	var passe_admin = document.aj.passe_admin.value;
+
+	if (!name_admin){
+		alert("<mx:text id="erreur_name"/>");
+		return false;
+	}
+	else if (!passe_admin){
+		alert("<mx:text id="erreur_passe"/>");
+		return false;
+	}
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="add_admin_texte"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form name="aj" method="POST" action="add_admin.php?f_sid=<mx:text id="f_sid"/>&id_modif=<mx:text id="id_modif"/>" onsubmit="javascript:return verif_aj();">
+  <tr>
+ <td width="100%" height="20" class="row_bleu" colspan="2"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="add_admin_2"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="identif_connexion"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+  <input type="text" name="name_admin" size="20" maxlength="20" value="<mx:text id="value_name_admin"/>"<mx:text id="enabled_login"/>>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="passe_admin"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+  <input type="password" name="passe_admin" size="10" maxlength="10" value="<mx:text id="value_passe_admin"/>">
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="email_admin"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+  <input type="text" name="email_admin" size="40" maxlength="255" value="<mx:text id="value_email_admin"/>">
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_receive_email"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id1" value="1" name="receive_email" <mx:text id="value_receive_email1"/> class="radio"><label for="id1" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; 
+	<input type="radio" style="cursor: pointer" id="id2" value="0" name="receive_email" <mx:text id="value_receive_email0"/> class="radio"><label for="id2" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_modif_options"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id3" value="1" name="modif_options" <mx:text id="value_modif_options1"/> class="radio"><label for="id3" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id4" value="0" name="modif_options" <mx:text id="value_modif_options0"/> class="radio"><label for="id4" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_skins"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id5" value="1" name="gestion_skins" <mx:text id="value_gestion_skins1"/> class="radio"><label for="id5" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id6" value="0" name="gestion_skins" <mx:text id="value_gestion_skins0"/> class="radio"><label for="id6" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_reponse_auto"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id17" value="1" name="gestion_reponse_auto" <mx:text id="value_gestion_reponse_auto1"/> class="radio"><label for="id17" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id18" value="0" name="gestion_reponse_auto" <mx:text id="value_gestion_reponse_auto0"/> class="radio"><label for="id18" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_bdd"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id19" value="1" name="gestion_bdd" <mx:text id="value_gestion_bdd1"/> class="radio"><label for="id19" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id20" value="0" name="gestion_bdd" <mx:text id="value_gestion_bdd0"/> class="radio"><label for="id20" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+ <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_messages"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id7" value="1" name="gestion_messages" <mx:text id="value_gestion_messages1"/> class="radio"><label for="id7" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id8" value="0" name="gestion_messages" <mx:text id="value_gestion_messages0"/> class="radio"><label for="id8" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_censure"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id9" value="1" name="gestion_censure" <mx:text id="value_gestion_censure1"/> class="radio"><label for="id9" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id10" value="0" name="gestion_censure" <mx:text id="value_gestion_censure0"/> class="radio"><label for="id10" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_bannissement"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id11" value="1" name="gestion_bannissement" <mx:text id="value_gestion_bannissement1"/> class="radio"><label for="id11" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id12" value="0" name="gestion_bannissement" <mx:text id="value_gestion_bannissement0"/> class="radio"><label for="id12" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_smileys"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id13" value="1" name="gestion_smileys" <mx:text id="value_gestion_smileys1"/> class="radio"><label for="id13" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id14" value="0" name="gestion_smileys" <mx:text id="value_gestion_smileys0"/> class="radio"><label for="id14" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="44%" height="26" class="row_gris">
+  <p><mx:text id="admin_gestion_admin"/></p>
+ </td>
+ <td width="56%" height="26" class="row_gris">
+    <p><input type="radio" style="cursor: pointer" id="id15" value="1" name="gestion_admin" <mx:text id="value_gestion_admin1"/> class="radio"><label for="id15" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp; <input type="radio" style="cursor: pointer" id="id16" value="0" name="gestion_admin" <mx:text id="value_gestion_admin0"/> class="radio"><label for="id16" style="cursor: pointer"><mx:text id="non"/></label></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center">&nbsp;<input type="submit" value="<mx:text id="ajouter_admin"/>" name="<mx:text id="name_ajouter_admin"/>" class="save"> <mx:text id="revenir"/></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

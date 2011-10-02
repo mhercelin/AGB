@@ -1,0 +1,72 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="javascript">
+<!--
+function confirmer(){
+ var F = document.f_save;
+
+ if (!F.fichier.value){
+  alert("<mx:text id="select_file_restau"/>");
+  return false;
+ }
+
+ if (confirm("<mx:text id="confirm_restauration"/>"))
+  return true;
+ else
+  return false;
+}
+//-->
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="restauration"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="txt_restauration"/></font></p></td>
+  </tr>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form name="f_save" method="post" action="restauration.php?f_sid=<mx:text id="f_sid"/>&amp;lang_edit=<mx:text id="lang_edit"/>" enctype="multipart/form-data">
+  <tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="restauration"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="140" style="text-align: center" class="row_gris">
+ <mx:text id="select_file"/> :<br /><br />
+  <input type="file" name="fichier" size="50"><br /><br /><br />
+  <input type="submit" name="restauration" value="<mx:text id="lancer_restauration"/>" class="save" onclick="return confirmer()">
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

@@ -1,0 +1,352 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="JavaScript">
+<!--
+function popup(page,name,largeur,hauteur,options){
+	var top=(screen.height-hauteur)/2;
+	var left=(screen.width-largeur)/2;
+	window.open(page,name,"top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+}
+
+function seeSkin(objet){
+	var F = document.getElementById("options");
+
+	if (F.skin_to_use.value){
+		popup('../index.php?skin='+F.skin_to_use.value, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
+	}
+}
+
+function update_see_code_securite(){
+	var F = document.getElementById("options");
+
+	if (F.admin_add_code_securite[0].checked)
+		document.getElementById("see_options_code_securite").style.display = '';
+	else
+		document.getElementById("see_options_code_securite").style.display = 'none';
+}
+
+function update_see_url_cliquables(){
+	var G = document.getElementById("options");
+
+	if (G.url_interdites[0].checked)
+		document.getElementById("see_options_url_cliquables").style.display = 'none';
+	else
+		document.getElementById("see_options_url_cliquables").style.display = '';
+}
+
+function update_see_inclure_livre(){
+	var H = document.getElementById("options");
+
+	if (H.inclure_livre[0].checked)
+		document.getElementById("see_options_inclure_livre").style.display = '';
+	else
+		document.getElementById("see_options_inclure_livre").style.display = 'none';
+}
+
+function update_see_lien_accueil(){
+	var H = document.getElementById("options");
+
+	if (H.lien_accueil[0].checked)
+		document.getElementById("see_options_lien_accueil").style.display = '';
+	else
+		document.getElementById("see_options_lien_accueil").style.display = 'none';
+}
+
+function update_see_champs(Controleur) {
+	var objControleur = document.getElementById(Controleur+"1");
+	var objPrive = document.getElementById(Controleur+"2");
+	var objObligatoire = document.getElementById(Controleur+"3");
+
+	if (objControleur.checked==false){
+		objPrive.disabled='';
+		objObligatoire.disabled='';
+	}
+	else{
+		objPrive.disabled='true';
+		objObligatoire.disabled='true';
+		objPrive.checked='';
+		objObligatoire.checked='';
+	}
+	return true;
+}
+
+function verif(){
+	var mois = document.getElementById('decalage_horaire');
+	if (mois.value < -12 || mois.value > 12){
+		alert('<mx:text id="admin_erreur_decalage_horaire"/>');
+		return false;
+	}
+	else return true;
+}
+//-->
+</script>
+
+<mx:text id="message_javascript"/>
+
+<p align="center"><br/>
+<b><font class="Arial_Gros_Bleu"><mx:text id="options_livre"/><br/>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+	<form id="options" method="POST" action="options.php?f_sid=<mx:text id="f_sid"/>" onsubmit="return verif();">
+	<tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="options_generales"/></b></font></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="langue"/></td>
+ <td width="59%" height="26" class="row_gris"><p>
+ <select size="1" name="langue">
+ <mx:text id="liste_langues"/>
+ </select></p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="skin_to_use"/></td>
+ <td width="59%" height="26" class="row_gris"><p>
+ <select size="1" name="skin_to_use">
+ <mx:text id="liste_skin_to_use"/>
+ </select>
+ <a href="javascript: seeSkin()"><img src="../images/oeil.gif" width="18" height="11" border="0" title="<mx:text id="see_skin"/>"></a>
+ </p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="temps_session"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="temps_session" size="5" value="<mx:text id="value_temps_session"/>"> <mx:text id="secondes"/>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_decalage_horaire"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="decalage_horaire" id="decalage_horaire" size="5" value="<mx:text id="value_decalage_horaire"/>"> <mx:text id="heures"/>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_send_mail"/><mx:text id="avert_mail"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input class="radio" style="cursor: pointer" id="id1" type="radio" value="1" name="send_mail"<mx:text id="value_send_mail1"/>><label for="id1" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input class="radio" style="cursor: pointer" id="id2" type="radio" value="0" name="send_mail"<mx:text id="value_send_mail0"/>><label for="id2" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="temps_ip_post"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="temps_ip_post" size="5" value="<mx:text id="value_temps_ip_post"/>"> <mx:text id="minutes"/>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="format_date_boite"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="format_date" size="25" value="<mx:text id="value_format_date"/>">
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="valider_messages"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input class="radio" style="cursor: pointer" id="id13" type="radio" value="1" name="admin_valide_messages"<mx:text id="value_admin_valide_messages1"/>><label for="id13" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input class="radio" style="cursor: pointer" id="id14" type="radio" value="0" name="admin_valide_messages"<mx:text id="value_admin_valide_messages0"/>><label for="id14" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="envoyer_remerciement"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input class="radio" style="cursor: pointer" id="id17" type="radio" value="1" name="admin_envoyer_remerciement"<mx:text id="value_admin_envoyer_remerciement1"/>><label for="id17" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input class="radio" style="cursor: pointer" id="id18" type="radio" value="0" name="admin_envoyer_remerciement"<mx:text id="value_admin_envoyer_remerciement0"/>><label for="id18" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="add_code_securite"/></td>
+ <td width="59%" height="26" class="row_gris">
+<!--=== BLOC ADMIN_CODE_SECURITE ===-->
+	<input onclick="update_see_code_securite(this)" class="radio" style="cursor: pointer" id="id15" type="radio" value="1" name="admin_add_code_securite"<mx:text id="value_admin_add_code_securite1"/>><label for="id15" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input onclick="update_see_code_securite(this)" class="radio" style="cursor: pointer" id="id16" type="radio" value="0" name="admin_add_code_securite"<mx:text id="value_admin_add_code_securite0"/>><label for="id16" style="cursor: pointer"><mx:text id="non"/></label>
+	<div id="see_options_code_securite" style="margin-top: 4px; padding: 5px; color: #C00000; background-color: #FFFFFF; border: 1px solid #000000">
+	<mx:text id="t_color_txt_code"/> : <input type="text" name="color_txt_code" size="7" style="border: 1px solid #545454" maxlength="7" value="<mx:text id="value_color_txt_code"/>"><br/>
+	 <mx:text id="t_color_background_code"/> : <input type="text" name="color_background_code" size="7" style="border: 1px solid #545454" maxlength="7" value="<mx:text id="value_color_background_code"/>"><br/>
+	</div>
+<!--=== /BLOC ADMIN_CODE_SECURITE ===-->	
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="bannir_mot"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input class="radio" style="cursor: pointer" id="id33" type="radio" value="1" name="admin_bannir_mot"<mx:text id="value_admin_bannir_mot1"/>><label for="id33" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input class="radio" style="cursor: pointer" id="id34" type="radio" value="0" name="admin_bannir_mot"<mx:text id="value_admin_bannir_mot0"/>><label for="id34" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="url_interdites"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<input onclick="update_see_url_cliquables(this)" class="radio" style="cursor: pointer" id="id19" type="radio" value="1" name="url_interdites"<mx:text id="value_url_interdites1"/>><label for="id19" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input onclick="update_see_url_cliquables(this)" class="radio" style="cursor: pointer" id="id20" type="radio" value="0" name="url_interdites"<mx:text id="value_url_interdites0"/>><label for="id20" style="cursor: pointer"><mx:text id="non"/></label></td>
+	</tr>
+	<tr id="see_options_url_cliquables">
+		<td width="41%" height="26" class="row_gris"><mx:text id="url_cliquables"/></td>
+		<td width="59%" height="26" class="row_gris">
+			<p><input class="radio" style="cursor: pointer" id="id21" type="radio" value="1" name="url_cliquables"<mx:text id="value_url_cliquables1"/>><label for="id21" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+			<input class="radio" style="cursor: pointer" id="id22" type="radio" value="0" name="url_cliquables"<mx:text id="value_url_cliquables0"/>><label for="id22" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td width="41%" height="26" class="row_gris"><mx:text id="admin_lien_admin"/></td>
+		<td width="59%" height="26" class="row_gris">
+			<p><input class="radio" style="cursor: pointer" id="id23" type="radio" value="1" name="lien_admin"<mx:text id="value_lien_admin1"/>><label for="id23" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+			<input class="radio" style="cursor: pointer" id="id24" type="radio" value="0" name="lien_admin"<mx:text id="value_lien_admin0"/>><label for="id24" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+		<td width="41%" height="26" class="row_gris"><mx:text id="admin_lien_accueil"/></td>
+		<td width="59%" height="26" class="row_gris">
+			<input onclick="update_see_lien_accueil(this)" class="radio" style="cursor: pointer" id="id25" type="radio" value="1" name="lien_accueil"<mx:text id="value_lien_accueil1"/>><label for="id25" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+			<input onclick="update_see_lien_accueil(this)" class="radio" style="cursor: pointer" id="id26" type="radio" value="0" name="lien_accueil"<mx:text id="value_lien_accueil0"/>><label for="id26" style="cursor: pointer"><mx:text id="non"/></label>
+			<div id="see_options_lien_accueil" style="margin-top: 4px; padding: 5px; color: #C00000; background-color: #FFFFFF; border: 1px solid #000000">
+				<mx:text id="admin_chemin_lien_accueil"/><br/><input type="text" name="chemin_lien_accueil"  style="border: 1px solid #545454" size="45" value="<mx:text id="value_chemin_lien_accueil"/>"><br/>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="2" height="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="options_modules"/></font></b></td>
+	</tr>
+	<tr>
+		<td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_pseudo"/></td>
+		<td width="59%" height="26" class="row_gris">
+			<p><input onclick="update_see_champs('champ_pseudo')" class="radio" id="champ_pseudo1" type="checkbox" value="1" name="champ_pseudo[]"<mx:text id="value_champ_pseudo1"/>><label for="champ_pseudo1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_pseudo2" type="checkbox" value="2" name="champ_pseudo[]"<mx:text id="value_champ_pseudo2"/>><label for="champ_pseudo3"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_pseudo3" type="checkbox" value="4" name="champ_pseudo[]"<mx:text id="value_champ_pseudo3"/>><label for="champ_pseudo2"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_email"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input onclick="update_see_champs('champ_email')" class="radio" id="champ_email1" type="checkbox" value="1" name="champ_email[]"<mx:text id="value_champ_email1"/>><label for="champ_email1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_email2" type="checkbox" value="2" name="champ_email[]"<mx:text id="value_champ_email2"/>><label for="champ_email2"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_email3" type="checkbox" value="4" name="champ_email[]"<mx:text id="value_champ_email3"/>><label for="champ_email3"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_site"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input onclick="update_see_champs('champ_site')" class="radio" id="champ_site1" type="checkbox" value="1" name="champ_site[]"<mx:text id="value_champ_site1"/>><label for="champ_site1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_site2" type="checkbox" value="2" name="champ_site[]"<mx:text id="value_champ_site2"/>><label for="champ_site2"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_site3" type="checkbox" value="4" name="champ_site[]"<mx:text id="value_champ_site3"/>><label for="champ_site3"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_pays"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input onclick="update_see_champs('champ_pays')" class="radio" id="champ_pays1" type="checkbox" value="1" name="champ_pays[]"<mx:text id="value_champ_pays1"/>><label for="champ_pays1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_pays2" type="checkbox" value="2" name="champ_pays[]"<mx:text id="value_champ_pays2"/>><label for="champ_pays2"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_pays3" type="checkbox" value="4" name="champ_pays[]"<mx:text id="value_champ_pays3"/>><label for="champ_pays3"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_ville"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input onclick="update_see_champs('champ_ville')" class="radio" id="champ_ville1" type="checkbox" value="1" name="champ_ville[]"<mx:text id="value_champ_ville1"/>><label for="champ_ville1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_ville2" type="checkbox" value="2" name="champ_ville[]"<mx:text id="value_champ_ville2"/>><label for="champ_ville2"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_ville3" type="checkbox" value="4" name="champ_ville[]"<mx:text id="value_champ_ville3"/>><label for="champ_ville3"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_champ_note"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input onclick="update_see_champs('champ_note')" class="radio" id="champ_note1" type="checkbox" value="1" name="champ_note[]"<mx:text id="value_champ_note1"/>><label for="champ_note1"><mx:text id="admin_champ_propose"/></label>&nbsp;
+ <input class="radio" id="champ_note2" type="checkbox" value="2" name="champ_note[]"<mx:text id="value_champ_note2"/>><label for="champ_note2"><mx:text id="admin_champ_prive"/></label>&nbsp;
+ <input class="radio" id="champ_note3" type="checkbox" value="4" name="champ_note[]"<mx:text id="value_champ_note3"/>><label for="champ_note3"><mx:text id="admin_champ_obligatoire"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_ok_aff_moteur"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input class="radio" style="cursor: pointer" id="id11" type="radio" value="1" name="ok_aff_moteur"<mx:text id="value_ok_aff_moteur1"/>><label for="id11" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+ <input class="radio" style="cursor: pointer" id="id12" type="radio" value="0" name="ok_aff_moteur"<mx:text id="value_ok_aff_moteur0"/>><label for="id12" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_donner_focus"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input class="radio" style="cursor: pointer" id="id37" type="radio" value="1" name="donner_focus"<mx:text id="value_donner_focus1"/>><label for="id37" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input class="radio" style="cursor: pointer" id="id38" type="radio" value="0" name="donner_focus"<mx:text id="value_donner_focus0"/>><label for="id38" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+	</tr>
+	<tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+	</tr>
+	<tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="options_tech"/></font></b></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="nb_pages"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="nb_pages" size="5" value="<mx:text id="value_nb_pages"/>">
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="cut_mots"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="text" name="cut_mots" size="5" value="<mx:text id="value_cut_mots"/>"></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="maxi_car"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="text" name="maxi_car" size="5" value="<mx:text id="value_maxi_car"/>"></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="nb_max_smileys"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="text" name="nb_max_smileys" size="5" value="<mx:text id="value_nb_max_smileys"/>"></td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_inclure_livre"/></td>
+ <td width="59%" height="26" class="row_gris">
+	<p><input onclick="update_see_inclure_livre(this)" class="radio" style="cursor: pointer" id="id35" type="radio" value="1" name="inclure_livre"<mx:text id="value_inclure_livre1"/>><label for="id35" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+	<input onclick="update_see_inclure_livre(this)" class="radio" style="cursor: pointer" id="id36" type="radio" value="0" name="inclure_livre"<mx:text id="value_inclure_livre0"/>><label for="id36" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p>
+	<div id="see_options_inclure_livre" style="margin-top: 4px; padding: 5px; color: #C00000; background-color: #FFFFFF; border: 1px solid #000000">
+	 <mx:text id="admin_fichier_inclusion"/> : <input type="text" name="fichier_inclusion" size="45" value="<mx:text id="value_fichier_inclusion"/>"><br/>
+	 <mx:text id="admin_inclure_livre_code"/> : <textarea name="inclure_livre_code" style="border: 1px solid #545454" cols="50" rows="3" readonly="readonly"><mx:text id="value_inclure_livre_code"/></textarea><br/>
+	</div>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="url_recharger"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="url_recharger" size="45" value="<mx:text id="value_url_recharger"/>"></p>
+ </td>
+	</tr>
+	<tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="url_variables"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="text" name="extension_url" size="45" value="<mx:text id="value_variables_url"/>"></td>
+	</tr>
+	<tr>
+ <td width="100%" height="53" colspan="2">
+	<p align="center"><input type="submit" value="<mx:text id="enregistrer"/>" name="enregistrer" class="save"></p>
+ </td>
+	</tr>
+</table>
+
+</td>
+	</tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->
+<script language="JavaScript">
+	update_see_champs('champ_pseudo');
+	update_see_champs('champ_email');
+	update_see_champs('champ_site');
+	update_see_champs('champ_pays');
+	update_see_champs('champ_ville');
+	update_see_champs('champ_note');
+</script>

@@ -1,0 +1,150 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif_aj(){
+	var image_smiley = document.aj.image_smiley.value;
+	var car_replace = document.aj.car_replace.value;
+
+	if (!image_smiley){
+		alert("<mx:text id="erreur_image"/>");
+		return false;
+	}
+	else if (!car_replace){
+		alert("<mx:text id="erreur_car"/>");
+		return false;
+	}
+}
+
+function verif_sup(){
+	if (confirm("<mx:text id="verif_sup_smileys"/>"))
+		return true;
+	else 
+		return false;
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="gestion_smileys"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="text_smileys"/></font></p></td>
+  </tr>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form method="POST" action="smileys.php?f_sid=<mx:text id="f_sid"/>">
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="admin_autoriser_smileys"/></td>
+ <td width="59%" height="26" class="row_gris">
+  <p><input class="radio" style="cursor: pointer" id="id13" type="radio" value="1" name="autoriser_smileys"<mx:text id="value_autoriser_smileys1"/>><label for="id13" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+  <input class="radio" style="cursor: pointer" id="id14" type="radio" value="0" name="autoriser_smileys"<mx:text id="value_autoriser_smileys0"/>><label for="id14" style="cursor: pointer"><mx:text id="non"/></label>&nbsp;</p></td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center">
+  <input type="submit" value="<mx:text id="enregistrer"/>" name="enregistrer" class="save"></p>
+ </td>
+  </tr>
+  </form>
+  <form name="aj" ENCTYPE="multipart/form-data" method="POST" action="smileys.php?f_sid=<mx:text id="f_sid"/>">
+  <tr>
+ <td width="100%" height="20" class="row_bleu" colspan="2"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="ajouter_smiley"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="29%" height="26" class="row_gris"><mx:text id="num_appari"/></td>
+ <td width="71%" height="26" class="row_gris"><input type="text" name="numero" size="4" value="<mx:text id="new_numero"/>"></td>
+  </tr>
+  <tr>
+ <td width="29%" height="26" class="row_gris"><mx:text id="image_smiley"/></td>
+ <td width="71%" height="26" class="row_gris"><input type="file" name="image_smiley" size="30"></td>
+  </tr>
+  <tr>
+ <td width="29%" height="26" class="row_gris"><mx:text id="car_replace"/></td>
+ <td width="71%" height="26" class="row_gris"><input type="text" name="car_replace" size="5" maxlength="10"></td>
+  <tr>
+ <td width="100%" height="5" colspan="2">
+  <p align="center">&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+ <td width="100%" height="5" colspan="2">
+  <p align="center">&nbsp;<input type="submit" value="<mx:text id="ajouter"/>" name="ajouter" class="save" onclick="javascript:return verif_aj();"></p>
+    </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" height="5" colspan="2">
+  <p align="center">&nbsp;&nbsp;</p>
+ </td>
+  </tr>
+ <td width="100%" height="20" class="row_bleu" colspan="2"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_smileys"/></font></b></td>
+  </tr>
+  <form method="POST" action="smileys.php?f_sid=<mx:text id="f_sid"/>">
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+ <table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+ <td width="100%" class="row_gris" colspan="2">
+ &nbsp;
+ </td>
+  </tr>
+
+<mx:bloc id="bloc5">
+<tr>
+
+<mx:bloc id="bloc6">
+<td width="<mx:text id="td_col"/>" align="center">
+<p align="center">
+
+<mx:bloc id="bloc7">
+</mx:bloc id="bloc7">
+
+<br>&nbsp;</p>
+</td>
+</mx:bloc id="bloc6">
+
+</tr>
+</mx:bloc id="bloc5">
+
+ </table>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center">
+  <input type="hidden" value="<mx:text id="nb_smileys"/>" name="nbre_boucles">
+  <input type="submit" value="<mx:text id="modif_smileys"/>" name="modifier" class="save">&nbsp;&nbsp;&nbsp;<input type="submit" value="<mx:text id="sup_smileys"/>" name="supprimer" class="sup" onclick="javascript: return verif_sup();"></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

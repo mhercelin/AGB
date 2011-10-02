@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Consignes de mise à jour de la version 3.3* ou supérieure à la version 4.0</title>
+<style>
+BODY {
+  font-family : Arial;
+  font-size   : 10pt;
+}
+
+.div_code {
+  border      : 1px solid #000000;
+  padding     : 5px;
+  font-family : Courier New;
+  color       : #0000FF;
+}
+
+.important_code {
+  font-family : Courier New;
+  color       : #FF0000;
+}
+
+.important {
+  color       : #FF0000;
+}
+</style>
+</head>
+
+<body>
+
+<div style="border: 1px solid #CC3300; padding: 2px; text-align: center">
+<b><font color="#CC3300">Consignes de mise à jour de la version 3.3* ou supérieure à la version 4.0</font></b></div>
+
+<p align="left">1- La structure des tables de la base a été modifiée, avec votre gestionnaire de BDD habituel (phpmyadmin par exemple), exécutez les requêtes suivantes (<span class="important"><b><u>ATTENTION</u></b>, vos noms de tables sont peut être différents, les noms utilisés ici sont les noms par défaut</span>) :&nbsp;<br>
+<br>
+
+<textarea rows="20" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080">ALTER TABLE `alex_livre_messages` ADD `pays` VARCHAR(2) NOT NULL AFTER `ville_pays`;
+ALTER TABLE `alex_livre_messages` ADD `titre_reponse` VARCHAR(100) NOT NULL AFTER `message`;
+ALTER TABLE `alex_livre_messages` ADD `reponse` TEXT NOT NULL AFTER `titre_reponse`;
+ALTER TABLE `alex_livre_messages` ADD INDEX (`nom` );
+ALTER TABLE `alex_livre_messages` ADD INDEX (`valid`);
+ALTER TABLE `alex_img_verif_add` ADD `pays` VARCHAR(2) NOT NULL AFTER `ville_pays`;
+ALTER TABLE `alex_livre_sessions` CHANGE `last_connect` `last_connect` INT(15) DEFAULT '0' NOT NULL;
+ALTER TABLE `alex_livre_sessions` ADD INDEX (`last_connect`);
+ALTER TABLE `alex_livre_smileys` ADD `numero` MEDIUMINT UNSIGNED NOT NULL AFTER `id_smiley`;
+ALTER TABLE `alex_livre_smileys` ADD INDEX (`numero`);
+ALTER TABLE `alex_livre_users` ADD `gestion_reponse_auto` TINYINT(1) NOT NULL AFTER `gestion_skins`;
+ALTER TABLE `alex_livre_users` ADD `gestion_bdd` TINYINT(1) NOT NULL AFTER `gestion_reponse_auto`;
+
+CREATE TABLE `alex_livre_txt_lang` (
+  `lang` varchar(20) NOT NULL default '',
+  `type` enum('rep_auto','titre','rep','boite') default NULL,
+  `msg` text NOT NULL,
+  KEY `lang` (`lang`),
+  KEY `type` (`type`)
+) TYPE=MyISAM;</textarea>
+</p>
+
+<p>2- Téléchargez le zip de la nouvelle version et remplacez tous les fichiers sur votre serveur, à l'exception de ceux du dossier "config/" et ceux du dossier "templates". Copiez et remplacez également le dossier "templates/admin/" et "db/sql/" (très important pour la sauvegarde).</p>
+
+<p>3- Récupérez le fichier &quot;config/config_base.php&quot; situé sur le serveur de 
+votre hébergeur.<br>
+<br>
+Celui-ci doit ressembler à cela :<br>
+<br>
+<div class="div_code">
+&lt;?php<br>
+$database_type = &quot;MySQL&quot;;<br>
+<br>
+$f_mysql_host = &quot;localhost&quot;;<br>
+$f_mysql_user = &quot;root&quot;;<br>
+$f_mysql_pass = &quot;****&quot;;<br>
+$f_mysql_base = &quot;guestbook&quot;;<br>
+<br>
+$name_table['alex_livre_sessions'] = &quot;alex_livre_sessions&quot;;<br>
+$name_table['alex_livre_users'] = &quot;alex_livre_users&quot;;<br>
+$name_table['alex_livre_messages'] = &quot;alex_livre_messages&quot;;<br>
+$name_table['alex_livre_censure'] = &quot;alex_livre_censure&quot;;<br>
+$name_table['alex_livre_ip'] = &quot;alex_livre_ip&quot;;<br>
+$name_table['alex_livre_smileys'] = &quot;alex_livre_smileys&quot;;<br>
+$name_table['alex_img_verif_add'] = &quot;alex_img_verif_add&quot;;<br>
+<span class="important_code">$name_table['alex_livre_txt_lang'] = &quot;alex_livre_txt_lang&quot;;</span><br>
+?&gt;
+</div>
+<br>
+Rajoutez la ligne en rouge à la fin du fichier.<br>
+<br>
+3- Allez dans la partie admin du livre d'or, regardez les nouvelles options disponibles, paramétrez-les, puis cliquez sur le bouton enregistrer. <b>Cette étape est indispensable si vous ne voulez pas rencontrer d'éléments anormaux par la suite.</b><br>
+<br>
+4- Si vous n'aviez pas personnalisé vos skins, vous pouvez intégralement
+copier/coller le dossier &quot;/templates/skins/&quot;. 2 nouveaux skins devraient apparaître dans l'interface d'administration des options (AguestNew et double_AguestNew), vous pouvez les visualiser et en sélectionner un.<br>
+<br>
+5- Si vous voulez conserver vos skins, vous devez les mettre à jour. Dans le cas contraire pour vous la mise à jour est terminée.<br>
+<br>
+6- Liste des étapes de mise à jour du skin :<br><br>
+<pre>
+-------------------
+<b><u>add_message.htm</u></b>
+
+Remplacer :
+
+<div class="div_code">&lt;mx:bloc id=&quot;bloc_pays&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;45%&quot; height=&quot;30&quot;&gt;&lt;mx:text id=&quot;ville_pays_visiteur&quot;/&gt;&lt;/td&gt;
+&lt;td width=&quot;55%&quot; height=&quot;30&quot;&gt;&lt;input type=&quot;text&quot; name=&quot;ville_pays&quot; size=&quot;34&quot; 
+maxlength=&quot;60&quot;&lt;mx:text id=&quot;value_ville_pays&quot;/&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/mx:bloc id=&quot;bloc_pays&quot;&gt;</div>
+Par :
+
+<div class="div_code">&lt;mx:bloc id=&quot;bloc_pays&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;35%&quot; height=&quot;30&quot;&gt;&lt;mx:text id=&quot;ville_visiteur&quot;/&gt;&lt;/td&gt;
+&lt;td width=&quot;65%&quot; height=&quot;30&quot;&gt;&lt;input type=&quot;text&quot; name=&quot;ville&quot; size=&quot;34&quot; maxlength=&quot;60&quot;&lt;mx:text id=&quot;value_ville&quot;/&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width=&quot;35%&quot; height=&quot;30&quot;&gt;&lt;mx:text id=&quot;pays_visiteur&quot;/&gt;&lt;/td&gt;
+&lt;td width=&quot;65%&quot; height=&quot;30&quot;&gt;&lt;select size=&quot;1&quot; name=&quot;pays&quot; onchange=&quot;update_flag(this)&quot;&gt;&lt;option 
+value=&quot;&quot;&gt;-&lt;/option&gt;&lt;mx:text id=&quot;select_pays&quot;/&gt;&lt;/select&gt; 
+&lt;img id=&quot;img_flags&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;images/&lt;mx:text id=&quot;img_flags&quot;/&gt;&quot; width=&quot;18&quot; height=&quot;12&quot; title=&quot;&lt;mx:text id=&quot;flag&quot;/&gt;&quot; align=&quot;absmiddle&quot; style=&quot;border: 0px&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/mx:bloc id=&quot;bloc_pays&quot;&gt;</div>
+En conservant la largeur du tableau que vous aviez définie (width=&quot;45%&quot; et width=&quot;55%&quot;)
+
+La taille de l'image du code de sécurité a été modifiée, elle était de 110*25 et 
+est désormais de 82*20.
+
+Repérez :
+
+<div class="div_code">&lt;img width=&quot;110&quot; height=&quot;25&quot;</div>
+
+Remplacez par :
+
+<div class="div_code">&lt;img width=&quot;82&quot; height=&quot;20&quot;</div>
+-------------------
+<b><u>assembly.htm</u></b>
+
+Rajouter :
+
+<div class="div_code">function update_flag(objet){
+if (objet.value)
+document.getElementById(&quot;img_flags&quot;).src = '&lt;mx:text id=&quot;chem_absolu&quot;/&gt;images/flags/'+objet.value+'.png';
+}</div>
+dans le bloc javascript (juste avant --&gt; par exemple).
+
+Rajouter :
+
+<div class="div_code">&lt;mx:text id=&quot;btn_annuler&quot;/&gt;</div>
+juste après &lt;mx:text id=&quot;extensionGet&quot;/&gt;
+
+-------------------
+<b><u>corps_messages.htm</u></b>
+
+Ajouter &lt;mx:text id=&quot;flag&quot;/&gt; là ou vous voulez voir apparaitre le drapeau
+de l'utilisateur.
+
+Repérer :
+
+<div class="div_code">&lt;mx:text id=&quot;message_write&quot;/&gt;</div>
+Rajouter juste après :
+
+<div class="div_code">&lt;mx:bloc id=&quot;bloc_reponse&quot;&gt;
+&lt;br&gt;&lt;br&gt;&lt;div class=&quot;reponse&quot;&gt;&lt;b&gt;&lt;mx:text id=&quot;titre_reponse&quot;/&gt;&lt;/b&gt; : &lt;mx:text 
+id=&quot;reponse&quot;/&gt;&lt;/div&gt;
+&lt;/mx:bloc id=&quot;bloc_reponse&quot;&gt;</div>
+Repérer :
+
+<div class="div_code">&lt;mx:text id=&quot;pseudo&quot;/&gt;&lt;mx:text id=&quot;pays_ville&quot;/&gt;</div>
+Remplacer par :
+
+<div class="div_code">&lt;a name=&quot;id&lt;mx:text id=&quot;idMsg&quot;/&gt;&quot;&gt;&lt;mx:text id=&quot;pseudo&quot;/&gt;&lt;mx:text id=&quot;pays_ville&quot;/&gt;&lt;/a&gt;</div>
+-------------------
+<b><u>alex_livre.css :</u></b>
+
+Rajouter à la fin ou ailleurs :
+
+<div class="div_code">.reponse {
+border: 1px solid #B4B4B4;
+background-color: #FFFFFF;
+padding: 5px;
+}</div>
+-------------------
+
+Ouvrez le fichier ZIP de la nouvelle version du script, puis copiez
+l'image "templates/skins/AguestNew/img/plus_smileys.png". Créez un
+dossier "img" dans le dossier de votre skin et collez l'image
+précédemment copiée.
+
+-------------------
+</pre>
+<p>
+<b>C'est terminé, votre script est mis à jour :o)</b> </p>
+</body>
+
+</html>

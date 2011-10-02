@@ -1,0 +1,125 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="JavaScript">
+function MM_jumpMenu(targ,selObj,restore){
+if (selObj.options[selObj.selectedIndex].value)
+	eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+	if (restore) selObj.selectedIndex=0;
+}
+
+function verif_sup(){
+	if (confirm("<mx:text id="verif_sup_mess"/>"))
+		return true;
+	else 
+		return false;
+}
+
+function cocher_tout(){
+	var coche_all=document.getElementById('coche_all');
+	for (var i=1; i<=<mx:text id="select_nb_page"/>; i++){
+		var boite=document.getElementById('f_valide_'+i);
+		if (coche_all.checked==true) boite.checked=true;
+		else boite.checked=false;
+	}
+}
+
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="gestion_mess"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <tr>
+ <td width="100%" colspan="5" height="20" align="center">
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <form method="POST" id="gestion_messages" action="gestion_mess.php?f_sid=<mx:text id="f_sid"/>">
+ <tr>
+<td width="50%" valign="top">
+ <p><mx:text id="selectionner_pages"/>&nbsp; <input type="text" name="select_nb_page" size="2" value="<mx:text id="select_nb_page"/>"> <mx:text id="messages_gest"/>
+ / <mx:text id="page_gest"/> <input type="submit" value="Ok" name="selectionner"></p>
+</td>
+<td width="50%" valign="top">
+ <p align="right"><mx:text id="aller_en_page"/> 
+ <select size="1" name="go_to_page" onChange="MM_jumpMenu('self',this,0)">
+ <mx:text id="liste_pages"/>
+ </select> / <mx:text id="nb_total_pages"/></p>
+</td>
+ </tr>
+   </form>
+  </table>
+ </td>
+  </tr>
+  <tr>
+ <td width="7%" height="20" class="row_bleu" align="center" nowrap><font class="Verdana_Blanc"><b><mx:text id="valide"/></b></font></td>
+ <td width="10%" height="20" class="row_bleu" align="center"><font class="Verdana_Blanc"><b><mx:text id="supprimer_gest"/></b></font></td>
+ <td width="20%" height="20" class="row_bleu" align="center"><font class="Verdana_Blanc"><b><mx:text id="auteur_gest"/></b></font></td>
+ <td width="53%" height="20" class="row_bleu" align="center"><font class="Verdana_Blanc"><b><mx:text id="messages_gest"/></b></font></td>
+ <td width="10%" height="20" class="row_bleu" align="center"><font class="Verdana_Blanc"><b><mx:text id="action"/></b></font></td>
+  </tr>
+  <form method="POST" id="gestion_messages" action="gestion_mess.php?f_sid=<mx:text id="f_sid"/>&debut=<mx:text id="debut"/>">
+
+  <!-- début boucle -->
+  <mx:bloc id="bloc5">
+  <tr bgcolor="<mx:text id="color"/>" onmouseover="this.bgColor='#FFE6BB'" onmouseout="this.bgColor='<mx:text id="color"/>'">
+ <td width="7%" height="20" align="center"><p><input type="checkbox" name="f_valide_<mx:text id="nb_boucles"/>"  id="f_valide_<mx:text id="nb_boucles"/>" value="<mx:text id="b_id"/>"  class="radio"<mx:text id="b_value_f_valide"/>></p></td>
+ <td width="10%" height="20" align="center"><p><input type="checkbox" name="sup_<mx:text id="nb_boucles"/>" id="sup_<mx:text id="nb_boucles"/>" value="<mx:text id="b_id"/>" class="radio"></p></td>
+ <td width="20%" height="20" align="center"><p align="left"><mx:text id="b_auteur"/></p></td>
+ <td width="53%" height="20" align="center"><p align="left"><mx:text id="b_mess"/></p></td>
+ <td width="10%" height="20" align="center"><a href="repondre.php?f_sid=<mx:text id="f_sid"/>&id_mess=<mx:text id="b_id"/>&debut=<mx:text id="debut"/>"><img src="../images/repondre.png" width="16" height="12" border="0" title="<mx:text id="repondre"/>" align="absmiddle"/></a>&nbsp; <a href="modif_mess.php?f_sid=<mx:text id="f_sid"/>&id_mess=<mx:text id="b_id"/>&debut=<mx:text id="debut"/>"><img src="../images/editer.gif" width="15" height="16" border="0" title="<mx:text id="modifier"/>" align="absmiddle"/></a></td>
+ <td style="display:none;"><input type="hidden" name="id_mess_<mx:text id="nb_boucles"/>" id="id_mess_<mx:text id="nb_boucles"/>" value="<mx:text id="b_id"/>"/></td>
+  </tr>
+  </mx:bloc id="bloc5">
+  <!-- fin boucle -->
+  <tr>
+ <td width="7%" height="20" align="center"><p><input type="checkbox" id="coche_all" onclick="cocher_tout()"></p></td>
+ <td colspan="2"><p><mx:text id="selectionner_tous_messages"/></p></td>
+  </tr>
+   
+  
+  <tr>
+ <td width="100%" height="20" align="center" colspan="5">
+ <table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="50%"><p align="left"><mx:text id="precedente"/></p></td>
+    <td width="50%"><p align="right"><mx:text id="suivante"/></p></td>
+  </tr>
+ </table>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="5">
+  <p align="center">
+  <input type="hidden" name="nbre_boucles" value="<mx:text id="nbre_boucles"/>"/>  
+  <input type="submit" value="<mx:text id="valider_mess"/>" name="valider" class="save"/>&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="<mx:text id="supprimer_mess_selected"/>" name="supprimer" class="sup" onclick="javascript:return verif_sup();"/></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

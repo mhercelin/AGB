@@ -1,0 +1,447 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+  "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+<title>Instructions to upgrade your AlexGuestbook version 5.x to version 5.0.2</title>
+<style type="text/css">
+body {
+	font-family: Arial, Verdana;
+	font-size: 0.9em;
+	background-color: #EFF0FE;
+}
+
+h1 {
+	color: #1045CC;
+	font-family: Arial, "Trebuchet MS", Verdana;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.1em;
+	color: #1045CC;
+}
+
+dl.codebox code {
+	overflow: auto;
+	display: block;
+	height: auto;
+	max-height: 200px;
+	white-space: normal;
+	padding-top: 3px;
+	font-family: "Courier New", Courier, mono;
+	font-size: 0.9em;
+	color: #808080;
+	margin-left: -30px;
+}
+
+dl.codebox {
+	width: 90%;
+	margin-left: 20px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #A2DBF8;
+	font-size: 1em;
+}
+
+dl.codebox dt {
+	text-transform: uppercase;
+	border-bottom: 1px solid #A2DBF8;
+	margin-bottom: 3px;
+	font-size: 0.6em;
+	display: block;
+	color: #1045CC;
+}
+
+.important {
+	color: #FF0000;
+}
+
+.souligne {
+	text-decoration: underline;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.barre_noir {
+	text-decoration: line-through;
+	color: #000000;
+}
+
+li.nom_fichier {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #76B50F;
+}
+
+.separation_maj_skin {
+	color: #1045CC;
+	background-color: #1045CC;
+	height: 2px;
+	border-bottom: 1px #4D7BF1 solid;
+}
+</style>
+<!-- fonction issue de phpBB3 -->
+<script type="text/javascript">
+// <![CDATA[
+function selectCode(a)
+{
+	// Get ID of code block
+	var e = a.parentNode.parentNode.getElementsByTagName('CODE')[0];
+
+	// Not IE
+	if (window.getSelection)
+	{
+		var s = window.getSelection();
+		// Safari
+		if (s.setBaseAndExtent)
+		{
+			s.setBaseAndExtent(e, 0, e, e.innerText.length - 1);
+		}
+		// Firefox and Opera
+		else
+		{
+			var r = document.createRange();
+			r.selectNodeContents(e);
+			s.removeAllRanges();
+			s.addRange(r);
+		}
+	}
+	// Some older browsers
+	else if (document.getSelection)
+	{
+		var s = document.getSelection();
+		var r = document.createRange();
+		r.selectNodeContents(e);
+		s.removeAllRanges();
+		s.addRange(r);
+	}
+	// IE
+	else if (document.selection)
+	{
+		var r = document.body.createTextRange();
+		r.moveToElementText(e);
+		r.select();
+	}
+}
+// ]]>
+</script>
+</head>
+<body>
+<h1>Instructions to upgrade your AlexGuestbook<br/>version 5.0.* or above to version 5.0.2</h1><br/>
+<p>This AlexGuestbook update is optional. It corrects some bug and errors. It also adds two new languages (Persian and Turkish).<br/>The list of changes and corrections to the script is in the <a href="../changelog_en.txt" title="Link to the changelog file">changelog_en.txt file</a>.<br/> All informations, updates and support for the script are available on <a href="http://www.alexguestbook.net" title="Link to the AlexGuestbook.net site">www.alexguestbook.net</a></p>
+<br/>
+<p class="souligne">Before making any changes, make a backup of your database (and of your skins, if you modified them).</p>
+<br/>
+<ol>
+  <li> 
+    <p>Before starting, make sure you've downloaded the zip with the new version (v5x-v502.zip). This ZIP file allows to update a version 5.0 or 5.0.1 to the v5.0.2.</p>
+  </li>
+  <li> 
+    <p>The skins haven't changed much, except the double_NewLook for which the changes are detailed below, nevertheless we advise you to update them <span class="important">if you haven't customized them</span>. If you have a personalized skin, the update isn't necessary since security isn't involved.<br/>You can see a list of differences with a file comparison software such as Winmerge.</p>
+  </li>
+  <li> 
+    <p>The only step of this udate is thus to upload (with your FTP software) the files of the folder corresponding to your actual version. If your software asks you to confirm file replacement, confirm the operation.</p>
+  </li>
+</ol>
+
+<hr class="separation_maj_skin"/>
+<h2>Steps to upgrade the double_NewLook skin (if you use it) :</h2>
+<p class="important">Let's remind you that it's strongly recommended to adapt a double_NewLook skin from the latest version to your needs, instead of trying to upgrade an already modified old skin.</p>
+<p>Before upgrading your skin, be sure it's at the version 5. If it's not yet the case, see the instructions in the file <a href="./Instructions%20to%20upgrade%20from%20version%204.x%20to%20version%205.0.2.html" target="_blank">Instructions to upgrade from version 4.x to version 5.0.2</a></p>
+<ul>
+  <li class="nom_fichier">add_message.htm</li>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;56%&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;templates/skins/double_NewLook/images/write.gif&quot; 
+      width=&quot;10&quot; height=&quot;11&quot;&gt; &lt;b&gt;&lt;mx:text id=&quot;addMessageBlocAdd&quot;/&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;56%&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;&lt;mx:text 
+      id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/write.gif&quot; 
+      width=&quot;10&quot; height=&quot;11&quot;&gt; &lt;b&gt;&lt;mx:text id=&quot;addMessageBlocAdd&quot;/&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;p align=&quot;right&quot;&gt;&lt;IMG SRC=&quot;templates/skins/double_NewLook/images/bout.gif&quot; 
+      WIDTH=&quot;13&quot; HEIGHT=&quot;11&quot; BORDER=0&gt; &lt;a href=&quot;&lt;mx:text 
+      id=&quot;pageReload&quot;/&gt;?skin=&lt;mx:text id=&quot;skin&quot;/&gt;&amp;lang=&lt;mx:text 
+      id=&quot;lang&quot;/&gt;&quot;&gt;&lt;b&gt;&lt;mx:text id=&quot;seeMessages&quot;/&gt;&lt;/b&gt;&lt;/a&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;p align=&quot;right&quot;&gt;&lt;img src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/bout.gif&quot; 
+      WIDTH=&quot;13&quot; HEIGHT=&quot;11&quot; BORDER=0&gt; &lt;a href=&quot;&lt;mx:text 
+      id=&quot;pageReload&quot;/&gt;?skin=&lt;mx:text id=&quot;skin&quot;/&gt;&amp;lang=&lt;mx:text 
+      id=&quot;lang&quot;/&gt;&quot;&gt;&lt;b&gt;&lt;mx:text id=&quot;seeMessages&quot;/&gt;&lt;/b&gt;&lt;/a&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/name.gif&quot; WIDTH=&quot;16&quot; 
+      HEIGHT=&quot;15&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;nom_pseudo_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;img 
+      src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/name.gif&quot; 
+      WIDTH=&quot;16&quot; HEIGHT=&quot;15&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;nom_pseudo_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/email.gif&quot; WIDTH=&quot;15&quot; 
+      HEIGHT=&quot;15&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;email_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/email.gif&quot; 
+      WIDTH=&quot;15&quot; HEIGHT=&quot;15&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;email_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/url.gif&quot; WIDTH=&quot;14&quot; 
+      HEIGHT=&quot;14&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;site_web_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/url.gif&quot; 
+      WIDTH=&quot;14&quot; HEIGHT=&quot;14&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;site_web_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/location.gif&quot; WIDTH=&quot;16&quot; 
+      HEIGHT=&quot;16&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;ville_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/location.gif&quot; 
+      WIDTH=&quot;16&quot; HEIGHT=&quot;16&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;ville_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/location.gif&quot; WIDTH=&quot;16&quot; 
+      HEIGHT=&quot;16&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;pays_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/location.gif&quot; 
+      WIDTH=&quot;16&quot; HEIGHT=&quot;16&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;pays_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;templates/skins/double_NewLook/images/vote.gif&quot; WIDTH=&quot;15&quot; 
+      HEIGHT=&quot;12&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;note_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;203&quot; height=&quot;35&quot; class=&quot;row_gris&quot;&gt;&lt;IMG 
+      SRC=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/vote.gif&quot; 
+      WIDTH=&quot;15&quot; HEIGHT=&quot;12&quot; BORDER=0&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;note_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text 
+      id=&quot;symbole_champ_prive&quot;/&gt;&lt;/font&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <li class="nom_fichier">assembly.htm</li>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;p align=&quot;center&quot;&gt;Powered by &lt;a href=&quot;http://www.alexguestbook.net/&quot; 
+      target=&quot;_blank&quot; style=&quot;color: #000000&quot;&gt;@lex Guestbook&lt;/a&gt; 
+      &amp;copy; - &lt;a href=&quot;javascript: script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_spam.php?lang=&lt;mx:text 
+      id=&quot;lang&quot;/&gt;', 'down', 350, 280, 'scrollbars=yes')&quot; style=&quot;color: 
+      #000000&quot;&gt;&lt;mx:text id=&quot;avis_spammeurs&quot;/&gt;&lt;/a&gt;&lt;/p&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;div class=&quot;copyright&quot;&gt;<br/>
+      &lt;br /&gt;<br/>
+      Powered by &lt;a href=&quot;http://www.alexguestbook.net/&quot; target=&quot;_blank&quot; 
+      class=&quot;a_copyright&quot;&gt;@lex Guestbook&lt;/a&gt; &amp;copy; - &lt;a 
+      href=&quot;javascript:script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_spam.php?lang=&lt;mx:text 
+      id=&quot;lang&quot;/&gt;','down',350,280,'scrollbars=yes')&quot; class=&quot;a_copyright&quot;&gt;&lt;mx:text 
+      id=&quot;avis_spammeurs&quot;/&gt;&lt;/a&gt;<br/>
+      &lt;/div&gt;</code></dd>
+  </dl>
+  <br/>
+  <li class="nom_fichier">corps_messages.htm</li>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;10%&quot; height=&quot;20&quot;&gt;&lt;img border=&quot;0&quot; 
+      src=&quot;templates/skins/double_NewLook/images/name.gif&quot; width=&quot;16&quot; 
+      height=&quot;15&quot;&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;10%&quot; height=&quot;20&quot;&gt;&lt;img border=&quot;0&quot; 
+      src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/name.gif&quot; 
+      width=&quot;16&quot; height=&quot;15&quot;&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;10%&quot; height=&quot;20&quot;&gt;&lt;b&gt;&lt;img 
+      border=&quot;0&quot; src=&quot;templates/skins/double_NewLook/images/vote.gif&quot; 
+      width=&quot;15&quot; height=&quot;12&quot;&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;10%&quot; height=&quot;20&quot;&gt;&lt;b&gt;&lt;img 
+      border=&quot;0&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/vote.gif&quot; 
+      width=&quot;15&quot; height=&quot;12&quot;&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;100%&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;templates/skins/double_NewLook/images/new.gif&quot; 
+      width=&quot;7&quot; height=&quot;9&quot;&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;message_le&quot;/&gt; &lt;mx:text id=&quot;message_date&quot;/&gt; 
+      &lt;mx:text id=&quot;message_a&quot;/&gt; &lt;mx:text id=&quot;message_heure&quot;/&gt;&lt;/font&gt;&amp;nbsp;&lt;mx:text 
+      id=&quot;img_home&quot;/&gt;&amp;nbsp;&lt;mx:text id=&quot;img_mail&quot;/&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;td width=&quot;100%&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;&lt;mx:text 
+      id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/new.gif&quot; 
+      width=&quot;7&quot; height=&quot;9&quot;&gt; &lt;font class=&quot;Verdana_Noir&quot;&gt;&lt;mx:text 
+      id=&quot;message_le&quot;/&gt; &lt;mx:text id=&quot;message_date&quot;/&gt; 
+      &lt;mx:text id=&quot;message_a&quot;/&gt; &lt;mx:text id=&quot;message_heure&quot;/&gt;&lt;/font&gt;&amp;nbsp;&lt;mx:text 
+      id=&quot;img_home&quot;/&gt;&amp;nbsp;&lt;mx:text id=&quot;img_mail&quot;/&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <li class="nom_fichier">corps_messages.htm</li>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;img border=&quot;0&quot; src=&quot;templates/skins/double_NewLook/images/write.gif&quot; 
+      width=&quot;10&quot; height=&quot;11&quot;&gt; &lt;b&gt;&lt;a href=&quot;&lt;mx:text 
+      id=&quot;pageReload&quot;/&gt;?seeMess=1&amp;seeNotes=1&amp;seeAdd=0&amp;skin=&lt;mx:text 
+      id=&quot;skin&quot;/&gt;&amp;lang=&lt;mx:text id=&quot;lang&quot;/&gt;&quot; 
+      class=&quot;Blanc&quot;&gt;&lt;mx:text id=&quot;addSignature&quot;/&gt;&lt;/a&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;img border=&quot;0&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/write.gif&quot; 
+      width=&quot;10&quot; height=&quot;11&quot;&gt; &lt;b&gt;&lt;a href=&quot;&lt;mx:text 
+      id=&quot;pageReload&quot;/&gt;?seeMess=1&amp;seeNotes=1&amp;seeAdd=0&amp;skin=&lt;mx:text 
+      id=&quot;skin&quot;/&gt;&amp;lang=&lt;mx:text id=&quot;lang&quot;/&gt;&quot; 
+      class=&quot;Blanc&quot;&gt;&lt;mx:text id=&quot;addSignature&quot;/&gt;&lt;/a&gt;&lt;/b&gt;&lt;/td&gt;</code></dd>
+  </dl>
+  <br/>
+  <p>Replace :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;p align=&quot;right&quot;&gt;&lt;A HREF=&quot;index.php?lang=francais&amp;skin=&lt;mx:text 
+      id=&quot;skin&quot;/&gt;&amp;debut=&lt;mx:text id=&quot;debut&quot;/&gt;&amp;seeAdd=&lt;mx:text 
+      id=&quot;seeAdd&quot;/&gt;&amp;seeNotes=&lt;mx:text id=&quot;seeNotes&quot;/&gt;&amp;seeMess=&lt;mx:text 
+      id=&quot;seeMess&quot;/&gt;&quot; TARGET=&quot;_top&quot;&gt;&lt;img border=&quot;0&quot; 
+      src=&quot;templates/skins/double_NewLook/images/fr.gif&quot; width=&quot;16&quot; 
+      height=&quot;11&quot; alt=&quot;Ce livre d'or en français&quot;&gt;&lt;/a&gt; 
+      &lt;A HREF=&quot;index.php?lang=english&amp;skin=&lt;mx:text id=&quot;skin&quot;/&gt;&amp;debut=&lt;mx:text 
+      id=&quot;debut&quot;/&gt;&amp;seeAdd=&lt;mx:text id=&quot;seeAdd&quot;/&gt;&amp;seeNotes=&lt;mx:text 
+      id=&quot;seeNotes&quot;/&gt;&amp;seeMess=&lt;mx:text id=&quot;seeMess&quot;/&gt;&quot; 
+      TARGET=&quot;_top&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;templates/skins/double_NewLook/images/us.gif&quot; 
+      width=&quot;16&quot; height=&quot;11&quot; alt=&quot;This guestbook in english&quot;&gt;&lt;/a&gt;&amp;nbsp;</code></dd>
+  </dl>
+  <p>By :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>&lt;p align=&quot;right&quot;&gt;&lt;a href=&quot;index.php?lang=francais&amp;skin=&lt;mx:text 
+      id=&quot;skin&quot;/&gt;&amp;debut=&lt;mx:text id=&quot;debut&quot;/&gt;&amp;seeAdd=&lt;mx:text 
+      id=&quot;seeAdd&quot;/&gt;&amp;seeNotes=&lt;mx:text id=&quot;seeNotes&quot;/&gt;&amp;seeMess=&lt;mx:text 
+      id=&quot;seeMess&quot;/&gt;&quot; TARGET=&quot;_top&quot;&gt;&lt;img border=&quot;0&quot; 
+      src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/fr.gif&quot; 
+      width=&quot;16&quot; height=&quot;11&quot; alt=&quot;Ce livre d'or en français&quot;&gt;&lt;/a&gt; 
+      &lt;a href=&quot;index.php?lang=english&amp;skin=&lt;mx:text id=&quot;skin&quot;/&gt;&amp;debut=&lt;mx:text 
+      id=&quot;debut&quot;/&gt;&amp;seeAdd=&lt;mx:text id=&quot;seeAdd&quot;/&gt;&amp;seeNotes=&lt;mx:text 
+      id=&quot;seeNotes&quot;/&gt;&amp;seeMess=&lt;mx:text id=&quot;seeMess&quot;/&gt;&quot; 
+      TARGET=&quot;_top&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;&lt;mx:text 
+      id=&quot;chem_absolu&quot;/&gt;templates/skins/double_NewLook/images/us.gif&quot; 
+      width=&quot;16&quot; height=&quot;11&quot; alt=&quot;This guestbook in english&quot;&gt;&lt;/a&gt;&amp;nbsp;</code></dd>
+  </dl>
+  <br/>
+  <li class="nom_fichier">alex_livre.css</li>
+  <p>Just after :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>#alexguestbook a.Noir:hover {text-decoration:underline ; color:#CC3300}</code></dd>
+  </dl>
+  <p>Add :</p>
+  <dl class="codebox"> 
+    <dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt>
+    <dd><code>#alexguestbook a.a_copyright:link { text-decoration: none; color: 
+      #000; }<br/>
+      #alexguestbook a.a_copyright:visited { text-decoration: none; color: #000; 
+      }<br/>
+      #alexguestbook a.a_copyright:hover { text-decoration: underline; color: 
+      #000; }</code></dd>
+  </dl>
+  <br/>
+  <br/>
+</ul>
+<h2>OK, it's done, your script is up to date :o)</h2>
+</body>
+</html>

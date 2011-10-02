@@ -1,0 +1,126 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif(){
+	var mot_interdit = document.aj.mot_interdit.value;
+	var remplacer_par = document.aj.remplacer_par.value;
+
+	if (!mot_interdit){
+		alert("<mx:text id="erreur_aj_censure1"/>");
+		return false;
+	}
+	else if(!remplacer_par){
+		alert("<mx:text id="erreur_aj_censure2"/>");
+		return false;
+	}
+}
+
+function verif_sup(){
+	if (confirm("<mx:text id="verif_sup"/>"))
+		return true;
+	else 
+		return false;
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="gestion_censure"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="text1"/></font></p></td>
+  </tr>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form name="aj" method="POST" action="censure.php?f_sid=<mx:text id="f_sid"/>" onsubmit="javascript:return verif();">
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="aj_mot"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="22%" height="26" class="row_gris"><mx:text id="mot_interdit"/></td>
+ <td width="78%" height="26" class="row_gris">
+ <p><input type="text" name="mot_interdit" size="32" maxlength="255"></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="22%" height="26" class="row_gris"><mx:text id="remplacer_par"/></td>
+ <td width="78%" height="26" class="row_gris">
+ <p><input type="text" name="remplacer_par" size="32" maxlength="255" value="*****"></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="5"><center><input type="submit" value="<mx:text id="ajouter"/>" name="ajouter" class="save"></center></td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+  </tr>
+  <form method="POST" action="censure.php?f_sid=<mx:text id="f_sid"/>">
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_censure"/></font></b></td>
+  </tr>
+
+  <!-- début boucle -->
+  <mx:bloc id="bloc5">
+  <tr>
+ <td width="100%" height="26" colspan="2" class="row_gris">
+  <table border="0" width="100%" cellpadding="0">
+ <tr>
+<td width="5%">
+ <p align="center"><input type="checkbox" name="sup_<mx:text id="value_boucle"/>" value="<mx:text id="value_check"/>" class="radio"></p>
+</td>
+<td width="95%"><mx:text id="mot"/> 
+<input type="text" value="<mx:text id="value_mot"/>" name="gestion_mots_<mx:text id="value_boucle"/>" size="30" maxlength="255"> <mx:text id="remplace_by"/> 
+<input type="text" value="<mx:text id="value_remplace"/>" name="gestion_remplace_<mx:text id="value_boucle"/>" size="30" maxlength="255">
+<input type="hidden" value="<mx:text id="value_check"/>" name="id_mot_<mx:text id="value_boucle"/>">
+</td>
+ </tr>
+  </table>
+ </td>
+  </tr>
+  </mx:bloc id="bloc5">
+  <!-- fin boucle -->
+
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center">
+  <input type="hidden" value="<mx:text id="nbre_boucles"/>" name="nbre_boucles">
+  <input type="submit" value="<mx:text id="liste_jour"/>" name="modifier" class="save">&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="<mx:text id="sup_mots"/>" name="supprimer" class="sup" onclick="javascript:return verif_sup();"></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

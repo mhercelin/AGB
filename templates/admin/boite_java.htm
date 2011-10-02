@@ -1,0 +1,125 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="javascript">
+<!--
+function generate_html(){
+ var nombre = parseInt(document.getElementById('id_nb_msg').value);
+
+ if (!nombre)
+  alert("<mx:text id="erreur_boite_java"/>");
+ else {
+  var code = "<script src=\"<mx:text id="value_url_dossier"/>boiteJava/?n="+nombre+"\" type=\"text/javascript\"></script>\n";
+  document.getElementById('id_code_html').value = code;
+ }
+}
+//-->
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="boite_java"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="text_boite_java"/></font></p></td>
+  </tr>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form name="save" method="POST" action="boite_java.php?f_sid=<mx:text id="f_sid"/>">
+  <tr>
+ <td width="100%" height="20" class="row_bleu" colspan="2"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="parametrage_modele"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="format_date_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input type="text" size="15" name="date" value="<mx:text id="value_date"/>"></td>
+  </tr>
+ <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="nbre_maxi_pseudo_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input type="text" size="5" name="maxi_pseudo" value="<mx:text id="value_maxi_pseudo"/>"></td>
+  </tr>
+  <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="nbre_maxi_message_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input type="text" size="5" name="maxi_message" value="<mx:text id="value_maxi_message"/>"></td>
+  </tr>
+  <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="url_dossier_livre_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input type="text" size="40" name="url_dossier" value="<mx:text id="value_url_dossier"/>"></td>
+  </tr>
+  <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="url_livre_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input type="text" size="40" name="url_livre" value="<mx:text id="value_url_livre"/>"></td>
+  </tr>
+  <tr>
+ <td width="55%" height="26" class="row_gris"><mx:text id="saut_ligne_msg_boite"/> :</td>
+ <td width="45%" height="26" class="row_gris"><input class="radio" style="cursor: pointer" id="id1" type="radio" value="1" name="saut_ligne"<mx:text id="value_saut_ligne1"/>><label for="id1" style="cursor: pointer"><mx:text id="oui"/></label>&nbsp;
+  <input class="radio" style="cursor: pointer" id="id2" type="radio" value="0" name="saut_ligne"<mx:text id="value_saut_ligne0"/>><label for="id2" style="cursor: pointer"><mx:text id="non"/></label></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2"><mx:text id="modele_affichage_donnees"/> :<br /><br />
+ <textarea name="modele_tpl" cols="50" rows="12" style="width: 100%"><mx:text id="value_modele_tpl"/></textarea></td>
+  </tr>
+  <tr>
+ <td width="100%" height="40" style="text-align: center" colspan="2">
+  <input type="submit" name="enregistrer" value="<mx:text id="enregistrer"/>" class="save">
+ </td>
+  </tr>
+  </form>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <tr>
+ <td width="100%" height="20" class="row_bleu" colspan="2"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="generation_code"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="35%" height="26" class="row_gris"><mx:text id="nom_msg_afficher"/> :</td>
+ <td width="65%" height="26" class="row_gris"><input id="id_nb_msg" type="nb_msg_aff" size="3" name="nb_msg" value="5"></td>
+  </tr>
+  <tr>
+ <td width="100%" height="40" style="text-align: center" colspan="2">
+  <input type="button" name="generer" value="<mx:text id="generer_code"/>" style="cursor: pointer; font-weight: bold" onclick="generate_html()">
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="40" style="text-align: left" colspan="2">
+ <mx:text id="code_a_copier"/> :<br /><br />
+ <textarea id="id_code_html" name="code_html" cols="50" rows="4" style="width: 100%"></textarea>
+ </td>
+  </tr>
+ </table>
+
+</td>
+  </tr>
+</table>
+
+<script language="javascript">
+<!--
+generate_html();
+//-->
+</script>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+  "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+<title>Anweisungen für upgrade von Version 4.0 oder höher auf Version 5.0</title>
+<style type="text/css">
+body {
+	font-family: Arial, Verdana;
+	font-size: 0.9em;
+	background-color: #EFF0FE;
+}
+
+h1 {
+	color: #1045CC;
+	font-family: Arial, "Trebuchet MS", Verdana;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.1em;
+	color: #1045CC;
+}
+
+dl.codebox code {
+	overflow: auto;
+	display: block;
+	height: auto;
+	max-height: 200px;
+	white-space: normal;
+	padding-top: 3px;
+	font-family: "Courier New", Courier, mono;
+	font-size: 0.9em;
+	color: #808080;
+	margin-left: -30px;
+}
+
+dl.codebox {
+	width: 90%;
+	margin-left: 20px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #A2DBF8;
+	font-size: 1em;
+}
+
+dl.codebox dt {
+	text-transform: uppercase;
+	border-bottom: 1px solid #A2DBF8;
+	margin-bottom: 3px;
+	font-size: 0.6em;
+	display: block;
+	color: #1045CC;
+}
+
+.important {
+	color: #FF0000;
+}
+
+.souligne {
+	text-decoration: underline;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.barre_noir {
+	text-decoration: line-through;
+	color: #000000;
+}
+
+li.nom_fichier {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #76B50F;
+}
+
+.separation_maj_skin {
+	color: #1045CC;
+	background-color: #1045CC;
+	height: 2px;
+	border-bottom: 1px #4D7BF1 solid;
+}
+</style>
+<!-- fonction issue de phpBB3 -->
+<script type="text/javascript">
+// <![CDATA[
+function selectCode(a)
+{
+	// Get ID of code block
+	var e = a.parentNode.parentNode.getElementsByTagName('CODE')[0];
+
+	// Not IE
+	if (window.getSelection)
+	{
+		var s = window.getSelection();
+		// Safari
+		if (s.setBaseAndExtent)
+		{
+			s.setBaseAndExtent(e, 0, e, e.innerText.length - 1);
+		}
+		// Firefox and Opera
+		else
+		{
+			var r = document.createRange();
+			r.selectNodeContents(e);
+			s.removeAllRanges();
+			s.addRange(r);
+		}
+	}
+	// Some older browsers
+	else if (document.getSelection)
+	{
+		var s = document.getSelection();
+		var r = document.createRange();
+		r.selectNodeContents(e);
+		s.removeAllRanges();
+		s.addRange(r);
+	}
+	// IE
+	else if (document.selection)
+	{
+		var r = document.body.createTextRange();
+		r.moveToElementText(e);
+		r.select();
+	}
+}
+// ]]>
+</script>
+</head>
+<body>
+<h1>Anweisungen für AlexGuestbook upgrade<br/>
+	von Version 4.0 oder höher auf Version 5.00</h1><br/>
+<p>Dieses update bietet einige neue Funktionen, und deshalb der Sprung auf Version 5. Ausserdem ist es eine gut Möglichkeit den Wechsel von AlexPHPTeam auf AlexGuestbook zu markieren.<br/>Die Liste der Änderungen und Verbesserungen findet man in der <a href="../changelog_en.txt" title="Link to the changelog file">changelog_en.txt Datei</a>.<br/>Alle Informationen, updates und support für das Gästebuch sind verfügbar auf <a href="http://www.alexguestbook.net" title="Link to the AlexGuestbook.net site">www.alexguestbook.net</a></p><br/>
+<p class="souligne">Bevor man irgendwelche Änderungen am aktuellen Gästebuch vornimmt, sollte man ein Backup von der Datenbank (und eigener Skins, sofern man die erstellt/modifiziert hat) machen.</p>
+<p class="important">Wir empfehlen stark die Skins dieser neuen Version zu installieren, und diese dann zu modifizieren wenn nötig. <span class="gras">Alte Skins Upgraden</span> ist möglich (weiter unten auf der Seite) aber es ist <span class="gras">absolut nicht zu empfehlen!</span> Die Änderungen sind vielfältig und es gibt viel Spielraum für Fehler.</p><br/>
+<ol>
+	<li>
+		<p>Vor dem upgrade, überprüfen ob man wirklich die ZIP Datei mit der neuesten version heruntergeladen hat.</p>
+	</li>
+	<li>
+		<p>Mit beliebiger FTP Client-Software alle Dateien auf den Server hinaufladen (alle existierenden Dateien ersetzen). Ausgenommen sind: "setup.php" und Dateien die im "config/" bzw. "templates/" Verzeichnis sind. Dabei allerdings beachten, dass der Inhalt vom "templates/admin/ Verzeichnis ebenfalls ersetzt werden muss!</p>
+	</li>
+	<li>
+		<p>Die Struktur der Tabellen in der Datenbank hat sich geändert. Mit beliebiger Datenbank verwaltungssoftware (z.B. phpMyAdmin) die folgenden SQL Kommandos ausführen:<br/><span class="important"><span class="souligne">Achtung</span>, die Namen der Tabellen können anders sein, die Namen die hier verwendet werden sind die Standardnamen.</span> Eventuell sind auch die Werte der Einstellungen zu ändern, denn hier sind ebenfalls die Standardwerte.</p>
+
+		<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code class="code">
+		RENAME TABLE `alex_livre_ip` TO `alex_livre_ban` ;<br/>
+		ALTER TABLE `alex_livre_ban` CHANGE `id_ip` `id_ban` MEDIUMINT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ;<br/>
+		ALTER TABLE `alex_livre_ban` ADD `pseudo` VARCHAR( 40 ) NOT NULL , ADD `email` VARCHAR( 150 ) NOT NULL ;<br/>
+		ALTER TABLE `alex_livre_users` CHANGE `gestion_ip` `gestion_bannissement` TINYINT( 1 ) NOT NULL DEFAULT '0';<br/>
+		<br/>
+		CREATE TABLE `alex_livre_config` (<br/>
+		 `nom_config` varchar(255) NOT NULL,<br/>
+		 `valeur_config` varchar(255),<br/>
+		 KEY `nom_config` (`nom_config`)<br/>
+		) Type=MyISAM;<br/>
+		INSERT INTO `alex_livre_config` VALUES ('langue', 'francais');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('skin_to_use', 'AguestNew');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('temps_session', '1800');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('send_mail', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('temps_ip_post', '60');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('format_date', 'd/m/Y');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('admin_valide_messages', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('admin_envoyer_remerciement', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('admin_add_code_securite', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('admin_bannir_mot', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('url_interdites', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('url_cliquables', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('color_txt_code', '#000000');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('color_background_code', '#FFFFFF');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_pseudo', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_email', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_site', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_pays', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_note', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('champ_ville', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('ok_aff_moteur', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('nb_pages', '10');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('cut_mots', '75');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('maxi_car', '1500');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('nb_max_smileys', '20');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('url_recharger', 'index.php');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('extension_url', '');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('decalage_horaire', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('autoriser_smileys', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('inclure_livre', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('fichier_inclusion', '');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('donner_focus', '0');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('lien_admin', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('lien_accueil', '1');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('chemin_lien_accueil', '/');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('symbole_champ_obligatoire', '*');<br/>
+		INSERT INTO `alex_livre_config` VALUES ('symbole_champ_prive', '[P]');<br/>
+		</code></dd></dl>
+	<br/></li>
+	<li>
+		<p>Die Datei &quot;config/config_base.php&quot; mit Ihrer FTP Client-software herunterladen.</p>
+		<p>Öffnen Sie diese Datei mit einem Text editor. Der Inhalt sollte ca. so aussehen:</p>
+		<dl class="codebox"><dd><code class="code">
+		&lt;?php<br/>
+		$database_type = &quot;MySQL&quot;;<br/><br/>
+		$f_mysql_host = &quot;localhost&quot;;<br/>
+		$f_mysql_user = &quot;root&quot;;<br/>
+		$f_mysql_pass = &quot;****&quot;;<br/>
+		$f_mysql_base = &quot;guestbook&quot;;<br/>
+		<br/>
+		$name_table['alex_livre_sessions'] = &quot;alex_livre_sessions&quot;;<br/>
+		$name_table['alex_livre_users'] = &quot;alex_livre_users&quot;;<br/>
+		$name_table['alex_livre_messages'] = &quot;alex_livre_messages&quot;;<br/>
+		$name_table['alex_livre_censure'] = &quot;alex_livre_censure&quot;;<br/>
+		<span class="barre_noir">$name_table['alex_livre_ip'] = &quot;alex_livre_ip&quot;;</span><br/>
+		<span class="important">$name_table['alex_livre_ban'] = &quot;alex_livre_ban&quot;;</span><br/>
+		$name_table['alex_livre_smileys'] = &quot;alex_livre_smileys&quot;;<br/>
+		$name_table['alex_img_verif_add'] = &quot;alex_img_verif_add&quot;;<br/>
+		$name_table['alex_livre_txt_lang'] = &quot;alex_livre_txt_lang&quot;;<br/>
+		<span class="important">$name_table['alex_livre_config'] = &quot;alex_livre_config&quot;;</span><br/>
+		?&gt;
+		</code></dd></dl>
+		<p>Ersetzen Sie die durchgestrichene Zeile mit der roten darunter.<br/>Danach fügen Sie die zweite rote Zeile am ende des Dokuments ein.<br/>Speichern Sie die Datei und laden Sie sie auf den Server hinauf. Überprüfen ob die Datei wirklich überschrieben wurde (wenn nötig, löschen sie die Datei bevor Sie sie erneut hochladen).</p>
+	</li>
+	<li>
+		<p>Öffnen Sie die Administration von Ihrem Gästebuch, überprüfen Sie die neuen Funktionen und Optionen und setzen Sie diese auf die von Ihnen gewünschten Werte. Danach klicken Sie auf den &quot;Speichern&quot; Knopf. <span class="gras">Dieser Schritt ist notwendig um weitere Probleme zu verhindern.</span></p>
+	</li>
+	<li>
+		<p>Auf dem Server, löschen Sie beide Dateien /config/config.php und /config/test</p>
+	</li>
+	<li>
+		<p>Falls Sie die Skins nicht verändert haben, können Sie das ganze &quot;/templates/skins/&quot; Verzeichnis hochladen, und somit das alte ersetzen. <span class="souligne">Dies ist die empfohlene Methode (Der Code in den Skins hat sich start verändert!) und ausserdem sind nun alle Skins gültiges xhtml.</span><br/><br/>Falls Sie Ihre alten Skins behalten möchten, so müssen Sie diese upgraden. Falls nicht hat sich das update erledigt.</p>
+	<br/></li>
+</ol>
+
+<hr class="separation_maj_skin"/>
+
+<h2>Altes Skin upgraden:</h2>
+<p class="important">Wir möchten Sie daran erinnern, dass es empfohlen wird die neuen Skins zu verwenden und diese zu modifizieren.</p>
+<p>Vor dem upgraden Ihres Skins stellen Sie sicher dass es sich um die Version 4.0.5 handelt. Ist das nicht der Fall lesen Sie bitte die Anweisungen in <a href="./Instructions to upgrade from version 4.0.4 to version 4.0.5.html" target="_blank">Instructions to upgrade from version 4.0.4 to version 4.0.5</a>.</p>
+<ul>
+	<li class="nom_fichier">add_message.htm</li>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;nom_pseudo_visiteur&quot;/&gt; *&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;1&quot; name=&quot;nom&quot; size=&quot;34&quot; maxlength=&quot;50&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_nom&quot;/&gt; /&gt;&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;mx:bloc id=&quot;bloc_pseudo&quot;&gt;<br/>
+	&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;nom_pseudo_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;1&quot; name=&quot;nom&quot; id=&quot;nom&quot; size=&quot;34&quot; maxlength=&quot;50&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_nom&quot;/&gt; /&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_pseudo&quot;&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;email_visiteur&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;2&quot; name=&quot;email&quot; size=&quot;34&quot; maxlength=&quot;150&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_email&quot;/&gt; /&gt;&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;email_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;2&quot; name=&quot;email&quot; id=&quot;email&quot; size=&quot;34&quot; maxlength=&quot;150&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_email&quot;/&gt; /&gt;&lt;/div&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;site_web_visiteur&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;3&quot; name=&quot;site&quot; size=&quot;34&quot; maxlength=&quot;150&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_site&quot;/&gt; /&gt;&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;site_web_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;3&quot; name=&quot;site&quot; id=&quot;site&quot; size=&quot;34&quot; maxlength=&quot;150&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_site&quot;/&gt; /&gt;&lt;/div&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;!-- city &amp; country --&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_pays&quot;&gt;<br/>
+	&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;ville_visiteur&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;4&quot; name=&quot;ville&quot; size=&quot;34&quot; maxlength=&quot;60&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_ville&quot;/&gt; /&gt;&lt;/div&gt;<br/>
+	<br/>
+	&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;pays_visiteur&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;select tabindex=&quot;5&quot; size=&quot;1&quot; name=&quot;pays&quot; onchange=&quot;update_flag(this)&quot;&gt;&lt;option value=&quot;&quot;&gt;-&lt;/option&gt;&lt;mx:text id=&quot;select_pays&quot;/&gt;&lt;/select&gt; &lt;img id=&quot;img_flags&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;images/&lt;mx:text id=&quot;img_flags&quot;/&gt;&quot; width=&quot;18&quot; height=&quot;12&quot; alt=&quot;&quot; title=&quot;&lt;mx:text id=&quot;flag&quot;/&gt;&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_pays&quot;&gt;<br/></code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;!-- city  --&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_ville&quot;&gt;<br/>
+	&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;ville_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;input class=&quot;i_text&quot; type=&quot;text&quot; tabindex=&quot;4&quot; name=&quot;ville&quot; id=&quot;ville&quot; size=&quot;34&quot; maxlength=&quot;60&quot; onfocus=&quot;this.className='i_focus'&quot; onblur=&quot;this.className='i_text'&quot;&lt;mx:text id=&quot;value_ville&quot;/&gt; /&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_ville&quot;&gt;<br/>
+	<br/>
+	&lt;!-- country --&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_pays&quot;&gt;<br/>
+	&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;pays_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;select tabindex=&quot;5&quot; size=&quot;1&quot; name=&quot;pays&quot; id=&quot;pays&quot; onchange=&quot;update_flag(this)&quot;&gt;&lt;option value=&quot;&quot;&gt;-&lt;/option&gt;&lt;mx:text id=&quot;select_pays&quot;/&gt;&lt;/select&gt; &lt;img id=&quot;img_flags&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;images/&lt;mx:text id=&quot;img_flags&quot;/&gt;&quot; width=&quot;18&quot; height=&quot;12&quot; alt=&quot;&quot; title=&quot;&lt;mx:text id=&quot;flag&quot;/&gt;&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_pays&quot;&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;note_visiteur&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;select tabindex=&quot;6&quot; size=&quot;1&quot; name=&quot;note_site&quot;&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;add_msg_left&quot;&gt;&lt;mx:text id=&quot;note_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;mx:text id=&quot;symbole_champ_prive&quot;/&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;add_msg_right&quot;&gt;&lt;select tabindex=&quot;6&quot; size=&quot;1&quot; name=&quot;note_site&quot; id=&quot;note_site&quot;&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;d_center&quot; style=&quot;clear: both;&quot;&gt;&lt;mx:text id=&quot;message_visiteur&quot;/&gt; *&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;d_center&quot; style=&quot;clear: both;&quot;&gt;&lt;mx:text id=&quot;message_visiteur&quot;/&gt; &lt;mx:text id=&quot;symbole_champ_obligatoire&quot;/&gt;&lt;/div&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;mx:bloc id=&quot;bloc_code_securite&quot;&gt;<br/>
+	&lt;div class=&quot;d_center&quot;&gt;&lt;br /&gt;&lt;mx:text id=&quot;veuillez_taper_code&quot;/&gt; : (&lt;a href=&quot;javascript:script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_code.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;','down',350,280,'scrollbars=yes')&quot; class=&quot;a_info_code&quot;&gt;&lt;mx:text id=&quot;a_quoi_ca_sert&quot;/&gt;&lt;/a&gt;)&lt;br /&gt;<br/>
+	&lt;div&gt;<br/>
+	&lt;div class=&quot;d_code1&quot;&gt;&lt;img width=&quot;82&quot; height=&quot;20&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;genImg/index.php?id=&lt;mx:text id=&quot;id_genImg&quot;/&gt;&quot; alt=&quot;&quot; title=&quot;Code&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;d_code2&quot;&gt;&lt;input tabindex=&quot;8&quot; class=&quot;code_sec&quot; maxlength=&quot;4&quot; type=&quot;text&quot; name=&quot;code_securite&quot; size=&quot;5&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;input type=&quot;hidden&quot; name=&quot;num_id&quot; value=&quot;&lt;mx:text id=&quot;id_genImg&quot;/&gt;&quot; /&gt;<br/>
+	&lt;/div&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_code_securite&quot;&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;mx:bloc id=&quot;bloc_code_securite&quot;&gt;<br/>
+	&lt;div class=&quot;d_center&quot;&gt;&lt;br /&gt;&lt;mx:text id=&quot;veuillez_taper_code&quot;/&gt; : (&lt;a href=&quot;javascript:script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_code.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;','down',350,280,'scrollbars=yes')&quot; class=&quot;a_info_code&quot;&gt;&lt;mx:text id=&quot;a_quoi_ca_sert&quot;/&gt;&lt;/a&gt;)&lt;br /&gt;<br/>
+	&lt;div&gt;<br/>
+	&lt;div class=&quot;d_code1&quot;&gt;&lt;img width=&quot;82&quot; height=&quot;20&quot; src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;genImg/index.php?id=&lt;mx:text id=&quot;id_genImg&quot;/&gt;&quot; alt=&quot;&quot; title=&quot;Code&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;div class=&quot;d_code2&quot;&gt;&lt;input tabindex=&quot;8&quot; class=&quot;code_sec&quot; maxlength=&quot;4&quot; type=&quot;text&quot; name=&quot;code_securite&quot; size=&quot;5&quot; /&gt;&lt;/div&gt;<br/>
+	&lt;/div&gt;&lt;/div&gt;<br/>
+	&lt;/mx:bloc id=&quot;bloc_code_securite&quot;&gt;<br/>
+	&lt;input type=&quot;hidden&quot; name=&quot;num_id&quot; id=&quot;num_id&quot; value=&quot;&lt;mx:text id=&quot;id_genImg&quot;/&gt;&quot; /&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;!-- submit --&gt;<br/>
+	&lt;div class=&quot;d_submit_msg&quot;&gt;&lt;br /&gt;&lt;input type=&quot;submit&quot; tabindex=&quot;9&quot; value=&quot;&lt;mx:text id=&quot;ajouter_message_visiteur&quot;/&gt;&quot; name=&quot;ajouter&quot; class=&quot;btn_add&quot; /&gt;&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;!-- submit --&gt;<br/>
+	&lt;div class=&quot;d_submit_msg&quot;&gt;&lt;br /&gt;&lt;input type=&quot;submit&quot; tabindex=&quot;9&quot; value=&quot;&lt;mx:text id=&quot;ajouter_message_visiteur&quot;/&gt;&quot; name=&quot;ajouter&quot; id=&quot;ajouter&quot; class=&quot;btn_add&quot; /&gt;&lt;/div&gt;</code></dd></dl>
+<br/>
+	<li class="nom_fichier">assembly.htm</li>
+	<p>Just before :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;&lt;mx:text id=&quot;SCRIPT_ENCODAGE&quot;/&gt;&quot;?&gt;</code></dd></dl>
+	<p>Add :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;!--=== BLOC HEADER_HTML ===--&gt;</code></dd></dl>
+	<br/>
+	<p>Just before the &lt;/head&gt; tag, add :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;<br/>
+	&lt;!--<br/>
+	function donner_focus(champs){<br/>
+		document.getElementById(champs).focus();<br/>
+	}<br/>
+	//--&gt;<br/>
+	&lt;/script&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;body&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;body &lt;mx:text id=&quot;donner_focus&quot;/&gt;&gt;<br/>
+	&lt;!--=== /BLOC HEADER_HTML ===--&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>function verif_mail(adresse) {<br/>
+	 var place = adresse.indexOf(&quot;@&quot;,1);<br/>
+	 var point = adresse.indexOf(&quot;.&quot;,place+1);<br/>
+	<br/>
+	 if ((place &gt; -1)&amp;&amp;(adresse.length &gt;2)&amp;&amp;(point &gt; 1))<br/>
+	  return true;<br/>
+	 else<br/>
+	  return false;<br/>
+	}</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>function verif_mail(adresse){<br/>
+			if (adresse.match(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i))<br/>
+			return true;<br/>
+		else<br/>
+			return false;<br/>
+	}<br/>
+	<br/>
+	function verif_url(adresse){<br/>
+		if (adresse.match(/^(?:(?:https?)\:\/\/)?\w+([\.\-]\w+)*\.\w{2,4}(\:\d+)*([\/\.\-\?\&amp;\%\#]\w+)*\/?$/i))<br/>
+			return true;<br/>
+		else<br/>
+			return false;<br/>
+	}</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>function verif_add(){<br/>
+	 var F = document.getElementById(&quot;form_add_guest&quot;);<br/>
+	 var nom = F.nom.value;<br/>
+	 var message = F.message_textarea.value;<br/>
+	 &lt;mx:bloc id=&quot;bloc_verif_mail&quot;&gt;<br/>
+	 var mail= F.email.value;<br/>
+	 &lt;/mx:bloc id=&quot;bloc_verif_mail&quot;&gt;<br/>
+	<br/>
+	 if (!nom){<br/>
+	  alert(&quot;&lt;mx:text id=&quot;erreur_add_nom&quot;/&gt; &quot;);<br/>
+	  return false;<br/>
+	 }<br/>
+	 else if (!message){<br/>
+	  alert(&quot;&lt;mx:text id=&quot;erreur_add_message&quot;/&gt; &quot;);<br/>
+	  return false;<br/>
+	 }<br/>
+	 &lt;mx:bloc id=&quot;bloc_verif_mail2&quot;&gt;<br/>
+	 else if (!verif_mail(mail) &amp;&amp; mail){<br/>
+	  alert(&quot;&lt;mx:text id=&quot;erreur_mail&quot;/&gt; &quot;);<br/>
+	  return false;<br/>
+	 }<br/>
+	 &lt;/mx:bloc id=&quot;bloc_verif_mail2&quot;&gt;<br/>
+	 else if (F.code_securite &amp;&amp; !F.code_securite.value){<br/>
+	  alert(&quot;&lt;mx:text id=&quot;erreur_code_securite&quot;/&gt;&quot;);<br/>
+	  return false;<br/>
+	 }</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>function verif_add(){<br/>
+	var F = document.getElementById(&quot;form_add_guest&quot;);<br/>
+	var message = F.message_textarea.value;<br/>
+<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_nom&quot;&gt;<br/>
+		var nom = F.nom.value;<br/>
+		if (!nom){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_nom&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_nom&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_email&quot;&gt;<br/>
+		var email = F.email.value;<br/>
+		if (!email){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_email&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_email&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_site&quot;&gt;<br/>
+		var site = F.site.value;<br/>
+		if (!site){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_site&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_site&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_ville&quot;&gt;<br/>
+		var ville = F.ville.value;<br/>
+		if (!ville){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_ville&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_ville&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_pays&quot;&gt;<br/>
+		var pays = F.pays.value;<br/>
+		if (!pays){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_pays&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_pays&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_note&quot;&gt;<br/>
+		var note = F.note_site.value;<br/>
+		if (!note){<br/>
+			alert(&quot;&lt;mx:text id=&quot;erreur_add_note&quot;/&gt; &quot;);<br/>
+			return false;<br/>
+		}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_note&quot;&gt;<br/>
+<br/>
+	if (!message){<br/>
+		alert(&quot;&lt;mx:text id=&quot;erreur_add_message&quot;/&gt; &quot;);<br/>
+		return false;<br/>
+	}<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_email2&quot;&gt;<br/>
+	var email = F.email.value;<br/>
+	if (!verif_mail(email) &amp;&amp; email){<br/>
+		alert(&quot;&lt;mx:text id=&quot;erreur_mail&quot;/&gt; &quot;);<br/>
+		return false;<br/>
+	}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_email2&quot;&gt;<br/>
+	&lt;mx:bloc id=&quot;bloc_verif_site2&quot;&gt;<br/>
+	var site = F.site.value;<br/>
+	if (!verif_url(site) &amp;&amp; site){<br/>
+		alert(&quot;&lt;mx:text id=&quot;erreur_url&quot;/&gt; &quot;);<br/>
+		return false;<br/>
+	}<br/>
+	&lt;/mx:bloc id=&quot;bloc_verif_site2&quot;&gt;<br/>
+	else if (F.code_securite &amp;&amp; !F.code_securite.value){<br/>
+		alert(&quot;&lt;mx:text id=&quot;erreur_code_securite&quot;/&gt;&quot;);<br/>
+		return false;<br/>
+	}<br/>
+}</code></dd></dl>
+	<br/>
+	<p>Just before :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;mx:text id=&quot;message_alert&quot;/&gt;</code></dd></dl>
+	<p>Add :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div id=&quot;alexguestbook&quot;&gt;<br/>
+	<br/>
+	&lt;mx:text id=&quot;lien_accueil&quot;/&gt;</code></dd></dl>
+	<br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;/body&gt;<br/>
+	<br/>
+	&lt;/html&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;mx:text id=&quot;lien_admin&quot;/&gt;<br/>
+	&lt;/div&gt;<br/>
+	&lt;!--=== BLOC FOOTER_HTML ===--&gt;<br/>
+	&lt;/body&gt;<br/>
+	<br/>
+	&lt;/html&gt;<br/>
+	&lt;!--=== /BLOC FOOTER_HTML ===--&gt;</code></dd></dl>
+	<br/>
+	<li class="nom_fichier">corps_messages.htm</li>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;d_pseudo&quot;&gt;&lt;a name=&quot;id&lt;mx:text id=&quot;idMsg&quot;/&gt;&quot;&gt;&lt;mx:text id=&quot;flag&quot;/&gt; &lt;mx:text id=&quot;pseudo&quot;/&gt; &lt;mx:text id=&quot;pays_ville&quot;/&gt; &lt;mx:text id=&quot;img_home&quot;/&gt; &lt;mx:text id=&quot;img_mail&quot;/&gt;&lt;/a&gt;&lt;/div&gt;</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>&lt;div class=&quot;d_pseudo&quot;&gt;&lt;a name=&quot;id&lt;mx:text id=&quot;idMsg&quot;/&gt;&quot;&gt;&lt;mx:text id=&quot;flag&quot;/&gt; &lt;mx:text id=&quot;pseudo&quot;/&gt; &lt;mx:text id=&quot;ville&quot;/&gt;&lt;mx:text id=&quot;pays&quot;/&gt; &lt;mx:text id=&quot;img_home&quot;/&gt; &lt;mx:text id=&quot;img_mail&quot;/&gt;&lt;/a&gt;&lt;/div&gt;</code></dd></dl>
+	<br/>
+	<li class="nom_fichier">alex_livre.css</li>
+	<p>To avoid conflicts between the styles of the guestbook and of the rest of the site, the guestbook is now placed inside a container (DIV tags). You therefore have to add the #alexguestbook prefix (the ID of the container) before the name of each style.</p>
+	<p>Example :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>input, textarea, select {<br/>
+	 font-family: Verdana, Helvetica, sans-serif; <br/>
+	 font-size: 1em;<br/>
+	 border: 1px solid #757575;<br/>
+	}</code></dd></dl>
+	<p>Becomes :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>#alexguestbook input, #alexguestbook textarea, #alexguestbook select {<br/>
+	 font-family: Verdana, Helvetica, sans-serif; <br/>
+	 font-size: 1em;<br/>
+	 border: 1px solid #757575;<br/>
+	}</code></dd></dl>
+	<br/>
+	<p>Or else :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>input.btn_add {<br/>
+	 font-size: 1em;<br/>
+	 cursor: pointer;<br/>
+	 font-weight: bold;<br/>
+	 color: #373737;<br/>
+	}</code></dd></dl>
+	<p>Becomes :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>#alexguestbook input.btn_add {<br/>
+	 font-size: 1em;<br/>
+	 cursor: pointer;<br/>
+	 font-weight: bold;<br/>
+	 color: #373737;<br/>
+	}</code></dd></dl>
+	<br/><br/>
+	The style applied to the BODY tag is now applied to the #alexguestbook container.<br/><br/>
+	<p>Ersetze:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>body {<br/>
+	 background-color: #FFFFFF;<br/>
+	 font-family: Verdana, Helvetica, sans-serif;<br/>
+	 color: #000000;<br/>
+	 font-size: 0.7em;<br/>
+	}</code></dd></dl>
+	<p>Mit:</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>#alexguestbook {<br/>
+	 background-color: #FFFFFF;<br/>
+	 font-family: Verdana, Helvetica, sans-serif; <br/>
+	 color: #000000; <br/>
+	 font-size: 0.7em;<br/>
+	}</code></dd></dl>
+	<br/>
+	<p>Almost done on this file : add (i.e. at the end of the file) :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></dt><dd><code>#alexguestbook #lien_accueil a:link, #alexguestbook #lien_accueil a:hover, #alexguestbook #lien_accueil a:visited, #alexguestbook #lien_administration a:link, #alexguestbook #lien_administration a:hover, #alexguestbook #lien_administration a:visited {<br/>
+	text-decoration: underline;<br/>
+	color: #4A7DAC;<br/>
+}<br/>
+<br/>
+#alexguestbook #lien_accueil  img, #alexguestbook #lien_administration  img {<br/>
+	vertical-align: text-bottom;<br/>
+	width: 16px;<br/>
+	height: 16px;<br/>
+	border: 0;<br/>
+	margin: 0 2px 0 0;<br/>
+}<br/>
+<br/>
+#alexguestbook #lien_administration {<br/>
+	text-align: center;<br/>
+	margin-top: 10px;<br/>
+}<br/>
+<br/>
+#alexguestbook .symbole_champ_obligatoire {<br/>
+	color: #FF0000;<br/>
+}<br/>
+<br/>
+#alexguestbook .symbole_champ_prive {<br/>
+	color: #0000FF;<br/>
+}</code></dd></dl>
+	<br/>
+	<li class="nom_fichier">Neue Bilder hinzufügen</li>
+	<p>Öffnen Sie das ZIP Dokument der neuen version und kopieren Sie die Bilder "templates/skins/AguestNew/img/administration.png" und "templates/skins/AguestNew/img/accueil.png". Erzeugen Sie den Ordner "img" im Verzeichnis Ihres Skins und fügen Sie diese Bilder ein.</p>
+	<br/>
+</ul>
+<h2>OK, das wars, Ihr Gästebuch ist nun aktualisiert :o)</h2>
+</body>
+</html>

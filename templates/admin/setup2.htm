@@ -1,0 +1,211 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif(){
+	var host = document.infos.host.value;
+	var user = document.infos.user.value;
+	var nom_base = document.infos.nom_base.value;
+	var login_admin = document.infos.login_admin.value;
+	var pass_admin = document.infos.pass_admin.value;
+	var verif_pass_admin = document.infos.verif_pass_admin.value;
+
+	if (!host){
+		alert("<mx:text id="erreur_host"/>");
+		return false
+	}
+	else if (!user){
+		alert("<mx:text id="erreur_user"/>");
+		return false
+	}
+	else if (!nom_base){
+		alert("<mx:text id="erreur_nom_base"/>");
+		return false
+	}
+	else if (!login_admin){
+		alert("<mx:text id="erreur_log_admin"/>");
+		return false
+	}
+	else if (!pass_admin){
+		alert("<mx:text id="erreur_pass_admin"/>");
+		return false
+	}
+	else if (pass_admin != verif_pass_admin){
+		alert("<mx:text id="erreur_pass_differents"/>");
+		return false
+	}
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="install_auto"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="2" cellpadding="0" height="40">
+  <form name="infos" method="POST" action="setup.php?language_setup=<mx:text id="language_setup"/>" onsubmit="javascript:return verif();">
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="identi_base"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="host_base"/></td>
+ <td width="59%" height="26" class="row_gris"><p>
+ <input type="text" name="host" size="33">
+  </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="user_base"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="user" size="17">
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="pass_base"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="password" name="pass" size="11">
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="nom_base"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="nom_base" size="17">
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="nom_table"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_config"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_config" size="27" value="alex_livre_config">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_sessions"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_sessions" size="27" value="alex_livre_sessions">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_users"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_users" size="27" value="alex_livre_users">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_messages"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_messages" size="27" value="alex_livre_messages">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_censure"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="table_censure" size="27" value="alex_livre_censure">
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_ban"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_ban" size="27" value="alex_livre_ban">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_smileys"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_smileys" size="27" value="alex_livre_smileys">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_txt_lang"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="table_txt_lang" size="27" value="alex_livre_txt_lang">
+ </p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="name_table_img_verif_add"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <input type="text" name="table_img_verif_add" size="27" value="alex_livre_img_verif_add">
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="extension_script"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="choose_extension"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="extension_script" size="17" value="php" maxlength="10"></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="identi_acces_admin"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="login_admin"/></td>
+ <td width="59%" height="26" class="row_gris">
+ <p><input type="text" name="login_admin" size="17" maxlength="20"></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="pass_admin"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="password" name="pass_admin" size="11" maxlength="10">
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="verif_pass_admin"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="password" name="verif_pass_admin" size="11" maxlength="10">
+ </td>
+  </tr>
+  <tr>
+ <td width="41%" height="26" class="row_gris"><mx:text id="email_admin_setup"/></td>
+ <td width="59%" height="26" class="row_gris"><input type="text" name="email_admin" size="27" maxlength="150">
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center"><input type="submit" value="    <mx:text id="installer"/>    " name="installer" class="normal"></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

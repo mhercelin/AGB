@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Consignes de mise à jour de la version 3.* ou supérieure à la version 3.2</title>
+<style>
+BODY {
+  font-family: Arial;
+  font-size: 10pt;
+}
+</style>
+</head>
+
+<body>
+
+<p><b><u><font color="#CC3300">Consignes de mise à jour de la version 3.* ou supérieure d'@lex Guestbook à la version 3.2</font></u></b><br>
+<br>
+1- La structure des tables de la base a été modifiée, avec votre gestionnaire de BDD habituel (phpmyadmin par exemple), exécutez les requètes suivantes
+(<font color="#FF0000"><b><u>ATTENTION</u></b>, vos noms de tables sont peut
+être différents, les noms utilisés ici sont les noms par défaut</font>) :&nbsp;<br>
+<br>
+
+<textarea rows="13" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080">ALTER TABLE `alex_livre_censure` CHANGE `id_mot` `id_mot` MEDIUMINT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `alex_livre_ip` CHANGE `id_ip` `id_ip` MEDIUMINT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `alex_livre_messages` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `alex_livre_messages` ADD `valid` ENUM('yes', 'no') DEFAULT 'yes' NOT NULL;
+ALTER TABLE `alex_livre_messages` ADD INDEX (`time`);
+ALTER TABLE `alex_livre_sessions` CHANGE `id_user` `id_user` MEDIUMINT(11) UNSIGNED DEFAULT '0' NOT NULL;
+ALTER TABLE `alex_livre_sessions` CHANGE `session` `session` VARCHAR(70) NOT NULL;
+ALTER TABLE `alex_livre_sessions` ADD INDEX (`session`);
+ALTER TABLE `alex_livre_users` CHANGE `id_user` `id_user` MEDIUMINT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `alex_livre_users` CHANGE `pass` `pass` VARCHAR(10) BINARY NOT NULL;
+ALTER TABLE `alex_livre_users` ADD INDEX (`login`);
+ALTER TABLE `alex_livre_users` ADD INDEX (`pass`);
+ALTER TABLE `alex_livre_smileys` CHANGE `id_smiley` `id_smiley` MEDIUMINT(11) UNSIGNED NOT NULL AUTO_INCREMENT;</textarea>
+
+
+</p>
+
+<p>2- Téléchargez le zip de la nouvelle version et copiez/collez intégralement les dossiers et fichiers suivants  :<br>
+&quot;/admin/&quot;,<br>
+&quot;/db/&quot;,<br>
+&quot;/images/&quot;,<br>
+&quot;/include/&quot;,<br>
+&quot;/languages/&quot;,<br>
+&quot;/templates/admin/&quot;,<br>
+&quot;/templates/modelixe/ModeliXe.php&quot;,<br>
+&quot;/add_message.php&quot;,<br>
+&quot;/index.php&quot;,<br>
+&quot;infos_spam.php&quot;,<br>
+<br>
+3- Allez dans la partie admin du livre d'or, il y a 2 nouvelles options
+disponibles : &quot;Souhaitez vous valider les messages avant leur intégration
+dans le livre d'or ?&quot; et &quot;Nombre maxi de caractères dans un message
+(0 = illimité)&quot;, paramétrez ces deux valeurs comme vous le souhaitez,
+puis cliquez sur &quot;Enregistrer&quot;. Cette étape est nécessaire pour
+éviter une erreur javascript à l'affichage du livre d'or par la suite.<br>
+<br>
+4- Si vous n'aviez pas personnalisé vos skins, vous pouvez intégralement
+copier/coller le dossier &quot;/templates/skins/&quot;, et pour vous <b><u>la
+mise à jour est terminée</u></b>. Dans le cas contraire vous allez devoir
+procéder à la mise à jour manuelle de votre skin, cette dernière est
+détaillée à l'étape 5.<br>
+<br>
+5- Cette étape est nécessaire uniquement si vous souhaitez conserver
+l'apparence visuelle de votre livre d'or.<br>
+<br>
+&gt; Dans le dossier &quot;templates/skins&quot;, sélectionnez le dossier
+portant le nom du skin que vous allez devoir mettre à jour. La procédure est
+à peu près similaire pour tous les skins.<br>
+&nbsp;<br>
+&gt; Editez le fichier &quot;<b>assembly.htm</b>&quot;, remplacez les 3
+premières lignes par :<br>
+&nbsp;<br>
+
+<textarea rows="6" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<mx:text id="SCRIPT_ENCODAGE"/>"></textarea>
+
+
+<br>
+<br>
+&gt; Vers la ligne 11 (pour le skin par défaut (alexphpteam), sinon c'est peut
+être beaucoup plus loin), repérez &quot;&lt;script language=&quot;javascript&quot;&gt;&quot;
+jusqu'à &quot;&lt;/script&gt;&quot;, remplacez toutes ces lignes par :<br>
+&nbsp;<br>
+
+<textarea rows="14" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080"><script language="javascript" type="text/javascript">
+<!--
+var lang_max_car = "<mx:text id="caracteres"/>";
+var lang_reste   = "<mx:text id="il_reste"/>";
+var max_car      = <mx:text id="maxi_car"/>;
+
+function storeCaret (textEl){
+   if (textEl.createTextRange) 
+   textEl.caretPos = document.selection.createRange().duplicate();
+}
+
+function smiley(text){
+   var F = document.getElementById("form_add_guest");
+
+   if (F.message_textarea.createTextRange && F.message_textarea.caretPos) {
+      var caretPos = F.message_textarea.caretPos;
+      caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? ' ' + text + ' ': ' ' + text + ' ';
+      F.message_textarea.focus();
+   }
+   else {
+      F.message_textarea.value  += ' ' + text + ' ';
+      F.message_textarea.focus();
+   }
+}
+
+function verif_mail(adresse) {
+   var place = adresse.indexOf("@",1);
+   var point = adresse.indexOf(".",place+1);
+   
+   if ((place > -1)&&(adresse.length >2)&&(point > 1))
+      return true;
+   else
+      return false;
+}
+
+function verif_add(){
+   var F = document.getElementById("form_add_guest");
+   var nom = F.nom.value;
+   var message = F.message_textarea.value;
+   <mx:bloc id="bloc_verif_mail">
+   var mail= F.email.value;
+   </mx:bloc id="bloc_verif_mail">
+
+   if (!nom){
+      alert("<mx:text id="erreur_add_nom"/> ");
+      return false;
+   }
+   else if (!message){
+      alert("<mx:text id="erreur_add_message"/> ");
+      return false;
+   }
+   <mx:bloc id="bloc_verif_mail2">
+   else if (!verif_mail(mail) && mail){
+      alert("<mx:text id="erreur_mail"/> ");
+      return false;
+   }
+   </mx:bloc id="bloc_verif_mail2">
+}
+
+function script_popup(page,name,largeur,hauteur,options){
+    var top=(screen.height-hauteur)/2;
+    var left=(screen.width-largeur)/2;
+    window.open(page,name,"top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+}
+
+function verifCar(objet){
+    if (max_car > 0){
+		if (objet.value.length > max_car)
+			objet.value = objet.value.substring(0, max_car);
+
+		var F = document.getElementById("form_add_guest");
+		F.reste_car.value = lang_reste + " " + (max_car - objet.value.length) + " " + lang_max_car;
+	}
+}
+//-->
+</script></textarea>
+
+
+</p>
+
+<p>&gt; A la fin du fichier, pour le skin portant la mention &quot;alexphpteam&quot;,
+remplacez le copyright existant par (si votre skin porte la mention &quot;chezpierre&quot;,
+le code à copier/coller est juste après celui ci) :<br>
+&nbsp;<br>
+
+<textarea rows="14" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080"><!--
+//
+// Alexis Soulard 2002 - 2005
+//
+
+I request you retain the full copyright notice below including the link to www.alexguestbook.net.
+This not only gives respect to the large amount of time given freely by the developer
+but also helps build interest, traffic and use of @lex Guestbook. If you refuse
+to include even this then support on our guestbook may be affected.
+-->
+
+&lt;p align="center"&gt;Powered by &lt;a href="http://www.alexguestbook.net/" target="_blank"&gt;@lex Guestbook&lt;/a&gt; &copy; - &lt;a href="javascript: script_popup('infos_spam.php?lang=&lt;mx:text id="lang"/&gt;', 'down', 350, 280, 'scrollbars=yes')"&gt;&lt;mx:text id="avis_spammeurs"/&gt;&lt;/a&gt;&lt;/p&gt;</textarea>
+
+
+</p>
+<p>Si votre skin porte la mention &quot;chezpierre&quot;, remplacez le copyright
+existant par :<br>
+<br>
+
+<textarea rows="16" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080">&lt;!--
+//
+// Alexis Soulard 2002 - 2005
+//
+
+I request you retain the full copyright notice below including the link to www.alexguestbook.net.
+This not only gives respect to the large amount of time given freely by the developer
+but also helps build interest, traffic and use of @lex Guestbook. If you refuse
+to include even this then support on our guestbook may be affected.
+--&gt;
+
+&lt;b&gt;___________________________________________________________&lt;br /&gt;Powered by : &lt;a href="http://www.alexguestbook.net" target="_blank"&gt;@lex Livre D'or&lt;/a&gt; &copy; - &lt;a href="javascript: script_popup('infos_spam.php?lang=&lt;mx:text id="lang"/&gt;', 'down', 350, 280, 'scrollbars=yes')"&gt;&lt;mx:text id="avis_spammeurs"/&gt;&lt;/a&gt;&lt;br /&gt;&lt;/b&gt;Skin design by : &lt;a href="http://www.chez-pierre.net/" target="_blank"&gt;Un prof belge en vadrouille&lt;/a&gt;&lt;/center&gt;&lt;br /&gt;&lt;br /&gt;&lt;/center&gt;</textarea>
+
+
+<br>
+<br>
+&gt; Editez le fichier &quot;<b>add_message.htm</b>&quot;, à partir de la
+ligne 70, remplacez toute la ligne suivante :</p>
+<table border="0" width="100%" bgcolor="#000000" cellspacing="1" cellpadding="10">
+  <tr>
+    <td width="100%" bgcolor="#F8F8F8"> <font face="Courier New" size="2"> &lt;tr><br>
+      &lt;td width=&quot;100%&quot; colspan=&quot;2&quot;&gt;<br>
+ &lt;p align=&quot;center&quot;&gt;&lt;mx:formField id=&quot;message_textarea&quot;
+      rows=&quot;8&quot; cols="69"/>&lt;/p><br>
+      &lt;/td&gt;<br>
+ &lt;/tr></font></td>
+  </tr>
+</table>
+
+&nbsp;<br>
+Par :<br>
+&nbsp;
+
+<br>
+
+<textarea rows="14" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080">&lt;tr&gt;
+&lt;td width="100%" colspan="2"&gt;
+ &lt;p align="center"&gt;&lt;textarea id="message_textarea" rows="8" cols="69" onselect="verifCar(this); storeCaret(this); " onclick="verifCar(this); storeCaret(this);" onkeyup="verifCar(this); storeCaret(this);" onFocus="verifCar(this)" onKeyDown="verifCar(this)" onBlur="verifCar(this)" name="message_textarea" /&gt;&lt;/textarea&gt;&lt;br&gt;
+
+ &lt;mx:bloc id="bloc_max_car"&gt;
+ &lt;input type="text" name="reste_car" value="&lt;mx:text id="value_max_car"/&gt;" size="100" style="border: 0; background: transparent; font-size: 10px; text-align: center; width: 100%" readonly /&gt;
+ &lt;/mx:bloc id="bloc_max_car"&gt;
+ &lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</textarea>
+
+
+<br>
+<br>
+&gt; Vers la ligne 5, repérerez &quot;&lt;FORM NAME=&quot;ajouter&quot; METHOD=&quot;post&quot; ACTION="&lt;mx:text id="action_url"/>" onsubmit="javascript:return
+verif_add();&quot;&gt;&quot;, remplacez par&nbsp; :<br>
+&nbsp;<br>
+
+<textarea rows="2" name="S1" cols="64" style="width: 100%; font-size: 10 pt; font-family: Courier New; color: #808080">&lt;FORM ID="form_add_guest" METHOD="post" ACTION="&lt;mx:text id="action_url"/&gt;" onsubmit="javascript:return verif_add();"&gt;</textarea>
+
+
+<br>
+<br>
+<b>C'est terminé, votre script est mis à jour :o)</b>
+
+</body>
+
+</html>

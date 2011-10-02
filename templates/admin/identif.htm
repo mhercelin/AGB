@@ -1,0 +1,102 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+<!-- le code ci-dessous est à supprimer si la page de connexion à l'interface d'administration se recharge en permanence -->
+if (parent.frames.length > 0){
+	window.top.location.href = location.href;
+}
+<!-- fin du code à supprimer -->
+
+function verif_sup(){
+	var login = document.identification.f_login.value;
+	var pass = document.identification.f_pass.value;
+
+	if (!login){
+		alert("<mx:text id="manque login"/>");
+		return false;
+	}
+	else if (!pass){
+		alert("<mx:text id="manque pass"/>");
+		return false;
+	}
+	else
+		return true;
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="page protect"/><br>
+</font></b>&nbsp;
+<div align="center">
+  <table cellSpacing="1" width="250" border="0">
+ <tbody>
+<tr>
+  <td width="100%" class="row_bleu">
+ <table height="133" cellSpacing="0" cellPadding="0" width="100%" border="0">
+ <FORM name="identification" ACTION="index.php" METHOD="post" onsubmit="javascript:return verif_sup();">
+<tbody>
+  <tr>
+ <td width="100%" class="row_gris" colSpan="3" height="21"><font class="Verdana_Rouge"><center><mx:text id="erreur"/></center></font></td>
+  </tr>
+  <tr>
+ <td width="34%" class="row_gris" height="33">
+  <p align="right"><font class="Arial_Noir"><mx:text id="login"/></font></p>
+</td>
+<td width="6%" class="row_gris" height="33">
+  <p align="center"><font class="Arial_Noir">:</font></p>
+</td>
+<td width="60%" class="row_gris" height="33">
+  <p align="left"><input maxLength="20" size="13" name="f_login" id="f_login" <mx:text id="value f_login"/>></p>
+</td>
+<script language="JavaScript" type="text/javascript">
+<!--
+function donner_focus(champs){
+	document.getElementById(champs).focus();
+}
+donner_focus('f_login');
+// -->
+</script>
+ </tr>
+ <tr>
+<td width="34%" class="row_gris" height="25">
+  <p align="right"><font class="Arial_Noir"><mx:text id="pass"/></font></p>
+</td>
+<td width="6%" class="row_gris" height="25">
+  <p align="center"><font class="Arial_Noir">:</font></p>
+</td>
+<td width="60%" class="row_gris" height="25"><input type="password" maxLength="20" size="13" value name="f_pass"></td>
+ </tr>
+ <tr>
+<td vAlign="bottom" width="100%" class="row_gris" colSpan="3" height="33"><center><input type="submit" value="<mx:text id="value identif"/>" name="f_identif" class="normal"></center></td>
+ </tr>
+ <tr>
+<td width="100%" class="row_gris" colSpan="3" height="21">&nbsp;</td>
+<center>
+</tr>
+ </tbody>
+  </FORM>
+  </table>
+</center></td>
+  </tr>
+</tbody>
+ </table>
+  &nbsp;<br>&nbsp;
+  </div>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

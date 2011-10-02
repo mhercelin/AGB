@@ -1,0 +1,89 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif_sup(){
+	if (confirm("<mx:text id="verif_sup_admin"/>"))
+		return true;
+	else
+		return false;
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="gest_admin"/><br>
+&nbsp;</font></b>
+<table cellSpacing="0" cellPadding="8" width="100%" border="0">
+  <tbody>
+ <tr>
+<td width="100%">
+  <table height="40" cellSpacing="2" cellPadding="0" width="100%" border="0">
+ <form  action="gest_admin.php?f_sid=<mx:text id="f_sid"/>" method="post">
+<tbody>
+  <tr>
+ <td class="row_bleu" width="11%" height="20" align="center"><font class="Verdana_Blanc"><b><mx:text id="sup_admin"/></b></font></td>
+ <td class="row_bleu" width="31%" height="20" align="center">
+<p><font class="Verdana_Blanc"><b><mx:text id="login_admin"/></b></font></p>
+ </td>
+ <td class="row_bleu" width="44%" height="20" align="center">
+<font class="Verdana_Blanc"><b><mx:text id="email_admin"/></b></font>
+ </td>
+ <td class="row_bleu" width="14%" height="20" align="center">
+<font class="Verdana_Blanc"><b><mx:text id="modif_admin"/></b></font>
+ </td>
+  </tr>
+
+<!-- début boucle -->
+  <mx:bloc id="bloc5">
+  <tr bgcolor="#F5F5F5" onmouseover="this.bgColor='#FFE6BB'" onmouseout="this.bgColor='#F5F5F5'">
+ <td width="11%" height="19" align="center">
+  <p><input type="checkbox" name="sup_<mx:text id="value_boucle"/>" value="<mx:text id="id_admin"/>" class="radio"></p>
+ </td>
+ <td width="31%" height="19">
+ &nbsp;<mx:text id="login"/>
+ </td>
+ <td width="44%" height="19">
+ &nbsp;<a href="mailto:<mx:text id="email"/>"><mx:text id="email"/></a>
+ </td>
+ <td width="14%" height="19">
+<p align="center"><a href="add_admin.php?f_sid=<mx:text id="f_sid"/>&id_modif=<mx:text id="id_admin"/>"><img src="../images/editer.gif" width="15" height="16" border="0" alt="<mx:text id="modifier"/>"></a></p>
+ </td>
+  </tr>
+  </mx:bloc id="bloc5">
+<!-- fin boucle -->
+
+  <tr>
+ <td width="100%" colSpan="4" height="5">&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colSpan="4" height="5"><center>
+ <input type="hidden" value="<mx:text id="nbre_boucles"/>" name="nbre_boucles">
+ <input class="sup" type="submit" value="<mx:text id="value_sup_admin"/>" name="supprimer" onclick="javascript:return verif_sup();"></center></td>
+  </tr>
+  </FORM>
+  <tr>
+ <td width="100%" colSpan="4" height="5">&nbsp;</td>
+  </tr>
+</tbody>
+ </table>
+  </td>
+</tr>
+ </tbody>
+  </table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

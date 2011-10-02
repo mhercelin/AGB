@@ -1,0 +1,221 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="Javascript">
+function verif_aj_ip(){
+	var ip1 = document.aj_ip.ip1.value;
+	var ip2 = document.aj_ip.ip2.value;
+	var ip3 = document.aj_ip.ip3.value;
+	var ip4 = document.aj_ip.ip4.value;
+
+	if (!ip1){
+		alert("<mx:text id="erreur_ip1"/>");
+		return false;
+	}
+	else if (!ip2){
+		alert("<mx:text id="erreur_ip2"/>");
+		return false;
+	}
+	else if (!ip3){
+		alert("<mx:text id="erreur_ip3"/>");
+		return false;
+	}
+	else if (!ip4){
+		alert("<mx:text id="erreur_ip4"/>");
+		return false;
+	}
+}
+
+function verif_sup_ip(){
+	if (confirm("<mx:text id="verif_sup_ip"/>"))
+		return true;
+	else
+		return false;
+}
+
+function verif_aj_pseudo(){
+	var pseudo = document.aj_pseudo.pseudo.value;
+
+	if (!pseudo){
+		alert("<mx:text id="erreur_pseudo"/>");
+		return false;
+	}
+}
+
+function verif_sup_pseudo(){
+	if (confirm("<mx:text id="verif_sup_pseudo"/>"))
+		return true;
+	else
+		return false;
+}
+
+function verif_aj_email(){
+	var email = document.aj_email.email.value;
+
+	if (!email){
+		alert("<mx:text id="erreur_email"/>");
+		return false;
+	}
+}
+
+function verif_sup_email(){
+	if (confirm("<mx:text id="verif_sup_email"/>"))
+		return true;
+	else
+		return false;
+}
+
+function AutotabPoint(box, evenement){
+	var touche = window.event ? evenement.keyCode : evenement.which;
+	if (touche==46){	//si la touche pressée est le . (point)
+		document.getElementById("ip"+box).focus();	//on passe à l'input suivant (octet suivant dans l'@IP)
+		return false;
+	}
+}
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="bannissement"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+<table border="0" width="100%" cellspacing="2" cellpadding="3" height="40">
+  <form name="aj_ip" method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>" onsubmit="javascript:return verif_aj_ip();">
+  <tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="ajouter_ip"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="text_ip1"/><br><br><mx:text id="text_ip2"/></font></p></td>
+  </tr>
+</table>
+&nbsp;
+ <p>
+ <input type="text" name="ip1" id="ip1" size="2" maxlength="3" onkeyPress="return AutotabPoint(2, event)"><b>.</b><input type="text" name="ip2" id="ip2" size="2" maxlength="3" onkeypress="return AutotabPoint(3, event)"><b>.</b><input type="text" name="ip3" id="ip3" size="2" maxlength="3" onkeyPress="return AutotabPoint(4, event)"><b>.</b><input type="text" name="ip4" id="ip4" size="2" maxlength="3" onkeyPress="return AutotabPoint(4, event)">
+ <input type="submit" value="<mx:text id="ajouter_ip"/>" name="ajouter_ip" class="save"></p>
+ </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" height="5">&nbsp;</td>
+  </tr>
+  <form method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>"><tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_ip"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+    <p align="center">
+	<select size="10" name="liste_ip_bannies[]" multiple>
+	  <mx:text id="option_ip"/>
+    </select></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53">
+  <p align="center"><input type="submit" value="<mx:text id="sup_ip"/>" name="supprimer_ip" id="supprimer_ip" class="sup" onclick="javascript: return verif_sup_ip();"></p>
+ </td>
+  </tr>
+  </form>
+  <form name="aj_pseudo" method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>" onsubmit="javascript:return verif_aj_pseudo();">
+  <tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="ajouter_pseudo"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+ 
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="admin_text_pseudo"/></font></p></td>
+  </tr>
+</table>
+&nbsp;
+ <p>
+ <input type="text" name="pseudo" size="30" maxlength="30">
+ <input type="submit" value="<mx:text id="ajouter_pseudo"/>" name="ajouter_pseudo" id="ajouter_pseudo" class="save"></p>
+ </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" height="5">&nbsp;</td>
+  </tr>
+  <form method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>"><tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_pseudo"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+    <p align="center">
+	<select size="10" name="liste_pseudos_bannis[]" multiple>
+	  <mx:text id="option_pseudo"/>
+    </select></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53">
+  <p align="center"><input type="submit" value="<mx:text id="sup_pseudo"/>" name="supprimer_pseudo" id="supprimer_pseudo" class="sup" onclick="javascript: return verif_sup_pseudo();"></p>
+ </td>
+  </tr>
+  </form>
+    <form name="aj_email" method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>" onsubmit="javascript:return verif_aj_email();">
+  <tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="ajouter_email"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+ <table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="admin_text_email"/></font></p></td>
+  </tr>
+</table>
+&nbsp;
+ <p>
+ <input type="text" name="email" size="40" maxlength="40">
+ <input type="submit" value="<mx:text id="ajouter_email"/>" name="ajouter_email" id="ajouter_email" class="save"></p>
+ </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" height="5">&nbsp;</td>
+  </tr>
+  <form method="POST" action="bannissement.php?f_sid=<mx:text id="f_sid"/>"><tr>
+ <td width="100%" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_email"/></font></b></td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris">
+    <p align="center">
+	<select size="10" name="liste_emails_bannis[]" multiple>
+	  <mx:text id="option_email"/>
+    </select></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53">
+  <p align="center"><input type="submit" value="<mx:text id="sup_email"/>" name="supprimer_email" id="supprimer_email" class="sup" onclick="javascript: return verif_sup_email();"></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

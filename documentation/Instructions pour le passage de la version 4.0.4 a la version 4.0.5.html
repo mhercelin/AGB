@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+  "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+<title>Consignes de mise à jour de la version 4.0.* ou supérieure à la version 4.0.5</title>
+<style type="text/css">
+body {
+	font-family: Arial, Verdana;
+	font-size: 0.9em;
+	background-color: #EFF0FE;
+}
+
+h1 {
+	color: #1045CC;
+	font-family: Arial, "Trebuchet MS", Verdana;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.1em;
+	color: #1045CC;
+}
+
+dl.codebox code {
+	overflow: auto;
+	display: block;
+	height: auto;
+	max-height: 200px;
+	white-space: normal;
+	padding-top: 3px;
+	font-family: "Courier New", Courier, mono;
+	font-size: 0.9em;
+	color: #808080;
+	margin-left: -30px;
+}
+
+dl.codebox {
+	width: 90%;
+	margin-left: 20px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #A2DBF8;
+	font-size: 1em;
+}
+
+dl.codebox dt {
+	text-transform: uppercase;
+	border-bottom: 1px solid #A2DBF8;
+	margin-bottom: 3px;
+	font-size: 0.6em;
+	display: block;
+	color: #1045CC;
+}
+
+.important {
+	color: #FF0000;
+}
+
+.souligne {
+	text-decoration: underline;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.barre_noir {
+	text-decoration: line-through;
+	color: #000000;
+}
+
+li.nom_fichier {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #76B50F;
+}
+
+.separation_maj_skin {
+	color: #1045CC;
+	background-color: #1045CC;
+	height: 2px;
+	border-bottom: 1px #4D7BF1 solid;
+}
+</style>
+<!-- fonction issue de phpBB3 -->
+<script type="text/javascript">
+// <![CDATA[
+function selectCode(a)
+{
+	// Get ID of code block
+	var e = a.parentNode.parentNode.getElementsByTagName('CODE')[0];
+
+	// Not IE
+	if (window.getSelection)
+	{
+		var s = window.getSelection();
+		// Safari
+		if (s.setBaseAndExtent)
+		{
+			s.setBaseAndExtent(e, 0, e, e.innerText.length - 1);
+		}
+		// Firefox and Opera
+		else
+		{
+			var r = document.createRange();
+			r.selectNodeContents(e);
+			s.removeAllRanges();
+			s.addRange(r);
+		}
+	}
+	// Some older browsers
+	else if (document.getSelection)
+	{
+		var s = document.getSelection();
+		var r = document.createRange();
+		r.selectNodeContents(e);
+		s.removeAllRanges();
+		s.addRange(r);
+	}
+	// IE
+	else if (document.selection)
+	{
+		var r = document.body.createTextRange();
+		r.moveToElementText(e);
+		r.select();
+	}
+}
+// ]]>
+</script>
+</head>
+<body>
+<h1>Consignes de mise à jour du script AlexGuestbook<br/>de la version 4.0.4 à la version 4.0.5</h1><br/>
+<p>Cette mise à jour n'est pas vitale mais vous serez averti des prochaines mises à jour. En effet, l'adresse du site a changé : retrouvez toutes les informations, les mises à jour et l'assistance du script sur <a href="http://www.alexguestbook.net" title="Lien vers le site AlexGuestbook.net" alt="Lien vers le site AlexGuestbook.net">www.alexguestbook.net<a/>. Enfin nous avons également apporté quelques corrections minimes mais "pratiques" (utilisation des includes, quelques liens inactifs et encodage des adresses emails)..<br/>Retrouvez toutes les informations, les mises à jour et l'assistance du script sur <a href="http://www.alexguestbook.net" title="Lien vers le site AlexGuestbook.net">www.alexguestbook.net</a></p><br/>
+<p class="souligne">Avant toutes modifications, faites une sauvegarde de vos skins.</p>
+<p class="important">Cette mise à jour n'est plus d'actualité avec la sortie de la version 5.0. Celle-ci n'est nécessaire que pour mettre à jour un skin personnalisé avant de le mettre à jour en v5.<br/>Pour ceux qui ont skin personnalisé, nous vous conseillons de prendre un skin de la version 5 et de le personnaliser. Vous limiterez ainsi les risques d'erreurs et les nombreuses manipulations nécessaires pour le mettre à jour.</p><br/>
+
+<h2>Liste des étapes de mise à jour du skin :</h2>
+<p class="important">Nous rappelons qu'il est fortement conseillé de prendre un skin déjà à jour et de le personnaliser plutôt que de mettre à jour un skin personnalisé.</p>
+<ul>
+	<li class="nom_fichier">add_message.htm</li>
+	<p>Remplacer :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>src=&quot;genImg/?id=&lt;mx:text id=&quot;id_genImg&quot;/&gt;</code></dd></dl>
+	<p>Par :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>src=&quot;&lt;mx:text id=&quot;chem_absolu&quot;/&gt;genImg/index.php?id=&lt;mx:text id=&quot;id_genImg&quot;/&gt;</code></dd></dl>
+	<br/>
+	<p>Remplacer :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>&lt;mx:text id=&quot;veuillez_taper_code&quot;/&gt;  : (&lt;a href=&quot;javascript:script_popup('infos_code.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;</code></dd></dl>
+	<p>Par :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>&lt;mx:text id=&quot;veuillez_taper_code&quot;/&gt;  : (&lt;a href=&quot;javascript:script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_code.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;</code></dd></dl>
+<br/>
+	<li class="nom_fichier">assembly.htm</li>
+	<p>Remplacer :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>script_popup('infos_spam.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;</code></dd></dl>
+	<p>Par :</p>
+	<dl class="codebox"><dt>Code: <a href="#" onclick="selectCode(this); return false;">Tout sélectionner</a></dt><dd><code>script_popup('&lt;mx:text id=&quot;chem_absolu&quot;/&gt;infos_spam.php?lang=&lt;mx:text id=&quot;lang&quot;/&gt;</code></dd></dl>
+</ul>
+<h2>C'est terminé, votre skin est mis à jour :o)</h2>
+</body>
+</html>

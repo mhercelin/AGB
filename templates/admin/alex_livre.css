@@ -1,0 +1,77 @@
+/* police type */
+TD	{font-family: Verdana; color: #000000; font-size: 10px}
+
+/* fond de page */
+BODY.bleu_body	{background-color: #4A7DAC;}
+
+/* couleur des liens */
+a:link		 {text-decoration:none ; color:#000000}
+a:visited	 {text-decoration:none ; color:#000000}
+a:hover		 {text-decoration:underline ; color:#CC3300}
+
+a.Blanc		 {font-family: Verdana; color: #FFFFFF; font-size: 10px}
+a.Arial_Noir_a		 {font-family: Arial; color: #000000; font-size: 12px}
+
+/* couleur des fonds tableaux */
+td.row_rouge	{background-color: #C63100;}
+td.row_blanc	{background-color: #FFFFFF;}
+td.row_gris	{background-color: #F5F5F5;}
+td.row_bleu {background-color: #4A7DAC;}
+td.bleu_clair {background-color: #6DA1D1;}
+
+/* couleur du texte "normal" */
+.Verdana_Rougec  {font-family: Verdana; color: #C63100; font-size: 10px}
+.Verdana_Blanc  {font-family: Verdana; color: #FFFFFF; font-size: 10px}
+.Verdana_Noir  {font-family: Verdana; color: #000000; font-size: 10px}
+.Arial_Noir  {font-family: Arial; color: #000000; font-size: 12px}
+.Arial_Gros_Bleu  {font-family: Arial; color: #315A84; font-size: 18px}
+.Verdana_Rouge  {font-family: Verdana; color: #CC3300; font-size: 10px}
+.Arial_Rouge  {font-family: Arial; color: #C63100; font-size: 12px}
+.Titre_Blanc  {font-family: Arial; color: #FFFFFF; font-size: 16px}
+.Verdana_Gris  {font-family: Arial; color: #C0C0C0; font-size: 10px}
+
+/* couleur du tableau */
+.table_blanc	{background-color: #FFFFFF;}
+.table_rouge	{background-color: #C63100;}
+
+/* boutons */
+input, textarea, select {
+	color : #000000;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	border-color : #000000;
+	border-style: solid; 
+	border-width: 1
+}
+
+input.radio {
+	border-width: 0
+}
+
+input.normal {
+	color : #000000;
+	font-size: 11px; font-family: Verdana;
+	cursor: pointer;
+}
+
+input.save {
+	background-color: #EAFEE2; 
+	color: #008000; 
+	font-weight: bold; 
+	border: 1px solid #008000;
+	cursor: pointer;
+}
+
+input.sup {
+	color: #CC2B02; 
+	font-weight: bold;
+	background-color: #FFECEC; 
+	border: 1px solid #CC3300;
+	cursor: pointer;
+}
+
+.texte_alerte {
+	display: block;
+	background-color: #BC2A4D;
+	color: #FFFFFF;
+	font-size: 12px;
+}

@@ -1,0 +1,160 @@
+<!-- bloc header -->
+<mx:bloc id="bloc1">
+</mx:bloc id="bloc1">
+<!-- fin bloc header -->
+
+<!-- bloc tableau_haut -->
+<mx:bloc id="bloc2">
+</mx:bloc id="bloc2">
+<!-- fin bloc tableau_haut -->
+
+<script language="JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){
+if (selObj.options[selObj.selectedIndex].value)
+	eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+	if (restore) selObj.selectedIndex=0;
+}
+
+function popup(page,name,largeur,hauteur,options){
+	var top=(screen.height-hauteur)/2;
+	var left=(screen.width-largeur)/2;
+	window.open(page,name,"top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+}
+
+function seeSkin(objet){
+	var F = document.getElementById("skins");
+
+	if (F.skin_edit.value){
+		var p = F.skin_edit.value.lastIndexOf("=");
+		var skinEdit = F.skin_edit.value.substring(p+1);
+		popup('../index.php?skin='+skinEdit, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
+	}
+}
+-->
+</script>
+
+<p align="center"><br>
+<b><font class="Arial_Gros_Bleu"><mx:text id="gestion_skins"/><br>
+&nbsp;</font></b>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="8">
+<tr>
+<td width="100%">
+
+<table border="0" width="100%" cellspacing="1" cellpadding="4" class="table_rouge">
+  <tr>
+ <td width="100%" class="row_blanc"><p align="justify"><font class="Verdana_Rouge"><mx:text id="text1_2"/><br>
+  <br>
+  <mx:text id="text2"/></font></p></td>
+  </tr>
+</table>
+
+&nbsp;
+
+<table border="0" width="100%" cellspacing="2" cellpadding="0" height="40">
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="text_aj_skin"/></font></b></td>
+  </tr>
+  <form method="POST" action="skins.php?f_sid=<mx:text id="f_sid"/>&skin_edit=<mx:text id="text_skin_edit"/>">
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2"><p>
+ &nbsp;<input type="text" name="aj_skin" size="29">
+ <input type="submit" value="<mx:text id="ajouter"/>" name="ajouter" class="save"></p>
+ </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="text_sup_skin"/></font></b></td>
+  </tr>
+  <form method="POST" action="skins.php?f_sid=<mx:text id="f_sid"/>&skin_edit=<mx:text id="text_skin_edit"/>">
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2"><p>
+ &nbsp;<select size="1" name="skin_sup">
+  <mx:text id="liste_skin_sup"/>
+ </select>
+ <input type="submit" value="<mx:text id="supprimer"/>" name="supprimer" class="sup"></p>
+ </td>
+  </tr>
+  </form>
+  <tr>
+ <td width="100%" colspan="2" height="5">&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+ <td width="100%" colspan="2" height="20" class="row_bleu"><b><font class="Verdana_Blanc">&nbsp;<mx:text id="gestion_skins"/></font></b></td>
+  </tr>
+  <form id="skins" method="POST" action="skins.php?f_sid=<mx:text id="f_sid"/>&skin_edit=<mx:text id="text_skin_edit"/>">
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2"><mx:text id="vous_editez"/>&nbsp;
+    <select size="1" name="skin_edit" onChange="MM_jumpMenu('self',this,0)">
+	 <mx:text id="liste_skin_to_use"/>
+    </select>
+	<a href="javascript: seeSkin()"><img src="../images/oeil.gif" width="18" height="11" border="0" title="<mx:text id="see_skin"/>"></a>
+    </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="style"/><br>
+  <textarea style="width:100%" rows="14" name="alex_livre" cols="95"><mx:text id="alex_livre"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="ajouter_message"/><br>
+  <textarea style="width:100%" rows="14" name="add_message" cols="95"><mx:text id="add_message"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="nbre_messages_page"/><br>
+  <textarea style="width:100%" rows="14" name="nb_message_page" cols="95"><mx:text id="nb_message_page"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="pages_dispos"/><br>
+  <textarea style="width:100%" rows="14" name="list_pages" cols="95"><mx:text id="list_pages"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="texte_corps_messages"/><br>
+  <textarea style="width:100%" rows="14" name="corps_messages" cols="95"><mx:text id="corps_messages"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="espacement"/><br>
+  <textarea style="width:100%" rows="2" name="space" cols="95"><mx:text id="space"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="26" class="row_gris" colspan="2">
+  <p align="center"><mx:text id="text_assembly"/><br>
+  <textarea style="width:100%" rows="14" name="assembly" cols="95"><mx:text id="assembly"/></textarea></p>
+ </td>
+  </tr>
+  <tr>
+ <td width="100%" height="53" colspan="2">
+  <p align="center"><input type="submit" value="<mx:text id="enregistrer"/>" name="enregistrer" class="save"></p>
+ </td>
+  </tr>
+  </form>
+</table>
+
+</td>
+  </tr>
+</table>
+
+<!-- publicité AlexGuestbook -->
+<mx:bloc id="bloc3">
+</mx:bloc id="bloc3">
+<!-- fin publicité AlexGuestbook -->
+
+<!-- tableau bas -->
+<mx:bloc id="bloc4">
+</mx:bloc id="bloc4">
+<!-- fin tableau bas -->

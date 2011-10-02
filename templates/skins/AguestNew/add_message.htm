@@ -1,0 +1,79 @@
+<div class="d_add_msg">
+<div class="d_add_msg_h"><img src="<mx:text id="chem_skin"/>img/blank.png" width="1" height="1" alt="" /></div>
+<div class="d_f_add_msg">
+<form id="form_add_guest" method="post" action="<mx:text id="action_url"/>" onsubmit="javascript:return verif_add();">
+
+<!-- name -->
+<mx:bloc id="bloc_pseudo">
+<div class="add_msg_left"><mx:text id="nom_pseudo_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><input class="i_text" type="text" tabindex="1" name="nom" id="nom" size="34" maxlength="50" onfocus="this.className='i_focus'" onblur="this.className='i_text'"<mx:text id="value_nom"/> /></div>
+</mx:bloc id="bloc_pseudo">
+
+<!-- email -->
+<mx:bloc id="bloc_email">
+<div class="add_msg_left"><mx:text id="email_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><input class="i_text" type="text" tabindex="2" name="email" id="email" size="34" maxlength="150" onfocus="this.className='i_focus'" onblur="this.className='i_text'"<mx:text id="value_email"/> /></div>
+</mx:bloc id="bloc_email">
+
+<!-- website -->
+<mx:bloc id="bloc_site">
+<div class="add_msg_left"><mx:text id="site_web_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><input class="i_text" type="text" tabindex="3" name="site" id="site" size="34" maxlength="150" onfocus="this.className='i_focus'" onblur="this.className='i_text'"<mx:text id="value_site"/> /></div>
+</mx:bloc id="bloc_site">
+
+<!-- city -->
+<mx:bloc id="bloc_ville">
+<div class="add_msg_left"><mx:text id="ville_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><input class="i_text" type="text" tabindex="4" name="ville" id="ville" size="34" maxlength="60" onfocus="this.className='i_focus'" onblur="this.className='i_text'"<mx:text id="value_ville"/> /></div>
+</mx:bloc id="bloc_ville">
+
+<!-- country -->
+<mx:bloc id="bloc_pays">
+<div class="add_msg_left"><mx:text id="pays_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><select tabindex="5" size="1" name="pays" id="pays" onchange="update_flag(this)"><option value="">-</option><mx:text id="select_pays"/></select> <img id="img_flags" src="<mx:text id="chem_absolu"/>images/<mx:text id="img_flags"/>" width="18" height="12" alt="" title="<mx:text id="flag"/>" /></div>
+</mx:bloc id="bloc_pays">
+
+<!-- score -->
+<mx:bloc id="bloc_note">
+<div class="add_msg_left"><mx:text id="note_visiteur"/> <mx:text id="symbole_champ_obligatoire"/><mx:text id="symbole_champ_prive"/></div>
+<div class="add_msg_right"><select tabindex="6" size="1" name="note_site" id="note_site">
+ <option value=""<mx:text id="select_note_none"/>>-</option>
+ <option value="10"<mx:text id="select_note_10"/>>10<mx:text id="note_super"/></option>
+ <option value="9"<mx:text id="select_note_9"/>>9</option>
+ <option value="8"<mx:text id="select_note_8"/>>8</option>
+ <option value="7"<mx:text id="select_note_7"/>>7</option>
+ <option value="6"<mx:text id="select_note_6"/>>6</option>
+ <option value="5"<mx:text id="select_note_5"/>>5<mx:text id="note_moyen"/></option>
+ <option value="4"<mx:text id="select_note_4"/>>4</option>
+ <option value="3"<mx:text id="select_note_3"/>>3</option>
+ <option value="2"<mx:text id="select_note_2"/>>2</option>
+ <option value="1"<mx:text id="select_note_1"/>>1</option>
+ <option value="0"<mx:text id="select_note_0"/>>0<mx:text id="note_rate"/></option>
+ </select></div>
+</mx:bloc id="bloc_note">
+
+<!-- message -->
+<div class="d_center" style="clear: both;"><mx:text id="message_visiteur"/> <mx:text id="symbole_champ_obligatoire"/></div>
+<div class="d_center"><div class="d_smileys"><mx:text id="chaine_smileys"/></div><textarea class="i_comment" tabindex="7" id="message_textarea" rows="8" cols="69" onkeydown="countCar(this, 0)" onfocus="this.className='i_comment_focus'; document.getElementById('reste_car').className='i_nbre_car_focus'; countCar(this, 1)" onblur="this.className='i_comment'; document.getElementById('reste_car').className='i_nbre_car'; countCar(this, 1); document.getElementById('reste_car').value=''" name="message_textarea"><mx:text id="value_message_textarea"/></textarea>
+<mx:bloc id="bloc_max_car">
+<div class="d_nbre_car"><input type="text" class="i_nbre_car" id="reste_car" size="3" readonly="readonly" <mx:text id="style_reste_car"/> /></div>
+</mx:bloc id="bloc_max_car">
+<mx:text id="more_reste_car"/>
+</div>
+
+<!-- code -->
+<mx:bloc id="bloc_code_securite">
+<div class="d_center"><br /><mx:text id="veuillez_taper_code"/> : (<a href="javascript:script_popup('<mx:text id="chem_absolu"/>infos_code.php?lang=<mx:text id="lang"/>','down',350,280,'scrollbars=yes')" class="a_info_code"><mx:text id="a_quoi_ca_sert"/></a>)<br />
+<div>
+<div class="d_code1"><img width="82" height="20" src="<mx:text id="chem_absolu"/>genImg/index.php?id=<mx:text id="id_genImg"/>" alt="" title="Code" /></div>
+<div class="d_code2"><input tabindex="8" class="code_sec" maxlength="4" type="text" name="code_securite" size="5" /></div>
+
+</div></div>
+</mx:bloc id="bloc_code_securite">
+<input type="hidden" name="num_id" id="num_id" value="<mx:text id="id_genImg"/>" />
+<!-- submit -->
+<div class="d_submit_msg"><br /><input type="submit" tabindex="9" value="<mx:text id="ajouter_message_visiteur"/>" name="ajouter" id="ajouter" class="btn_add" /></div>
+</form></div>
+
+<div class="d_add_msg_b"><img src="<mx:text id="chem_skin"/>img/blank.png" width="1" height="1" alt="" /></div>
+</div>

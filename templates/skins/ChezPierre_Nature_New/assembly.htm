@@ -1,0 +1,284 @@
+<!--=== BLOC HEADER_HTML ===--><?xml version="1.0" encoding="<mx:text id="SCRIPT_ENCODAGE"/>"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<mx:text id="CONTENT_LANGUAGE"/>" lang="<mx:text id="CONTENT_LANGUAGE"/>" dir="ltr">
+
+<head>
+<title><mx:text id="title_guestbook"/></title>
+<meta http-equiv="Content-Language" content="<mx:text id="CONTENT_LANGUAGE"/>" />
+<meta http-equiv="Content-Type" content="text/html; charset=<mx:text id="SCRIPT_ENCODAGE"/>" />
+<link rel="stylesheet" type="text/css" href="<mx:text id="chem_skin"/>alex_livre.css" />
+<script language="javascript" type="text/javascript">
+<!--
+function donner_focus(champs){
+	document.getElementById(champs).focus();
+}
+//-->
+</script>
+</head>
+
+<body <mx:text id="donner_focus"/>>
+<!--=== /BLOC HEADER_HTML ===-->
+<script language="javascript" type="text/javascript">
+<!--
+var lang_max_car = "<mx:text id="caracteres"/>";
+var lang_reste   = "<mx:text id="il_reste"/>";
+var max_car      = <mx:text id="maxi_car"/>;
+
+function smiley(smile) {
+ smile = " "+smile+" ";
+
+ var compgen = navigator.userAgent.toLowerCase();
+ var navsafari = ((compgen.indexOf('safari') != -1) || (navigator.vfinor == "Apple"));
+ var navie = ((compgen.indexOf('msie') != -1) && (!navopera) && (!navsafari) && (!navwebtv));
+ var navopera = (compgen.indexOf('opera') != -1);
+ var navwebtv = (compgen.indexOf('webtv') != -1);
+ var oswin =  ((compgen.indexOf("win") != -1) || (compgen.indexOf("16bit") != -1));
+ var navers = parseInt(navigator.appVersion);
+ var chem = document.getElementById('message_textarea');
+ var fermer = false;
+ 
+ if ((navers >= 4) && navie && oswin) {
+  if (chem.isTextEdit) {
+   chem.focus();
+   var dselect = document.selection;
+   var cr = dselect.createRange(); cr.colapse;
+   if ((dselect.type == "Text" || dselect.type == "None") && cr != null) {
+    fermer = true;
+    cr.text = smile;
+   }
+  }
+  else { fermer = true; chem.value += smile; }
+ }
+ else {
+  if (chem.selectionEnd) { 
+   var selectdebut = chem.selectionStart;
+   var selecthaut = chem.scrollTop;
+   var selectfin = chem.selectionEnd;
+   if (selectfin <= 2) { selectfin = chem.textLength; }
+   var debut  = (chem.value).substring(0, selectdebut);
+   var milieu = (chem.value).substring(selectdebut, selectfin);
+   var fin    = (chem.value).substring(selectfin, chem.textLength);
+   if (chem.selectionEnd - chem.selectionStart > 0) { milieu = smile + milieu; } else { milieu = smile + milieu; fermer = true; }
+   chem.value = debut + milieu + fin;
+   var cpos = selectdebut + (milieu.length);
+   chem.selectionStart = cpos;
+   chem.selectionEnd = cpos;
+   chem.scrollTop = selecthaut;
+  }
+  else { 
+   fermer = true;
+   chem.value += smile; 
+  }
+  
+  chem.focus(); return fermer;
+ }
+}
+
+function verif_mail(adresse){
+	if (adresse.match(/^([a-z0-9_-]+(?:[.][a-z0-9_-]+)*)@((?:[a-z0-9_-]+[.])*[a-z0-9_-]{0,66})[.]([a-z]{2,6}(?:[.][a-z]{2})?)$/i))
+		return true;
+	else
+		return false;
+}
+
+function verif_url(adresse){
+	if (adresse.match(/^(?:https?[:][/]{2})?[a-zA-Z0-9_]+([.-][a-zA-Z0-9_]+)*[.][a-zA-Z0-9_]{2,4}(:[0-9]+)*([/.-?&%#][a-zA-Z0-9_]+)*[/]?$/i))
+		return true;
+	else
+		return false;
+}
+
+function verif_add(){
+	var F = document.getElementById("form_add_guest");
+	var message = F.message_textarea.value;
+
+	<mx:bloc id="bloc_verif_nom">
+		var nom = F.nom.value;
+		if (!nom){
+			alert("<mx:text id="erreur_add_nom"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_nom">
+	<mx:bloc id="bloc_verif_email">
+		var email = F.email.value;
+		if (!email){
+			alert("<mx:text id="erreur_add_email"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_email">
+	<mx:bloc id="bloc_verif_site">
+		var site = F.site.value;
+		if (!site){
+			alert("<mx:text id="erreur_add_site"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_site">
+	<mx:bloc id="bloc_verif_ville">
+		var ville = F.ville.value;
+		if (!ville){
+			alert("<mx:text id="erreur_add_ville"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_ville">
+	<mx:bloc id="bloc_verif_pays">
+		var pays = F.pays.value;
+		if (!pays){
+			alert("<mx:text id="erreur_add_pays"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_pays">
+	<mx:bloc id="bloc_verif_note">
+		var note = F.note_site.value;
+		if (!note){
+			alert("<mx:text id="erreur_add_note"/> ");
+			return false;
+		}
+	</mx:bloc id="bloc_verif_note">
+
+	if (!message){
+		alert("<mx:text id="erreur_add_message"/> ");
+		return false;
+	}
+	<mx:bloc id="bloc_verif_email2">
+	var email = F.email.value;
+	if (!verif_mail(email) && email){
+		alert("<mx:text id="erreur_mail"/> ");
+		return false;
+	}
+	</mx:bloc id="bloc_verif_email2">
+	<mx:bloc id="bloc_verif_site2">
+	var site = F.site.value;
+	if (!verif_url(site) && site){
+		alert("<mx:text id="erreur_url"/> ");
+		return false;
+	}
+	</mx:bloc id="bloc_verif_site2">
+	else if (F.code_securite && !F.code_securite.value){
+		alert("<mx:text id="erreur_code_securite"/>");
+		return false;
+	}
+}
+
+function script_popup(page, name, largeur, hauteur, options){
+  var top=(screen.height-hauteur)/2;
+  var left=(screen.width-largeur)/2;
+  window.open(page,name,"top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+}
+
+function update_flag(objet){
+ if (objet.value)
+  document.getElementById("img_flags").src = '<mx:text id="chem_absolu"/>images/flags/'+objet.value+'.png';
+}
+
+function countCar(texta, mde) {
+ if (max_car > 0){
+  if (texta.value.length>max_car)
+   texta.value = texta.value.substring(0, max_car);
+
+  if (mde==0)
+   var leng = texta.value.length+1;
+  else
+   var leng = texta.value.length;
+
+  var diff = ((max_car-leng) == "-1") ? "0" : max_car-leng;
+  document.getElementById('reste_car').value = lang_reste + " " + diff + " " + lang_max_car;
+ }
+}
+//-->
+</script>
+<div id="alexguestbook">
+
+<mx:text id="message_alert"/>
+
+<div class="d_title"><a href="<mx:text id="pageReload"/>?lang=francais&amp;skin=<mx:text id="skin"/>&amp;debut=<mx:text id="debut"/>&amp;seeAdd=<mx:text id="seeAdd"/>&amp;seeNotes=<mx:text id="seeNotes"/>&amp;seeMess=<mx:text id="seeMess"/>"><img src="<mx:text id="chem_skin"/>images/br_franc.gif" width="52" height="29" alt="Ce livre d'or en fran&ccedil;ais"/></a><mx:text id="title_guestbook"/><a href="<mx:text id="pageReload"/>?lang=english&amp;skin=<mx:text id="skin"/>&amp;debut=<mx:text id="debut"/>&amp;seeAdd=<mx:text id="seeAdd"/>&amp;seeNotes=<mx:text id="seeNotes"/>&amp;seeMess=<mx:text id="seeMess"/>"><img src="<mx:text id="chem_skin"/>images/br_engl.gif" width="53" height="28" alt="This Guestbook in English"/></a></div>
+
+<div id="d_contour">
+<mx:text id="lien_accueil"/>
+<mx:bloc id="bloc_note">
+<div class="d_note"><br /><mx:text id="note_moyenne"/> <span class="gras"><mx:text id="value_note_moyenne"/>/10</span></div>
+</mx:bloc id="bloc_note">
+
+<!-- add_message -->
+<mx:bloc id="bloc_add_message">
+</mx:bloc id="bloc_add_message">
+<!-- end add_message -->
+
+<br />
+
+<mx:bloc id="bloc_moteur">
+<div class="d_note">
+<form method="get" action="<mx:text id="action_search"/>">
+<mx:text id="text_select_search"/> : <input maxlength="60" size="19" name="mots_search" value="<mx:text id="value_search"/>" /> <input type="submit" value="<mx:text id="text_ok_search"/>" name="rechercher" class="btn_search" /><input type="hidden" value="<mx:text id="debut"/>" name="debut" /><input type="hidden" value="<mx:text id="lang"/>" name="lang" /><input type="hidden" value="<mx:text id="skin"/>" name="skin" /><mx:text id="extensionGet"/> <mx:text id="btn_annuler"/>
+</form></div><br />
+</mx:bloc id="bloc_moteur">
+
+<div class="body_all"><div class="body_txt">
+<!-- bloc nb_messages / page -->
+<mx:bloc id="bloc_nb_messages_page">
+</mx:bloc id="bloc_nb_messages_page">
+<!-- end bloc nb_messages / page -->
+
+<!-- bloc liste pages -->
+<mx:bloc id="bloc_liste_pages">
+</mx:bloc id="bloc_liste_pages">
+<!-- end bloc liste pages -->
+
+<!-- boucle messages  -->
+<mx:bloc id="bloc_boucle_mess">
+
+<mx:bloc id="bloc_corps_messages">
+</mx:bloc id="bloc_corps_messages">
+
+<mx:bloc id="bloc_space">
+</mx:bloc id="bloc_space">
+
+</mx:bloc id="bloc_boucle_mess">
+
+<!-- si le livre ne comporte pas de messages !-->
+<mx:text id="no_message"/>
+<!-- end boucle messages -->
+
+
+<!-- bloc liste pages -->
+<mx:bloc id="bloc_liste_pages">
+</mx:bloc id="bloc_liste_pages">
+<!-- end bloc liste pages -->
+
+<!-- bloc nb_messages / page -->
+<mx:bloc id="bloc_nb_messages_page">
+</mx:bloc id="bloc_nb_messages_page">
+<!-- end bloc nb_messages / page -->
+</div></div>
+
+<!--
+//
+// Alexis Soulard, Pierre Gieling, Maxime Hercelin 2002 - 2008
+//
+
+IMPORTANT
+
+In English : unless you bought a licence, you must leave the full copyright notice below on every guestbook page.
+This not only gives respect to the years of work given freely by the developers but also helps build interest, traffic and use of @lex Guestbook.
+If you do not accept this, you may not use this script.  Thanks for your understanding and support !
+
+En français : a moins d'avoir acquis une licence, vous devez laisser le copyright ci-dessous au complet sur chaque page du livre d'or.
+Cela ne sert pas qu'a nous dire merci pour les annees de travail benevole des developpeurs mais aussi permet a chacun de vos visiteurs de connaitre et eventuellement utiliser @lex Guestbook.
+Si vous n'acceptez pas cette condition, vous ne pouvez pas utiliser ce script.  Merci pour votre comprehension et votre soutien !
+-->
+
+<div class="copyright">
+<br /><p>___________________________________________________________</p>
+ <span class="gras">Powered by : <a href="http://www.alexguestbook.net">AlexGuestbook</a> &copy; - <a href="javascript:script_popup('<mx:text id="chem_absolu"/>infos_spam.php?lang=<mx:text id="lang"/>','down',350,280,'scrollbars=yes')"><mx:text id="avis_spammeurs"/></a></span>
+ <p>Skin design by : <a href="http://www.chez-pierre.net/" target="_blank">Un prof belge en vadrouille</a>
+ <br/>
+ Valid <a href="http://validator.w3.org/check?uri=referer" target="_blank">XHTML</a> | 
+			<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS</a></p>
+
+</div>
+<mx:text id="lien_admin"/>
+</div></div>
+<!--=== BLOC FOOTER_HTML ===-->
+</body>
+
+</html>
+<!--=== /BLOC FOOTER_HTML ===-->
