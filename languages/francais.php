@@ -201,7 +201,7 @@ $f_lang['value_sup_admin'] = "Supprimer tous les admins sélectionnés";
 $f_lang['verif_sup_admin'] = "Voulez vous vraiment supprimer tous les administrateurs sélectionnés ?";
 
 /* page d'erreur */
-$f_lang['erreur_texte'] = "PAGE INACESSIBLE";
+$f_lang['erreur_texte'] = "PAGE INACCESSIBLE";
 $f_lang['erreur_auth'] = "Echec d'authentification";
 $f_lang['erreur_droits'] = "Vous n'avez pas les droits requis pour afficher cette page.";
 
