@@ -73,7 +73,7 @@ INSERT INTO `<table_smileys>` VALUES (18, 18, 'acllamer.gif', ':-//');
 CREATE TABLE `<table_users>` (
   `id_user` mediumint(11) unsigned NOT NULL auto_increment,
   `login` varchar(20) NOT NULL default '',
-  `pass` varchar(10) binary NOT NULL default '',
+  `pass` varchar(30) binary NOT NULL default '',
   `email` varchar(255) NOT NULL default '',
   `receive_email` tinyint(1) NOT NULL default '0',
   `modif_options` tinyint(1) NOT NULL default '0',
