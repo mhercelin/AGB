@@ -59,11 +59,8 @@ if (file_exists($chem_absolu."config/extension.inc")){
 }
 
 if (!isset($no_connect)){
-	if (isset($_GET['lang']) && $_GET['lang'] && file_exists($chem_absolu."languages/".$_GET['lang'].".".$alex_livre_ext)){
-		if (!alphanum_only($_GET['lang'], 5, 20, true))
-			exit('Bad lang.');
+	if (isset($_GET['lang']) && $_GET['lang'] && alphanum_only($_GET['lang'], 5, 20, true) && file_exists($chem_absolu."languages/".$_GET['lang'].".".$alex_livre_ext)){
 		$config['langue'] = $_GET['lang'];
-		
 	}
 	else if (!$config['langue'])
 		$config['langue'] = 'english';
