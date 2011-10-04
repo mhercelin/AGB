@@ -31,14 +31,13 @@ function noaccents($chaine){
 // -----
 
 function nettoyer_car($chaine){
-	return eregi_replace("[+]|[.]|[,]|[*]|[;]|[:]", "", $chaine); 
+	return strtr($chaine, '+.,*;:', '      ');
 }
-
 // -----
 
 //functions provided by Open Web Application Security Project (http://www.owasp.org) and modified by AlexGuestbook Team
 function alphanum_only($string, $min='', $max='', $forbid=false){
-	$string_clear = preg_replace("/[^-_a-zA-Z0-9]/", "", $string);
+	$string_clear = preg_replace('`[^-_a-zA-Z0-9]`', '', $string);
 	$len = strlen($string_clear);
 	if((($min != '') && ($len < $min)) || (($max != '') && ($len > $max)))
 		return false;
@@ -325,13 +324,13 @@ function replace_censure_smileys(&$texte, $censure=true){
 	//smileys
 	for ($i = 1; $i <= $nb_champs_alex_livre_smileys; $i++){
 		$lastPos = strrpos($alex_livre_smileys_smiley[$i], ".");
-		$texte = str_replace($alex_livre_smileys_car_replace[$i], "<img src=\"".((isset($CHEM_COMPLET)) ? $CHEM_COMPLET : $chem_absolu)."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", substr($alex_livre_smileys_smiley[$i], 0, $lastPos)))."\"  style=\"border: 0px; vertical-align: middle\" />", $texte);
+		$texte = str_replace($alex_livre_smileys_car_replace[$i], '<img src="'.((isset($CHEM_COMPLET)) ? $CHEM_COMPLET : $chem_absolu).'images/smileys/'.$alex_livre_smileys_smiley[$i].'" alt="" title="'.ucfirst(str_replace('_', ' ', substr($alex_livre_smileys_smiley[$i], 0, $lastPos))).'\'  style="border: 0px; vertical-align: middle" />', $texte);
 	}
 
 	//urls
 	if($config['url_cliquables'] && !$config['url_interdites']){
 		if (!isset($CHEM_COMPLET))
-			$texte = eregi_replace("([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]#?/&=])", "<a href=\"\\1://\\2\\3\" target=\"_blank\">\\1://\\2\\3</a>", $texte);
+			$texte = preg_replace('`([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]#?/&=])`i', '<a href="$1://$2$3" target="_blank">$1://$2$3</a>', $texte);
 	}
 	
 	// saut de ligne
@@ -433,7 +432,7 @@ function arrondir($chiffre){
 function  encodeEmail($email){
 	global $chem_absolu, $f_lang, $alex_livre_messages_nom, $alex_livre_messages_email, $i;
 
-	if (eregi ('([^?]+)([?].*)', $email, $temp))
+	if (preg_match ('`([^?]+)([?].*)`i', $email, $temp))
 		$email = $temp[1]; 
 	
 	$tout = addslashes($temp[2]);
@@ -479,10 +478,10 @@ function  encodeTxt($html){
 // -----
 
 function verifMailSyntaxe($email) {
-  return( ereg('^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
+  return( preg_match('`^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
 			   '@'.
 			   '[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.'.
-			   '[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$',
+			   '[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$`',
 			   $email));
 }
 
@@ -509,7 +508,7 @@ function generatePwdGuest3($chrs=10){
 	mt_srand ((double) microtime() * 1000000);
 	while (strlen($pwd)<$chrs){ 
 		$chr = chr(mt_rand (0,255));
-		if (eregi("^[a-z0-9]$", $chr))
+		if (preg_match('`^[a-z0-9]$`i', $chr))
 			$pwd = $pwd.$chr; 
 	}; 
 	return $pwd; 
@@ -655,7 +654,7 @@ function supSpace($txt){
 function findHost(){
 	global $_SERVER;
 
-	$path = eregi_replace("admin/|boiteJava/", "", $_SERVER['PHP_SELF']);
+	$path = preg_replace('`admin/|boiteJava/`i', "", $_SERVER['PHP_SELF']);
 	$pos = strrpos($path, "/");
 
 	return "http://".$_SERVER['SERVER_NAME'].substr($path, 0, $pos+1);

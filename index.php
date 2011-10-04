@@ -140,13 +140,13 @@ $f_db_connexion -> sql_close();
 if (!empty($config['extension_url'])){
 	//remplacement des #var en leur valeur réelle
 	while (strpos($config['extension_url'], "#")){
-		eregi("=#([^&]*)", $config['extension_url'], $tab_echo);
-		$config['extension_url'] = str_replace($tab_echo[0], "=".@$_GET[str_replace("=#", "", $tab_echo[0])], $config['extension_url']);
+		preg_match('/=#([^&]*)/i', $config['extension_url'], $tab_echo);
+		$config['extension_url'] = str_replace($tab_echo[0], "=".@$_GET[str_replace('=#', '', $tab_echo[0])], $config['extension_url']);
 	}
 
 	// variables à passer en paramètres
-	$tabVar = explode("&", $config['extension_url']);
-	$chaineGetMethod = "";
+	$tabVar = explode('&', $config['extension_url']);
+	$chaineGetMethod = '';
 	$nb_tabVar =  count($tabVar);
 	for ($i = 0; $i < $nb_tabVar; $i++){
 		$tempChaine = explode("=", $tabVar[$i]);
@@ -163,7 +163,7 @@ if ($config['autoriser_smileys'] == 1){
 		$config['nb_max_smileys'] = $nb_champs_alex_livre_smileys;
 
 	for ($i = 1; $i <= $config['nb_max_smileys']; $i++){
-		$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", eregi_replace("[.]{1}(.)*$", "", $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
+		$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", preg_replace('/[.]{1}(.)*$/i', '', $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
 		if ($i < $nb_champs_alex_livre_smileys)
 			$chaine_smileys .= " ";
 	}

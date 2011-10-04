@@ -32,7 +32,7 @@ $tab_var_replace = array(
 );
 
 for ($i = 1; $i <= count($tab_var_replace); $i++){
-	$_SERVER['QUERY_STRING'] = eregi_replace($tab_var_replace[$i]."([^&]*)", "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = preg_replace('/'.$tab_var_replace[$i].'([^&]*)/i', "", $_SERVER['QUERY_STRING']);
 }
 
 while (strpos($_SERVER['QUERY_STRING'], "&&")){

@@ -95,7 +95,7 @@ if (!isset($config['nb_max_smileys']) || !$config['nb_max_smileys']) $config['nb
 if ($config['nb_max_smileys'] > $nb_champs_alex_livre_smileys) $config['nb_max_smileys'] = $nb_champs_alex_livre_smileys;
 
 for ($i = 1; $i <= $config['nb_max_smileys']; $i++){
-	$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", eregi_replace("[.]{1}(.)*$", "", $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
+	$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", preg_replace('/[.]{1}(.)*$/i', '', $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
 
 	if ($i < $nb_champs_alex_livre_smileys)
 		$chaine_smileys .= " ";

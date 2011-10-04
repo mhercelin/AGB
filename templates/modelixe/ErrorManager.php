@@ -115,7 +115,7 @@ class ErrorManager {
 
     function SetErrorOut($url){
 		/*
-        if (is_file($url) || ereg('http://', $url)) {
+        if (is_file($url) || preg_match('`http://`', $url)) {
             $this -> errorEscape = $url;
             return true;
             }

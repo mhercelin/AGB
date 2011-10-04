@@ -60,7 +60,7 @@ $tab_template_guestbook = array(
 );
 
 for ($i=1; $i<=count($tab_template_guestbook); $i++)
-	${ereg_replace(".htm|.css", "", $tab_template_guestbook[$i])} = read_page($chem_absolu."templates/skins/".$_GET['skin_edit']."/".$tab_template_guestbook[$i]);
+	${preg_replace('/.htm|.css/', '', $tab_template_guestbook[$i])} = read_page($chem_absolu.'templates/skins/'.$_GET['skin_edit'].'/'.$tab_template_guestbook[$i]);
 
 //----------------------- création d'un nouveau skin
 if (isset($_POST['ajouter'])){
@@ -104,7 +104,7 @@ if (isset($_POST['enregistrer'])){
 	$write_object = new write_files();
 
 	for ($i=1; $i<=count($tab_template_guestbook); $i++){
-		$champ_edit = ereg_replace(".htm|.css", "", $tab_template_guestbook[$i]);
+		$champ_edit = preg_replace('.htm|.css', '', $tab_template_guestbook[$i]);
 
 		$write_object -> save_donnees(stripslashes($_POST[$champ_edit]));
 		if (!$write_object -> write($chem_absolu."templates/skins/".$_GET['skin_edit']."/".$tab_template_guestbook[$i]))

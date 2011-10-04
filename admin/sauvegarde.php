@@ -81,7 +81,7 @@ if (isset($_POST['sauvegarder'])){
 	// Entetes
 	header('Content-Type: application/x-zip');
 	header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-	$filename = "alex_guestbook_backup_".eregi_replace("/|-", "_", date($config['format_date'], time())).".zip";
+	$filename = "alex_guestbook_backup_".preg_replace('`/|-`i', '_', date($config['format_date'], time())).".zip";
 
 	$broswer = strtoupper($_SERVER['HTTP_USER_AGENT']);
 

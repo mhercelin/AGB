@@ -51,7 +51,7 @@ window.focus();
 <div style="border: 1px solid #000000; text-align: center; padding: 12px; background-color: #FFFFFF">
 <?php 
 for ($i=1; $i<=$nb_champs_alex_livre_smileys; $i++)
-	echo "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\"  alt=\"\" title=\"".ucfirst(str_replace("_", " ", eregi_replace("[.]{1}(.)*$", "", $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; margin: 2px\" align=\"middle\" onclick=\"window.opener.focus(); window.opener.smiley('".$alex_livre_smileys_car_replace[$i]."'); window.close();\" /> ";
+	echo "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\"  alt=\"\" title=\"".ucfirst(str_replace("_", " ", preg_replace('/[.]{1}(.)*$/i', '', $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; margin: 2px\" align=\"middle\" onclick=\"window.opener.focus(); window.opener.smiley('".$alex_livre_smileys_car_replace[$i]."'); window.close();\" /> ";
 ?>
 
 <br /><br />
