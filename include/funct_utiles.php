@@ -491,12 +491,12 @@ function globalValuesTemplate($chemBloc=""){
 	global $_GET, $echo_html, $f_lang, $config;
 
 	$echo_html -> MxText($chemBloc."pageReload", @$config['url_recharger']);
-	$echo_html -> MxText($chemBloc."debut", @$_GET['debut']);
+	$echo_html -> MxText($chemBloc."debut", @int_only($_GET['debut']));
 	$echo_html -> MxText($chemBloc."lang", @$config['langue']);
-	$echo_html -> MxText($chemBloc."skin", @$_GET['skin']);
-	$echo_html -> MxText($chemBloc."seeAdd", @$_GET['seeAdd']);
-	$echo_html -> MxText($chemBloc."seeNotes", @$_GET['seeNotes']);
-	$echo_html -> MxText($chemBloc."seeMess", @$_GET['seeMess']);
+	$echo_html -> MxText($chemBloc."skin", @alphanum_only($_GET['skin']));
+	$echo_html -> MxText($chemBloc."seeAdd", @int_only($_GET['seeAdd'], 0, 1));
+	$echo_html -> MxText($chemBloc."seeNotes", @int_only($_GET['seeNotes'], 0, 1));
+	$echo_html -> MxText($chemBloc."seeMess", @int_only($_GET['seeMess'], 0, 1));
 	$echo_html -> MxText($chemBloc."addSignature", @$f_lang['addSignature']);
 	$echo_html -> MxText($chemBloc."seeMessages", @$f_lang['seeMessages']);
 }

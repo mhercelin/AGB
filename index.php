@@ -190,7 +190,7 @@ $echo_html -> MxText("SCRIPT_ENCODAGE", strip_tags($SCRIPT_ENCODAGE));
 $echo_html -> MxText("CONTENT_LANGUAGE", strip_tags($CONTENT_LANGUAGE));
 
 //################ ELEMENTS à passer en paramètres à chaque page ################"
-	$urlExtAdd = "&amp;mots_search=".urlencode(@$_GET['mots_search'])."&amp;lang=".@$config['langue']."&amp;skin=".@$_GET['skin']."&amp;seeAdd=".@$_GET['seeAdd']."&amp;seeNotes=".@$_GET['seeNotes']."&amp;seeMess=".@$_GET['seeMess']."&amp;".$config['extension_url'];
+	$urlExtAdd = "&amp;mots_search=".urlencode(@$_GET['mots_search'])."&amp;lang=".@$config['langue']."&amp;skin=".@$_GET['skin']."&amp;seeAdd=".@int_only($_GET['seeAdd'], 0, 1)."&amp;seeNotes=".@int_only($_GET['seeNotes'], 0, 1)."&amp;seeMess=".@int_only($_GET['seeMess'], 0, 1)."&amp;".$config['extension_url'];
 
 /* action lors du clic sur le bouton rechercher */
 $echo_html -> MxText("bloc_moteur.action_search", $config['url_recharger']);
@@ -641,15 +641,15 @@ else
 $html = $echo_html -> MxWrite("", true);
 
 /* masquer le bloc de visualisation des messages */
-if (isset($_GET['seeMess']) && $_GET['seeMess'] == 1)
+if (isset($_GET['seeMess']) && int_only($_GET['seeMess']) == 1)
 	$html = preg_replace("#<!--=== BLOC MESSAGES ===-->.*?<!--=== /BLOC MESSAGES ===-->#si", "", $html);
 
 /* masquer le bloc de visualisation des notes */
-if (isset($_GET['seeNotes']) && $_GET['seeNotes'] == 1)
+if (isset($_GET['seeNotes']) && int_only($_GET['seeNotes']) == 1)
 	$html = preg_replace("#<!--=== BLOC NOTES ===-->.*?<!--=== /BLOC NOTES ===-->#si", "", $html);
 
 /* masquer le bloc pour ajouter un message */
-if (isset($_GET['seeAdd']) && $_GET['seeAdd'] == 1){
+if (isset($_GET['seeAdd']) && int_only($_GET['seeAdd']) == 1){
 	$html = preg_replace("#<!--=== BLOC ADD MESSAGE ===-->.*?<!--=== /BLOC ADD MESSAGE ===-->#si", "", $html);
 	$html = preg_replace("#<!--=== Text SEE ===-->.*?<!--=== /Text SEE ===-->#si", "", $html);
 }
