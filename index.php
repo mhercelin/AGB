@@ -217,8 +217,7 @@ if (!function_exists(base64_decode('TXhFbmQ='))){
 
 // détection du pays de l'utilisateur
 if (!isset($_GET['code_erreur'])){
-	$SITE_LANG = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
-	$country = detectCountry(detectHost($_SERVER['REMOTE_ADDR']), $SITE_LANG);
+	$country = detectCountry(detectHost(getip()));
 }
 
 /* récupération de la liste des pays et génération des options */

@@ -597,8 +597,26 @@ function detectHost($ip){
 
 //----------
 
-function detectCountry($host, $lang){
+function getip(){
+	if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	}
+	elseif(isset($_SERVER['HTTP_CLIENT_IP'])){
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	}
+	else{
+		$ip = $_SERVER['REMOTE_ADDR'];
+	}
+	return $ip;
+}
+
+//----------
+
+function detectCountry($host){
 	global $FLAGS_LANG;
+	
+	// Détermine la langue suivant les paramètres du navigateur
+	$lang = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
 
 	// recherche d'un domaine existant
 	$domain = substr($host, strrpos($host, '.') + 1);
