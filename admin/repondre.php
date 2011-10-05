@@ -59,7 +59,7 @@ sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 sql_select_query("*", "alex_livre_censure");
 
 // on récupère les infos sur le message en cours
-sql_select_query("*", "alex_livre_messages", "WHERE id=".$_GET['id_mess'], "", "", true);
+sql_select_query("*", "alex_livre_messages", "WHERE id=".int_only($_GET['id_mess'], 1), "", "", true);
 
 // une réponse a-t-elle déjà été postée dernièrement ?
 // si oui on s'en sert comme modèle
