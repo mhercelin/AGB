@@ -112,11 +112,16 @@ function f_insert_session($f_sid, $type_action, $id_user, $login_user){
 
 // -----
 
-function f_destroy_session(){
+function f_destroy_session($id=''){
 	global $f_db_connexion, $name_table, $config;
 
 	$actu_time = time();
-	$query = "DELETE FROM ".$name_table['alex_livre_sessions']." WHERE last_connect < (".$actu_time." - ".$config['temps_session'].")";
+	if(!empty($id)){
+		$query = "DELETE FROM ".$name_table['alex_livre_sessions']." WHERE session = '".$id."'";
+	}
+	else{
+		$query = "DELETE FROM ".$name_table['alex_livre_sessions']." WHERE last_connect < (".$actu_time." - ".$config['temps_session'].")";
+	}
 	$result = $f_db_connexion -> sql_query($query);
 }
 

@@ -50,8 +50,12 @@ if (isset($_POST['f_identif']) && $_POST['f_login'] && $_POST['f_pass']){
 		$connect_error = $f_lang['erreur_connexion'];
 }
 
-if (isset($_GET['close_sess']))
+if (isset($_GET['close_sess'])) {
 	$connect_error = $f_lang['end session'];
+	if (isset($_GET['f_sid'])){
+		f_destroy_session(alphanum_only($_GET['f_sid'], 32, 32));
+	}
+}
 
 /* fermeture de la connexion sql */
 $f_db_connexion -> sql_close();

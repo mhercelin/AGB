@@ -86,6 +86,7 @@ $echo_html -> MxUrl("boite_java", "boite_java.".$alex_livre_ext);
 $echo_html -> MxUrl("m_optimisation", "optimisation.".$alex_livre_ext);
 $echo_html -> MxUrl("m_sauvegarde", "sauvegarde.".$alex_livre_ext);
 $echo_html -> MxUrl("m_restauration", "restauration.".$alex_livre_ext);
+$echo_html -> MxUrl("deconnexion", "index.".$alex_livre_ext, "close_sess=1");
 
 /* nouvelle version dispo ? */
 $current_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre);
