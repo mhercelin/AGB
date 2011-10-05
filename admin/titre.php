@@ -15,7 +15,7 @@ $chem_absolu = "../";
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-if (!isset($_GET['lang_edit']) || !file_exists($chem_absolu."languages/".$_GET['lang_edit'].".".$alex_livre_ext))
+if (!isset($_GET['lang_edit']) || !file_exists($chem_absolu."languages/".alphanum_only($_GET['lang_edit']).".".$alex_livre_ext))
 	$_GET['lang_edit'] = $config['langue'];
 
 //----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
@@ -37,7 +37,7 @@ if (isset($_POST['enregistrer'])){
 	$nbTest = countTotal("*", "alex_livre_txt_lang", "WHERE `lang`='".$_GET['lang_edit']."' and `type`='titre'");
 
 	if (!$nbTest){
-		$query = "INSERT INTO ".$name_table['alex_livre_txt_lang']." (`lang`, `type`, `msg`) VALUES ('".$_GET['lang_edit']."', 'titre', '".$_POST['titre']."')";
+		$query = "INSERT INTO ".$name_table['alex_livre_txt_lang']." (`lang`, `type`, `msg`) VALUES ('".$_GET['lang_edit']."', 'titre', '".mysql_real_escape_string($_POST['titre'])."')";
 		$result = $f_db_connexion -> sql_query($query);
 	}
 	else {

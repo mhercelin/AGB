@@ -15,7 +15,7 @@ $chem_absolu = "../";
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-if (!isset($_GET['lang_edit']) || !file_exists($chem_absolu."languages/".$_GET['lang_edit'].".".$alex_livre_ext))
+if (!isset($_GET['lang_edit']) || !file_exists($chem_absolu."languages/".alphanum_only($_GET['lang_edit']).".".$alex_livre_ext))
 	$_GET['lang_edit'] = $config['langue'];
 
 //----------------------- on controle si le visiteur est ou non autorisé à visiter cette page

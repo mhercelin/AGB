@@ -11,17 +11,19 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-if (!isset($_GET['n']) || !(int)trim($_GET['n']))
-	$_GET['n'] = 5;
-else
-	$_GET['n'] = (int)trim($_GET['n']);
-
 if (file_exists($chem_absolu."config/extension.inc")){
 	include($chem_absolu."config/extension.inc");
 	include($chem_absolu."include/livre_include.".$alex_livre_ext);
 }
 else
 	exit();
+
+
+if (!isset($_GET['n']) || !int_only(trim($_GET['n']),'','',true))
+	$_GET['n'] = 5;
+else
+	$_GET['n'] = (int)trim($_GET['n']);
+
 
 //----------------------- récupération des données du modèle graphique
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE `type`='boite'");

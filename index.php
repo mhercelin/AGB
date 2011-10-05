@@ -82,7 +82,9 @@ if (isset($_GET['rechercher']))
 
 /* si il y a des mots clés on restreint la recherche */
 if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteur']){
-	$_GET['mots_search'] = stripslashes(trim(strip_tags(urldecode($_GET['mots_search']))));
+	if (!is_array($_GET['mots_search']))
+		$_GET['mots_search'] = stripslashes(trim(strip_tags(urldecode($_GET['mots_search']))));
+	else $_GET['mots_search']= ''; 
 	$mots_nettoyes = nettoyer_car(noaccents(strtolower($_GET['mots_search'])));
 	$tab_mots_cles = explode(" ", $mots_nettoyes);
 
@@ -99,7 +101,7 @@ if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteu
 		$where .= ")";
 }
 
-sql_select_query("*", "alex_livre_messages", $where, "ORDER BY time DESC", "LIMIT ".$_GET['debut'].",".$config['nb_pages'], true);
+sql_select_query("*", "alex_livre_messages", $where, "ORDER BY time DESC", "LIMIT ".int_only($_GET['debut'], 1).",".$config['nb_pages'], true);
 
 //----------------------- nbre total de messages 
 $total_messages_livre = countTotal("*", 'alex_livre_messages', $where);
