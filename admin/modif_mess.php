@@ -65,7 +65,7 @@ if (isset($_POST['modifier'])){
 }
 
 //----------------------- on récupère les infos sur le message en cours
-sql_select_query("*", "alex_livre_messages", "WHERE id=".$_GET['id_mess']);
+sql_select_query("*", "alex_livre_messages", "WHERE id=".int_only($_GET['id_mess'], 1));
 
 //----------------------- on récupère tous les smileys
 sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
