@@ -1,10 +1,10 @@
 ===============================================
 |                                             |
 | title : @lex Guestbook                      |
-| version : 5.0.2                             |
-| authors : Alexis Soulard,                   |
-|	    	Pierre Gieling,                   |
-|           Maxime Hercelin                   |
+| version : 5.0.3                             |
+| authors :	Alexis Soulard,                   |
+|			Pierre Gieling,                   |
+|			Maxime Hercelin                   |
 | web site : http://www.alexguestbook.net/    |
 | license : GNU                               |
 |                                             |

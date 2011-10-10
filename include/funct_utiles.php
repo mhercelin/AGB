@@ -578,7 +578,7 @@ function detectOne(){
 	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar;
 
 	$version_info = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-	if (isset($version_info) && !empty($version_info)){
+	if (isset($version_info) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-['.chr(224).chr(225).chr(232).chr(228).']){0,1}*`', $version_info){
 		$version_info = explode("\n", trim($version_info));
 		$version_info = explode('-', trim($version_info[1]));
 		if (isset($version_info[1])){
