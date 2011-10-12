@@ -40,7 +40,7 @@ generate_langue($tab_champs_langue);
 
 /* nouvelle version dispo ? */
 $current_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-if (!empty($current_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-['.chr(224).chr(225).chr(232).chr(228).']){0,1}*`', $current_version)){
+if (!empty($current_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $current_version)){
 	$current_version = explode("\n", trim($current_version));
 	$current_version = explode('-', trim($current_version[1]));
 }
