@@ -47,6 +47,9 @@ $chem_template = $chem_absolu."templates/skins/".$config['skin_to_use']."/";
 if (!is_dir($chem_absolu."templates/skins/".$config['skin_to_use']."/"))
 	exit('Bad skin.');
 
+if (md5_file($chem_absolu.base64_decode('aW1hZ2VzL2NvcHlyaWdodC5wbmc=')) != '737c38f39a92ec33b57e1bc32fabfb85')
+	$one = true;
+
 //----------------------- génération de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "erreur_add_nom",
@@ -275,7 +278,7 @@ if ($config['url_interdites'])
 else
 	$echo_html -> MxText("etat_url_interdites", "inactif");
 
-// si le webmaster a défini un nbre maxi de caractères pour le message...
+// si le webmaster a défini un nombre maxi de caractères pour le message...
 if ($config['maxi_car'])
 	$echo_html -> MxText("bloc_add_message.bloc_max_car.value_max_car", $f_lang['il_reste']." ".$config['maxi_car']." ".$f_lang['caracteres']);
 else {
@@ -283,7 +286,7 @@ else {
 	$echo_html -> MxText("bloc_add_message.more_reste_car", '<input type="hidden" name="reste_car" />');
 }
 
-// nbre max de caractères sauvardé en javascript
+// nombre max de caractères sauvardé en javascript
 if (!isset($config['maxi_car']) || !$config['maxi_car'])
 	$config['maxi_car'] = 0;
 
@@ -501,6 +504,10 @@ if ($config['ok_aff_moteur']){
 else
 	$echo_html -> MxBloc("bloc_moteur", "rese");
 
+/* copyright */
+/* You have to keep this line to use Alex Guestbook freely --- Vous devez conserver la ligne suivante pour pouvoir utiliser Alex Guestbook */
+$echo_html -> MxBloc("copyright", '<a href="http://www.alexguestbook.net" id="copyright"><img src="'.$chem_absolu.'images/copyright.png" alt="Copyright AlexGuestbook" /></a>');
+
 /* vérification des champs obligatoires : si non obligatoire, on supprime le contrôle javascript */
 $tab_nom_champs2 = array(
 	"pseudo" => "nom",
@@ -519,7 +526,7 @@ foreach ($tab_nom_champs2 as $key => $value){
 		$echo_html -> MxBloc("bloc_verif_".$value, "rese");
 }
 
-/* on supprime le controle javascript de la validité d'une email si le visiteur ne peut ajouter son email  ou l'URL de son site*/
+/* on supprime le controle javascript de la validité d'un email si le visiteur ne peut ajouter son email ou l'URL de son site*/
 if ($config['champ_email'] == 1){
 	$echo_html -> MxBloc("bloc_verif_email", "rese");
 	$echo_html -> MxBloc("bloc_verif_email2", "rese");
