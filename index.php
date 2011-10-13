@@ -673,8 +673,6 @@ if ($config['inclure_livre'] == 1){
 else
 	$html = preg_replace("#<!--=== BLOC HEADER_HTML ===-->#si", "", $html);
 
-$html = preg_replace("#\bhttp://(?:www\.)?alexphpteam\.com\b#si", "http://www.alexguestbook.net", $html);
-
 echo $html;
 
 MxEnd();
