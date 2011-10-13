@@ -68,7 +68,4 @@ if (!isset($no_verif_session))
 //----------------------- on enregistre les pages que l'utilisateur est autorisé à consulter
 f_save_pages();
 
-//----------------------- on récupère la catégorie si nécessaire
-if (isset($_GET['categ_id']))
-	recup_categ("WHERE id='".$_GET['categ_id']."'");
 ?>
