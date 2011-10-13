@@ -47,9 +47,6 @@ $chem_template = $chem_absolu."templates/skins/".$config['skin_to_use']."/";
 if (!is_dir($chem_absolu."templates/skins/".$config['skin_to_use']."/"))
 	exit('Bad skin.');
 
-if (md5_file($chem_absolu.base64_decode('aW1hZ2VzL2NvcHlyaWdodC5wbmc=')) != '737c38f39a92ec33b57e1bc32fabfb85')
-	$one = true;
-
 //----------------------- génération de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "erreur_add_nom",
@@ -506,7 +503,7 @@ else
 
 /* copyright */
 /* You have to keep this line to use Alex Guestbook freely --- Vous devez conserver la ligne suivante pour pouvoir utiliser Alex Guestbook */
-$echo_html -> MxBloc("copyright", '<a href="http://www.alexguestbook.net" id="copyright"><img src="'.$chem_absolu.'images/copyright.png" alt="Copyright AlexGuestbook" /></a>');
+$echo_html -> MxText("copyright", '<a href="http://www.alexguestbook.net" id="copyright"><img src="'.$chem_absolu.'images/copyright.png" alt="Copyright AlexGuestbook" /></a>');
 
 /* vérification des champs obligatoires : si non obligatoire, on supprime le contrôle javascript */
 $tab_nom_champs2 = array(
