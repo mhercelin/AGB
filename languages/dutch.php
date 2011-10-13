@@ -52,6 +52,7 @@ $f_lang['page protect'] = "Inloggen voor beheerders";
 $f_lang['login'] = "Gebruikersnaam";
 $f_lang['pass'] = "Wachtwoord";
 $f_lang['value identif'] = "Login";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Opties";

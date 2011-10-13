@@ -53,6 +53,7 @@ $f_lang['page protect'] = "صفحه حفاظت شده";
 $f_lang['login'] = "نام کاربری";
 $f_lang['pass'] = "کلمه عبور";
 $f_lang['value identif'] = "ورود";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "گزینه ها";

@@ -49,6 +49,7 @@ $f_lang['page protect'] = "Page protégée";
 $f_lang['login'] = "Login";
 $f_lang['pass'] = "Pass";
 $f_lang['value identif'] = "Identification";
+$f_lang['texte_lien_retour_livre'] = "Revenir sur le livre d'or";
 
  /* menu */
 $f_lang['options'] = "Options";

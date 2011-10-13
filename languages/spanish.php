@@ -50,6 +50,7 @@ $f_lang['page protect'] = "Página protegida";
 $f_lang['login'] = "Usuario";
 $f_lang['pass'] = "Contraseña";
 $f_lang['value identif'] = "Identificación";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Opciones";

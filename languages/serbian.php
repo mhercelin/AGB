@@ -50,6 +50,7 @@ $f_lang['page protect'] = "Zasticena stranica";
 $f_lang['login'] = "Korisnicko ime";
 $f_lang['pass'] = "Lozinka";
 $f_lang['value identif'] = "Identifikacija";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Opcije";

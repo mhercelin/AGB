@@ -51,6 +51,7 @@ $f_lang['page protect'] = "Inloggning till kontrollpanel";
 $f_lang['login'] = "Användare";
 $f_lang['pass'] = "Lösenord";
 $f_lang['value identif'] = "Logga in";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* meny */
 $f_lang['options'] = "Alternativ";

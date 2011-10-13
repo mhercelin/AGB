@@ -50,6 +50,7 @@ $f_lang['page protect'] = "Chr·nen· str·nka";
 $f_lang['login'] = "Uûiv. meno";
 $f_lang['pass'] = "Heslo";
 $f_lang['value identif'] = "Prihl·siù";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Moûnosti";

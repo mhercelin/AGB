@@ -52,6 +52,7 @@ $f_lang['page protect'] = "Beskyttet side";
 $f_lang['login'] = "Logind";
 $f_lang['pass'] = "Adgangskode";
 $f_lang['value identif'] = "Identifikation";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Indstillinger";

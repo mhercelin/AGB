@@ -49,6 +49,7 @@ $f_lang['page protect'] = "Strona logowania";
 $f_lang['login'] = "Login";
 $f_lang['pass'] = "Has³o";
 $f_lang['value identif'] = "Zaloguj";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Opcje";

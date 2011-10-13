@@ -76,6 +76,13 @@ if (isset($connect_error) && $connect_error){
 	$echo_html -> MxText("value f_login", "Value=\"".@$_POST['f_login']."\"");
 }
 
+/* Lien retour livre d or */
+if ($config['inclure_livre'] == 1)
+	$chem_livre = $config['fichier_inclusion'];
+else
+	$chem_livre = $chem_absolu;
+$echo_html -> MxText('lien_accueil_livre', '<div id="lien_retour_livre"><a href="'.$chem_livre.'"><img src="'.$chem_absolu.$chem_template.'images/retour.png" alt="'.$f_lang['texte_lien_retour_livre'].'" title="'.$f_lang['texte_lien_retour_livre'].'" />'.$f_lang['texte_lien_retour_livre'].'</a></div>');
+
 $html = $echo_html -> MxWrite("", true);
 echo $html;
 ?>

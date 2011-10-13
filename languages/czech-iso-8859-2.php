@@ -52,6 +52,7 @@ $f_lang['page protect'] = "Chránìná stránka";
 $f_lang['login'] = "U¾iv.jméno";
 $f_lang['pass'] = "Heslo";
 $f_lang['value identif'] = "Pøihlásit";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Mo¾nosti";

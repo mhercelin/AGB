@@ -57,6 +57,7 @@ $f_lang['page protect'] = "Yönetici Giriþi";
 $f_lang['login'] = "Kullanýcý Adý";
 $f_lang['pass'] = "Þifre";
 $f_lang['value identif'] = "Giriþ";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Seçenekler";

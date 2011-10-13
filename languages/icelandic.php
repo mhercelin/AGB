@@ -52,6 +52,7 @@ $f_lang['page protect'] = "Læst síða";
 $f_lang['login'] = "Notendanafn";
 $f_lang['pass'] = "Lykilorð";
 $f_lang['value identif'] = "Auðkenning";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Valmöguleikar";

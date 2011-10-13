@@ -52,6 +52,7 @@ $f_lang['page protect'] = "Доступ на страницу ограничен";
 $f_lang['login'] = "Логин";
 $f_lang['pass'] = "Пароль";
 $f_lang['value identif'] = "Идентификация";
+$f_lang['texte_lien_retour_livre'] = "Back to guestbook";
 
  /* menu */
 $f_lang['options'] = "Настройки";
