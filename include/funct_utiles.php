@@ -607,6 +607,7 @@ function getip(){
 	elseif(!empty($_SERVER('REMOTE_ADDR'])) {
 		$ip = htmlspecialchars($_SERVER['REMOTE_ADDR']);
 	}
+	else $ip = ''; 
 	return $ip;
 }
 
