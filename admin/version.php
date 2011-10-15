@@ -39,16 +39,16 @@ template_type("");
 generate_langue($tab_champs_langue);
 
 /* nouvelle version dispo ? */
-$newest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-if (!empty($newest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $current_version)){
-	$newest_version = explode("\n", trim($newest_version));
-	$newest_version = explode('-', trim($newest_version[1]));
+$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
+if (!empty($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $current_version)){
+	$latest_version = explode("\n", trim($latest_version));
+	$latest_version = explode('-', trim($latest_version[1]));
 }
 else
-	$newest_version = 'Error';
+	$latest_version = 'Error';
 
-if ($newest_version != 'Error' & trim($newest_version[0]) != $alex_livre_version)
-	$echo_html -> MxText("version_txt", $f_lang['version_txt_update'].' ('.trim($newest_version[0]).')<br><br><br><input type="button" class="normal" value="'.$f_lang['version_down'].'" onclick="script_popup(\'http://www.alexguestbook.net/a_guest.php\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="normal" value="'.$f_lang['help_update'].'" onclick="script_popup(\'http://www.alexguestbook.net/guest_help_update.php?lang='.$config['langue'].'\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">');
+if ($latest_version != 'Error' & trim($latest_version[0]) != $alex_livre_version)
+	$echo_html -> MxText("version_txt", $f_lang['version_txt_update'].' ('.trim($latest_version[0]).')<br><br><br><input type="button" class="normal" value="'.$f_lang['version_down'].'" onclick="script_popup(\'http://www.alexguestbook.net/a_guest.php\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="normal" value="'.$f_lang['help_update'].'" onclick="script_popup(\'http://www.alexguestbook.net/guest_help_update.php?lang='.$config['langue'].'\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">');
 else
 	$echo_html -> MxText("version_txt", $f_lang['version_txt_ok']);
 

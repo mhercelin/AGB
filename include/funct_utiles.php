@@ -577,12 +577,12 @@ function envoyer_mail($email, $objet, $message, $entetemail){
 function detectOne(){
 	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar;
 
-	$newest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-	if (isset($newest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $version_info){
-		$newest_version = explode("\n", trim($newest_version));
-		$newest_version = explode('-', trim($newest_version[1]));
-		if (isset($newest_version[1])){
-			if (trim($newest_version[1]) == chr(232)) return false;
+	$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
+	if (isset($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $version_info){
+		$latest_version = explode("\n", trim($latest_version));
+		$latest_version = explode('-', trim($latest_version[1]));
+		if (isset($latest_version[1])){
+			if (trim($latest_version[1]) == chr(232)) return false;
 			else return true;
 		}
 	}
