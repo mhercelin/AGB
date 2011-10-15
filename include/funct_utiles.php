@@ -598,14 +598,14 @@ function detectHost($ip){
 //----------
 
 function getip(){
-	if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
-		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		$ip = htmlspecialchars($_SERVER['HTTP_X_FORWARDED_FOR']);
 	}
-	elseif(isset($_SERVER['HTTP_CLIENT_IP'])){
-		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	elseif(isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
+		$ip = htmlspecialchars($_SERVER['HTTP_CLIENT_IP']);
 	}
-	else{
-		$ip = $_SERVER['REMOTE_ADDR'];
+	elseif(!empty($_SERVER('REMOTE_ADDR'])) {
+		$ip = htmlspecialchars($_SERVER['REMOTE_ADDR']);
 	}
 	return $ip;
 }
