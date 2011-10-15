@@ -61,6 +61,13 @@ nettoyer_var_post();
 /* skin */
 $chem_template = "templates/admin/";
 
+// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilisé
+if (function_exists('date_default_timezone_set'))
+{
+	//on définit l heure du serveur sur le fuseau UTC
+	date_default_timezone_set('UTC');
+}
+
 //----------------------- on vérifie si la session est toujours valide
 if (!isset($no_verif_session))
 	f_verif_session();

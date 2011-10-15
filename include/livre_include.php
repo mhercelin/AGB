@@ -84,4 +84,12 @@ include($chem_modelixe."ModeliXe.".$alex_livre_ext);
 
 // gestion de magic_quotes_gpc
 nettoyer_var_post();
+
+// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilisé
+if (function_exists('date_default_timezone_set'))
+{
+	//on définit l heure du serveur sur le fuseau UTC
+	date_default_timezone_set('UTC');
+}
+
 ?>
