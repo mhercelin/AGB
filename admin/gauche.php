@@ -89,15 +89,15 @@ $echo_html -> MxUrl("m_restauration", "restauration.".$alex_livre_ext);
 $echo_html -> MxUrl("deconnexion", "index.".$alex_livre_ext, "close_sess=1");
 
 /* nouvelle version dispo ? */
-$current_version = trim(ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre));
-if (!empty($current_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $current_version)){
-	$current_version = explode("\n", trim($current_version));
-	$current_version = explode('-', trim($current_version[1]));
+$newest_version = trim(ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre));
+if (!empty($newest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $newest_version)){
+	$newest_version = explode("\n", trim($newest_version));
+	$newest_version = explode('-', trim($newest_version[1]));
 }
 else
-	$current_version = 'Error';
+	$newest_version = 'Error';
 
-if ($current_version != 'Error' & trim($current_version[0]) != $alex_livre_version){
+if ($newest_version != 'Error' & trim($newest_version[0]) != $alex_livre_version){
 		$echo_html -> MxText("new_version", '<img src="../images/update.gif" width="36" height="10" border="0" alt="'.$f_lang['new_version_dispo'].'">');
 }
 
