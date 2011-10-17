@@ -266,6 +266,12 @@ foreach ($tab_champs_affichage as $tab_champ_affichage){
 /* urls */
 $echo_html -> MxText("f_sid", $_GET['f_sid']);
 
+/* apercu du skin */
+if (!empty($config['fichier_inclusion']))
+	$echo_html -> MxText("skin_apercu", $config['fichier_inclusion']);
+else 
+	$echo_html -> MxText("skin_apercu", '../index.php');
+
 /* body options */
 if (!$gd)
 	$echo_html -> MxText("bloc1.body options", 'onload="update_see_url_cliquables(); update_see_inclure_livre();  update_see_lien_accueil();"');

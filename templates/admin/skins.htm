@@ -28,7 +28,7 @@ function seeSkin(objet){
 	if (F.skin_edit.value){
 		var p = F.skin_edit.value.lastIndexOf("=");
 		var skinEdit = F.skin_edit.value.substring(p+1);
-		popup('../index.php?skin='+skinEdit, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
+		popup('<mx:text id="skin_apercu"/>?skin='+skinEdit, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
 	}
 }
 -->

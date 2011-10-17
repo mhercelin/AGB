@@ -20,7 +20,7 @@ function seeSkin(objet){
 	var F = document.getElementById("options");
 
 	if (F.skin_to_use.value){
-		popup('../index.php?skin='+F.skin_to_use.value, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
+		popup('<mx:text id="skin_apercu"/>?skin='+F.skin_to_use.value, 'see_skin', 760, 580, 'resizable=yes, scrollbars=yes');
 	}
 }
 

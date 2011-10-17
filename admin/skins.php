@@ -142,6 +142,12 @@ $echo_html -> MxText("liste_skin_sup", $option_sup);
 $echo_html -> MxText("f_sid", $_GET['f_sid']);
 $echo_html -> MxText("text_skin_edit", $_GET['skin_edit']);
 
+/* apercu du skin */
+if (!empty($config['fichier_inclusion']))
+	$echo_html -> MxText("skin_apercu", $config['fichier_inclusion']);
+else 
+	$echo_html -> MxText("skin_apercu", '../index.php');
+
 /* valeurs des textarea */
 $echo_html -> MxText("alex_livre", htmlspecialchars(stripslashes($alex_livre)));
 $echo_html -> MxText("add_message", htmlspecialchars(stripslashes($add_message)));
