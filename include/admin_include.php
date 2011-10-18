@@ -14,11 +14,9 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	if (get_magic_quotes_runtime()) set_magic_quotes_runtime(0);
-	if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on' || !function_exists('ini_get')) {
-		deregister_globals();
-	}
-		define('STRIP', (get_magic_quotes_gpc()) ? true : false);
+	if (get_magic_quotes_runtime())
+		set_magic_quotes_runtime(0);
+	unregister_globals();
 }
 
 if (!defined('AGUEST'))

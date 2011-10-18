@@ -754,7 +754,7 @@ function MxEnd(){
 
 //----------
 
-/* function provided by Hagan Fox on http://php.net/manual/function.gd-info.php , modified by AlexGuestbook Team*/
+/* Focntion proposée par Hagan Fox sur http://php.net/manual/function.gd-info.php , modifiée par AlexGuestbook Team*/
 function gdEnabled($user_ver = 0)
 {
 	if (! extension_loaded('gd')) { return false; }
@@ -791,4 +791,32 @@ function gdEnabled($user_ver = 0)
 	if (preg_match('/enabled/', $freetype)) $gd_freetype = 1;
 	if ($gd_ver < 2 || $gd_freetype != 1) return false; else return true;
 }
+
+//----------
+
+/* supprimer les variables crées par register_global */
+function unregister_globals()
+{
+    if (!@ini_get('register_globals'))
+    {
+        return false;
+    }
+
+	$a_detruire = array('GLOBALS','_GET','_POST','_COOKIE','_REQUEST','_SERVER','_SESSION','_ENV','_FILES');
+	
+	
+    foreach ($a_detruire as $nom) {
+    	// From phpBB
+		// Hacking attempt. No point in continuing
+		if ($varname !== 'GLOBALS' || isset($_GET['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_SERVER['GLOBALS']) || isset($_SESSION['GLOBALS']) || isset($_ENV['GLOBALS']) || isset($_FILES['GLOBALS']))  {
+			exit;
+		}
+        foreach ($GLOBALS[$nom] as $key=>$value) {
+            if (isset($GLOBALS[$key]))
+                unset($GLOBALS[$key]);
+        }
+    }
+	unset ($a_detruire);
+}
+
 ?>
