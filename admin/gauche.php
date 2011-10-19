@@ -89,7 +89,7 @@ $echo_html -> MxUrl("m_restauration", "restauration.".$alex_livre_ext);
 $echo_html -> MxUrl("deconnexion", "index.".$alex_livre_ext, "close_sess=1");
 
 /* nouvelle version dispo ? */
-$latest_version = trim(ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre));
+$latest_version = trim(ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&j='.urlencode($config['fichier_inclusion'])));
 if (!empty($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $latest_version)){
 	$latest_version = explode("\n", trim($latest_version));
 	$latest_version = explode('-', trim($latest_version[1]));
