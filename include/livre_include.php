@@ -13,12 +13,6 @@
  */
 error_reporting(E_ALL ^ E_NOTICE);
 
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	if (get_magic_quotes_runtime())
-		set_magic_quotes_runtime(0);
-	unregister_globals();
-}
-
 if (!defined('AGUEST'))
 	exit("Safety error.");
 
@@ -34,6 +28,12 @@ if (isset($_POST['no_connect']) || isset($_GET['no_connect']) || isset($_COOKIE[
 include($chem_absolu."include/version.inc.".$alex_livre_ext);
 include($chem_absolu."include/funct_utiles.".$alex_livre_ext);
 include($chem_absolu."include/funct_sql_admin.".$alex_livre_ext);
+
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+	if (get_magic_quotes_runtime())
+		set_magic_quotes_runtime(0);
+	unregister_globals();
+}
 
 if (file_exists($chem_absolu."config/extension.inc")){
 	include($chem_absolu."config/config_base.".$alex_livre_ext);
