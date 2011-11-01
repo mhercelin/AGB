@@ -304,6 +304,7 @@ $f_lang['new_version_dispo'] = "Uma versão atualizada do livro de visitas está d
 $f_lang['version_courrante'] = "versão atual do script";
 $f_lang['info_version'] = "Informação sobre a versão que você possui";
 $f_lang['version_txt_ok'] = "A versão que você possui é ".$alex_livre_version.",<br>esta é a versão mais recente, não necessita atualização.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "A versão que você possui é ".$alex_livre_version.", <b>uma nova versão está disponível</b>";
 $f_lang['version_down'] = "Baixe a versão atualizada";
 $f_lang['help_update'] = "Ajuda para atualizar";

@@ -319,6 +319,7 @@ $f_lang['new_version_dispo'] = "Bu scriptin yeni bir versiyonu mevcuttur.";
 $f_lang['version_courrante'] = "Scriptin þu anki versiyonu";
 $f_lang['info_version'] = "Sizin versiyonunuz hakkinda bilgi";
 $f_lang['version_txt_ok'] = "Elinizde su ".$alex_livre_version.",versiyonu var. <br>Bu en son versiyon, güncelleme gerekmemektedir.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Elinizde þu an ".$alex_livre_version."versiyonu bulunmakta, <b>yeni bir versiyon mevcut.</b>";
 $f_lang['version_down'] = "Yeni Versiyonu Yükle";
 $f_lang['help_update'] = "Yükleme Yardým";

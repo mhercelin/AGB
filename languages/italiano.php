@@ -312,6 +312,7 @@ $f_lang['new_version_dispo'] = "E' disponibile una versione aggiornata del guest
 $f_lang['version_courrante'] = "Versione corrente del guesbook";
 $f_lang['info_version'] = "Informazioni sulla versione posseduta";
 $f_lang['version_txt_ok'] = "La tua versione è la ".$alex_livre_version.",<br>Questa versione è la più aggiornata. Non è necessario aggiornare.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "La tua versione è ".$alex_livre_version.", <b>è disponibile una nuova versione</b>";
 $f_lang['version_down'] = "Scarica la versione aggiornata";
 $f_lang['help_update'] = "Aiuto per l'aggiornamento";

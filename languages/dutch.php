@@ -305,6 +305,7 @@ $f_lang['new_version_dispo'] = "Er is een update voor het gastenboek beschikbaar
 $f_lang['version_courrante'] = "Huidige versie van het script";
 $f_lang['info_version'] = "Informatie over de versie waar u over beschikt";
 $f_lang['version_txt_ok'] = "De versie die u heeft is ".$alex_livre_version.",<br>Dit is de laatste versie. Een update is niet noodzakelijk.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "De versie die u heeft is ".$alex_livre_version.", <b>een nieuwe versie is beschikbaar.</b>";
 $f_lang['version_down'] = "Download de nieuwe versie";
 $f_lang['help_update'] = "Hulp bij de nieuwe versie";

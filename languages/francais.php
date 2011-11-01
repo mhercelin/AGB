@@ -295,6 +295,7 @@ $f_lang['new_version_dispo'] = "Une nouvelle version du livre d'or est disponibl
 $f_lang['version_courrante'] = "Version actuelle du script";
 $f_lang['info_version'] = "Information sur votre version";
 $f_lang['version_txt_ok'] = "Vous disposez de la version ".$alex_livre_version.",<br>cette version est la dernière version, aucune mise à jour n'est nécessaire.";
+$f_lang['version_txt_erreur'] = "Vous disposez de la version ".$alex_livre_version.".<br/><b>Une erreur s'est produite lors de la recherche de nouvelle version.</b> Nous vous invitons à consulter le site htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Vous disposez de la version ".$alex_livre_version.", <b>une nouvelle version est disponible</b>";
 $f_lang['version_down'] = "Télécharger la nouvelle version";
 $f_lang['help_update'] = "Aide pour la mise à jour";

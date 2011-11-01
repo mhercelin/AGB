@@ -49,6 +49,8 @@ else
 
 if ($latest_version != 'Error' & trim($latest_version[0]) != $alex_livre_version)
 	$echo_html -> MxText("version_txt", $f_lang['version_txt_update'].' ('.trim($latest_version[0]).')<br><br><br><input type="button" class="normal" value="'.$f_lang['version_down'].'" onclick="script_popup(\'http://www.alexguestbook.net/a_guest.php\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="normal" value="'.$f_lang['help_update'].'" onclick="script_popup(\'http://www.alexguestbook.net/guest_help_update.php?lang='.$config['langue'].'\', \'down\', 650, 500, \'resizable=yes, scrollbars=yes\')">');
+else if ($latest_version == 'Error')
+	$echo_html -> MxText("version_txt", $f_lang['version_txt_erreur']);
 else
 	$echo_html -> MxText("version_txt", $f_lang['version_txt_ok']);
 

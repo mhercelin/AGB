@@ -305,6 +305,7 @@ $f_lang['new_version_dispo'] = "En uppdaterad version av gästboken finns tillgän
 $f_lang['version_courrante'] = "Nuvarande scriptversion";
 $f_lang['info_version'] = "Information om den versionen du har";
 $f_lang['version_txt_ok'] = "Din version är ".$alex_livre_version.",<br>detta är den senaste versionen, uppgradering ej är nödvändigt.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Din version är ".$alex_livre_version.", <b>en ny version finns tillgänglig.</b>";
 $f_lang['version_down'] = "Ladda ned den uppgraderade versionen";
 $f_lang['help_update'] = "Hjälp om uppgraderingen";

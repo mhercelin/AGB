@@ -304,6 +304,7 @@ $f_lang['new_version_dispo'] = "En oppdatert versjon av gjesteboka er tilgjengel
 $f_lang['version_courrante'] = "Nåværende versjon av scriptet";
 $f_lang['info_version'] = "Informasjon om versjonen du har";
 $f_lang['version_txt_ok'] = "Versjonen du har er ".$alex_livre_version.",<br>dette er nyeste versjon, ingen oppgradering er nødvendig.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Versjonen du har er ".$alex_livre_version.", <b>ny versjon er tilgjengelig</b>";
 $f_lang['version_down'] = "Last ned siste versjon";
 $f_lang['help_update'] = "Hjelp til oppgradering";

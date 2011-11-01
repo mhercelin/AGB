@@ -302,6 +302,7 @@ $f_lang['new_version_dispo'] = "Dostêpna jest uaktualniona wersja ksiêgi go¶ci";
 $f_lang['version_courrante'] = "Aktualna wersja skryptu";
 $f_lang['info_version'] = "Informacja o wersji, któr± posiadasz";
 $f_lang['version_txt_ok'] = "Wersja któr± posiadasz ".$alex_livre_version.",<br>ta wersja jest ostatnia, ¿adna aktualizacja nie jest konieczna.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Wersja któr± posiadasz ".$alex_livre_version.", <b>dostêpna jest nowa wersja</b>";
 $f_lang['version_down'] = "Pobierz ulepszon± wersjê";
 $f_lang['help_update'] = "Pomoc dla aktualizacji";

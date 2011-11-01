@@ -305,6 +305,7 @@ $f_lang['new_version_dispo'] = "Hægt er að nálgast uppfærða útgáfu af gestabókin
 $f_lang['version_courrante'] = "Núverandi útgáfa af gestabók";
 $f_lang['info_version'] = "Upplýsingar um þína útgáfu";
 $f_lang['version_txt_ok'] = "Þín útgáfa af gestabókinni er ".$alex_livre_version.",<br>þessi útgáfa þarfnast ekki uppfærslu.";
+$f_lang['version_txt_erreur'] = "The version you have is ".$alex_livre_version.".<br/><b>An error occured during update verification.</b> You can verify new version on our website htt://www.alexguestbook.net"
 $f_lang['version_txt_update'] = "Þín útgáfa af gestabókinni er ".$alex_livre_version.", <b>hægt er að nálgast nýja útgáfu</b>";
 $f_lang['version_down'] = "Ná í uppfærða útgáfu";
 $f_lang['help_update'] = "Hjálp fyrir uppfærslu";
