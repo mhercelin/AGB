@@ -3,7 +3,7 @@ CREATE TABLE `<table_censure>` (
   `texte_censure` varchar(255) NOT NULL default '',
   `texte_remplace` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`id_mot`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_ban>` (
   `id_ban` mediumint(11) unsigned NOT NULL auto_increment,
@@ -11,7 +11,7 @@ CREATE TABLE `<table_ban>` (
   `pseudo` VARCHAR(40) NOT NULL default '',
   `email` VARCHAR(150) NOT NULL default '',
   PRIMARY KEY  (`id_ban`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_messages>` (
   `id` int(11) unsigned NOT NULL auto_increment,
@@ -32,7 +32,7 @@ CREATE TABLE `<table_messages>` (
   KEY `valid` (`valid`), 
   KEY `nom` (`nom`), 
   FULLTEXT KEY `message` (`message`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_sessions>` (
   `session` varchar(70) NOT NULL default '',
@@ -40,7 +40,7 @@ CREATE TABLE `<table_sessions>` (
   `login` varchar(20) NOT NULL default '',
   `last_connect` int(15) NOT NULL default '0',
   KEY `session` (`session`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_smileys>` (
   `id_smiley` mediumint(11) unsigned NOT NULL auto_increment,
@@ -49,7 +49,7 @@ CREATE TABLE `<table_smileys>` (
   `car_replace` varchar(10) NOT NULL default '',
   PRIMARY KEY  (`id_smiley`),
   KEY `numero` (`numero`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO `<table_smileys>` VALUES (1, 1, 'smile.gif', ':)');
 INSERT INTO `<table_smileys>` VALUES (2, 2, 'biggrin.gif', ':-D');
@@ -89,7 +89,7 @@ CREATE TABLE `<table_users>` (
   PRIMARY KEY  (`id_user`),
   KEY `login` (`login`),
   KEY `pass` (`pass`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO <table_users> VALUES (1, '<login_admin>', '<pass_admin>', '<email_admin>', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15);
 
@@ -106,7 +106,7 @@ CREATE TABLE `<table_img_verif_add>` (
   `message` text NOT NULL,
   KEY `time` (`time`),
   KEY `numero` (`numero`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_txt_lang>` (
  `lang` VARCHAR(20) NOT NULL,
@@ -114,13 +114,13 @@ CREATE TABLE `<table_txt_lang>` (
   `msg` TEXT NOT NULL,
   INDEX (`lang`) ,
   INDEX (`type`) 
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 CREATE TABLE `<table_config>` (
   `nom_config` varchar(255) NOT NULL,
   `valeur_config` varchar(255),
   KEY `nom_config` (`nom_config`)
-) Type=MyISAM;
+) ENGINE=MyISAM;
 
 INSERT INTO `<table_config>` VALUES ('langue', '<langue>');
 INSERT INTO `<table_config>` VALUES ('skin_to_use', 'AguestNew');
