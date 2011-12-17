@@ -75,3 +75,17 @@ input.sup {
 	color: #FFFFFF;
 	font-size: 12px;
 }
+
+
+#lien_retour_livre a:link, #lien_retour_livre a:hover, #lien_retour_livre a:visited {
+	text-decoration: underline;
+	color: #4A7DAC;
+}
+
+#lien_retour_livre img {
+	vertical-align: text-bottom;
+	width: 16px;
+	height: 16px;
+	border: 0;
+	margin: 0 2px 0 0;
+}
