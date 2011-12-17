@@ -1,8 +1,15 @@
+body {
+	margin: 0;
+	font-family: Verdana, Helvetica, sans-serif;
+	color: #000000;
+	font-size: 0.7em;
+}
+
 /* police type */
-TD	{font-family: Verdana; color: #000000; font-size: 10px}
+td	{font-family: Verdana; color: #000000; font-size: 10px}
 
 /* fond de page */
-BODY.bleu_body	{background-color: #4A7DAC;}
+body.bleu_body	{background-color: #4A7DAC;}
 
 /* couleur des liens */
 a:link		 {text-decoration:none ; color:#000000}
