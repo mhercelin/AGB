@@ -40,7 +40,7 @@ input, textarea, select {
 	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
 	border-color : #000000;
 	border-style: solid; 
-	border-width: 1
+	border-width: 1px;
 }
 
 input.radio {

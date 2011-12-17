@@ -25,7 +25,7 @@ function redirection_aguest3($pagego){
 // -----
 
 function noaccents($chaine){ 
-	return (strtr($chaine, "¿¡¬√ƒ≈‡·‚„‰Â“”‘’÷ÿÚÛÙıˆ¯»… ÀËÈÍÎ«ÁÃÕŒœÏÌÓÔŸ⁄€‹˘˙˚¸ˇ—Ò", "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn")); 
+	return (strtr($chaine, "√Ä√Å√Ç√É√Ñ√Ö√†√°√¢√£√§√•√í√ì√î√ï√ñ√ò√≤√≥√¥√µ√∂√∏√à√â√ä√ã√®√©√™√´√á√ß√å√ç√é√è√¨√≠√Æ√Ø√ô√ö√õ√ú√π√∫√ª√º√ø√ë√±", "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn")); 
 }
 
 // -----
@@ -118,7 +118,7 @@ function read_rep($nomrep, $type = "file"){
 		} 
 	}
 	closedir($dossier);
-	// tri les fichiers dans l'ordre "naturel", c'est ‡ dire val1, val2, val11 (et non val1, val11, val2) puis rÈ-indexe les valeurs du tableau numÈriquement
+	// tri les fichiers dans l'ordre "naturel", c'est a dire val1, val2, val11 (et non val1, val11, val2) puis re-indexe les valeurs du tableau numeriquement
 	asort($nomfic);
 	
 	return $nomfic;
@@ -314,7 +314,7 @@ function replace_censure_smileys(&$texte, $censure=true){
 			$texte = substr($texte, 0, $value_maxi_message)."...";
 	}
 
-	//mots censurÈs
+	//mots censures
 	if ($censure){
 		for ($i = 1; $i <= $nb_champs_alex_livre_censure; $i++){
 			$texte = preg_replace('/'.str_replace('*', '.*?', preg_quote($alex_livre_censure_texte_censure[$i], '/')).'/i', $alex_livre_censure_texte_remplace[$i], $texte);
@@ -337,8 +337,8 @@ function replace_censure_smileys(&$texte, $censure=true){
 	if (!isset($AJOUTER_SAUT_LIGNE) || (isset($AJOUTER_SAUT_LIGNE) && $AJOUTER_SAUT_LIGNE))
 		$texte = nl2br($texte);
 
-	//encodage des urls pour les rendre invisibles des moteurs de recherche (ca permet d'Èviter aux spammeurs
-	//d'Ítre tentÈs de spammer inutilement ;o)
+	//encodage des urls pour les rendre invisibles des moteurs de recherche (ca permet d'eviter aux spammeurs
+	//d'etre tentes de spammer inutilement ;o)
 	if (!isset($CHEM_COMPLET)){
 		$pos = 0;
 		while ($pos = strpos(".".$texte, "<a ")){
@@ -384,7 +384,7 @@ function pseudo_banni(&$pseudo_banni, &$pseudo_visiteur){
 	$alex_livre_ban_pseudo_banni = $pseudo_banni;
 	$alex_livre_ban_pseudo_visiteur = $pseudo_visiteur;
 	
-	//on regarde si le pseudo du visiteur CONTIENT le pseudo banni (on tient compte des Èventuelles * du pseudo banni)
+	//on regarde si le pseudo du visiteur CONTIENT le pseudo banni (on tient compte des eventuelles * du pseudo banni)
 	if(!empty($alex_livre_ban_pseudo_banni) && preg_match("/(?:" . str_replace("\*", ".*?", preg_quote($alex_livre_ban_pseudo_banni, '/')) . ")/i", $alex_livre_ban_pseudo_visiteur))
 		return true;
 	else
@@ -517,7 +517,7 @@ function generatePwdGuest3($chrs=10){
 //----------
 
 function generer_chaine_code_securite($nb_lettres = 4){
-	// CaractËres autorisÈs
+	// Caracteres autorises
 	$tab_car = array(1=>"A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
 	$x = 10;
@@ -578,7 +578,7 @@ function detectOne(){
 	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar;
 
 	$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-	if (isset($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $version_info){
+	if (isset($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $version_info)){
 		$latest_version = explode("\n", trim($latest_version));
 		$latest_version = explode('-', trim($latest_version[1]));
 		if (isset($latest_version[1])){
@@ -604,7 +604,7 @@ function getip(){
 	elseif(isset($_SERVER['HTTP_CLIENT_IP']) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
 		$ip = htmlspecialchars($_SERVER['HTTP_CLIENT_IP']);
 	}
-	elseif(!empty($_SERVER('REMOTE_ADDR'])) {
+	elseif(!empty($_SERVER['REMOTE_ADDR'])) {
 		$ip = htmlspecialchars($_SERVER['REMOTE_ADDR']);
 	}
 	else $ip = ''; 
@@ -616,7 +616,7 @@ function getip(){
 function detectCountry($host){
 	global $FLAGS_LANG;
 	
-	// DÈtermine la langue suivant les paramËtres du navigateur
+	// Determine la langue suivant les parametres du navigateur
 	$lang = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
 
 	// recherche d'un domaine existant
@@ -754,7 +754,7 @@ function MxEnd(){
 
 //----------
 
-/* Focntion proposÈe par Hagan Fox sur http://php.net/manual/function.gd-info.php , modifiÈe par AlexGuestbook Team*/
+/* Fonction proposee par Hagan Fox sur http://php.net/manual/function.gd-info.php , modifiee par AlexGuestbook Team*/
 function gdEnabled($user_ver = 0)
 {
 	if (! extension_loaded('gd')) { return false; }
@@ -794,7 +794,7 @@ function gdEnabled($user_ver = 0)
 
 //----------
 
-/* supprimer les variables crÈes par register_global */
+/* supprimer les variables crees par register_global */
 function unregister_globals()
 {
     if (!@ini_get('register_globals'))

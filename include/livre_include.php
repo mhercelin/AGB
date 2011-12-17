@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////
 
 /**
- * NE PAS MODIFIER CE PARAMÉTRAGE, le script ne fonctionnerait pas correctement.
+ * NE PAS MODIFIER CE PARAMETRAGE, le script ne fonctionnerait pas correctement.
  */
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -43,7 +43,7 @@ if (file_exists($chem_absolu."config/extension.inc")){
 	}
 	if (!isset($no_connect))
 	include($chem_absolu."db/".$database_type.".".$alex_livre_ext);
-	/* connexion à la base de données */
+	/* connexion a la base de donnees */
 	if (!isset($no_connect)){
 		$f_db_connexion = new alex_livre_sql($f_mysql_host, $f_mysql_user, $f_mysql_pass, $f_mysql_base, false);
 
@@ -83,10 +83,10 @@ include($chem_modelixe."ModeliXe.".$alex_livre_ext);
 // gestion de magic_quotes_gpc
 nettoyer_var_post();
 
-// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilisé
+// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilise
 if (function_exists('date_default_timezone_set'))
 {
-	//on définit l heure du serveur sur le fuseau UTC
+	//on definit l heure du serveur sur le fuseau UTC
 	date_default_timezone_set('UTC');
 }
 
