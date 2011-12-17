@@ -190,6 +190,10 @@ body {
 	margin: 0;
 }
 
+#alexguestbook #copyright {
+	vertical-align: -5px;
+}
+
 #alexguestbook .d_smileys {
  text-align: center;
  padding: 3px;

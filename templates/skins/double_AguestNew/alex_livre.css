@@ -199,6 +199,10 @@ body {
  text-align: center;
 }
 
+#alexguestbook #copyright {
+	vertical-align: -5px;
+}
+
 #alexguestbook .d_nbre_car {
  text-align: left;
  margin: -18px 0 0 16px;

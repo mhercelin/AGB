@@ -57,6 +57,18 @@ body {
  padding: 5px;
 }
 
+#alexguestbook .copyright {
+ color: #000000;
+ font-family: Arial, Helvetica, sans-serif; 
+ font-size: 1em;
+ text-align: center;
+ padding-bottom: 10px;
+}
+
+#alexguestbook #copyright {
+	vertical-align: -5px;
+}
+
 #alexguestbook #lien_accueil a:link, #alexguestbook #lien_accueil a:hover, #alexguestbook #lien_accueil a:visited, #alexguestbook #lien_administration a:link, #alexguestbook #lien_administration a:hover, #alexguestbook #lien_administration a:visited {
 	text-decoration: underline;
 	color: #4A7DAC;
