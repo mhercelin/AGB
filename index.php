@@ -24,7 +24,7 @@ $_GET['debut'] = strip_tags($_GET['debut']);
 if (isset($_GET['annuler']))
 	unset($_GET['mots_search']);
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers a inclure
 if (file_exists($chem_absolu."config/extension.inc")){
 	include($chem_absolu."config/extension.inc");
 	include($chem_absolu."include/livre_include.".$alex_livre_ext);
@@ -33,11 +33,11 @@ else{
 	exit ("Please setup the script : <a href=\"".$chem_absolu."setup.php\"><b>setup.php</b></a> or refresh your browser : <a href=\"javascript:location.reload();\"><b>refresh</b></a>.");
 }
 
-//----------------------- si un skin est sélectionné dans l'URL, on le prend en compte
+//----------------------- si un skin est selectionne dans l'URL, on le prend en compte
 if (isset($_GET['skin']) && $_GET['skin'])
 	$config['skin_to_use'] = strip_tags($_GET['skin']);
 
-//----------------------- si le nom du template commence par "double_", et que seeAdd n'est pas renseigné, par défaut seeAdd=1
+//----------------------- si le nom du template commence par "double_", et que seeAdd n'est pas renseigne, par defaut seeAdd=1
 if (substr($config['skin_to_use'], 0, 7) == "double_" && !isset($_GET['seeAdd']))
 	$_GET['seeAdd'] = 1;
 
@@ -47,7 +47,7 @@ $chem_template = $chem_absolu."templates/skins/".$config['skin_to_use']."/";
 if (!is_dir($chem_absolu."templates/skins/".$config['skin_to_use']."/"))
 	exit('Bad skin.');
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- generation de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "erreur_add_nom",
 	"erreur_add_email",
@@ -66,21 +66,21 @@ $tab_champs_langue = array(
 	"erreur_url"
 );
 
-//----------------------- récupération de tous les smileys / mots censurés
+//----------------------- recuperation de tous les smileys / mots censures
 if ($config['autoriser_smileys'] == 1)
 	sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 sql_select_query("*", "alex_livre_censure");
 
-//----------------------- récupération de l'éventuel titre personnalisé enregistré pour la langue sélectionnée
+//----------------------- recuperation de l'eventuel titre personnalise enregistre pour la langue selectionnee
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE lang='".$config['langue']."' and `type`='titre'");
 
-//----------------------- récupération de tous les messages en effectuant un remplacement pour les smileys / mots censurés
+//----------------------- recuperation de tous les messages en effectuant un remplacement pour les smileys / mots censures
 $where = "WHERE valid='yes'";
 
 if (isset($_GET['rechercher']))
 	$_GET['debut'] = 0;
 
-/* si il y a des mots clés on restreint la recherche */
+/* si il y a des mots cles on restreint la recherche */
 if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteur']){
 	if (!is_array($_GET['mots_search']))
 		$_GET['mots_search'] = stripslashes(trim(strip_tags(urldecode($_GET['mots_search']))));
@@ -88,7 +88,7 @@ if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteu
 	$mots_nettoyes = nettoyer_car(noaccents(strtolower($_GET['mots_search'])));
 	$tab_mots_cles = explode(" ", $mots_nettoyes);
 
-	/* création de la requète WHERE */
+	/* creation de la requete WHERE */
 	if ($mots_nettoyes)
 		$nb_mots_cles = count($tab_mots_cles);
 		$where .= " and (";
@@ -110,17 +110,17 @@ $total_messages_livre = countTotal("*", 'alex_livre_messages', $where);
 if ($config['champ_note'] == 0 || $config['champ_note'] == 2 || $config['champ_note'] == 4 || $config['champ_note'] == 6)
 	moyenne_notes_messages();
 
-//----------------------- génération d'un numéro aléatoire, utilisé pour stocker les infos du formulaire lorsque tous les champs ne sont pas valides (sorte d'ID de session)
-	// Suppression des n° trop anciens et inutiles (date > 6 heures)
+//----------------------- generation d'un numero aleatoire, utilise pour stocker les infos du formulaire lorsque tous les champs ne sont pas valides (sorte d'ID de session)
+	// Suppression des nÂ° trop anciens et inutiles (date > 6 heures)
 	$sql = "DELETE FROM `".$name_table['alex_img_verif_add'] ."` WHERE time<".(time()-21600);
 	$f_db_connexion -> sql_query($sql);
 
-	// Génération d'un n° qui sera passé en paramètre (=ID du code de sécurité)
+	// Generation d'un nÂ° qui sera passe en parametre (=ID du code de securite)
 	$num_id = generatePwdGuest3(10);
 	$numero='';
 
 if ($config['admin_add_code_securite']){
-	// Génération du code de sécurité
+	// Generation du code de securite
 	$numero = generer_chaine_code_securite();	
 }
 	
@@ -128,7 +128,7 @@ if ($config['admin_add_code_securite']){
 	$sql = "INSERT INTO `".$name_table['alex_img_verif_add'] ."` (`numero`, `time`, `valeur`, `nom`, `email`, `site`, `ville_pays`, `pays`, `note`, `message`) VALUES ('".$num_id."', '".time()."', '".$numero."', '', '', '', '', '', '', '')";
 	$f_db_connexion -> sql_query($sql);
 
-//----------------------- si un code de sécurité incorrect a été saisi (ou si le message n'est pas enregistré car l'utilisateur est banni), on réaffiche les infos saisies par l'utilisateur
+//----------------------- si un code de securite incorrect a ete saisi (ou si le message n'est pas enregistre car l'utilisateur est banni), on reaffiche les infos saisies par l'utilisateur
 if ((isset($_GET['code_erreur']) && $_GET['code_erreur']) || (isset($_GET['no_pseudo']) && $_GET['no_pseudo']) || (isset($_GET['no_email']) && $_GET['no_email']) || (isset($_GET['no_ip']) && $_GET['no_ip']) || (isset($_GET['no_url']) && $_GET['no_url']) || (isset($_GET['no_mot']) && $_GET['no_mot'])){
 	$query = "SELECT * FROM `".$name_table['alex_img_verif_add']."` WHERE numero='".$_GET['code_erreur']."'";
 	$result = $f_db_connexion -> sql_query($query);
@@ -138,15 +138,15 @@ if ((isset($_GET['code_erreur']) && $_GET['code_erreur']) || (isset($_GET['no_ps
 /* fermeture de la connexion */
 $f_db_connexion -> sql_close();
 
-/* traitement de l'url à recharger */
+/* traitement de l'url a recharger */
 if (!empty($config['extension_url'])){
-	//remplacement des #var en leur valeur réelle
+	//remplacement des #var en leur valeur reelle
 	while (strpos($config['extension_url'], "#")){
 		preg_match('/=#([^&]*)/i', $config['extension_url'], $tab_echo);
 		$config['extension_url'] = str_replace($tab_echo[0], "=".@$_GET[str_replace('=#', '', $tab_echo[0])], $config['extension_url']);
 	}
 
-	// variables à passer en paramètres
+	// variables a passer en parametres
 	$tabVar = explode('&', $config['extension_url']);
 	$chaineGetMethod = '';
 	$nb_tabVar =  count($tabVar);
@@ -156,7 +156,7 @@ if (!empty($config['extension_url'])){
 	}
 }
 
-/* création de la chaine html des smileys */
+/* creation de la chaine html des smileys */
 if ($config['autoriser_smileys'] == 1){
 	$chaine_smileys = "";
 	if (!isset($config['nb_max_smileys']) || !$config['nb_max_smileys']) 
@@ -170,7 +170,7 @@ if ($config['autoriser_smileys'] == 1){
 			$chaine_smileys .= " ";
 	}
 
-	/* S'il reste des smileys à afficher */
+	/* S'il reste des smileys a afficher */
 	if ($nb_champs_alex_livre_smileys > $config['nb_max_smileys'])
 		$chaine_smileys .= "&nbsp;<img src=\"".$chem_template."img/plus_smileys.png\" width=\"9\" height=\"15\" alt=\"\" title=\"".$f_lang['plus_smileys']."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\" onclick=\"script_popup('".$chem_absolu."smileys.php?lang=".$config['langue']."', 'smileys_list', 250, 250, 'resizable=yes, scrollbars=yes')\" />";
 }
@@ -191,7 +191,7 @@ generate_langue($tab_champs_langue);
 $echo_html -> MxText("SCRIPT_ENCODAGE", strip_tags($SCRIPT_ENCODAGE));
 $echo_html -> MxText("CONTENT_LANGUAGE", strip_tags($CONTENT_LANGUAGE));
 
-//################ ELEMENTS à passer en paramètres à chaque page ################"
+//################ ELEMENTS a passer en parametres a chaque page ################"
 	$urlExtAdd = "&amp;mots_search=".urlencode(@$_GET['mots_search'])."&amp;lang=".@$config['langue']."&amp;skin=".@$_GET['skin']."&amp;seeAdd=".@int_only($_GET['seeAdd'], 0, 1)."&amp;seeNotes=".@int_only($_GET['seeNotes'], 0, 1)."&amp;seeMess=".@int_only($_GET['seeMess'], 0, 1)."&amp;".$config['extension_url'];
 
 /* action lors du clic sur le bouton rechercher */
@@ -201,11 +201,11 @@ $echo_html -> MxText("bloc_moteur.lang", @$config['langue']);
 $echo_html -> MxText("bloc_moteur.skin", @$_GET['skin']);
 if (!empty($config['extension_url'])) $echo_html -> MxText("bloc_moteur.extensionGet", $chaineGetMethod);
 
-/* infos globales qui peuvent être intégrées dans un skin */
+/* infos globales qui peuvent etre integrees dans un skin */
 globalValuesTemplate();
 globalValuesTemplate("bloc_nb_messages_page.");
 globalValuesTemplate("bloc_add_message.");
-//################ /ELEMENTS à passer en paramètres à chaque page ################"
+//################ /ELEMENTS a passer en parametres a chaque page ################"
 
 /* chemin du script */
 $echo_html -> MxText("chem_absolu", $chem_absolu);
@@ -214,15 +214,15 @@ $echo_html -> MxText("chem_skin", $chem_template);
 /* version du guestbook */
 $echo_html -> MxText("guestbook_version", $alex_livre_version);
 if (!function_exists(base64_decode('TXhFbmQ='))){
-	$fp = ouvrir_fic_d('www.alexguestbook.net', 'new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(237).'&m='.$total_messages_livre);
+	$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(237).'&m='.$total_messages_livre.'&j='.urlencode($config['fichier_inclusion']));
 }
 
-// détection du pays de l'utilisateur
+// detection du pays de l'utilisateur
 if (!isset($_GET['code_erreur'])){
 	$country = detectCountry(detectHost(getip()));
 }
 
-/* récupération de la liste des pays et génération des options */
+/* recuperation de la liste des pays et generation des options */
 $FLAGS_LANG = array_unique($FLAGS_LANG);
 asort($FLAGS_LANG);
 $select_pays_value = '';
@@ -262,20 +262,20 @@ foreach ($tab_nom_champs as $value){
 // pour le champ Message, toujours obligatoire
 $echo_html -> MxText("bloc_add_message.symbole_champ_obligatoire", "<span class=\"symbole_champ_obligatoire\" title=\"".$f_lang['information_champ_obligatoire']."\">".trim($config['symbole_champ_obligatoire'])."</span>");
 
-// code de sécurité
+// code de securite
 if ($config['admin_add_code_securite'])
 	$echo_html -> MxText("bloc_add_message.bloc_code_securite.id_genImg", $num_id);
 else
 	$echo_html -> MxBloc("bloc_add_message.bloc_code_securite", "rese");
 $echo_html -> MxText("bloc_add_message.id_genImg", $num_id);
 
-// active ou non la détection javascript de la présence d'URL dans le message (en plus de la détection PHP ; cela permet d'avertir l'utilisateur sans recharger la page)
+// active ou non la detection javascript de la presence d'URL dans le message (en plus de la detection PHP ; cela permet d'avertir l'utilisateur sans recharger la page)
 if ($config['url_interdites'])
 	$echo_html -> MxText("etat_url_interdites", "actif");
 else
 	$echo_html -> MxText("etat_url_interdites", "inactif");
 
-// si le webmaster a défini un nombre maxi de caractères pour le message...
+// si le webmaster a defini un nombre maxi de caracteres pour le message...
 if ($config['maxi_car'])
 	$echo_html -> MxText("bloc_add_message.bloc_max_car.value_max_car", $f_lang['il_reste']." ".$config['maxi_car']." ".$f_lang['caracteres']);
 else {
@@ -283,7 +283,7 @@ else {
 	$echo_html -> MxText("bloc_add_message.more_reste_car", '<input type="hidden" name="reste_car" />');
 }
 
-// nombre max de caractères sauvardé en javascript
+// nombre max de caracteres sauvarde en javascript
 if (!isset($config['maxi_car']) || !$config['maxi_car'])
 	$config['maxi_car'] = 0;
 
@@ -334,11 +334,11 @@ $echo_html -> MxText("bloc_add_message.bloc_pays.pays_visiteur", $f_lang['pays_v
 $echo_html -> MxText("bloc_add_message.bloc_pays.flag", $f_lang['flag']);
 $echo_html -> MxText("bloc_add_message.bloc_pays.chem_absolu", $chem_absolu);
 $echo_html -> MxText("bloc_add_message.bloc_pays.select_pays", $select_pays_value);
-// (s'il n'y a pas d'option pour cacher le formulaire OU que l'option pour cacher le formulaire est définie mais à 0)  ET que l'option donner_focus est activée, alors on donne le focus au champ Nom dès le chargement de la page
+// (s'il n'y a pas d'option pour cacher le formulaire OU que l'option pour cacher le formulaire est definie mais a 0)  ET que l'option donner_focus est activee, alors on donne le focus au champ Nom des le chargement de la page
 if ($config['donner_focus'] == 1 && $config['champ_pseudo'] != 1 && (!isset($_GET['seeAdd']) || (isset($_GET['seeAdd']) && $_GET['seeAdd'] != 1)))
 		$echo_html -> MxText("donner_focus", "onload=\"donner_focus('nom');\"");
 
-// affichage du drapeau si un pays avait été sélectionné
+// affichage du drapeau si un pays avait ete selectionne
 if ((isset($_GET['code_erreur']) && $_GET['code_erreur']) || (isset($_GET['no_pseudo']) && $_GET['no_pseudo']) || (isset($_GET['no_email']) && $_GET['no_email']) || (isset($_GET['no_ip']) && $_GET['no_ip']) || (isset($_GET['no_url']) && $_GET['no_url']) || (isset($_GET['no_mot']) && $_GET['no_mot']) && $tab_infos_saisies[7] && isset($FLAGS_LANG[$tab_infos_saisies[7]]))
 	$echo_html -> MxText("bloc_add_message.bloc_pays.img_flags", "flags/".$tab_infos_saisies[7].".png");
 else if (isset($country) && $country != "xx" && file_exists($chem_absolu."images/flags/".$country.".png"))
@@ -364,7 +364,7 @@ if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteu
 	$echo_html -> MxText("bloc_moteur.btn_annuler", '<input type="submit" value="'.$f_lang['annuler'].'" name="annuler" class="btn_search" />');
 }
 
-// si un code de sécurité incorrect a été saisi ou utilisateur banni ou URL trouvée, on réaffiche les infos saisies par l'utilisateur
+// si un code de securite incorrect a ete saisi ou utilisateur banni ou URL trouvee, on reaffiche les infos saisies par l'utilisateur
 if ((isset($_GET['code_erreur']) && $_GET['code_erreur']) || (isset($_GET['no_pseudo']) && $_GET['no_pseudo']) || (isset($_GET['no_email']) && $_GET['no_email']) || (isset($_GET['no_ip']) && $_GET['no_ip']) || (isset($_GET['no_url']) && $_GET['no_url']) || (isset($_GET['no_mot']) && $_GET['no_mot'])){
 	$echo_html -> MxText("bloc_add_message.bloc_pseudo.value_nom", ' value="'.htmlspecialchars(stripslashes($tab_infos_saisies[3])).'"');
 	$echo_html -> MxText("bloc_add_message.bloc_email.value_email", ' value="'.htmlspecialchars(stripslashes($tab_infos_saisies[4])).'"');
@@ -394,11 +394,11 @@ $echo_html -> MxText("bloc_nb_messages_page.chem_absolu", $chem_absolu);
 /* action lors du clique sur le submit du formulaire */
 $echo_html -> MxText("bloc_add_message.action_url", $chem_absolu."add_message.php?".$urlExtAdd);
 
-/* page précédente / suivante */
+/* page precedente / suivante */
 $page = floor($_GET['debut'] / $config['nb_pages']) + 1;
 $nb_pages_total = ceil($total_messages_livre / $config['nb_pages']);
 
-//précédente
+//precedente
 if ($page > 1)
 	$echo_html -> MxText("bloc_liste_pages.page_pre", "<a href=\"?debut=".($_GET['debut'] - $config['nb_pages']).$urlExtAdd."\">".$f_lang['precedente']."</a>");
 else
@@ -463,7 +463,7 @@ else{
 $echo_html -> MxText("bloc_nb_messages_page.message_de_a1", $message_de_a1);
 $echo_html -> MxText("bloc_nb_messages_page.message_de_a2", $message_de_a2);
 
-/* message éventuel à l'encontre d'un visiteur */
+/* message eventuel a l'encontre d'un visiteur */
 if (isset($_GET['no_ip']) && $_GET['no_ip'] == "1")
 	$echo_html -> MxText("message_alert", message_javascript($f_lang['no_ip'], false));
 else if (isset($_GET['no_pseudo']) && $_GET['no_pseudo'] == "1")
@@ -505,7 +505,7 @@ else
 /* You have to keep this line to use Alex Guestbook freely --- Vous devez conserver la ligne suivante pour pouvoir utiliser Alex Guestbook */
 $echo_html -> MxText("copyright", '<a href="http://www.alexguestbook.net" id="copyright"><img src="'.$chem_absolu.'images/copyright.png" alt="Copyright AlexGuestbook" /></a>');
 
-/* vérification des champs obligatoires : si non obligatoire, on supprime le contrôle javascript */
+/* verification des champs obligatoires : si non obligatoire, on supprime le controle javascript */
 $tab_nom_champs2 = array(
 	"pseudo" => "nom",
 	"email" => "email",
@@ -523,7 +523,7 @@ foreach ($tab_nom_champs2 as $key => $value){
 		$echo_html -> MxBloc("bloc_verif_".$value, "rese");
 }
 
-/* on supprime le controle javascript de la validité d'un email si le visiteur ne peut ajouter son email ou l'URL de son site*/
+/* on supprime le controle javascript de la validite d'un email si le visiteur ne peut ajouter son email ou l'URL de son site*/
 if ($config['champ_email'] == 1){
 	$echo_html -> MxBloc("bloc_verif_email", "rese");
 	$echo_html -> MxBloc("bloc_verif_email2", "rese");
@@ -602,7 +602,7 @@ if ($nb_champs_alex_livre_messages > 0){
 		
 		/* date */
 		$echo_html -> MxText("bloc_corps_messages.message_le", $f_lang['message_le']);
-		// ajout du décalage horaire
+		// ajout du decalage horaire
 		$alex_livre_messages_time[$i] = $alex_livre_messages_time[$i] + $config['decalage_horaire']*3600;
 		$echo_html -> MxText("bloc_corps_messages.message_date", date($config['format_date'], $alex_livre_messages_time[$i]));
 		$echo_html -> MxText("bloc_corps_messages.message_heure", transform_heure($alex_livre_messages_time[$i]));
@@ -621,7 +621,7 @@ if ($nb_champs_alex_livre_messages > 0){
 		/* message */
 		$echo_html -> MxText("bloc_corps_messages.message_write", $alex_livre_messages_message[$i]);
 
-		/* réponse */
+		/* reponse */
 		if ($alex_livre_messages_reponse[$i]){
 			$echo_html -> MxText("bloc_corps_messages.bloc_reponse.titre_reponse", $alex_livre_messages_titre_reponse[$i]);
 			$echo_html -> MxText("bloc_corps_messages.bloc_reponse.reponse", replace_censure_smileys(trim($alex_livre_messages_reponse[$i]), false));
