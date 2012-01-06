@@ -101,7 +101,7 @@ if (isset($_GET['mots_search']) && $_GET['mots_search'] && $config['ok_aff_moteu
 		$where .= ")";
 }
 
-sql_select_query("*", "alex_livre_messages", $where, "ORDER BY time DESC", "LIMIT ".int_only($_GET['debut'], 1).",".$config['nb_pages'], true);
+sql_select_query("*", "alex_livre_messages", $where, "ORDER BY time DESC", "LIMIT ".int_only($_GET['debut']).",".$config['nb_pages'], true);
 
 //----------------------- nbre total de messages 
 $total_messages_livre = countTotal("*", 'alex_livre_messages', $where);
@@ -334,7 +334,7 @@ $echo_html -> MxText("bloc_add_message.bloc_pays.pays_visiteur", $f_lang['pays_v
 $echo_html -> MxText("bloc_add_message.bloc_pays.flag", $f_lang['flag']);
 $echo_html -> MxText("bloc_add_message.bloc_pays.chem_absolu", $chem_absolu);
 $echo_html -> MxText("bloc_add_message.bloc_pays.select_pays", $select_pays_value);
-// (s'il n'y a pas d'option pour cacher le formulaire OU que l'option pour cacher le formulaire est definie mais a 0)  ET que l'option donner_focus est activee, alors on donne le focus au champ Nom des le chargement de la page
+// (s'il n'y a pas d'option pour cacher le formulaire OU que l'option pour cacher le formulaire est definie mais a 0 )  ET que l'option donner_focus est activee, alors on donne le focus au champ Nom des le chargement de la page
 if ($config['donner_focus'] == 1 && $config['champ_pseudo'] != 1 && (!isset($_GET['seeAdd']) || (isset($_GET['seeAdd']) && $_GET['seeAdd'] != 1)))
 		$echo_html -> MxText("donner_focus", "onload=\"donner_focus('nom');\"");
 
