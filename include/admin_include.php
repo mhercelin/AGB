@@ -9,7 +9,7 @@
 ///////////////////////////////////////////////
 
 /**
- * NE PAS MODIFIER CE PARAMÉTRAGE, le script ne fonctionnerait pas correctement.
+ * NE PAS MODIFIER CE PARAMETRAGE, le script ne fonctionnerait pas correctement.
  */
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -33,15 +33,8 @@ if (file_exists($chem_absolu."config/extension.inc")){
 	}
 else
 	exit("Safety error.");
-
-
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	if (get_magic_quotes_runtime())
-		set_magic_quotes_runtime(0);
-	unregister_globals();
-}
 	
-/* connexion à la base de données */
+/* connexion a la base de donnees */
 $f_db_connexion = new alex_livre_sql($f_mysql_host, $f_mysql_user, $f_mysql_pass, $f_mysql_base, false);
 if (!$f_db_connexion -> db_connect_id){
 	exit($f_lang['erreur_mysql_connect']);
@@ -54,6 +47,12 @@ include($chem_modelixe."ModeliXe.".$alex_livre_ext);
 include($chem_absolu."include/version.inc.".$alex_livre_ext);
 include($chem_absolu."languages/".$config['langue'].".".$alex_livre_ext);
 
+// Desactive les fonctions de protections des variables qui pourraient etre activees
+if (version_compare(PHP_VERSION, '5.3.0', '<')) {
+	if (get_magic_quotes_runtime())
+		set_magic_quotes_runtime(0);
+	unregister_globals();
+}
 
 // gestion de magic_quotes_gpc
 nettoyer_var_post();
@@ -61,18 +60,18 @@ nettoyer_var_post();
 /* skin */
 $chem_template = "templates/admin/";
 
-// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilisé
+// Pour utiliser des fonctions dates avec PHP 5.3 il faut preciser le fuseau horaire utilise
 if (function_exists('date_default_timezone_set'))
 {
-	//on définit l heure du serveur sur le fuseau UTC
+	//on dï¿½finit l heure du serveur sur le fuseau UTC
 	date_default_timezone_set('UTC');
 }
 
-//----------------------- on vérifie si la session est toujours valide
+//----------------------- on verifie si la session est toujours valide
 if (!isset($no_verif_session))
 	f_verif_session();
 
-//----------------------- on enregistre les pages que l'utilisateur est autorisé à consulter
+//----------------------- on enregistre les pages que l'utilisateur est autorise a consulter
 f_save_pages();
 
 ?>
