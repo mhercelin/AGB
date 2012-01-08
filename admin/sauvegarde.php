@@ -12,15 +12,15 @@ DEFINE("AGUEST", true);
 $chem_absolu = "../";
 @set_time_limit(0);
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 include($chem_absolu."include/zip.lib.php");
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_bdd");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "sauvegarde",
 	"txt_sauvegarde",
@@ -31,7 +31,7 @@ $tab_champs_langue = array(
 if (isset($_POST['sauvegarder'])){
 	$SQL_SAUVEGARDE = "-- @lex Guestbook Backup\n-- version ".$alex_livre_version."\n-- By Alexis Soulard, Pierre Gieling, Maxime Hercelin (c)\n-- http://www.alexguestbook.net\n-- Date : ".date($config['format_date'].' H:i:s', time())."\n\n";
 
-	// 1) Création des énoncés DROP TABLE
+	// 1) CrÃ©ation des Ã©noncÃ©s DROP TABLE
 	foreach ($name_table as $value)
 		$SQL_SAUVEGARDE .= "DROP TABLE IF EXISTS `".$value."`;\n";
 
@@ -52,7 +52,7 @@ if (isset($_POST['sauvegarder'])){
 
 	$SQL_SAUVEGARDE .= "\n".$structure_sql."\n\n";
 
-	// 3) Liste des données
+	// 3) Liste des donnÃ©es
 	foreach ($name_table as $value){
 		$SQL_SAUVEGARDE .= "-- `".$value."` DATAS\n\n";
 
@@ -81,7 +81,7 @@ if (isset($_POST['sauvegarder'])){
 	// Entetes
 	header('Content-Type: application/x-zip');
 	header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-	$filename = "alex_guestbook_backup_".preg_replace('`/|-`i', '_', date($config['format_date'], time())).".zip";
+	$filename = "alex_guestbook_backup_".preg_replace('#/|-#i', '_', date($config['format_date'], time())).".zip";
 
 	$broswer = strtoupper($_SERVER['HTTP_USER_AGENT']);
 
@@ -94,13 +94,13 @@ if (isset($_POST['sauvegarder'])){
 		header('Pragma: no-cache');
 	}
 
-	// Création du fichier zip
+	// CrÃ©ation du fichier zip
 	$zipfile = new zipfile();
 
 	// Ajout du fichier au zip
 	$zipfile -> addFile(str_replace("\n", chr(13).chr(10), $SQL_SAUVEGARDE), str_replace(".zip", ".sql", $filename));
 	
-	// Envoi des données au navigateur
+	// Envoi des donnÃ©es au navigateur
 	exit($zipfile -> file());
 }
 

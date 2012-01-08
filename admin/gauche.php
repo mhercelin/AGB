@@ -11,11 +11,11 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "options",
 	"script",

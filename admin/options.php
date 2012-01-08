@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("modif_options");
 
-//----------------------- génération de la liste des champs de cases à cocher oui / non
+//----------------------- gÃ©nÃ©ration de la liste des champs de cases Ã  cocher oui / non
 $tab_champs_options = array(
 	1 => "send_mail",
 	"ok_aff_moteur",
@@ -34,7 +34,7 @@ $tab_champs_options = array(
 	"lien_accueil"
 );
 
-//----------------------- génération de la liste des champs "Afficher les champs xxx"
+//----------------------- gÃ©nÃ©ration de la liste des champs "Afficher les champs xxx"
 $tab_champs_affichage = array(
 	1 => "champ_pseudo",
 	"champ_email",
@@ -44,7 +44,7 @@ $tab_champs_affichage = array(
 	"champ_note"
 );
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "options_livre",
 	"options_generales",
@@ -116,10 +116,10 @@ $echo_html -> SetModeliXe();
 else*/
 	$erreur_mail = "";
 	
-//----------------------- teste si la librairie GD est présente et complète
+//----------------------- teste si la librairie GD est prÃ©sente et complÃ¨te
 $gd = gdEnabled();
 
-//----------------------- enregistrement des données
+//----------------------- enregistrement des donnÃ©es
 if (isset($_POST['enregistrer'])){	
 	$_POST['temps_session'] = (int)$_POST['temps_session'];
 	$_POST['temps_ip_post'] = (int)$_POST['temps_ip_post'];
@@ -128,7 +128,7 @@ if (isset($_POST['enregistrer'])){
 	$_POST['nb_pages'] = (int)$_POST['nb_pages'];
 	$_POST['nb_max_smileys'] = (int)$_POST['nb_max_smileys'];
 	
-	//si le champ est vide ou si le chemin n'est pas absolu ou si l'extension n'est pas .php, on affiche une erreur et on désactive l'inclusion
+	//si le champ est vide ou si le chemin n'est pas absolu ou si l'extension n'est pas .php, on affiche une erreur et on dÃ©sactive l'inclusion
 	if ($_POST['inclure_livre'] == 1 && (empty($_POST['fichier_inclusion']) || strpos($_POST['fichier_inclusion'], '/') !== 0 || substr($_POST['fichier_inclusion'],-4) != ".php")){
 		message_javascript($f_lang['admin_fichier_inclusion_erreur']);
 		$_POST['fichier_inclusion'] = '';
@@ -142,11 +142,11 @@ if (isset($_POST['enregistrer'])){
 	if (empty($_POST['temps_session']) || $_POST['temps_session'] < 300){
 		$_POST['temps_session'] = 300; message_javascript($f_lang['admin_temps_session_min']);
 	}
-	// si le lien vers la page est activé mais qu'aucun lien n'est défini, on renvoit vers la racine du site
+	// si le lien vers la page est activÃ© mais qu'aucun lien n'est dÃ©fini, on renvoit vers la racine du site
 	if ($_POST['lien_accueil'] == 1 && empty($_POST['chemin_lien_accueil'])){
 		$_POST['chemin_lien_accueil'] = '/';
 	}
-	// si le chemin est défini mais incorrect, on désactive le lien
+	// si le chemin est dÃ©fini mais incorrect, on dÃ©sactive le lien
 	else if ($_POST['lien_accueil'] == 1 && strpos($_POST['chemin_lien_accueil'], '/') !== 0){
 		message_javascript($f_lang['admin_chemin_lien_accueil_erreur']);
 		$_POST['lien_accueil'] = 0;
@@ -159,18 +159,18 @@ if (isset($_POST['enregistrer'])){
 	foreach($tab_champs_affichage as $tab_champ_affichage){
 		if (isset($_POST[$tab_champ_affichage])){
 			$_POST[$tab_champ_affichage] = array_sum($_POST[$tab_champ_affichage]);
-			//normalement javascript interdit les autres valeurs que celles-ci dessous mais possibilité de le désactiver donc si valeur inconnue on remplace par 1 (=champ non affiché)
+			//normalement javascript interdit les autres valeurs que celles-ci dessous mais possibilitÃ© de le dÃ©sactiver donc si valeur inconnue on remplace par 1 (=champ non affichÃ©)
 			if ($_POST[$tab_champ_affichage] != "0" && $_POST[$tab_champ_affichage] != '1' && $_POST[$tab_champ_affichage] != '2' && $_POST[$tab_champ_affichage] != "4" && $_POST[$tab_champ_affichage] != '6'){
 				$_POST[$tab_champ_affichage] = '1';
 			}
 		}
-		//si la variable n'est pas définie c'est que rien n'est coché donc on affiche le champ
+		//si la variable n'est pas dÃ©finie c'est que rien n'est cochÃ© donc on affiche le champ
 		else{ 
 			$_POST[$tab_champ_affichage] = '0';
 		}
 	}
 
-	// vérifie si la librairie GD2 et ses options sont présentes : si non, on n'active pas le code de sécurité
+	// vÃ©rifie si la librairie GD2 et ses options sont prÃ©sentes : si non, on n'active pas le code de sÃ©curitÃ©
 	if ($gd == 0) {
 		$_POST['admin_add_code_securite'] = 0;
 		$_POST['color_txt_code'] = '#000000';
@@ -188,11 +188,11 @@ if (isset($_POST['enregistrer'])){
 /* fermeture de la connexion sql */
 $f_db_connexion -> sql_close();
 
-//----------------------- on récupère toutes les langues disponibles
+//----------------------- on rÃ©cupÃ¨re toutes les langues disponibles
 $liste_langues = read_rep($chem_absolu."languages/");
 $option_langues = generate_options($liste_langues, $config['langue']);
 
-//----------------------- on récupère tous les skins disponibles
+//----------------------- on rÃ©cupÃ¨re tous les skins disponibles
 $liste_rep = read_rep($chem_absolu."templates/skins/", "rep");
 $option_rep = generate_options($liste_rep, $config['skin_to_use']);
 
@@ -280,7 +280,7 @@ else
 
 $html = $echo_html -> MxWrite("", true);
 
-// si la librairie GD n'est pas complète, on ne peut pas utiliser le code de sécurité
+// si la librairie GD n'est pas complÃ¨te, on ne peut pas utiliser le code de sÃ©curitÃ©
 if ($gd < 2){
 	$html = preg_replace("#<!--=== BLOC ADMIN_CODE_SECURITE ===-->.*?<!--=== /BLOC ADMIN_CODE_SECURITE ===-->#si", $f_lang['admin_gd_non_activee'], $html);
 }

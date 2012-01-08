@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_admin");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "ajouter_admin",
 	"add_admin_texte",
@@ -32,7 +32,7 @@ $tab_champs_langue = array(
 
 //----------------------- ajouter
 if (isset($_POST['ajouter'])){
-	//on vérifie si le login n'est pas déjà pris
+	//on vÃ©rifie si le login n'est pas dÃ©jÃ  pris
 	$query = "SELECT id_user FROM ".$name_table['alex_livre_users']." WHERE login='".$_POST['name_admin']."'";
 	$result = $f_db_connexion -> sql_query($query);
 
@@ -56,7 +56,7 @@ if (isset($_POST['modifier'])){
 	exit();
 }
 
-//----------------------- on récupère tous les admins
+//----------------------- on rÃ©cupÃ¨re tous les admins
 if (isset($_GET['id_modif']) && $_GET['id_modif']){
 	sql_select_query("*", "alex_livre_users", "WHERE id_user='".$_GET['id_modif']."'");
 

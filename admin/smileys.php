@@ -12,18 +12,18 @@ DEFINE("AGUEST", true);
 $chem_absolu = "../";
 $nb_smiley_ligne = 6;
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_smileys");
 
-//----------------------- génération de la liste des champs de cases à cocher oui / non
+//----------------------- gÃ©nÃ©ration de la liste des champs de cases Ã  cocher oui / non
 $tab_champs_options = array(
 	1 => "autoriser_smileys"
 );
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "gestion_smileys",
 	"text_smileys",
@@ -52,12 +52,12 @@ if (isset($_POST['enregistrer'])){
 
 //----------------------- ajout d'un smiley
 if (isset($_POST['ajouter'])){
-	//on regarde si le caractère de remplacement existe ou non
+	//on regarde si le caractÃ¨re de remplacement existe ou non
 	$query = "SELECT id_smiley FROM ".$name_table['alex_livre_smileys']." WHERE car_replace='".$_POST['car_replace']."'";
 	$result = $f_db_connexion -> sql_query($query);
 
 	if ($f_db_connexion->sql_numrows($result) < 1){
-		//on vérifie si le fichier à uploader est une image gif ou jpg
+		//on vÃ©rifie si le fichier Ã  uploader est une image gif ou jpg
 		$nom_image = $_FILES['image_smiley']['name'];
 		$extension = strtolower(substr($nom_image, strrpos($nom_image, "."), strlen($nom_image) - strrpos($nom_image, ".")));
 
@@ -100,10 +100,10 @@ if (isset($_POST['modifier'])){
 	message_javascript($f_lang['merci_modif_smileys']);
 }
 
-//----------------------- nouveau numéro d'apparition
+//----------------------- nouveau numÃ©ro d'apparition
 $NEW_NUM_APPARI = (countTotal("*", "alex_livre_smileys") + 1);
 
-//----------------------- on récupère tous les smileys
+//----------------------- on rÃ©cupÃ¨re tous les smileys
 sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 
 /* fermeture de la connexion sql */
@@ -122,14 +122,14 @@ generate_langue($tab_champs_langue);
 /* urls */
 $echo_html -> MxText("f_sid", $_GET['f_sid']);
 
-/* smileys autorisés ? */
+/* smileys autorisÃ©s ? */
 $echo_html -> MxText("value_autoriser_smileys", $config['autoriser_smileys']);
 generate_radio($tab_champs_options);
 
-/* nouveau numéro d'apparition */
+/* nouveau numÃ©ro d'apparition */
 $echo_html -> MxText("new_numero", $NEW_NUM_APPARI);
 
-/* boucle pour afficher les smileys enregistrées */
+/* boucle pour afficher les smileys enregistrÃ©es */
 $echo_html -> MxText("nb_smileys", $nb_champs_alex_livre_smileys);
 
 $nbre_lignes = ceil($nb_champs_alex_livre_smileys / $nb_smiley_ligne);

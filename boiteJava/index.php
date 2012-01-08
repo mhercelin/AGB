@@ -25,14 +25,14 @@ else
 	$_GET['n'] = (int)trim($_GET['n']);
 
 
-//----------------------- récupération des données du modèle graphique
+//----------------------- rï¿½cupï¿½ration des donnï¿½es du modï¿½le graphique
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE `type`='boite'");
 
-//----------------------- récupération de tous les smileys / mots censurés
+//----------------------- rï¿½cupï¿½ration de tous les smileys / mots censurï¿½s
 sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 sql_select_query("*", "alex_livre_censure");
 
-/* données du modèle */
+/* donnï¿½es du modï¿½le */
 if (isset($alex_livre_txt_lang_msg[1]))
 	$TAB_DONNEES_BOITE = explode("	", $alex_livre_txt_lang_msg[1]);
 
@@ -81,7 +81,7 @@ sql_select_query("id, nom, note, time, message", "alex_livre_messages", "WHERE v
 
 $CHAINE_JAVA = '';
 $CHAINE_BOUCLE = '';
-preg_match('`\[boucle\](.*)\[/boucle\]`i', $value_modele_tpl, $donnees_boucle);
+preg_match('#\[boucle\](.*)\[/boucle\]#i', $value_modele_tpl, $donnees_boucle);
 
 if (isset($donnees_boucle[1])){
 	$donnees_boucle[1] = addslashes($donnees_boucle[1]);
@@ -95,7 +95,7 @@ if (isset($donnees_boucle[1])){
 		$CHAINE_BOUCLE .= str_replace("[URL]", $value_url_livre."#id".$alex_livre_messages_id[$i], str_replace("[MESSAGE]", trim(addslashes($alex_livre_messages_message[$i])), str_replace("[NOTE]", (($alex_livre_messages_note[$i]) ? $alex_livre_messages_note[$i] : "-"), str_replace("[PSEUDO]", trim(htmlspecialchars($pseudo)), str_replace("[DATE]", date($value_date, $alex_livre_messages_time[$i]), $donnees_boucle[1])))));
 	}
 
-	$CHAINE_JAVA = preg_replace('`\[boucle\].*\[/boucle\]`i', $CHAINE_BOUCLE, addslashes($value_modele_tpl));
+	$CHAINE_JAVA = preg_replace('#\[boucle\].*\[/boucle\]#i', $CHAINE_BOUCLE, addslashes($value_modele_tpl));
 }
 else
 	$CHAINE_JAVA = $f_lang['erreur_par_boite'];

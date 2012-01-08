@@ -14,14 +14,14 @@ $chem_absolu = "../";
 if (!isset($_GET['debut']))
 	$_GET['debut'] = 0;
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_messages");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "gestion_mess",
 	"selectionner_pages",
@@ -38,14 +38,14 @@ $tab_champs_langue = array(
 	"action"
 );
 
-//----------------------- enregistrement du nbre de messages affichés par page
+//----------------------- enregistrement du nbre de messages affichÃ©s par page
 if (isset($_POST['selectionner'])){
 	$query = "UPDATE ".$name_table['alex_livre_users']." SET nb_mess_page='".$_POST['select_nb_page']."' WHERE id_user='$id_user'";
 	$result = $f_db_connexion -> sql_query($query);
 	$nb_messages_page = $_POST['select_nb_page'];
 }
 
-/* toujours un message affiché au minimum */
+/* toujours un message affichÃ© au minimum */
 if ($nb_messages_page < 1)
 	$nb_messages_page = 1;
 
@@ -78,7 +78,7 @@ if (isset($_POST['valider'])){
 }
 
 
-//----------------------- on récupère les messages
+//----------------------- on rÃ©cupÃ¨re les messages
 sql_select_query("id, nom, message, ip, valid", "alex_livre_messages", "", "ORDER BY time DESC", "LIMIT ".$_GET['debut'].",".$nb_messages_page);
 
 //----------------------- nbre total de messages 
@@ -101,11 +101,11 @@ generate_langue($tab_champs_langue);
 $echo_html -> MxText("select_nb_page", $nb_messages_page);
 $echo_html -> MxText("debut", $_GET['debut']);
 
-/* page suivante / précédente */
+/* page suivante / prÃ©cÃ©dente */
 $page = floor($_GET['debut'] / $nb_messages_page) + 1;
 $nb_pages_total = ceil($total_messages_livre / $nb_messages_page);
 
-//précédente
+//prÃ©cÃ©dente
 if ($page > 1)
 	$echo_html -> MxText("precedente", "<a href=\"gestion_mess.php?f_sid=".$_GET['f_sid']."&debut=".($_GET['debut'] - $nb_messages_page)."\">".$f_lang['precedente']."</a>");
 else
@@ -132,7 +132,7 @@ for ($i = 1; $i <= $nb_pages_total; $i++){
 
 $echo_html -> MxText("liste_pages", $liste_pages);
 
-/* sélectionner/désélectionner tous les messages*/
+/* sÃ©lectionner/dÃ©sÃ©lectionner tous les messages*/
 $echo_html -> MxText("selectionner_tous_messages", $f_lang['selectionner_tous_messages']);
 
 /* urls */
@@ -143,7 +143,7 @@ if ($nb_champs_alex_livre_messages > 0){
 	$echo_html -> WithMxPath("bloc5", "relative");
 	for ($i = 1; $i <= $nb_champs_alex_livre_messages; $i++){
 		
-		//n° de la boucle en cours
+		//nÂ° de la boucle en cours
 		$echo_html -> MxText("nb_boucles", $i);
 
 		//id du message
@@ -166,7 +166,7 @@ if ($nb_champs_alex_livre_messages > 0){
 		// debut
 		$echo_html -> MxText("debut", $_GET['debut']);
 		
-		//txt modifier & répondre
+		//txt modifier & rÃ©pondre
 		$echo_html -> MxText("modifier", ucfirst($f_lang['modif_admin']));
 		$echo_html -> MxText("repondre", ucfirst($f_lang['repondre']));
 
@@ -175,7 +175,7 @@ if ($nb_champs_alex_livre_messages > 0){
 			$echo_html -> MxText("b_valide", '<img src="../images/en_cours.gif" border="0" width="9" height="12" title="'.addslashes($f_lang['mess_invalide']).'">');
 			
 			
-			//case valider désélectionnée ?
+			//case valider dÃ©sÃ©lectionnÃ©e ?
 			$echo_html -> MxText("b_value_f_valide", "");
 			// couleur de fond de la cellule
 			$echo_html -> MxText("color", "#FDD9D9");
@@ -184,7 +184,7 @@ if ($nb_champs_alex_livre_messages > 0){
 			$echo_html -> MxText("b_valide", '<img src="../images/valide.gif" border="0" width="13" height="10" alt="'.addslashes($f_lang['mess_valide']).'">');
 			
 			
-			//case valider sélectionnée ?
+			//case valider sÃ©lectionnÃ©e ?
 			$echo_html -> MxText("b_value_f_valide", " checked");
 			
 			// couleur de fond de la cellule

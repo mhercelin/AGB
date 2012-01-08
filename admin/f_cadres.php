@@ -11,7 +11,7 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 

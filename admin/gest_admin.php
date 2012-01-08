@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_admin");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "gest_admin",
 	"sup_admin",
@@ -46,7 +46,7 @@ if (isset($_POST['supprimer'])){
 	}
 }
 
-//----------------------- on récupère tous les admins
+//----------------------- on rÃ©cupÃ¨re tous les admins
 sql_select_query("id_user, login, email", "alex_livre_users", "", "ORDER BY id_user");
 
 /* fermeture de la connexion sql */
@@ -65,7 +65,7 @@ generate_langue($tab_champs_langue);
 /* urls */
 $echo_html -> MxText("f_sid", $_GET['f_sid']);
 
-/* boucle pour afficher les admins enregistrés */
+/* boucle pour afficher les admins enregistrÃ©s */
 //nbre de boucles
 $echo_html -> MxText("nbre_boucles", $nb_champs_alex_livre_users);
 
@@ -74,11 +74,11 @@ if ($nb_champs_alex_livre_users > 0){
 	for ($i = 1; $i <= $nb_champs_alex_livre_users; $i++){
 		//id
 		$echo_html -> MxText("f_sid", $_GET['f_sid']);
-		//n° de la boucle en cours
+		//nÂ° de la boucle en cours
 		$echo_html -> MxText("value_boucle", $i);
 		//checkbox
 		$echo_html -> MxText("id_admin", $alex_livre_users_id_user[$i]);
-		//mot censuré
+		//mot censurÃ©
 		$echo_html -> MxText("login", $alex_livre_users_login[$i]);
 		//mot remplacant
 		$echo_html -> MxText("email", $alex_livre_users_email[$i]);

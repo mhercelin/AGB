@@ -12,15 +12,15 @@ DEFINE("AGUEST", true);
 $chem_absolu = "../";
 @set_time_limit(0);
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 include($chem_absolu."include/read_backup.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_bdd");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "restauration",
 	"txt_restauration",
@@ -34,7 +34,7 @@ $tab_champs_langue = array(
 if (isset($_POST['restauration'])){
 	$extension = extension($_FILES['fichier']['name']);
 
-	// Récupération des données SQL
+	// RÃ©cupÃ©ration des donnÃ©es SQL
 	if ($extension == "zip"){
 		if (function_exists('zip_open')){
 			$zip = @zip_open($_FILES['fichier']['tmp_name']);
@@ -64,17 +64,17 @@ if (isset($_POST['restauration'])){
 	else
 		message_javascript($f_lang['erreur_ext_restau']);
 
-	// Traitement des données SQL
+	// Traitement des donnÃ©es SQL
 	if (isset($DATAS_SQL)){
-		// Vérification du fichier SQL à traiter
+		// VÃ©rification du fichier SQL Ã  traiter
 		if (substr($DATAS_SQL, 0, 24) != '-- @lex Guestbook Backup')
 			message_javascript($f_lang['erreur_read_sql']);
 		else {
-			// Lecture des données SQL à traiter
+			// Lecture des donnÃ©es SQL Ã  traiter
 			$pieces = array();
 			PMA_splitSqlFile($pieces, $DATAS_SQL);
 
-			// Exécution des requêtes
+			// ExÃ©cution des requÃªtes
 			foreach ($pieces as $value)
 				$f_db_connexion -> sql_query($value['query']);
 

@@ -11,17 +11,17 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
 if (!isset($_GET['lang_edit']) || !file_exists($chem_absolu."languages/".alphanum_only($_GET['lang_edit']).".".$alex_livre_ext))
 	$_GET['lang_edit'] = $config['langue'];
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("modif_options");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "titre_guestbook",
 	"langue",
@@ -32,7 +32,7 @@ $tab_champs_langue = array(
 );
 
 
-//----------------------- enregistrement des données
+//----------------------- enregistrement des donnÃ©es
 if (isset($_POST['enregistrer'])){
 	$nbTest = countTotal("*", "alex_livre_txt_lang", "WHERE `lang`='".$_GET['lang_edit']."' and `type`='titre'");
 
@@ -48,7 +48,7 @@ if (isset($_POST['enregistrer'])){
 	message_javascript($f_lang['ok_save_titre']);
 }
 
-//----------------------- récupération de l'éventuel message personnalisé déjà enregistré pour la langue sélectionnée
+//----------------------- rÃ©cupÃ©ration de l'Ã©ventuel message personnalisÃ© dÃ©jÃ  enregistrÃ© pour la langue sÃ©lectionnÃ©e
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE lang='".$_GET['lang_edit']."' and `type`='titre'");
 
 /* fermeture de la connexion sql */
@@ -58,7 +58,7 @@ $f_db_connexion -> sql_close();
 $echo_html = new ModeliXe("titre.htm", "f_sid=".$_GET['f_sid']."", "", "", "", $chem_absolu.$chem_template);
 $echo_html -> SetModeliXe();
 
-//----------------------- on récupère toutes les langues disponibles
+//----------------------- on rÃ©cupÃ¨re toutes les langues disponibles
 $liste_langues = read_rep($chem_absolu."languages/");
 $option_langues = generate_options($liste_langues, $_GET['lang_edit']);
 
@@ -75,7 +75,7 @@ $echo_html -> MxText("lang_edit", $_GET['lang_edit']);
 /* liste des langues dispos */
 $echo_html -> MxText("liste_langues", $option_langues);
 
-/* texte du message dans la langue sélectionnée */
+/* texte du message dans la langue sÃ©lectionnÃ©e */
 if (isset($alex_livre_txt_lang_msg[1]))
 	$echo_html -> MxText("msg_langue", $alex_livre_txt_lang_msg[1]);
 else {

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 ///////////////////////////////////////////////
 //                @lex Guestbook             //
 //      by Soulard Alexis (c) 2002 - 2006    //
@@ -7,5 +7,5 @@
 ///////////////////////////////////////////////
 
 // Version du guestbook
-$alex_livre_version = "5.0.2";
+$alex_livre_version = "5.0.3";
 ?>

@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_bdd");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "optimisation",
 	"optimisation_txt",
@@ -44,7 +44,7 @@ if (isset($_POST['optimiser'])){
 		}
 	}
 
-	// requête d'optimisation
+	// requÃªte d'optimisation
 	$result = $f_db_connexion -> sql_query($sql_optimise);
 	message_javascript($f_lang['ok_optimise']);
 }

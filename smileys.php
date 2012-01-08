@@ -11,12 +11,12 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "./";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/livre_include.".$alex_livre_ext);
 sql_select_query("*", "alex_livre_config");
 
-//----------------------- on récupère tous les smileys
+//----------------------- on rÃ©cupÃ¨re tous les smileys
 sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

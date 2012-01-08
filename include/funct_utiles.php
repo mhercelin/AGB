@@ -37,7 +37,7 @@ function nettoyer_car($chaine){
 
 //functions provided by Open Web Application Security Project (http://www.owasp.org) and modified by AlexGuestbook Team
 function alphanum_only($string, $min='', $max='', $forbid=false){
-	$string_clear = preg_replace('`[^-_a-zA-Z0-9]`', '', $string);
+	$string_clear = preg_replace('#[^-_a-zA-Z0-9]#', '', $string);
 	$len = strlen($string_clear);
 	if((($min != '') && ($len < $min)) || (($max != '') && ($len > $max)))
 		return false;
@@ -317,7 +317,7 @@ function replace_censure_smileys(&$texte, $censure=true){
 	//mots censures
 	if ($censure){
 		for ($i = 1; $i <= $nb_champs_alex_livre_censure; $i++){
-			$texte = preg_replace('/'.str_replace('*', '.*?', preg_quote($alex_livre_censure_texte_censure[$i], '/')).'/i', $alex_livre_censure_texte_remplace[$i], $texte);
+			$texte = preg_replace('#'.str_replace('*', '.*?', preg_quote($alex_livre_censure_texte_censure[$i], '#')).'#i', $alex_livre_censure_texte_remplace[$i], $texte);
 		}
 	}
 
@@ -330,7 +330,7 @@ function replace_censure_smileys(&$texte, $censure=true){
 	//urls
 	if($config['url_cliquables'] && !$config['url_interdites']){
 		if (!isset($CHEM_COMPLET))
-			$texte = preg_replace('`([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]#?/&=])`i', '<a href="$1://$2$3" target="_blank">$1://$2$3</a>', $texte);
+			$texte = preg_replace('#([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]#?/&=])#i', '<a href="$1://$2$3" target="_blank">$1://$2$3</a>', $texte);
 	}
 	
 	// saut de ligne
@@ -355,7 +355,7 @@ function replace_censure_smileys(&$texte, $censure=true){
 function cut(&$string, $separation = ' '){ 
 	global $config;
 
-	return preg_replace('/([^ ]{'.$config['cut_mots'].'})/si','\\1'.$separation, $string); 
+	return preg_replace('#([^ ]{'.$config['cut_mots'].'})#si','\\1'.$separation, $string); 
 }
 
 // -----
@@ -385,7 +385,7 @@ function pseudo_banni(&$pseudo_banni, &$pseudo_visiteur){
 	$alex_livre_ban_pseudo_visiteur = $pseudo_visiteur;
 	
 	//on regarde si le pseudo du visiteur CONTIENT le pseudo banni (on tient compte des eventuelles * du pseudo banni)
-	if(!empty($alex_livre_ban_pseudo_banni) && preg_match("/(?:" . str_replace("\*", ".*?", preg_quote($alex_livre_ban_pseudo_banni, '/')) . ")/i", $alex_livre_ban_pseudo_visiteur))
+	if(!empty($alex_livre_ban_pseudo_banni) && preg_match("#(?:" . str_replace("\*", ".*?", preg_quote($alex_livre_ban_pseudo_banni, '#')) . ")#i", $alex_livre_ban_pseudo_visiteur))
 		return true;
 	else
 		return false;
@@ -398,7 +398,7 @@ function email_banni(&$email_banni, &$email_visiteur){
 	$alex_livre_ban_email_visiteur = $email_visiteur;
 	
 	//on regarde si l'email du visiteur est banni ou si le domaine est banni (par exemple on peut bannir le domaine *@mail.ru)
-	if(!empty($alex_livre_ban_email_banni) && preg_match("/^(?:" . str_replace("\*", ".*?", preg_quote($alex_livre_ban_email_banni, '/')) . ")$/is", $alex_livre_ban_email_visiteur))
+	if(!empty($alex_livre_ban_email_banni) && preg_match("#^(?:" . str_replace("\*", ".*?", preg_quote($alex_livre_ban_email_banni, '#')) . ")$#is", $alex_livre_ban_email_visiteur))
 		return true;
 	else
 		return false;
@@ -411,7 +411,7 @@ function mot_banni(&$mot_banni, &$mot_visiteur){
 	$alex_livre_censure_mot_visiteur = $mot_visiteur;
 	
 	//on regarde si le message du visiteur contient un mot interdit
-	if(!empty($alex_livre_censure_mot_banni) && preg_match('/(?:'.str_replace('\*', '.*?', preg_quote($alex_livre_censure_mot_banni, '/')).')/is', $alex_livre_censure_mot_visiteur))
+	if(!empty($alex_livre_censure_mot_banni) && preg_match('#(?:'.str_replace('\*', '.*?', preg_quote($alex_livre_censure_mot_banni, '#')).')#is', $alex_livre_censure_mot_visiteur))
 		return true;
 	else
 		return false;
@@ -432,11 +432,11 @@ function arrondir($chiffre){
 function  encodeEmail($email){
 	global $chem_absolu, $f_lang, $alex_livre_messages_nom, $alex_livre_messages_email, $i;
 
-	if (preg_match ('`([^?]+)([?].*)`i', $email, $temp))
+	if (preg_match ('#([^?]+)([?].*)#i', $email, $temp))
 		$email = $temp[1]; 
 	
 	$tout = addslashes($temp[2]);
-	$email = preg_replace( '|@|',"'+'@'+'" ,$email);
+	$email = preg_replace( '#@#',"'+'@'+'" ,$email);
 	$email = "var e='".$email."';";
 	
 	if ($tout)
@@ -478,10 +478,10 @@ function  encodeTxt($html){
 // -----
 
 function verifMailSyntaxe($email) {
-  return( preg_match('`^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
+  return( preg_match('#^[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+'.
 			   '@'.
 			   '[-!#$%&\'*+\\/0-9=?A-Z^_`a-z{|}~]+\.'.
-			   '[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$`',
+			   '[-!#$%&\'*+\\./0-9=?A-Z^_`a-z{|}~]+$#',
 			   $email));
 }
 
@@ -508,7 +508,7 @@ function generatePwdGuest3($chrs=10){
 	mt_srand ((double) microtime() * 1000000);
 	while (strlen($pwd)<$chrs){ 
 		$chr = chr(mt_rand (0,255));
-		if (preg_match('`^[a-z0-9]$`i', $chr))
+		if (preg_match('#^[a-z0-9]$#i', $chr))
 			$pwd = $pwd.$chr; 
 	}; 
 	return $pwd; 
@@ -578,7 +578,7 @@ function detectOne(){
 	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar;
 
 	$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
-	if (isset($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $version_info)){
+	if (isset($latest_version) && preg_match('#\d(?:\.\d{1,2}){1,2}(?:-.){0,1}#', $version_info)){
 		$latest_version = explode("\n", trim($latest_version));
 		$latest_version = explode('-', trim($latest_version[1]));
 		if (isset($latest_version[1])){
@@ -673,7 +673,7 @@ function supSpace($txt){
 function findHost(){
 	global $_SERVER;
 
-	$path = preg_replace('`admin/|boiteJava/`i', "", $_SERVER['PHP_SELF']);
+	$path = preg_replace('#admin/|boiteJava/#i', "", $_SERVER['PHP_SELF']);
 	$pos = strrpos($path, "/");
 
 	return "http://".$_SERVER['SERVER_NAME'].substr($path, 0, $pos+1);
@@ -694,32 +694,32 @@ function replace_car_html(&$txt){
 //----------
 
 function valider_ip($ip){
-	if (preg_match('/^(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5]|\*)\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5]|\*)$/', $ip))
+	if (preg_match('#^(?:(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5]|\*)\.){3}(?:\d{1,2}|1\d\d|2[0-4]\d|25[0-5]|\*)$#', $ip))
 		return true;
 	else return false;
 }
 
 function valider_email($email, $isAdmin=false){
 	if ($isAdmin==true) $i = '\*?'; else $i = '';
-	if (preg_match('/^([\w\-\.'.$i.']+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|((([\w\-]+\.)+)|('.$i.'\.))(([a-z]{2,4})|'.$i.'))$/i', $email))
+	if (preg_match('#^([\w\-\.'.$i.']+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|((([\w\-]+\.)+)|('.$i.'\.))(([a-z]{2,4})|'.$i.'))$#i', $email))
 		return true;
 	else return false;
 }
 
 function valider_pseudo($pseudo){
-	if (preg_match('/^(?:[-_ ]?[[:alnum:]][-_ ]?)*$/i', $pseudo))
+	if (preg_match('#^(?:[-_ ]?[[:alnum:]][-_ ]?)*$#i', $pseudo))
 		return true;
 	else return false;
 }
 
 function valider_ville($ville){
-	if (preg_match('/^[^<>\:\!\;\?\(\)\"\'&\`\{\}\[\]]$/i', $ville))
+	if (preg_match('#^[^<>\:\!\;\?\(\)\"\'&\`\{\}\[\]]$#i', $ville))
 		return true;
 	else return false;
 }
 
 function valider_url($url){
-	if (preg_match('/(?:(?:https?\:\/\/)|(?:https?\:\/\/www\.)|(?:www\.))\w+([\.\-]\w+)*\.\w{2,4}(\:\d+)*([\/\.\-\?\&\%\#]\w+)*\/?/i', $url))
+	if (preg_match('#(?:(?:https?\:\/\/)|(?:https?\:\/\/www\.)|(?:www\.))\w+([\.\-]\w+)*\.\w{2,4}(\:\d+)*([\/\.\-\?\&\%\#]\w+)*\/?#i', $url))
 		return true;
 	else return false;
 }
@@ -763,14 +763,14 @@ function gdEnabled($user_ver = 0)
 	// Use the gd_info() function if possible.
 	if (function_exists('gd_info')) {
 		$ver_info = gd_info();
-		preg_match('/\d/', $ver_info['GD Version'], $match);
+		preg_match('#\d#', $ver_info['GD Version'], $match);
 		$gd_ver = $match[0];
-		preg_match('/\d/', $ver_info['FreeType Support'], $match);
+		preg_match('#\d#', $ver_info['FreeType Support'], $match);
 		$gd_freetype = $match[0];
 		if ($gd_ver < 2 || $gd_freetype != 1) return false; else return true;
 	}
 	// If phpinfo() is disabled use a specified / fail-safe choice...
-	if (preg_match('/phpinfo/', ini_get('disable_functions'))) {
+	if (preg_match('#phpinfo#', ini_get('disable_functions'))) {
 		if ($user_ver == 2) {
 			$gd_ver = 2;
 			return false;
@@ -785,10 +785,10 @@ function gdEnabled($user_ver = 0)
 	$info = ob_get_contents();
 	ob_end_clean();
 	$info = stristr($info, 'gd version');
-	preg_match('/\d/', $info, $match);
+	preg_match('#\d#', $info, $match);
 	$gd_ver = $match[0];
 	$freetype = stristr($info, 'freetype support');
-	if (preg_match('/enabled/', $freetype)) $gd_freetype = 1;
+	if (preg_match('#enabled#', $freetype)) $gd_freetype = 1;
 	if ($gd_ver < 2 || $gd_freetype != 1) return false; else return true;
 }
 

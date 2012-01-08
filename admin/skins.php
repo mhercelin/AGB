@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_skins");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "text1_2",
 	"text2",
@@ -40,7 +40,7 @@ $tab_champs_langue = array(
 	"see_skin"
 );
 
-//----------------------- inclusion de fichiers utiles à la page des skins
+//----------------------- inclusion de fichiers utiles Ã  la page des skins
 include($chem_absolu."include/funct_write_files.".$alex_livre_ext);
 
 /* fermeture de la connexion sql */
@@ -60,9 +60,9 @@ $tab_template_guestbook = array(
 );
 
 for ($i=1; $i<=count($tab_template_guestbook); $i++)
-	${preg_replace('/.htm|.css/', '', $tab_template_guestbook[$i])} = read_page($chem_absolu.'templates/skins/'.$_GET['skin_edit'].'/'.$tab_template_guestbook[$i]);
+	${preg_replace('#.htm|.css#', '', $tab_template_guestbook[$i])} = read_page($chem_absolu.'templates/skins/'.$_GET['skin_edit'].'/'.$tab_template_guestbook[$i]);
 
-//----------------------- création d'un nouveau skin
+//----------------------- crÃ©ation d'un nouveau skin
 if (isset($_POST['ajouter'])){
 	if (@mkdir($chem_absolu."templates/skins/".$_POST['aj_skin']."/", 0755)){
 		message_javascript($f_lang['ok_ajouter']);
@@ -84,7 +84,7 @@ if (isset($_POST['supprimer'])){
 			$erreur_sup = true;
 	}
 
-	//suppression du répertoire
+	//suppression du rÃ©pertoire
 	$rep_sup = $chem_absolu."templates/skins/".$_POST['skin_sup']."/";
 	@chmod($rep_sup, 0777);
 	if (!@rmdir($rep_sup))
@@ -104,7 +104,7 @@ if (isset($_POST['enregistrer'])){
 	$write_object = new write_files();
 
 	for ($i=1; $i<=count($tab_template_guestbook); $i++){
-		$champ_edit = preg_replace('.htm|.css', '', $tab_template_guestbook[$i]);
+		$champ_edit = preg_replace('#.htm|.css#', '', $tab_template_guestbook[$i]);
 
 		$write_object -> save_donnees(stripslashes($_POST[$champ_edit]));
 		if (!$write_object -> write($chem_absolu."templates/skins/".$_GET['skin_edit']."/".$tab_template_guestbook[$i]))
@@ -124,7 +124,7 @@ if (isset($_POST['enregistrer'])){
 $echo_html = new ModeliXe("skins.htm", "f_sid=".$_GET['f_sid']."", "", "", "", $chem_absolu.$chem_template);
 $echo_html -> SetModeliXe();
 
-//----------------------- on récupère tous les skins disponibles
+//----------------------- on rÃ©cupÃ¨re tous les skins disponibles
 $liste_rep = read_rep($chem_absolu."templates/skins/", "rep");
 $option_rep = generate_options($liste_rep, $_GET['skin_edit'], "skins.php?f_sid=".$_GET['f_sid']."&skin_edit=");
 $option_sup = generate_options($liste_rep, "");

@@ -11,7 +11,7 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "./";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/livre_include.".$alex_livre_ext);
 sql_select_query("*", "alex_livre_config");
@@ -32,24 +32,24 @@ $tab_var_replace = array(
 );
 
 for ($i = 1; $i <= count($tab_var_replace); $i++){
-	$_SERVER['QUERY_STRING'] = preg_replace('/'.$tab_var_replace[$i].'([^&]*)/i', "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = preg_replace('#'.$tab_var_replace[$i].'([^&]*)#i', "", $_SERVER['QUERY_STRING']);
 }
 
 while (strpos($_SERVER['QUERY_STRING'], "&&")){
 	$_SERVER['QUERY_STRING'] = str_replace("&&", "&", $_SERVER['QUERY_STRING']);
 }
 
-// pas de html autorisé dans le message
+// pas de html autorisÃ© dans le message
 $messagePost = strip_tags($_POST['message_textarea']);
 
-// si un nombre maxi de caractères a été défini dans les options
+// si un nombre maxi de caractÃ¨res a Ã©tÃ© dÃ©fini dans les options
 if ($config['maxi_car'] > 0)
 	$messagePost = substr($messagePost, 0, $config['maxi_car']-1);
 
-//----------------------- url de la page à re-charger
+//----------------------- url de la page Ã  re-charger
 $pageToGoAfterPost = $config['url_recharger']."?".$_SERVER['QUERY_STRING'];
 
-//----------------------- on s'assure de la validité de la note
+//----------------------- on s'assure de la validitÃ© de la note
 if ($_POST['note_site'])
 	$_POST['note_site'] = (int)trim($_POST['note_site']);
 
@@ -64,7 +64,7 @@ sql_select_query("*", "alex_livre_ban");
 sql_select_query("texte_censure", "alex_livre_censure");
 
 $pseudo_banni = $email_banni = $ip_bannie = $mot_banni = false;
-//----------------------- on vérifie que les pseudo, email et ip ne soient pas bannis
+//----------------------- on vÃ©rifie que les pseudo, email et ip ne soient pas bannis
 for ($i = 1; $i <= $nb_champs_alex_livre_ban; $i++){
 	if (!empty($alex_livre_ban_pseudo[$i]) && pseudo_banni($alex_livre_ban_pseudo[$i], $_POST['nom'])){
 		$pseudo_banni = true;
@@ -80,7 +80,7 @@ for ($i = 1; $i <= $nb_champs_alex_livre_ban; $i++){
 	}
 }
 
-//----------------------- on vérifie si le message contient un mot interdit
+//----------------------- on vÃ©rifie si le message contient un mot interdit
 if ($config['admin_bannir_mot']){
 	for ($i = 1; $i <= $nb_champs_alex_livre_censure; $i++){
 		if(mot_banni($alex_livre_censure_texte_censure[$i], $messagePost)){
@@ -91,7 +91,7 @@ if ($config['admin_bannir_mot']){
 }
 //-----------------------/BANISSEMENT
 
-//----------------------- on vérifie la présence d'URL dans le message
+//----------------------- on vÃ©rifie la prÃ©sence d'URL dans le message
 $presence_url = false;
 if ($config['url_interdites']){
 	if (valider_url($_POST['message_textarea'])){
@@ -99,7 +99,7 @@ if ($config['url_interdites']){
 	}
 }
 
-//----------------------- vérification des champs obligatoires */
+//----------------------- vÃ©rification des champs obligatoires */
 $tab_nom_champs = array(
 	"pseudo" => "nom",
 	"email" => "email",
@@ -115,7 +115,7 @@ foreach ($tab_nom_champs as $key => $value){
 	}
 } 
 
-//----------------------- on vérifie si l'utilisateur n'a pas déjà posté un message trop récemment
+//----------------------- on vÃ©rifie si l'utilisateur n'a pas dÃ©jÃ  postÃ© un message trop rÃ©cemment
 $message_trop_recent = false;
 
 if (countTotal("*", 'alex_livre_messages', "WHERE ip='".$ip_visiteur."' and time>='".(time() - ($config['temps_ip_post'] * 60))."'")){
@@ -125,14 +125,14 @@ if (countTotal("*", 'alex_livre_messages', "WHERE ip='".$ip_visiteur."' and time
 	exit();
 }
 
-//----------------------- on vérifie, si nécessaire, le code de sécurité
+//----------------------- on vÃ©rifie, si nÃ©cessaire, le code de sÃ©curitÃ©
 if ($config['admin_add_code_securite']){
 	$sql = "SELECT valeur FROM `".$name_table['alex_img_verif_add'] ."` WHERE numero='".$_POST['num_id']."'";
 	$result = $f_db_connexion -> sql_query($sql);
 	$num_valeur = $f_db_connexion -> sql_fetchrow($result);
 }
 
-// si le code de sécurité est incorrect OU si le visiteur est banni (pseudo, adèl, ip) OU si le message contient des URL OU  si un mot est interdit  OU si un champ obligatoire n'est pas rempli => retour à la zone de saisie 
+// si le code de sÃ©curitÃ© est incorrect OU si le visiteur est banni (pseudo, adÃ¨l, ip) OU si le message contient des URL OU  si un mot est interdit  OU si un champ obligatoire n'est pas rempli => retour Ã  la zone de saisie 
 if (($config['admin_add_code_securite'] && (!isset($num_valeur[0]) || !$num_valeur[0] || $num_valeur[0] != strtoupper($_POST['code_securite']))) || $pseudo_banni || $email_banni || $ip_bannie || $presence_url || $mot_banni || $champ_obligatoire){
 	// sauvegarde des infos saisies par l'utilisateur
 	$sql = "UPDATE `".$name_table['alex_img_verif_add'] ."` SET `nom`='".ucfirst(strip_tags($_POST['nom']))."', `email`='".strip_tags(@$_POST['email'])."', `site`='".strip_tags(@$_POST['site'])."', `ville_pays`='".ucfirst(strip_tags($_POST['ville']))."', `pays`='".strip_tags($_POST['pays'])."', `note`='".@$_POST['note_site']."', `message`='".$messagePost."' WHERE numero='".$_POST['num_id']."'";
@@ -149,9 +149,9 @@ if (($config['admin_add_code_securite'] && (!isset($num_valeur[0]) || !$num_vale
 	exit();
 }
 
-//----------------------- l'utilisateur est autorisé à poster, on enregistre le message
+//----------------------- l'utilisateur est autorisÃ© Ã  poster, on enregistre le message
 if (trim($_POST['message_textarea']) && !$ip_bannie && !$pseudo_banni && !$email_banni && !$presence_url && !$mot_banni && !$message_trop_recent && !$champ_obligatoire){
-	// le livre nécessite-t-il une validation avant le post définitif ?
+	// le livre nÃ©cessite-t-il une validation avant le post dÃ©finitif ?
 	if ($config['admin_valide_messages'])
 		$valid = "no";
 	else
@@ -161,13 +161,13 @@ if (trim($_POST['message_textarea']) && !$ip_bannie && !$pseudo_banni && !$email
 	if ($_POST['site'] && substr($_POST['site'], 0, 7) != "http://"){
 		$_POST['site'] = 'http://'.$_POST['site'];
 	}
-	// vérifie la forme de l'URL
+	// vÃ©rifie la forme de l'URL
 	if (!valider_url($_POST['site'])) $_POST['site'] = '';
 	
 	$query = "INSERT INTO ".$name_table['alex_livre_messages']." (`nom`, `email`, `site`, `ville_pays`, `pays`, `note`, `message`, `titre_reponse`, `reponse`, `time`, `ip`, `valid`) VALUES ('".ucfirst(strip_tags($_POST['nom']))."', '".strip_tags(@$_POST['email'])."', '".strip_tags(@$_POST['site'])."', '".ucfirst(strip_tags($_POST['ville']))."', '".strip_tags($_POST['pays'])."', '".strip_tags(@$_POST['note_site'])."', '".$messagePost."', '', '', '".time()."', '".$ip_visiteur."', '".$valid."')";
 	$result = $f_db_connexion -> sql_query($query);
 
-	//----------------------- on recherche tous les admins qui doivent être prévenus
+	//----------------------- on recherche tous les admins qui doivent Ãªtre prÃ©venus
 	sql_select_query("id_user, email", "alex_livre_users", "WHERE receive_email='1'");
 
 	/* contenu du message */
@@ -201,7 +201,7 @@ if (trim($_POST['message_textarea']) && !$ip_bannie && !$pseudo_banni && !$email
 
 	/* envoi d'un message de remerciement */
 	if (isset($config['admin_envoyer_remerciement']) && $config['admin_envoyer_remerciement'] && $_POST['email']){
-		// Récupération de l'email de l'admin n°1 (administrateur du site)
+		// RÃ©cupÃ©ration de l'email de l'admin nÂ°1 (administrateur du site)
 		$alex_livre_users_email = '';
 		sql_select_query("email", "alex_livre_users", "", "ORDER BY id_user", "LIMIT 1");
 
@@ -218,7 +218,7 @@ if (trim($_POST['message_textarea']) && !$ip_bannie && !$pseudo_banni && !$email
 		$entetemail .= "X-Mailer: PHP\r\n";
 		$entetemail .= "X-Priority: 1\r\n";
 
-		// récupération de l'éventuel message personnalisé enregistré pour la langue sélectionnée
+		// rÃ©cupÃ©ration de l'Ã©ventuel message personnalisÃ© enregistrÃ© pour la langue sÃ©lectionnÃ©e
 		sql_select_query("msg", "alex_livre_txt_lang", "WHERE lang='".$config['langue']."' and `type`='rep_auto'");
 
 		if (isset($alex_livre_txt_lang_msg[1]))

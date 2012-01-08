@@ -12,7 +12,7 @@ DEFINE("AGUEST", true);
 $chem_absolu = "../";
 $no_verif_session = 1;
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 if (file_exists($chem_absolu."config/extension.inc")){
 	include($chem_absolu."config/extension.inc");
 	include($chem_absolu."include/admin_include.".$alex_livre_ext);
@@ -22,7 +22,7 @@ else{
 }
 
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "options_livre",
 	"infos",
@@ -38,7 +38,7 @@ $tab_champs_langue = array(
 //----------------------- destruction des sessions trop anciennes
 f_destroy_session();
 
-//----------------------- on vérifie si le user peut ou non se connecter
+//----------------------- on vÃ©rifie si le user peut ou non se connecter
 if (isset($_POST['f_identif']) && $_POST['f_login'] && $_POST['f_pass']){
 	$_POST['f_login'] = strip_tags($_POST['f_login']);
 	if ($login_user = f_verif_identif()){

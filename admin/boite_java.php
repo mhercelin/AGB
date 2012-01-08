@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("modif_options");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "boite_java",
 	"enregistrer",
@@ -41,7 +41,7 @@ $tab_champs_langue = array(
 );
 
 
-//----------------------- enregistrement des données
+//----------------------- enregistrement des donnÃ©es
 if (isset($_POST['enregistrer'])){
 	$nbTest = countTotal("*", "alex_livre_txt_lang", "WHERE `type`='boite'");
 
@@ -59,7 +59,7 @@ if (isset($_POST['enregistrer'])){
 	message_javascript($f_lang['ok_save_boite']);
 }
 
-//----------------------- récupération des données enregistrées
+//----------------------- rÃ©cupÃ©ration des donnÃ©es enregistrÃ©es
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE `type`='boite'");
 
 /* fermeture de la connexion sql */

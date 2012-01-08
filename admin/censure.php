@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_censure");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "text1",
 	"aj_mot",
@@ -60,7 +60,7 @@ if (isset($_POST['modifier'])){
 	message_javascript($f_lang['merci_modif']);
 }
 
-//----------------------- récupération de tous les mots interdits
+//----------------------- rÃ©cupÃ©ration de tous les mots interdits
 sql_select_query("*", "alex_livre_censure", "", "ORDER BY id_mot");
 
 /* fermeture de la connexion sql */
@@ -79,7 +79,7 @@ generate_langue($tab_champs_langue);
 /* urls */
 $echo_html -> MxText("f_sid", $_GET['f_sid']);
 
-/* boucle pour afficher les mots enregistrés */
+/* boucle pour afficher les mots enregistrÃ©s */
 //nbre de boucles
 $echo_html -> MxText("nbre_boucles", $nb_champs_alex_livre_censure);
 
@@ -89,11 +89,11 @@ if ($nb_champs_alex_livre_censure > 0){
 		$echo_html -> MxText("mot", $f_lang['mot']);
 		$echo_html -> MxText("remplace_by", $f_lang['remplace_by']);
 
-		//n° de la boucle en cours
+		//nÂ° de la boucle en cours
 		$echo_html -> MxText("value_boucle", $i);
 		//checkbox
 		$echo_html -> MxText("value_check", $alex_livre_censure_id_mot[$i]);
-		//mot censuré
+		//mot censurÃ©
 		$echo_html -> MxText("value_mot", $alex_livre_censure_texte_censure[$i]);
 		//mot remplacant
 		$echo_html -> MxText("value_remplace", $alex_livre_censure_texte_remplace[$i]);

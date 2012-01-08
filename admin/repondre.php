@@ -12,7 +12,7 @@ DEFINE("AGUEST", true);
 $chem_absolu = "../";
 $img_blank_no_aff = 256;
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
@@ -21,10 +21,10 @@ if (file_exists($chem_absolu."languages/flags/".$config['langue'].".".$alex_livr
 else
 	include($chem_absolu."languages/flags/english.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_messages");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "revenir",
 	"enregistrer",
@@ -54,15 +54,15 @@ if (isset($_POST['modifier'])){
 	exit();
 }
 
-// on récupère tous les smileys / mots censurés
+// on rÃ©cupÃ¨re tous les smileys / mots censurÃ©s
 sql_select_query("*", "alex_livre_smileys", "", "ORDER BY numero");
 sql_select_query("*", "alex_livre_censure");
 
-// on récupère les infos sur le message en cours
+// on rÃ©cupÃ¨re les infos sur le message en cours
 sql_select_query("*", "alex_livre_messages", "WHERE id=".int_only($_GET['id_mess'], 1), "", "", true);
 
-// une réponse a-t-elle déjà été postée dernièrement ?
-// si oui on s'en sert comme modèle
+// une rÃ©ponse a-t-elle dÃ©jÃ  Ã©tÃ© postÃ©e derniÃ¨rement ?
+// si oui on s'en sert comme modÃ¨le
 sql_select_query("msg", "alex_livre_txt_lang", "WHERE `type`='rep'");
 
 /* fermeture de la connexion sql */
@@ -83,20 +83,20 @@ $echo_html -> MxText("f_sid", $_GET['f_sid']);
 $echo_html -> MxText("debut", $_GET['debut']);
 $echo_html -> MxText("id_mess", $_GET['id_mess']);
 
-/* création de la chaine html des smileys */
+/* crÃ©ation de la chaine html des smileys */
 $chaine_smileys = "";
 
 if (!isset($config['nb_max_smileys']) || !$config['nb_max_smileys']) $config['nb_max_smileys'] = $nb_champs_alex_livre_smileys;
 if ($config['nb_max_smileys'] > $nb_champs_alex_livre_smileys) $config['nb_max_smileys'] = $nb_champs_alex_livre_smileys;
 
 for ($i = 1; $i <= $config['nb_max_smileys']; $i++){
-	$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", preg_replace('/[.]{1}(.)*$/i', "", $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
+	$chaine_smileys .= "<img src=\"".$chem_absolu."images/smileys/".$alex_livre_smileys_smiley[$i]."\" alt=\"\" title=\"".ucfirst(str_replace("_", " ", preg_replace('#[.]{1}(.)*$#i', "", $alex_livre_smileys_smiley[$i])))."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\"  onclick=\"smiley('".$alex_livre_smileys_car_replace[$i]."');\" />";
 
 	if ($i < $nb_champs_alex_livre_smileys)
 		$chaine_smileys .= " ";
 }
 
-/* S'il reste des smileys à afficher */
+/* S'il reste des smileys Ã  afficher */
 if ($nb_champs_alex_livre_smileys > $config['nb_max_smileys'])
 	$chaine_smileys .= "&nbsp;<img src=\"".$chem_absolu."templates/admin/images/plus_smileys.png\" width=\"9\" height=\"15\" alt=\"\" title=\"".$f_lang['plus_smileys']."\" style=\"border: 0px; cursor: pointer; vertical-align: middle\" onclick=\"script_popup('".$chem_absolu."smileys.php', 'smileys_list', 250, 250, 'resizable=yes, scrollbars=yes')\" />";
 

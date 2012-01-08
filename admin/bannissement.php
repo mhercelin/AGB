@@ -11,14 +11,14 @@
 DEFINE("AGUEST", true);
 $chem_absolu = "../";
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers Ã  inclure
 include($chem_absolu."config/extension.inc");
 include($chem_absolu."include/admin_include.".$alex_livre_ext);
 
-//----------------------- on controle si le visiteur est ou non autorisé à visiter cette page
+//----------------------- on controle si le visiteur est ou non autorisÃ© Ã  visiter cette page
 verif_page("gestion_bannissement");
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- gÃ©nÃ©ration de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "bannissement",
 	"text_ip1",
@@ -93,7 +93,7 @@ if (isset($_POST['supprimer_email'])){
 	}
 }
 
-//----------------------- récupération des ips, pseudos et email bannis
+//----------------------- rÃ©cupÃ©ration des ips, pseudos et email bannis
 sql_select_query("ip", "alex_livre_ban", "", "ORDER BY id_ban");
 sql_select_query("pseudo", "alex_livre_ban", "", "ORDER BY id_ban");
 sql_select_query("email", "alex_livre_ban", "", "ORDER BY id_ban");
@@ -101,7 +101,7 @@ sql_select_query("email", "alex_livre_ban", "", "ORDER BY id_ban");
 /* fermeture de la connexion sql */
 $f_db_connexion -> sql_close();
 
-//----------------------- on génère la liste des ips, pseudos et email bannis
+//----------------------- on gÃ©nÃ¨re la liste des ips, pseudos et email bannis
 if (isset($alex_livre_ban_ip))	$liste_option_ip = generate_options($alex_livre_ban_ip, ""); else $liste_option_ip = '';
 if (isset($alex_livre_ban_pseudo))	$liste_option_pseudo = generate_options($alex_livre_ban_pseudo, ""); else $liste_option_pseudo = '';
 if (isset($alex_livre_ban_email))	$liste_option_email = generate_options($alex_livre_ban_email, ""); else $liste_option_email = '';
