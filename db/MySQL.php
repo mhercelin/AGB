@@ -77,10 +77,7 @@ class alex_livre_sql{
 		{
 			$this->num_queries++;
 
-			
-			if (($this->query_result = @mysql_query($query, $this->db_connect_id)) === FALSE) {
-				$this->sql_error($query);
-			}
+			$this->query_result = @mysql_query($query, $this->db_connect_id);
 		}
 		if(isset($this->query_result))
 		{
