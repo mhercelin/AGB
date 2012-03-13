@@ -9,7 +9,6 @@ Version 5.0.3 (mars 2012)
 > Ajout d'un lien "Retour au livre d'or" sur la page de connexion à l'administration du livre0
 > Correction de l'aperçu du skin lorsque l'option "include" est activée.
 > Changement du copyright.
-> Suppression des fichiers de police car non utilisés. Réduction du poids de l'archive ZIP de -2 Mo.
 > Optimisation de la détection de la langue.
 > Suppressions de caractères "parasites" dans différents fichiers.
 > Mise à disposition d'un script de mise à jour pour faciliter les mises à jour.
