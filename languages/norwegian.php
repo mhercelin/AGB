@@ -536,5 +536,5 @@ $f_lang['options_livre'] = "Gjestebok alternativer";
 $f_lang['text1'] = "<b>Sensurerte ord vil automatisk bli byttet ut </b> i beskjeder lagt inn fra besøkende. Du kan feks. bytte ut alle  \"stygge ord\" med en tekst som \"**sensurert ord**\".<br/>Hvis du har valgt å nekte beskjeder som inneholder \"sensurerte ord\", <u>trenger du enda å skrive inn en erstatningstekst</u>. Dette tiltaket lar deg bytte modus (ord erstatning eller nekte beskjed).";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
+$f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
 ?>

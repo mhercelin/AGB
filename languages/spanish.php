@@ -535,5 +535,5 @@ $f_lang['options_livre'] = "Guestbook options";
 $f_lang['text1'] = "<b>Censored words will be automatically replaced</b> in the messages posted by the visitors. You can i.e. replace all \"bad words\" by a text like \"**censored word**\".<br/>If you have chosen to refuse messages containing \"censored words\", <u>you still need to enter a replacement text</u>. This measure allows you to switch mode (word replacement or message refusal).";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
+$f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
 ?>

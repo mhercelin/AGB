@@ -544,5 +544,5 @@ $f_lang['options_livre'] = "Opzioni Guestbook";
 $f_lang['text1'] = "<b>Le parole vietate verranno automaticamete sostituite</b> nei messaggi pubblicati dai visitatori. Puoi, per esempio, sostituire tutte le occorrenze di \"brutta parola\" con un testo come \"**testo censurato**\".<br/>Se hai scelto di rifiutare i messaggi contenenti \"parole vietate\", <u>devi comunque immettere un testo sostitutivo</u>. Questa accortezza ti consente di passare tra un modo ed un altro (sostituzione parole oppure rifiuto messaggio).";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
+$f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
 ?>

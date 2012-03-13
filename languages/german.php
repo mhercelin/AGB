@@ -538,5 +538,5 @@ $f_lang['options_livre'] = "Gästebuch Einstellungen";
 $f_lang['text1'] = "<b>Zensierte Wörter werden automatisch ersetzt</b>. Sie können z.B. alle Schimpfwörter mit einem Text wie \"**zensiert**\" ersetzen lassen.<br/>Sollten Sie die Option \"Nachrichten ablehnen\" gewählt haben, werden Nachrichten die zensierte Wörter enthalten abgelehnt, und somit nicht gespeichert. <u>Sie müssen dennoch einen Ersatztext angeben</u>, denn dann können Sie zwischen ersetzen und ablehnen hin- und herwechseln.";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
+$f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
 ?>

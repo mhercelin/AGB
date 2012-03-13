@@ -534,6 +534,6 @@ $f_lang['mail_object'] = "[info] - Nouveau message posté sur votre livre d'or - 
 $f_lang['mail_message'] = "Nouveau message dans le livre d'or ";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "Pour utiliser le livre d'or vous devez supprimer le fichier setup.php et le dossier update/ dans le répertoire Alex Guestbook"; 
+$f_lang['erreur_fic_install_present'] = "Pour utiliser le livre d'or et pour des raisons de sécurité, vous devez supprimer le fichier setup.php et le dossier update/ dans le répertoire Alex Guestbook"; 
 
 ?>

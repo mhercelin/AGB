@@ -536,5 +536,5 @@ $f_lang['options_livre'] = "Nastavenia knihy hostí";
 $f_lang['text1'] = "V správach od návštevníkov budú <b>cenzúrované slová automaticky nahradené</b>. Môete zvolené slovo \"zle slovo\" nahradi  vırazom \"**cenzúrované slovo**\".<br/>Ak ste zvolili vo¾bu odmietnú správy obsahujúce cenzúrovné slová, <u>aj tak musíte zada slová, ktoré ich mjú nahradi</u>. Tımto spôsobom môete potom ¾ahko prepína vo¾by (odmietanie správ a nahradzovanie cenzúrovanıch slov).";
 
 /* Erreur si fichier install present */
-$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
+$f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
 ?>
