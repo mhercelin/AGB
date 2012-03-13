@@ -2,8 +2,8 @@
 ///////////////////////////////////////////////
 //                @lex Guestbook             //
 //      by Soulard Alexis (c) 2002 - 2006    //
-//         Gieling Pierre (c) 2002 - 2011    //
-//         Hercelin Maxime (c) 2005 - 2011   //
+//         Gieling Pierre (c) 2002 - 2012    //
+//         Hercelin Maxime (c) 2005 - 2012   //
 //         http://www.alexguestbook.net/     //
 //              all right reserved           //
 //  Traduzione dalla 3.3 alla 5.0 inclusa:   //
