@@ -1,102 +1,118 @@
+Version 5.0.3 (mars 2012)
+===========================
+
+> Corrections de plusieurs failles et problÃ¨mes de sÃ©curitÃ© potentiels (merci Ã  la communautÃ© Zenk Security http://www.zenk-security.com/).
+> Script compatible PHP 5.3. Attention, la version 5.0.3 est la derniÃ¨re version d'AlexGuestbook Ã  supporter PHP version 4.x.
+> Script compatible jusqu'Ã  MySQL 5.5
+> Correction de la fonction de dÃ©connexion des administrateurs (supprime la session de la base de donnÃ©es).
+> AmÃ©lioration de la recherche de mises Ã  jour du script0
+> Ajout d'un lien "Retour au livre d'or" sur la page de connexion Ã  l'administration du livre0
+> Correction de l'aperÃ§u du skin lorsque l'option "include" est activÃ©e.
+> Changement du copyright.
+> Suppression des fichiers de police car non utilisÃ©s. RÃ©duction du poids de l'archive ZIP de -2 Mo.
+> Optimisation de la dÃ©tection de la langue.
+> Suppressions de caractÃ¨res "parasites" dans diffÃ©rents fichiers.
+> Mise Ã  disposition d'un script de mise Ã  jour pour faciliter les mises Ã  jour.
+
 Version 5.0.2 (novembre 2008)
 ===========================
 
-> Correction d'un bug : lors de l'affichage du livre d'or dans une autre langue que celle de l'administrateur. Les noms des pays du champ Pays n'étaient pas traduits (affichés dans la langue de l'administrateur).
-> Correction d'un bug : sous certaines conditions, les parenthèses autour de la ville et du pays dans les messages étaient mal gérées.
-> Correction d'un bug : si le champ Note était obligatoire, le visiteur ne pouvait pas sélectionner la note 0.
-> Correction d'un bug : lors de l'insertion de certains caractères spéciaux dans un terme à censurer.
-> Le lien vers le livre dans les courriels de notifications de nouveaux messages tient compte des éventuels includes.
-> Amélioration du système de vérification des champs obligatoires si JavaScript désactivé.
-> Suppression de styles inclus dans les fichiers HTML du skin double_NewLook (déplacés vers la feuille de style).
-> Lors de l'utilisation des includes avec le skin double_NewLook, certaines images n'étaient pas affichées et quelques liens étaient erronés.
-> Suppression d'espaces inutiles en début ou fin de ligne dans les fichiers des skins. Lors de l'utilisation d'un encodage en UTF-8, ces espaces étaient affichés sous forme de caractères spéciaux.
-> Ajout d'un style qui supprime les marges sur la balise BODY. Evite de retrouver des marges blanches autour du livre pour les utilisateurs qui insèrent le livre dans un cadre (frame/iframe).
-> Remplacement du drapeau de Taïwan par le drapeau correct.
+> Correction d'un bug : lors de l'affichage du livre d'or dans une autre langue que celle de l'administrateur. Les noms des pays du champ Pays n'ï¿½taient pas traduits (affichï¿½s dans la langue de l'administrateur).
+> Correction d'un bug : sous certaines conditions, les parenthï¿½ses autour de la ville et du pays dans les messages ï¿½taient mal gï¿½rï¿½es.
+> Correction d'un bug : si le champ Note ï¿½tait obligatoire, le visiteur ne pouvait pas sï¿½lectionner la note 0.
+> Correction d'un bug : lors de l'insertion de certains caractï¿½res spï¿½ciaux dans un terme ï¿½ censurer.
+> Le lien vers le livre dans les courriels de notifications de nouveaux messages tient compte des ï¿½ventuels includes.
+> Amï¿½lioration du systï¿½me de vï¿½rification des champs obligatoires si JavaScript dï¿½sactivï¿½.
+> Suppression de styles inclus dans les fichiers HTML du skin double_NewLook (dï¿½placï¿½s vers la feuille de style).
+> Lors de l'utilisation des includes avec le skin double_NewLook, certaines images n'ï¿½taient pas affichï¿½es et quelques liens ï¿½taient erronï¿½s.
+> Suppression d'espaces inutiles en dï¿½but ou fin de ligne dans les fichiers des skins. Lors de l'utilisation d'un encodage en UTF-8, ces espaces ï¿½taient affichï¿½s sous forme de caractï¿½res spï¿½ciaux.
+> Ajout d'un style qui supprime les marges sur la balise BODY. Evite de retrouver des marges blanches autour du livre pour les utilisateurs qui insï¿½rent le livre dans un cadre (frame/iframe).
+> Remplacement du drapeau de Taï¿½wan par le drapeau correct.
 > Ajout des langues turque et perse (Turkish et Persian).
 
 Version 5.0.1 (avril 2008)
 ===========================
 
-> Correction d'une faille de sécurité critique.
+> Correction d'une faille de sï¿½curitï¿½ critique.
 > Correction de plusieurs bugs mineurs de la v5.0
-> Modification des langues pour être pleinement compatible avec la version 5 : allemand, norvégien, polonais et italien (German, Norwegian, Polish et Italiano)
+> Modification des langues pour ï¿½tre pleinement compatible avec la version 5 : allemand, norvï¿½gien, polonais et italien (German, Norwegian, Polish et Italiano)
 
 Version 5.0 (avril 2008)
 ===========================
 
-> Stockage des paramètres de configuration dans la base de données
-> Désactivation des smileys en un clic
+> Stockage des paramï¿½tres de configuration dans la base de donnï¿½es
+> Dï¿½sactivation des smileys en un clic
 > Facilitation des includes
-> Bannissement possible des pseudos, adresses électroniques et adresses IP
-> Possibilité de refuser les messages contenant des mots censurés par l'admin
-> Test de la librairie GD avant de pouvoir activer le code de sécurité
-> Compatibilité MySQL en mode strict
-> Le livre est placé dans une balise DIV afin d'éviter les interférences entre les styles (livre d'or/reste du site)
-> Possibilité de spécifier le décalage horaire entre le serveur (p. ex. aux USA) et le "lieu du site" (p. ex. site français)
-> Les champs peuvent maintenant être : proposés, non proposés, privés (le public ne voit pas le contenu du champ) ou obligatoires
-> Ajout optionnel d'un lien "Retour à l'accueil" et d'un lien "Administration du livre"
-> Les skins livrés avec le script (skins dits officiels) sont tous compatibles XHTML 1.0 Transitional
+> Bannissement possible des pseudos, adresses ï¿½lectroniques et adresses IP
+> Possibilitï¿½ de refuser les messages contenant des mots censurï¿½s par l'admin
+> Test de la librairie GD avant de pouvoir activer le code de sï¿½curitï¿½
+> Compatibilitï¿½ MySQL en mode strict
+> Le livre est placï¿½ dans une balise DIV afin d'ï¿½viter les interfï¿½rences entre les styles (livre d'or/reste du site)
+> Possibilitï¿½ de spï¿½cifier le dï¿½calage horaire entre le serveur (p. ex. aux USA) et le "lieu du site" (p. ex. site franï¿½ais)
+> Les champs peuvent maintenant ï¿½tre : proposï¿½s, non proposï¿½s, privï¿½s (le public ne voit pas le contenu du champ) ou obligatoires
+> Ajout optionnel d'un lien "Retour ï¿½ l'accueil" et d'un lien "Administration du livre"
+> Les skins livrï¿½s avec le script (skins dits officiels) sont tous compatibles XHTML 1.0 Transitional
 > Changement du logo suite au changement de site vers www.alexguestbook.net
-> Validation de messages multiples depuis une seule page (si le webmestre a activé l'option de mise en attente des messages envoyés)
-> Possibilité de refuser les messages contenant des URLs et, si elles sont autorisées, possibilités de les rendre cliquables ou pas
+> Validation de messages multiples depuis une seule page (si le webmestre a activï¿½ l'option de mise en attente des messages envoyï¿½s)
+> Possibilitï¿½ de refuser les messages contenant des URLs et, si elles sont autorisï¿½es, possibilitï¿½s de les rendre cliquables ou pas
 > Corrections de bugs mineurs (la table alex_livre_txt_lang n'avait pas de titre, quelques erreurs dans certains skins, utilisation de simples quotes dans le fichier config/config_base.php pour permettre les mots de passe avec le symbole $)
-> Quelques améliorations d'ordre pratique
+> Quelques amï¿½liorations d'ordre pratique
 
 Version 4.0.5 (mai 2007)
 ===========================
 
-> Transfert du script aux co-auteurs.  Un grand merci à Alexis Soulard pour avoir
-  créé et développé ce script gratuit !
-> Changement de site de référence, de www.alexphpteam.com à www.alexguestbook.net
-> Correction d'une erreur d'encodage des adresses électroniques des visiteurs.
-> Amélioration du cheminement absolu indiqué dans le code pour faciliter les includes.
+> Transfert du script aux co-auteurs.  Un grand merci ï¿½ Alexis Soulard pour avoir
+  crï¿½ï¿½ et dï¿½veloppï¿½ ce script gratuit !
+> Changement de site de rï¿½fï¿½rence, de www.alexphpteam.com ï¿½ www.alexguestbook.net
+> Correction d'une erreur d'encodage des adresses ï¿½lectroniques des visiteurs.
+> Amï¿½lioration du cheminement absolu indiquï¿½ dans le code pour faciliter les includes.
 
-Version 4.0.4 (février 2007)
+Version 4.0.4 (fï¿½vrier 2007)
 ===========================
 
-> Correction de plusieurs failles de sécurité potentielles non critiques.
+> Correction de plusieurs failles de sï¿½curitï¿½ potentielles non critiques.
 
 Version 4.0.3 (janvier 2007)
 ===========================
 
-> Correction d'une faille de sécurité critique.
+> Correction d'une faille de sï¿½curitï¿½ critique.
 
-Version 4.0.2 (décembre 2006)
+Version 4.0.2 (dï¿½cembre 2006)
 ===========================
 
-> Correction de plusieurs failles de sécurité potentielles non critiques.
+> Correction de plusieurs failles de sï¿½curitï¿½ potentielles non critiques.
 
 Version 4.0.1 (mars 2006)
 ===========================
 
-> Correction d'une erreur dans la vérification du code de sécurité avant insertion
-  d'un message dans la base de données.
+> Correction d'une erreur dans la vï¿½rification du code de sï¿½curitï¿½ avant insertion
+  d'un message dans la base de donnï¿½es.
 
 Version 4.0 (janvier 2006)
 ===========================
 
-> Mise en place d'une gestion complète de la base de données : optimisation,
+> Mise en place d'une gestion complï¿½te de la base de donnï¿½es : optimisation,
   sauvegarde, restauration.
-> Mise en place d'un système d'envoi d'un message de remerciement automatique
- (option désactivable).
-> Mise en place d'un système permettant aux Webmasters d'afficher les derniers
-  messages postés sur le livre d'or.
-> Les smileys peuvent désormais être classés à l'aide d'un numéro d'affichage.
-> Mise en place d'un option permettant de définir le nombre maxi de smileys
-  affichés. Une fenêtre ouverte en popup permet de sélectionner les autres.
-> Mise en place d'une page permettant de définir facilement un titre pour
-  le livre d'or à partir de l'administration. Celui ci est propre à chaque langue.
-> Le Webmaster peut désormais répondre aux messages à partir de la page de gestion
-  de l'ensemble des messages enregistrés dans le livre d'or.
-> Création d'un nouveau skin (AguestNew) valide XHTML 1.0 Transitional.
+> Mise en place d'un systï¿½me d'envoi d'un message de remerciement automatique
+ (option dï¿½sactivable).
+> Mise en place d'un systï¿½me permettant aux Webmasters d'afficher les derniers
+  messages postï¿½s sur le livre d'or.
+> Les smileys peuvent dï¿½sormais ï¿½tre classï¿½s ï¿½ l'aide d'un numï¿½ro d'affichage.
+> Mise en place d'un option permettant de dï¿½finir le nombre maxi de smileys
+  affichï¿½s. Une fenï¿½tre ouverte en popup permet de sï¿½lectionner les autres.
+> Mise en place d'une page permettant de dï¿½finir facilement un titre pour
+  le livre d'or ï¿½ partir de l'administration. Celui ci est propre ï¿½ chaque langue.
+> Le Webmaster peut dï¿½sormais rï¿½pondre aux messages ï¿½ partir de la page de gestion
+  de l'ensemble des messages enregistrï¿½s dans le livre d'or.
+> Crï¿½ation d'un nouveau skin (AguestNew) valide XHTML 1.0 Transitional.
 > Ajout d'un champ pays et affichage de drapeaux.
-> Réduction de la taille de l'image du code de sécurité.
+> Rï¿½duction de la taille de l'image du code de sï¿½curitï¿½.
 > Ajout d'un bouton "Annuler" lors d'une recherche.
 > Division par trois de la taille du fichier "include/funct_sql_admin.php"
-  grâce à un nouveau système de génération de requêtes SQL.
+  grï¿½ce ï¿½ un nouveau systï¿½me de gï¿½nï¿½ration de requï¿½tes SQL.
 > Correction de bugs mineurs.
 
-Version 3.31 (décembre 2005)
+Version 3.31 (dï¿½cembre 2005)
 ===========================
 
 > Correction d'un bug avec PHP 5
@@ -104,30 +120,30 @@ Version 3.31 (décembre 2005)
 Version 3.3 (juin 2005)
 ===========================
 
-> L'ajout de smileys chez free est désormais fonctionnel
-> Correction d'un bug javascript lorsque l'url du site web enregistré par le
-  visiteur comportait le caractère "
-> Changement des smileys fournis par défaut avec le script
+> L'ajout de smileys chez free est dï¿½sormais fonctionnel
+> Correction d'un bug javascript lorsque l'url du site web enregistrï¿½ par le
+  visiteur comportait le caractï¿½re "
+> Changement des smileys fournis par dï¿½faut avec le script
 > Correction d'une FAILLE DE SECURITE MAJEURE
-> Ajout d'une option permettant de contraindre les utilisateurs à saisir un code
-  de sécurité pour enregistrer un message
+> Ajout d'une option permettant de contraindre les utilisateurs ï¿½ saisir un code
+  de sï¿½curitï¿½ pour enregistrer un message
 
 Version 3.2 (octobre 2004)
 ===========================
 
 > Ajout d'une option permettant de choisir si l'on souhaite ou non valider les
-  messages postés avant de les afficher
+  messages postï¿½s avant de les afficher
 > Ajout d'un module dans la partie admin du livre d'or affichant la version
-  installée et éventuellement un lien vers le téléchargement d'une nouvelle version
-> Mise à jour pour une totale compatibilité avec php 5 ainsi qu'avec le php.ini
-  recommandé par le groupe PHP
-> Ajout d'une option permettant de définir le nombre maxi de caractères dans un
+  installï¿½e et ï¿½ventuellement un lien vers le tï¿½lï¿½chargement d'une nouvelle version
+> Mise ï¿½ jour pour une totale compatibilitï¿½ avec php 5 ainsi qu'avec le php.ini
+  recommandï¿½ par le groupe PHP
+> Ajout d'une option permettant de dï¿½finir le nombre maxi de caractï¿½res dans un
   message
-> L'encodage de caractères est désormais défini dans les fichiers de langue
-> Modification du code html généré pour l'affichage du livre d'or afin de le rendre
+> L'encodage de caractï¿½res est dï¿½sormais dï¿½fini dans les fichiers de langue
+> Modification du code html gï¿½nï¿½rï¿½ pour l'affichage du livre d'or afin de le rendre
   compatible avec les recommandations du W3C
-> Ajout d'un bouton permettant de visualiser le résultat graphique des skins
+> Ajout d'un bouton permettant de visualiser le rï¿½sultat graphique des skins
   disponibles dans la partie admin
-> Encodage javascript de l'ensemble des urls affichées dans le livre d'or afin
-  d'éradiquer le spam
-> Optimisations et améliorations diverses
+> Encodage javascript de l'ensemble des urls affichï¿½es dans le livre d'or afin
+  d'ï¿½radiquer le spam
+> Optimisations et amï¿½liorations diverses
