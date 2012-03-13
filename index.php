@@ -33,6 +33,12 @@ else{
 	exit ("Please setup the script : <a href=\"".$chem_absolu."setup.php\"><b>setup.php</b></a> or refresh your browser : <a href=\"javascript:location.reload();\"><b>refresh</b></a>.");
 }
 
+//----------------------- si fichier install.php ou dossier update presents exit
+if (file_exists($chem_absolu."setup.php") || file_exists($chem_absolu."/update/"))
+{
+	exit('<div style="background-color: #B40806; padding: .5em; border: 2px solid #6; color: #F3F3F3; font-size: 1.2em;">'.$f_lang['erreur_fic_install_present'].'</div>');
+}
+
 //----------------------- si un skin est selectionne dans l'URL, on le prend en compte
 if (isset($_GET['skin']) && $_GET['skin'])
 	$config['skin_to_use'] = strip_tags($_GET['skin']);

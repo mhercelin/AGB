@@ -532,4 +532,7 @@ $f_lang['erreur_ecriture'] = "<b>B£¥D</b>, nie mo¿na zapisaæ w folderze \"config
 $f_lang['options_livre'] = "Opcje Ksiêgi Go¶ci";
 
 $f_lang['text1'] = "<b>S³owa ocenzurowane bêd± automatycznie zamieniane</b> w wiadomo¶ciach wys³anych przez u¿ytkowników. Mo¿esz je zamieniæ wszystkie \"wulgaryzm\" tekstem \"**ocenzurowano**\".<br/>Je¶li wybra³e¶ opcjê odrzucania wiadomo¶ci zawieraj±cych \"wulgaryzm\", <u>mo¿esz byæ zmuszony do ci±g³ego poprawiania tekstów</u>. Tutaj mo¿esz prze³±czyæ tryb (zamiana s³ów lub odrzucenie wiadomo¶ci).";
+
+/* Erreur si fichier install present */
+$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
 ?>

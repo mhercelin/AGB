@@ -535,4 +535,7 @@ $f_lang['erreur_ecriture'] = "<b>ERROR</b>, onmogelijk om te schrijven in de dir
 $f_lang['options_livre'] = "Gastenboek opties";
 
 $f_lang['text1'] = "<b>Gecensureerde woorden zullen automatisch worden vervangen</b> in de berichten van de bezoekers. U kunt bijvoorbeeld alle \"scheld\" vervangen door \"**gecensureerd**\".<br/>Als je kiest om berichten te weigeren die woorden bevatten die zijn \"**gecensureerd**\", <u>moet je wel een vervangende tekst aangeven</u>. Hierdoor heb je de mogelijkheid om van mode te veranderen (woord vervanging or bericht weigering).";
+
+/* Erreur si fichier install present */
+$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
 ?>

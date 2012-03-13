@@ -547,4 +547,7 @@ $f_lang['erreur_ecriture'] = "<b>HATA</b>, \"config/\" dosyasýna yazýlma izni ve
 $f_lang['options_livre'] = "Defter Ayarlarý";
 
 $f_lang['text1'] = "<b>Sansürlenen kelimeler otomatik olarak deðiþtirilecek.<br>Eðer bir ziyaretçi uygun olmayan bir kelime girmiþse ve bu kelime de sizin sansürlediðiniz kelimeler arasýnda varsa sistem otomatik olarak o kelimeyi isteðiniz kelimeyle deðiþecektir.</b>";
+
+/* Erreur si fichier install present */
+$f_lang['erreur_fic_install_present'] = "To use your guestbook, you have to delete file setup.php and folder update/";
 ?>
