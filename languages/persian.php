@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 ///////////////////////////////////////////////
 //                @lex Guestbook             //
 //      by Soulard Alexis (c) 2002 - 2006    //
@@ -11,7 +11,7 @@
 //           Maku OnLiNe (c) 2006-2008       //
 ///////////////////////////////////////////////
 
-/* Encodage utilis頤ans le script */
+/* Encodage utilise dans le script */
 $SCRIPT_ENCODAGE = "UTF-8";
 $CONTENT_LANGUAGE = "fa";
 
@@ -123,7 +123,7 @@ $f_lang['ok_supprimer'] = "پوسته حذف شد ";
 $f_lang['erreur_supprimer'] = "ERROR\\nOne or several file(s) of the skin could not be deleted, you should delete them manually.";
 
 /* page des mots censur鳠*/
-$f_lang['aj_mot'] = "افزودن کلمه ی جدید "; 
+$f_lang['aj_mot'] = "افزودن کلمه ی جدید ";
 $f_lang['mot_interdit'] = "کلمه ی غیر مجاز :";
 $f_lang['remplacer_par'] = "جایگزینی با :";
 $f_lang['gestion_censure'] = "مدیریت کلمات غیر مجاز";
