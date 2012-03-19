@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Consignes de mise à jour de la version 5.0.* ou supérieure à la version 5.0.3</title>
+<style type="text/css">
+body {
+	font-family: Arial, Verdana;
+	font-size: 0.9em;
+	background-color: #EFF0FE;
+}
+
+h1 {
+	color: #1045CC;
+	font-family: Arial, "Trebuchet MS", Verdana;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.1em;
+	color: #1045CC;
+}
+
+dl.codebox code {
+	overflow: auto;
+	display: block;
+	height: auto;
+	max-height: 200px;
+	white-space: normal;
+	padding-top: 3px;
+	font-family: "Courier New", Courier, mono;
+	font-size: 0.9em;
+	color: #808080;
+	margin-left: -30px;
+}
+
+dl.codebox {
+	width: 90%;
+	margin-left: 20px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #A2DBF8;
+	font-size: 1em;
+}
+
+dl.codebox dt {
+	text-transform: uppercase;
+	border-bottom: 1px solid #A2DBF8;
+	margin-bottom: 3px;
+	font-size: 0.6em;
+	display: block;
+	color: #1045CC;
+}
+
+.important {
+	color: #FF0000;
+}
+
+.souligne {
+	text-decoration: underline;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.barre_noir {
+	text-decoration: line-through;
+	color: #000000;
+}
+
+li.nom_fichier {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #76B50F;
+}
+
+.separation_maj_skin {
+	color: #1045CC;
+	background-color: #1045CC;
+	height: 2px;
+	border-bottom: 1px #4D7BF1 solid;
+}
+</style>
+<!-- fonction issue de phpBB3 -->
+<script type="text/javascript">
+// <![CDATA[
+function selectCode(a)
+{
+	// Get ID of code block
+	var e = a.parentNode.parentNode.getElementsByTagName('CODE')[0];
+
+	// Not IE
+	if (window.getSelection)
+	{
+		var s = window.getSelection();
+		// Safari
+		if (s.setBaseAndExtent)
+		{
+			s.setBaseAndExtent(e, 0, e, e.innerText.length - 1);
+		}
+		// Firefox and Opera
+		else
+		{
+			var r = document.createRange();
+			r.selectNodeContents(e);
+			s.removeAllRanges();
+			s.addRange(r);
+		}
+	}
+	// Some older browsers
+	else if (document.getSelection)
+	{
+		var s = document.getSelection();
+		var r = document.createRange();
+		r.selectNodeContents(e);
+		s.removeAllRanges();
+		s.addRange(r);
+	}
+	// IE
+	else if (document.selection)
+	{
+		var r = document.body.createTextRange();
+		r.moveToElementText(e);
+		r.select();
+	}
+}
+// ]]>
+</script>
+</head>
+<body>
+<h1>Consignes de mise à jour du script AlexGuestbook<br/>de la version 5.0.* à la version 5.0.3</h1><br/>
+<p>Cette mise à jour du livre d'or AlexGuestbook est vivement recommandée. Elle corrige plusieurs failles de sécurité, supporte PHP > v5.2 et corrige quelques bugs.<br/>La liste des modifications et corrections apportées au script est disponible dans le fichier <a href="../changelog_fr.txt" title="Lien vers le fichier changelog">changelog_fr.txt</a>.<br/>Retrouvez toutes les informations, les mises à jour et l'assistance du script sur <a href="http://www.alexguestbook.net" title="Lien vers le site AlexGuestbook.net">www.alexguestbook.net</a></p><br/>
+<p class="souligne">Avant toutes modifications, faites une sauvegarde de la base de données (voir l'interface d'administration du script) et de vos skins si vous les avez personnalisés.</p>
+<br/>
+<ol>
+	<li>
+		<p>La version 5.0.3 propose une nouvelle façon de mettre à jour le script AlexGuestbook. Un script de mise à jour est à télécharger sur notre site <a href="http://www.alexguestbook.net">www.alexguestbook.net</a>. Téléchargez également l'archive complète du script AlexGuestbook 5.0.3.</p>
+	</li>
+	<li>
+		<p>Vous devez extraire tous les fichiers du script version 5.0.3 et les envoyer (avec votre logiciel FTP, par exemple FileZilla) sur votre serveur dans le répertoire du livre d'or (par défaut "agb"). Ecrasez tous les fichiers sauf les skins si vous les avez modifiés.</p>
+	</li>
+	<li>
+		<p>Faites de même avec le fichier update-5.0.3.zip : décompressez le fichier ZIP et envoyez le répertoire "update" sur votre serveur toujours dans le répertoire du livre d'or. </p>
+	</li>
+	<li>
+		<p>Lancez la mise à jour en vous connectant depuis votre navigateur (Internet Explorer, Firefox, Safari ou autre) à l'adresse www.votresite.fr/repertoire_du_livre_dor<b>/update/index.php</b> (il est nécessaire d'ajouter le /update/index.php pour accéder à l'interface de mise à jour).</p>
+	</li>
+	<li>
+		<p>Suivez les instructions qui vous sont donnez dans l'interface de mise à jour.</p>
+	</li>
+	<li>
+		<p>Si vous avez modifié les skins, vous devez les mettre à jour (nouveau copyright). La procédure de mise à jour du skin est expliquée dans l'interface de mise à jour.</p>
+	</li>
+</ol>
+
+<h2>Bonne mise à jour à tous !</h2>
+</body>
+</html>
