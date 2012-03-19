@@ -42,7 +42,7 @@ $f_lang['erreur_pass_differents'] = "ATTENTION, vos mots de passe sont différent
 $f_lang['erreur_first_connexion'] = "<b>ERREUR, connexion impossible à la base de données.</b><br><br>Veuillez vérifier vos identifiants d'accès : <a href=\"javascript:history.go(-1);\"><b>retour</b></a>.";
 $f_lang['erreur_install'] = "Echec de l'installation";
 $f_lang['ok_install'] = "Installation réussie";
-$f_lang['text_ok_install'] = "<b>Merci, l'installation s'est déroulée avec succès.</b><br><br>Pour des raisons de sécurité nous vous invitons vivement à supprimer le fichier d'installation que vous venez d'exécuter (\"setup.php\"), si vous ne le faites pas d'autres personnes pourront exécuter cette installation automatique et ainsi corrompre vos fichiers de configuration.<br><br>Vous pouvez désormais administrer votre livre d'or en cliquant <a href=\"".$chem_absolu."admin/\" target=\"_blank\"><b>ici</b></a> ou bien<br> consulter l'affichage de ce dernier <a href=\"".$chem_absolu."\" target=\"_blank\"><b>ici</b></a>.";
+$f_lang['text_ok_install'] = "<b>Merci, l'installation s'est déroulée avec succès.</b><br><br>Pour des raisons de sécurité vous devez supprimer le fichier d'installation que vous venez d'exécuter (\"setup.php\"). Tant que vous ne l'aurez pas supprimé vous ne pourrez pas avoir accès au livre d'or.<br><br>Vous pouvez désormais administrer votre livre d'or en cliquant <a href=\"".$chem_absolu."admin/\" target=\"_blank\"><b>ici</b></a> ou bien<br> consulter l'affichage de ce dernier <a href=\"".$chem_absolu."\" target=\"_blank\"><b>ici</b></a>.";
 
 /* administration */
 $f_lang['page protect'] = "Page protégée";
