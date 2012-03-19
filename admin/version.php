@@ -39,8 +39,8 @@ template_type("");
 generate_langue($tab_champs_langue);
 
 /* nouvelle version dispo ? */
-$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&l='.$alex_livre_tar.'&j='.urlencode($config['fichier_inclusion']));
-if (!empty($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $current_version)){
+$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode($_SERVER['PHP_SELF']).'&v='.$alex_livre_version.'&m='.$total_messages_livre.'&l='.$alex_livre_tar.'&j='.urlencode($config['fichier_inclusion']));
+if (!empty($latest_version) && preg_match('`\d(?:\.\d{1,2}){1,2}(?:-.){0,1}`', $latest_version)){
 	$latest_version = explode("\n", trim($latest_version));
 	$latest_version = explode('-', trim($latest_version[1]));
 }
