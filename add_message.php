@@ -195,7 +195,7 @@ if (trim($_POST['message_textarea']) && !$ip_bannie && !$pseudo_banni && !$email
 			$entetemail .= "X-Mailer: PHP\r\n";
 			$entetemail .= "X-Priority: 1\r\n";
 
-			envoyer_mail($alex_livre_users_email[$i], $f_lang['mail_object'].htmlspecialchars($_SERVER["SERVER_NAME"], ENT_QUOTES), $f_lang['mail_message'].'http://'.htmlspecialchars($_SERVER['HTTP_HOST'], ENT_QUOTES).dirname($config['fichier_inclusion'])." :\r\n\r\n-------------------------------------------\r\n".trim($chaine_message)."\r\n-------------------------------------------\r\n\r\nPowered by @lex Guestbook ".$alex_livre_version." - http://www.alexguestbook.net/", $entetemail);
+			envoyer_mail($alex_livre_users_email[$i], $f_lang['mail_object'].htmlspecialchars($_SERVER["SERVER_NAME"], ENT_QUOTES), $f_lang['mail_message'].'http://'.htmlspecialchars($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'], ENT_QUOTES).dirname($config['fichier_inclusion'])." :\r\n\r\n-------------------------------------------\r\n".trim($chaine_message)."\r\n-------------------------------------------\r\n\r\nPowered by @lex Guestbook ".$alex_livre_version." - http://www.alexguestbook.net/", $entetemail);
 		}
 	}
 
