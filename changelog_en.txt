@@ -5,8 +5,8 @@ Version 5.0.3 (mars 2012)
 > Script compatible PHP 5.3. Attention, la version 5.0.3 est la dernière version d'AlexGuestbook à supporter PHP version 4.x.
 > Script compatible jusqu'à MySQL 5.5
 > Correction de la fonction de déconnexion des administrateurs (supprime la session de la base de données).
-> Amélioration de la recherche de mises à jour du script0
-> Ajout d'un lien "Retour au livre d'or" sur la page de connexion à l'administration du livre0
+> Amélioration de la recherche de mises à jour du script
+> Ajout d'un lien "Retour au livre d'or" sur la page de connexion à l'administration du livre
 > Correction de l'aperçu du skin lorsque l'option "include" est activée.
 > Changement du copyright.
 > Optimisation de la détection de la langue.
