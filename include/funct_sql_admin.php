@@ -101,13 +101,16 @@ function f_insert_session($f_sid, $type_action, $id_user, $login_user){
 	switch ($type_action){
 		case("insert"):
 			$query = "INSERT INTO ".$name_table['alex_livre_sessions']." (session, id_user, login, last_connect) VALUES('$f_sid','$id_user','$login_user','".time()."')";
+			$query2 = "UPDATE ".$name_table['alex_livre_users']." SET last_connect='".time()."' WHERE id_user='$id_user'";
 			break;
 		case("update"):
 			$query = "UPDATE ".$name_table['alex_livre_sessions']." SET last_connect='".time()."' WHERE session='$f_sid'";
+			$query2 = "UPDATE ".$name_table['alex_livre_users']." SET last_connect='".time()."' WHERE id_user='$id_user'";
 			break;
 	}
 
 	$result = $f_db_connexion -> sql_query($query);
+	$result2 = $f_db_connexion -> sql_query($query2);
 }
 
 // -----
