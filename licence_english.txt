@@ -2,6 +2,7 @@ PLEASE NOTE : THIS ENGLISH VERSION IS TRANSLATED AS WELL AS POSSIBLE. IN CASE OF
 
 @LEX GUESTBOOK SCRIPT LICENCE CONTRACT
 
+
 NOTICE TO USERS : PLEASE READ THIS CONTRACT CAREFULLY. BY USING, COPYING OR DISTRIBUTING PART OF OR THE WHOLE @LEX GUESTBOOK SCRIPT (HEREAFTER "THE SCRIPT"), YOU AGREE WITH ALL DISPOSITIONS OF THIS CONTRACT. YOU AGREE THAT THIS CONTRACT HAS THE SAME VALUE AS ANY CONTRACT YOU WOULD HAVE NEGOCIATED AND SIGNED. THIS CONTRACT IS APPLICABLE TO YOU AND ANY LEGAL INSTANCE WHO WOULD HAVE OBTAINED THIS SCRIPT AND WHOM THIS SCRIPT WOULD BE USED FOR.
 
 The authors of the script detain and keep all intellectual property rights linked to the script. The authors allow you to use the script only according to the terms of the present contract.
@@ -10,7 +11,7 @@ The authors of the script detain and keep all intellectual property rights linke
 
 2. Licence concession. Under the reserve of this contract's terms, the authors give you a non exclusive user's licence within the documentation's limits and bound to these conditions : 
 
-2.1 General use. At the condition to keep our authors' references as described hereafter, you are allowed to install and use or or several copies of the script on one or more computer as well as on one or more websites. Buying a licence allows to install the script without visible references (see §2.5) on one website, which has to be specified upon purchase.
+2.1 General use. At the condition to keep our authors' references as described hereafter, you are allowed to install and use or or several copies of the script on one or more computer as well as on one or more websites. Buying a licence allows to install the script without visible references (see ï¿½2.5) on one website, which has to be specified upon purchase.
 
 2.2 Distribution on a server. You are allowed to distribute the script on a file server at the condition to mention the project website http://www.alexguestbook.net/ and, even in the case where you would have modified the script, to maintain our references as described hereafter. To distribute an unmodified version of the script, it is strongly advised to invite your visitors to come download the script on the project website in order to have the latest version and read the documentation.
 

@@ -5,7 +5,7 @@
 | authors : Alexis Soulard,                   |
 |           Pierre Gieling,                   |
 |           Maxime Hercelin                   |
-| web site : http://www.alexguestbook.net/    |
+| website : http://www.alexguestbook.net/     |
 | license : GNU                               |
 |                                             |
 | For installation read the "documentation"   |

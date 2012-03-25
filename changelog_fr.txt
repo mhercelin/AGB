@@ -143,6 +143,5 @@ Version 3.2 (octobre 2004)
   compatible avec les recommandations du W3C
 > Ajout d'un bouton permettant de visualiser le résultat graphique des skins
   disponibles dans la partie admin
-> Encodage javascript de l'ensemble des urls affichées dans le livre d'or afin
-  d'éradiquer le spam
+> Encodage javascript de l'ensemble des urls affichées dans le livre d'or afin d'éradiquer le spam
 > Optimisations et améliorations diverses
