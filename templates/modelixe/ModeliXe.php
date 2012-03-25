@@ -7,23 +7,23 @@ Copyright (C) 2001  - AUTHOR
                             - ANDRE thierry
                     - ADDING
                             - VILDAY Laurent.
-                            - MOULRON Diogène.
+                            - MOULRON Diogï¿½ne.
                             - DELVILLE Romain.
                             - BOUCHERY Frederic.
                             - PERRICHOT Florian.
                             - RODIER Phillipe.
-                            - HOUZE Sébastien.
-                            - DECLEE Frédéric.
-                            - HORDEAUX Sébastien.
+                            - HOUZE Sï¿½bastien.
+                            - DECLEE Frï¿½dï¿½ric.
+                            - HORDEAUX Sï¿½bastien.
                             - LELARGE Guillaume.
-                            - GAUTHIER Jérémy.
+                            - GAUTHIER Jï¿½rï¿½my.
                             - CASANOVA Matthieu.
                             - KELLER Christophe.
 							- MARK HUMPHREYS Aidan.
 							- KELLUM Patrick.
-							- DE CORNUAUD Sébastien.
-							- PIEL Régis.
-							- LE LOARER Loïc.
+							- DE CORNUAUD Sï¿½bastien.
+							- PIEL Rï¿½gis.
+							- LE LOARER Loï¿½c.
 
 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option)
@@ -41,50 +41,50 @@ Suite 330, Boston,
 MA 02111-1307, Etats-Unis.
 ------------------------------------------------------------------------------------------------------------------
 
--Français---------------------------------------------------------------------------------------------------------
-ModeliXe est distribué sous licence LGPL, merci de laisser cette en-tête, gage et garantie de cette licence.
-ModeliXe est un moteur de template destiné à être utilisé par des applications écrites en PHP.
-ModeliXe peut être utilisé dans des scripts vendus à des tiers aux titres de la licence LGPL. ModeliXe n'en reste
-pas moins OpenSource et libre de droits en date du 23 Août 2001.
+-Franï¿½ais---------------------------------------------------------------------------------------------------------
+ModeliXe est distribuï¿½ sous licence LGPL, merci de laisser cette en-tï¿½te, gage et garantie de cette licence.
+ModeliXe est un moteur de template destinï¿½ ï¿½ ï¿½tre utilisï¿½ par des applications ï¿½crites en PHP.
+ModeliXe peut ï¿½tre utilisï¿½ dans des scripts vendus ï¿½ des tiers aux titres de la licence LGPL. ModeliXe n'en reste
+pas moins OpenSource et libre de droits en date du 23 Aoï¿½t 2001.
 
 Copyright (C) 2001  - Auteur
                             - ANDRE thierry
                     - Ajouts
                             - VILDAY Laurent.
-                            - MOULRON Diogène.
+                            - MOULRON Diogï¿½ne.
                             - DELVILLE Romain.
                             - BOUCHERY Frederic.
                             - PERRICHOT Florian.
                             - RODIER Phillipe.
-                            - HOUZE Sébastien.
-                            - DECLEE Frédéric.
-                            - HORDEAUX Sébastien.
+                            - HOUZE Sï¿½bastien.
+                            - DECLEE Frï¿½dï¿½ric.
+                            - HORDEAUX Sï¿½bastien.
                             - LELARGE Guillaume.
-                            - GAUTHIER Jérémy.
+                            - GAUTHIER Jï¿½rï¿½my.
                             - CASANOVA Matthieu.
                             - KELLER Christophe.
 							- MARK HUMPHREYS Aidan.
 							- KELLUM Patrick.
-							- DE CORNUAUD Sébastien.
-							- PIEL Régis.
-							- LE LOARER Loïc.
+							- DE CORNUAUD Sï¿½bastien.
+							- PIEL Rï¿½gis.
+							- LE LOARER Loï¿½c.
 
-Cette bibliothèque est libre, vous pouvez la redistribuer et/ou la modifier selon les termes de la Licence Publique
-Générale GNU Limitée publiée par la Free Software Foundation version 2.1 et ultérieure.
+Cette bibliothï¿½que est libre, vous pouvez la redistribuer et/ou la modifier selon les termes de la Licence Publique
+Gï¿½nï¿½rale GNU Limitï¿½e publiï¿½e par la Free Software Foundation version 2.1 et ultï¿½rieure.
 
-Cette bibliothèque est distribuée car potentiellement utile, mais SANS AUCUNE GARANTIE, ni explicite ni implicite,
-y compris les garanties de commercialisation ou d'adaptation dans un but spécifique. Reportez-vous à la Licence
-Publique Générale GNU Limitée pour plus de détails.
+Cette bibliothï¿½que est distribuï¿½e car potentiellement utile, mais SANS AUCUNE GARANTIE, ni explicite ni implicite,
+y compris les garanties de commercialisation ou d'adaptation dans un but spï¿½cifique. Reportez-vous ï¿½ la Licence
+Publique Gï¿½nï¿½rale GNU Limitï¿½e pour plus de dï¿½tails.
 
-Vous devez avoir reçu une copie de la Licence Publique Générale GNU Limitée en même temps que cette bibliothèque;
-si ce n'est pas le cas, écrivez à:
+Vous devez avoir reï¿½u une copie de la Licence Publique Gï¿½nï¿½rale GNU Limitï¿½e en mï¿½me temps que cette bibliothï¿½que;
+si ce n'est pas le cas, ï¿½crivez ï¿½:
 
 Free Software Foundation,
 Inc., 59 Temple Place,
 Suite 330, Boston,
 MA 02111-1307, Etats-Unis.
 
-Pour tout renseignements mailez à modelixe@free.fr ou thierry.andre@freesbee.fr
+Pour tout renseignements mailez ï¿½ modelixe@free.fr ou thierry.andre@freesbee.fr
 --------------------------------------------------------------------------------------------------------------------
 */
 
@@ -102,13 +102,11 @@ if (file_exists($chem_modelixe.'Mxconf.php')){
 	require_once($chem_modelixe.'ErrorManager.php');
 }
 
-//Désactivation de magic_quotes_runtime de php.ini
+// Desactive les fonctions de protections des variables qui pourraient etre activees
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	if (get_magic_quotes_runtime()) set_magic_quotes_runtime(0);
-	if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on' || !function_exists('ini_get')) {
-		deregister_globals();
-	}
-		define('STRIP', (get_magic_quotes_gpc()) ? true : false);
+	if (get_magic_quotes_runtime())
+		set_magic_quotes_runtime(0);
+	unregister_globals();
 }
 
 class ModeliXe extends ErrorManager{
@@ -132,7 +130,7 @@ class ModeliXe extends ErrorManager{
     var $fin = 0;
     var $ExecutionTime = 0;
 
-	//par défaut pas de cache
+	//par dï¿½faut pas de cache
 	var $ok_cache = false;
 
     var $mXcompress = false;
@@ -182,7 +180,7 @@ class ModeliXe extends ErrorManager{
         $time = explode(' ',microtime());
         $this -> debut = $time[1] + $time[0];
 
-        //Gestion des paramètres par défaut
+        //Gestion des paramï¿½tres par dï¿½faut
         //Definition du systeme de compression
         if (defined('MX_COMPRESS')) $this -> SetMxCompress(MX_COMPRESS);
 
@@ -192,22 +190,22 @@ class ModeliXe extends ErrorManager{
         //Activation de la signature
         if (defined('MX_SIGNATURE')) $this -> SetMxSignature(MX_SIGNATURE);
 
-        //Définition du répertoire de template
+        //Dï¿½finition du rï¿½pertoire de template
         if (defined('MX_TEMPLATE_PATH')) $this -> SetMxTemplatePath(MX_TEMPLATE_PATH);
 
-        //Définition du fichier de paramétrage
+        //Dï¿½finition du fichier de paramï¿½trage
         if (defined('MX_DEFAULT_PARAMETER') && ! $templateFileParameter)
            $this -> SetMxFileParameter(MX_DEFAULT_PARAMETER);
         elseif ($templateFileParameter != '')
            $this -> SetMxFileParameter($templateFileParameter);
 
-        //Définition du type de balisage
+        //Dï¿½finition du type de balisage
         if (defined('MX_FLAGS_TYPE')) $this -> SetMxFlagsType(MX_FLAGS_TYPE);
 
-        //Définition du type de balisage en sortie
+        //Dï¿½finition du type de balisage en sortie
         if (defined('MX_OUTPUT_TYPE')) $this -> SetMxOutputType(MX_OUTPUT_TYPE);
 
-        //Définition du répertoire de cache
+        //Dï¿½finition du rï¿½pertoire de cache
         if (defined('MX_CACHE_PATH')) $this -> SetMxCachePath(MX_CACHE_PATH);
         if (defined('MX_CACHE_DELAY')) $this -> SetMxCacheDelay(MX_CACHE_DELAY);
         if ($cacheDelay >= 0 && $cacheDelay != '') $this -> SetMxCacheDelay($cacheDelay);
@@ -215,7 +213,7 @@ class ModeliXe extends ErrorManager{
         //Activation du traceur de performance
         if (defined('MX_PERFORMANCE_TRACER') && MX_PERFORMANCE_TRACER == 'on') $this -> performanceTracer = true;
 
-        //Gestion des paramètres de sessions
+        //Gestion des paramï¿½tres de sessions
         if ($sessionParameter) $this -> sessionParameter = $sessionParameter;
 
         //Instanciation de la ressource templates
@@ -235,12 +233,12 @@ class ModeliXe extends ErrorManager{
 
     //Setting ModeliXe -------------------------------------------------------------------------------------------
 
-    //Méthode d'instanciation du template
+    //Mï¿½thode d'instanciation du template
     function SetModelixe($out = ''){
         if ($this -> mXsetting)  $this -> ErrorTracker(4, 'You can\'t re-use this method after instanciate ModeliXe once time.', 'SetModelixe', __FILE__, __LINE__);
         if ($out) $this -> mXoutput = true;
         
-        //Test du cache et insertion éventuelle
+        //Test du cache et insertion ï¿½ventuelle
         if ($this -> mXCacheDelay > 0){
             $this -> mXUrlKey = $this -> GetMD5UrlKey();
             
@@ -290,7 +288,7 @@ class ModeliXe extends ErrorManager{
         return $this -> mXTemplatePath;
 	}
 
-    //Instanciation du fichier de paramètre
+    //Instanciation du fichier de paramï¿½tre
     function SetMxFileParameter($arg = ''){
         if ($arg != '' && ! @is_file($arg)) $this -> ErrorTracker(1, 'The parameter\'s file path (<b>'.$arg.'</b>) does not exist.', 'SetMxFileParameter', __FILE__, __LINE__);
         else $this -> mXParameterFile = $arg;
@@ -338,7 +336,7 @@ class ModeliXe extends ErrorManager{
         return $arg;
         }
 
-    //Instanciation du répertoire de cache
+    //Instanciation du rï¿½pertoire de cache
     function SetMxCachePath($arg){
         /*if ($this -> mXsetting) $this -> ErrorTracker(1, 'You can\'t use this method after instanciate ModeliXe with setModeliXe method, it will be without effects.', 'SetMxCachePath', __FILE__, __LINE__);
         else {
@@ -350,7 +348,7 @@ class ModeliXe extends ErrorManager{
         return $this -> mXCachePath;
         }
 
-    //Instanciation du délai de cache
+    //Instanciation du dï¿½lai de cache
     function SetMxCacheDelay($arg){
         if ($this -> mXsetting) $this -> ErrorTracker(1, 'You can\'t use this method after instanciate ModeliXe with setModeliXe method, it will be without effects.', 'SetMxCachePath', __FILE__, __LINE__);
         elseif ($arg >= 0) $this -> mXCacheDelay = (integer)$arg;
@@ -358,7 +356,7 @@ class ModeliXe extends ErrorManager{
         return $this -> mXCacheDelay;
         }
 
-    //Instanciation des paramètres de session
+    //Instanciation des paramï¿½tres de session
     function SetMxSession($arg){
         $this -> sessionParameter = $arg;
         }
@@ -394,7 +392,7 @@ class ModeliXe extends ErrorManager{
             if (strlen($ligne)) {
                 if ($ligne[0] == '#' && $ligne[1] != '#'){
 
-                    //Changement d'état pour les paramètres
+                    //Changement d'ï¿½tat pour les paramï¿½tres
                     switch(strtolower($ligne)){
                         case '#flag'     :
                                $signal = 'flag';
@@ -412,7 +410,7 @@ class ModeliXe extends ErrorManager{
                     if (! $multi){
                         $keyC = chop(substr($ligne, 0, strpos($ligne, '=') - 1));
 
-                        //Gestion du multiligne, début d'une valeur sur plusieurs lignes
+                        //Gestion du multiligne, dï¿½but d'une valeur sur plusieurs lignes
                         if (($content = ltrim(substr($ligne, strpos($ligne, '=') + 1))) && substr($content, 0, 3) == '"""') {
                             $multi = true;
                             $content = substr($content, 3);
@@ -428,7 +426,7 @@ class ModeliXe extends ErrorManager{
                         else $content .= ' '.$ligne;
                         }
 
-                    //Si nous ne sommes pas dans une valeur sur plusieurs lignes (valeur compléte)
+                    //Si nous ne sommes pas dans une valeur sur plusieurs lignes (valeur complï¿½te)
                     if (! $multi){
                         switch ($this -> flagSystem){
                                 case 'xml':
@@ -659,7 +657,7 @@ class ModeliXe extends ErrorManager{
 
         $ok = false;
         
-        //Ajout des paramètres de sessions en cas de cache ou non
+        //Ajout des paramï¿½tres de sessions en cas de cache ou non
         if ($this -> sessionParameter && ! $noSid) {
             if ($this -> mXCacheDelay > 0) $urlArg .= '?<mx:session />';
             else $urlArg .= '?'.$this -> sessionParameter;
@@ -695,7 +693,7 @@ class ModeliXe extends ErrorManager{
             }
         elseif ($param) $this -> ErrorTracker(3, 'The third argument must be a queryString or an array.', 'MxUrl', __FILE__, __LINE__);
         
-        //Ajout d'éventuels attributs supplémentaires en dynamique
+        //Ajout d'ï¿½ventuels attributs supplï¿½mentaires en dynamique
         $lien = ($attribut)? ' href="'.$urlArg.'" '.$attribut : ' href="'.$urlArg.'"';
         
         //Gestion multi-attributs
@@ -789,7 +787,7 @@ class ModeliXe extends ErrorManager{
 
     //MX tools -------------------------------------------------------------------------------------------------------------------
 
-    //Vérifie l'existence d'un bloc
+    //Vï¿½rifie l'existence d'un bloc
     function IsMxBloc($index){
         if ($this -> adressSystem == 'relative') $index = $this -> relativePath.'.'.$index;
 
@@ -798,7 +796,7 @@ class ModeliXe extends ErrorManager{
         else return true;
         }
 
-    //Vérifie l'existence d'une balise
+    //Vï¿½rifie l'existence d'une balise
     function IsMxFlag($index, $type){
         if ($this -> adressSystem == 'relative') $index = $this -> relativePath.'.'.$index;
 
@@ -807,7 +805,7 @@ class ModeliXe extends ErrorManager{
         else return $tab[$index];
         }
 
-    //Vérifie l'existence d'un attribut
+    //Vï¿½rifie l'existence d'un attribut
     function IsMxAttribut($index){
         if ($this -> adressSystem == 'relative') $index = $this -> relativePath.'.'.$index;
 
@@ -846,7 +844,7 @@ class ModeliXe extends ErrorManager{
         else $this -> ErrorTracker(3, 'The argument for this function must be an associative array.', 'GetQueryString', __FILE__, __LINE__);
         }
 
-    //Adressage simplifié
+    //Adressage simplifiï¿½
     function WithMxPath($path = '', $origine = ''){
 
         if (! $origine) $origine = $this -> adressSystem;
@@ -862,7 +860,7 @@ class ModeliXe extends ErrorManager{
                 }
             }
 
-        //Si on ne précise pas de path on retourne au path origine
+        //Si on ne prï¿½cise pas de path on retourne au path origine
         if (empty($path)){
             $this -> relativePath = $this -> absolutePath;
 
@@ -874,7 +872,7 @@ class ModeliXe extends ErrorManager{
         if ($path) {
             if ($origine == 'relative') {
 
-                //On redescend dans la hiérarchie jusqu'au path mentionné
+                //On redescend dans la hiï¿½rarchie jusqu'au path mentionnï¿½
                 if (($test = explode('../', $path)) && count($test) > 1) {
                     $path = substr($path, strrpos($path, '/') + 1);
                     $this -> relativePath = substr($this -> relativePath, 0, strlen($this -> relativePath) - strlen(strstr($this -> relativePath, $path)) - 1);
@@ -895,19 +893,19 @@ class ModeliXe extends ErrorManager{
     //Informations de licence
     function AboutModeliXe($out = ''){
         $texte = "\nLicence et conditions d'utilisations-----------------------------------------------------------------------------\n";
-        $texte .= 'ModeliXe '.$this -> mXVersion."\nModeliXe est distribué sous licence LGPL, merci de laisser cette en-tête, gage et garantie de cette licence.\n";
-        $texte .= "ModeliXe est un moteur de template destiné à être utilisé par des applications écrites en PHP.\n";
+        $texte .= 'ModeliXe '.$this -> mXVersion."\nModeliXe est distribuï¿½ sous licence LGPL, merci de laisser cette en-tï¿½te, gage et garantie de cette licence.\n";
+        $texte .= "ModeliXe est un moteur de template destinï¿½ ï¿½ ï¿½tre utilisï¿½ par des applications ï¿½crites en PHP.\n";
         $texte .= " \n";
-        $texte .= "Copyright(c) 26 Juin 2001 - ANDRE Thierry (aka Théo)\n";
+        $texte .= "Copyright(c) 26 Juin 2001 - ANDRE Thierry (aka Thï¿½o)\n";
         $texte .= " \n";
-        $texte .= "Pour tout renseignements mailez à modelixe@free.fr ou thierry.andre@freesbee.fr\n";
+        $texte .= "Pour tout renseignements mailez ï¿½ modelixe@free.fr ou thierry.andre@freesbee.fr\n";
         $texte .= "------------------------------------------------------------------------------------------------------------------\n";
 
         if ($out) return $texte;
         else print('<pre>'.$texte.'</pre>');
         }
 
-    //Numéro de version
+    //Numï¿½ro de version
     function GetMxVersion(){
         return $this -> mXVersion;
         }
@@ -961,12 +959,12 @@ class ModeliXe extends ErrorManager{
 
             for($i = 0; $ok; $i++){
 
-                //Extraction des différentes informations extraites par la regex
+                //Extraction des diffï¿½rentes informations extraites par la regex
                 $id = $inclusion[2][0];
                 $ref = $inclusion[1][0];
                 $pattern = $inclusion[0][0];
 
-                //Calcul des limites du bloc traité
+                //Calcul des limites du bloc traitï¿½
                 switch ($this -> flagSystem){
                     case 'xml':
                         $regexp = '</mx:bloc id="'.$id.'">';
@@ -982,14 +980,14 @@ class ModeliXe extends ErrorManager{
 
                 if (! $endOfIntrons) $this -> ErrorTracker(4, 'The end of the "<b>'.$id.'</b>" bloc is not found, this bloc can\'t be generate. Verify that the end of bloc\'s flag exists and has a good form, like this pattern <b>'.htmlentities($regexp).'</b>.', 'MxParsing', __FILE__, __LINE__);
 
-                //On teste si le bloc en cours posséde une référence vers un autre template
+                //On teste si le bloc en cours possï¿½de une rï¿½fï¿½rence vers un autre template
                 if (! $ref) $this -> templateContent[$path.'.'.$id] = substr($doc, $startOfIntrons, $length);
                 else {
                     if ($this -> mXTemplatePath) $ref = $this -> mXTemplatePath.$ref;
                     $this -> templateContent[$path.'.'.$id] = $this -> GetMxFile($ref);
                     }
 
-                //Création du pattern du bloc traité
+                //Crï¿½ation du pattern du bloc traitï¿½
                 $this -> xPattern['inclusion'][$path.'.'.$id] = '<mx:inclusion id="'.$id.'"/>';
                 $this -> deleted[$path.'.'.$id] = false;
                 $this -> replacement[$path.'.'.$id] = false;
@@ -998,17 +996,17 @@ class ModeliXe extends ErrorManager{
                 $doc = substr($doc, 0, $startOfIntrons - strlen($pattern)).'<mx:inclusion id="'.$id.'"/>'.substr($doc, $endOfIntrons + strlen($regexp));
                 $this -> templateContent[$path] = $doc;
 
-                //Construction de la référence à ce bloc pour la récursivité
+                //Construction de la rï¿½fï¿½rence ï¿½ ce bloc pour la rï¿½cursivitï¿½
                 $countPath[$i] = $path.'.'.$id;
 
-                //Incrémentation du nbre de fils pour le bloc en cours
+                //Incrï¿½mentation du nbre de fils pour le bloc en cours
                 if (! empty($this -> son[$path][0])) $compt = $this -> son[$path][0];
                 else {
                     $compt = 0;
                     $this -> son[$path][0] = 0;
                     }
 
-                //Construction de la référence au fils du bloc parsé pour le bloc en cours
+                //Construction de la rï¿½fï¿½rence au fils du bloc parsï¿½ pour le bloc en cours
                 $this -> son[$path][++ $compt] = $path.'.'.$id;
                 $this -> son[$path][0] ++;
 
@@ -1034,10 +1032,10 @@ class ModeliXe extends ErrorManager{
                  for ($i = 0; ; $i++){
                     if (empty ($flag[0][$i])) break;
 
-                    //Construction du pattern et des valeurs par défaut de ces balises
+                    //Construction du pattern et des valeurs par dï¿½faut de ces balises
                     $this -> xPattern[$value][$path.'.'.$flag[1][$i]] = $flag[0][$i];
 
-                    //Modification Guillaume Lelarge compatibilité PHP3
+                    //Modification Guillaume Lelarge compatibilitï¿½ PHP3
 /*<PHP3>
                     $ref = $this -> $value;
                     $ref[$path.'.'.$flag[1][$i]] = '   ';
@@ -1073,7 +1071,7 @@ class ModeliXe extends ErrorManager{
                 $motif = $flag[1][$i];
                 $k = 0;
 
-                //Gestion de plusieurs couples de clé-valeurs dans les attributs
+                //Gestion de plusieurs couples de clï¿½-valeurs dans les attributs
                 $tabVal = explode(';', $motif);
                 for ($j = 0; $j < count($tabVal); $j++) {
 
@@ -1102,7 +1100,7 @@ class ModeliXe extends ErrorManager{
 
     //MX Compression System ------------------------------------------------------------------------------------------------------------------
 
-    //Vérifie si la compression est possible et son type
+    //Vï¿½rifie si la compression est possible et son type
     function MxCheckCompress($file){
         if((! $this -> mXcompress) || (! extension_loaded("zlib")) || (headers_sent()) || (strlen($file) / 1000 < 8)) return false;
         global $HTTP_SERVER_VARS;
@@ -1113,7 +1111,7 @@ class ModeliXe extends ErrorManager{
         return false;
         }
 
-    //Compression des donnees destinées au navigateur
+    //Compression des donnees destinï¿½es au navigateur
     function MxSetCompress($filecontent){
         if ($encoding = $this -> MxCheckCompress($filecontent)){
 
@@ -1134,7 +1132,7 @@ class ModeliXe extends ErrorManager{
 
     //MX Cache system ------------------------------------------------------------------------------------------------------------------
 
-    //Retourne une clé unique pour les arguments en POST et GET différents des paramètres de session
+    //Retourne une clï¿½ unique pour les arguments en POST et GET diffï¿½rents des paramï¿½tres de session
     function GetMD5UrlKey($query = ''){
         global $HTTP_POST_VARS, $HTTP_GET_VARS;
 
@@ -1143,15 +1141,15 @@ class ModeliXe extends ErrorManager{
         if (! $query) $post = $HTTP_POST_VARS;
         else $post = $query;
         
-        //Intégration du nom du fichier php appelant
+        //Intï¿½gration du nom du fichier php appelant
         $uri = getenv('REQUEST_URI');
         $uri = substr($uri, 0, strpos($uri, '?'));
         
-        //Suppression des paramètres de session en GET
+        //Suppression des paramï¿½tres de session en GET
         $chaine = '';
         $this -> DeleteSessionKey($chaine, $get);
 
-        //Suppression des paramètres de session en POST
+        //Suppression des paramï¿½tres de session en POST
         $this -> DeleteSessionKey($chaine, $post);
 
         return (md5($chaine.$uri));
@@ -1160,17 +1158,17 @@ class ModeliXe extends ErrorManager{
     function DeleteSessionKey(&$chaine, $httpvar){
         $param = explode('&', $this -> sessionParameter);
 
-        //Tri des tableaux pour les avoir dans le même ordre
+        //Tri des tableaux pour les avoir dans le mï¿½me ordre
 		if (is_array($httpvar))
 			asort($httpvar);
 
 		if (is_array($param))
 			asort($param);
 
-        //pr est un marqueur pour éviter de parcourir toutes les valeurs des param de session si ceux-ci ont déja été tous supprimés
+        //pr est un marqueur pour ï¿½viter de parcourir toutes les valeurs des param de session si ceux-ci ont dï¿½ja ï¿½tï¿½ tous supprimï¿½s
         $pr = 0;
 
-        //suppression des paramètres de session(get ou post)
+        //suppression des paramï¿½tres de session(get ou post)
         for (@reset($httpvar); $cle = @key($httpvar); @next($httpvar)){
             $ok = false;
             $compt = count($param);
@@ -1199,11 +1197,11 @@ class ModeliXe extends ErrorManager{
                             }
                         }
                     else {
-                        //Supprime spécifiquement le fichier du template en cours
+                        //Supprime spï¿½cifiquement le fichier du template en cours
                         $ana = explode('~', $fichier);
                         if ($ana[1] == $this -> template) {
 
-                            //Gestion des suppressions spécifiques à une queryString
+                            //Gestion des suppressions spï¿½cifiques ï¿½ une queryString
                             if ($query && $this -> GetMD5UrlKey($query) == $ana[0]){
                                 if (! @unlink($this -> mXCachePath.$fichier)) $this -> ErrorTracker(3, 'Can\'t unlink this file "<b>'.$fichier.'</b>" in cache directory.', 'MxClearCache', __FILE__, __LINE__);
                                 }
@@ -1241,15 +1239,15 @@ class ModeliXe extends ErrorManager{
 
         @fclose($open);
 
-        //Parsing des paramètres de sessions
+        //Parsing des paramï¿½tres de sessions
         $read = $this -> MxSessionParameterParsing($read);
 
-        //Si on cherche à mesurer les performances de ModeliXe
+        //Si on cherche ï¿½ mesurer les performances de ModeliXe
         if ($this -> performanceTracer) {
             $read = str_replace('<mx:performanceTracer />', $this -> GetExecutionTime().' [cache]', $read);
             }
 
-        //Si il y a une gestion de la compression, envoie des en-têtes correspondantes
+        //Si il y a une gestion de la compression, envoie des en-tï¿½tes correspondantes
         $this -> ErrorChecker();
         if ($this -> mXoutput) return $read;
         else print($this -> MxSetCompress($read));
@@ -1257,7 +1255,7 @@ class ModeliXe extends ErrorManager{
         exit();
         }
 
-    //Teste si le fichier de cache existe et son échéance
+    //Teste si le fichier de cache existe et son ï¿½chï¿½ance
     function MxCheckCache() {
         $cache_file = $this -> mXCachePath.$this -> mXUrlKey.'~'.$this -> template;
 
@@ -1290,13 +1288,13 @@ class ModeliXe extends ErrorManager{
         return $content;
         }
 
-    //Remplace le contenu des templates passés en arguments
+    //Remplace le contenu des templates passï¿½s en arguments
     function MxReplace($path){
 
         if (! empty($this -> sheetBuilding[$path])) $cible = $this -> sheetBuilding[$path];
         else $cible = $this -> templateContent[$path];
 
-        //Remplacement de l'ensemble des attributs ModeliXe par les valeurs qui ont été instanciées ou leurs valeurs par défaut
+        //Remplacement de l'ensemble des attributs ModeliXe par les valeurs qui ont ï¿½tï¿½ instanciï¿½es ou leurs valeurs par dï¿½faut
         reset($this -> attributArray);
         while (list($cle, $Fkey) = each($this -> attributArray)){
             $Farray = &$this -> $Fkey;
@@ -1317,7 +1315,7 @@ class ModeliXe extends ErrorManager{
                 }
             }
 
-        //Remplacement de l'ensemble des balises ModeliXe par les valeurs qui ont été instanciées ou leurs valeurs par défaut
+        //Remplacement de l'ensemble des balises ModeliXe par les valeurs qui ont ï¿½tï¿½ instanciï¿½es ou leurs valeurs par dï¿½faut
         reset($this -> flagArray);
         while (list($cle, $Fkey) = each($this -> flagArray)){
             $Farray = &$this -> $Fkey;
@@ -1359,7 +1357,7 @@ class ModeliXe extends ErrorManager{
             if (! empty($this -> son[$chemin][$j])) $fils = $this -> son[$chemin][$j];
             else $fils = '';
 
-            //Si il existe on considère le dernier enregistrement trouvé précédant celui-ci
+            //Si il existe on considï¿½re le dernier enregistrement trouvï¿½ prï¿½cï¿½dant celui-ci
             if (! empty($ordre[$hierarchie])) $ancien = $ordre[$hierarchie][count($ordre[$hierarchie])];
             else $ancien = false;
 
@@ -1384,10 +1382,10 @@ class ModeliXe extends ErrorManager{
             else {
                 $j ++;
 
-                //Si le fils n'a pas été détruit on le considére
+                //Si le fils n'a pas ï¿½tï¿½ dï¿½truit on le considï¿½re
                 if ($this -> templateContent[$fils]) {
 
-                    //hiérarchie compte le nombre de blocs à partir du bloc de base
+                    //hiï¿½rarchie compte le nombre de blocs ï¿½ partir du bloc de base
                     $hierarchie = count(explode('.', $fils)) - $base;
 
                     if (empty($ordre[$hierarchie])) $ordre[$hierarchie] = array();
@@ -1405,7 +1403,7 @@ class ModeliXe extends ErrorManager{
                 $pattern = $this -> xPattern['inclusion'][$fils];
                 $pere = $this -> father[$ordre[$i][$j]];
 
-                //Insertion du bloc fils dans le père
+                //Insertion du bloc fils dans le pï¿½re
                 if ($pere == $path && $this -> IsALoop[$path]) {
 
                     if ($this -> IsALoop[$fils]) {
@@ -1471,12 +1469,12 @@ class ModeliXe extends ErrorManager{
         $father = $this -> father[$path];
         $pattern = $this -> xPattern['inclusion'][$path];
 
-        //On saute les blocs détruits
+        //On saute les blocs dï¿½truits
         if ($pattern){
             $this -> IsALoop[$path] = true;
             if (empty($this -> loop[$path])) $this -> loop[$path] = '';
 
-            //Gestion des blocs remplacés temporairement
+            //Gestion des blocs remplacï¿½s temporairement
             if ($this -> replacement[$path]) {
                 $this -> loop[$path] .= $this -> MxReplace($path);
                 $this -> replacement[$path] = false;
@@ -1497,7 +1495,7 @@ class ModeliXe extends ErrorManager{
 
     //Mx Output -------------------------------------------------------------------------------------------------------------------
 
-    //Sortie du fichier HTML généré
+    //Sortie du fichier HTML gï¿½nï¿½rï¿½
     function MxWrite ($out = '', $renvoyer = false){
         if (! $this -> mXsetting) $this -> ErrorTracker(5, 'You d\'ont intialize ModeliXe with setModeliXe method, there is no data to write.', 'MxWrite', __FILE__, __LINE__);
 
@@ -1510,18 +1508,18 @@ class ModeliXe extends ErrorManager{
         if ($this -> ErrorChecker()) {
             $filecontent = (($entete)? str_replace('<head>', '<head>'."\n".$entete,$filecontent = $this -> MxReplace($this -> absolutePath)) : $filecontent = $this -> MxReplace($this -> absolutePath));
 
-            //Remplacement des balises de paramètres
+            //Remplacement des balises de paramï¿½tres
             if ($this -> mXParameterFile) $filecontent = $this -> GetParameterParsing($filecontent);
 
-            //Mise en cache de la page générée sans les paramètres de sessions
+            //Mise en cache de la page gï¿½nï¿½rï¿½e sans les paramï¿½tres de sessions
             if ($this -> mXCacheDelay > 0) {
                 $this -> MxSetCache($filecontent);
 
-                //Parsing des paramètres de sessions
+                //Parsing des paramï¿½tres de sessions
                 $filecontent = $this -> MxSessionParameterParsing($filecontent);
                 }
 
-            //Si on cherche à mesurer les performances de ModeliXe
+            //Si on cherche ï¿½ mesurer les performances de ModeliXe
             if ($this -> performanceTracer) {
                 $filecontent = str_replace('<mx:performanceTracer />', $this -> GetExecutionTime(), $filecontent);
                 }

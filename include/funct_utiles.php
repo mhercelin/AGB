@@ -808,13 +808,16 @@ function unregister_globals()
     foreach ($a_detruire as $nom) {
     	// From phpBB
 		// Hacking attempt. No point in continuing
-		if ($varname !== 'GLOBALS' || isset($_GET['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_SERVER['GLOBALS']) || isset($_SESSION['GLOBALS']) || isset($_ENV['GLOBALS']) || isset($_FILES['GLOBALS']))  {
+		if (isset($_GET['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_SERVER['GLOBALS']) || isset($_SESSION['GLOBALS']) || isset($_ENV['GLOBALS']) || isset($_FILES['GLOBALS']))  {
 			exit;
 		}
-        foreach ($GLOBALS[$nom] as $key=>$value) {
-            if (isset($GLOBALS[$key]))
-                unset($GLOBALS[$key]);
-        }
+        if (isset($GLOBALS[$nom]))
+		{
+			foreach ($GLOBALS[$nom] as $key=>$value) {
+				if (isset($GLOBALS[$key]))
+					unset($GLOBALS[$key]);
+			}
+		}
     }
 	unset ($a_detruire);
 }
