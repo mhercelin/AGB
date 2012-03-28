@@ -330,7 +330,7 @@ function replace_censure_smileys(&$texte, $censure=true){
 	//urls
 	if($config['url_cliquables'] && !$config['url_interdites']){
 		if (!isset($CHEM_COMPLET))
-			$texte = preg_replace('#([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]#?/&=])#i', '<a href="$1://$2$3" target="_blank">$1://$2$3</a>', $texte);
+			$texte = preg_replace('#([[:alnum:]]+)://([^[:space:]]*)([[:alnum:]\#?/&=])#i', '<a href="$1://$2$3" target="_blank">$1://$2$3</a>', $texte);
 	}
 	
 	// saut de ligne
