@@ -536,4 +536,7 @@ $f_lang['mail_message'] = "Nouveau message dans le livre d'or ";
 /* Erreur si fichier install present */
 $f_lang['erreur_fic_install_present'] = "Pour utiliser le livre d'or et pour des raisons de sécurité, vous devez supprimer le fichier setup.php et le dossier update/ dans le répertoire Alex Guestbook"; 
 
+/* Erreur si versions differentes */
+$f_lang['erreur_necessite_maj'] = "La version des fichiers est différente de la version de la base de données. Veuillez mettre à jour.";
+$f_lang['erreur_necessite_maj_lien'] = "Lien vers le script de mise à jour.";
 ?>

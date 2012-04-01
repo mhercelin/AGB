@@ -536,4 +536,8 @@ $f_lang['text1'] = "<b>Censored words will be automatically replaced</b> in the 
 
 /* Erreur si fichier install present */
 $f_lang['erreur_fic_install_present'] = "For security reasons, to use your guestbook you have to delete file setup.php and folder update/";
+
+/* Erreur si versions differentes */
+$f_lang['erreur_necessite_maj'] = "Version of files is different from the version of the database. Please update.";
+$f_lang['erreur_necessite_maj_lien'] = "Link to update.";
 ?>

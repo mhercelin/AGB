@@ -33,6 +33,19 @@ else{
 	exit ("Please setup the script : <a href=\"".$chem_absolu."setup.php\"><b>setup.php</b></a> or refresh your browser : <a href=\"javascript:location.reload();\"><b>refresh</b></a>.");
 }
 
+//----------------------- si version fichiers != version base indique de mettre a jour et exit
+if (!$config['db_version'] || $config['db_version'] != $alex_livre_version)
+{
+	if (file_exists($chem_absolu."/update/"))
+	{
+		exit('<div style="background-color: #C8E8FE; padding: .5em; border: 2px solid #6; color: #333333; font-size: 1.2em;">'.$f_lang['erreur_necessite_maj'].'<br/><br/><a style="font-size: 0.8em; color: #333333;" href="'.$chem_absolu.'update/index.php">'.$f_lang['erreur_necessite_maj_lien'].'</a></div>');
+	}
+	else
+	{
+		exit('<div style="background-color: #C8E8FE; padding: .5em; border: 2px solid #6; color: #333333; font-size: 1.2em;">'.$f_lang['erreur_necessite_maj'].'</div>');
+	}
+}
+
 //----------------------- si fichier install.php ou dossier update presents exit
 if (file_exists($chem_absolu."setup.php") || file_exists($chem_absolu."/update/"))
 {
