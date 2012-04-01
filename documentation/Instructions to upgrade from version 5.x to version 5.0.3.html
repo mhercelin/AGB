@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Consignes de mise à jour de la version 5.0.* ou supérieure à la version 5.0.3</title>
+<style type="text/css">
+body {
+	font-family: Arial, Verdana;
+	font-size: 0.9em;
+	background-color: #EFF0FE;
+}
+
+h1 {
+	color: #1045CC;
+	font-family: Arial, "Trebuchet MS", Verdana;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.1em;
+	color: #1045CC;
+}
+
+dl.codebox code {
+	overflow: auto;
+	display: block;
+	height: auto;
+	max-height: 200px;
+	white-space: normal;
+	padding-top: 3px;
+	font-family: "Courier New", Courier, mono;
+	font-size: 0.9em;
+	color: #808080;
+	margin-left: -30px;
+}
+
+dl.codebox {
+	width: 90%;
+	margin-left: 20px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border: 1px solid #A2DBF8;
+	font-size: 1em;
+}
+
+dl.codebox dt {
+	text-transform: uppercase;
+	border-bottom: 1px solid #A2DBF8;
+	margin-bottom: 3px;
+	font-size: 0.6em;
+	display: block;
+	color: #1045CC;
+}
+
+.important {
+	color: #FF0000;
+}
+
+.souligne {
+	text-decoration: underline;
+}
+
+.gras {
+	font-weight: bold;
+}
+
+.barre_noir {
+	text-decoration: line-through;
+	color: #000000;
+}
+
+li.nom_fichier {
+	font-weight: bold;
+	text-decoration: underline;
+	color: #76B50F;
+}
+
+.separation_maj_skin {
+	color: #1045CC;
+	background-color: #1045CC;
+	height: 2px;
+	border-bottom: 1px #4D7BF1 solid;
+}
+</style>
+<!-- fonction issue de phpBB3 -->
+<script type="text/javascript">
+// <![CDATA[
+function selectCode(a)
+{
+	// Get ID of code block
+	var e = a.parentNode.parentNode.getElementsByTagName('CODE')[0];
+
+	// Not IE
+	if (window.getSelection)
+	{
+		var s = window.getSelection();
+		// Safari
+		if (s.setBaseAndExtent)
+		{
+			s.setBaseAndExtent(e, 0, e, e.innerText.length - 1);
+		}
+		// Firefox and Opera
+		else
+		{
+			var r = document.createRange();
+			r.selectNodeContents(e);
+			s.removeAllRanges();
+			s.addRange(r);
+		}
+	}
+	// Some older browsers
+	else if (document.getSelection)
+	{
+		var s = document.getSelection();
+		var r = document.createRange();
+		r.selectNodeContents(e);
+		s.removeAllRanges();
+		s.addRange(r);
+	}
+	// IE
+	else if (document.selection)
+	{
+		var r = document.body.createTextRange();
+		r.moveToElementText(e);
+		r.select();
+	}
+}
+// ]]>
+</script>
+</head>
+<body>
+<h1>Instructions for updating the AlexGuestbook script <br/> from version 5.0.* to version 5.0.3</h1><br/>
+<p>This update of AlexGuestbook is highly recommended. It fixes several security vulnerabilities, supports PHP > v5.2 and fixes some bugs.<br/>The list of modifications and corrections to the script is available here : <a href="../changelog_en.txt" title="Link to the file changelog"> changelog_en.txt</a>.<br/>Find all the information, updates and help for the script on <a href="http://www.alexguestbook.net" title="Link to the AlexGuestbook.net website">www.alexguestbook.net</a></p><br/>
+<p class="souligne">Before making any changes, make a backup of the database (see the admin interface of the script) and of your skins if you have customized them.</p>
+<br/>
+<ol>
+	<li>
+		<p>Version 5.0.3 offers a new way to update the AlexGuestbook script. An updating script is available for download on our website <a href="http://www.alexguestbook.net">www.alexguestbook.net</a>. Also download the complete archive of the AlexGuestbook 5.0.3 script.</p>
+	</li>
+	<li>
+		<p>You must unzip all files of the script version 5.0.3 and send them (with your FTP program, FileZilla for example) on your server in the guestbook directory (by default "agb"). Overwrite all files, except the skins if you have modified them.</p>
+	</li>
+	<li>
+		<p>Do the same with the update-5.0.3.zip file : unzip it and send the folder "update" on your server, still in the guestbook directory. </p>
+	</li>
+	<li>
+		<p>Start the update by logging in with your browser (Internet Explorer, Firefox, Safari or other) at www.yoursite.com/guestbook_directory<b>/update/index.php</b> (it is necessary to add /update/index.php to access the update interface).</p>
+	</li>
+	<li>
+		<p>Follow the instructions given in the update interface.</p>
+	</li>
+	<li>
+		<p>If you have modified the skins, you must update them (new copyright). The procedure for updating the skin is explained in the update interface.</p>
+	</li>
+</ol>
+
+<h2>Good update to all!</h2>
+</body>
+</html>
