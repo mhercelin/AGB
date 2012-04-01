@@ -1,17 +1,17 @@
 Version 5.0.3 (mars 2012)
 ===========================
 
-> Corrections de plusieurs failles et problèmes de sécurité potentiels (merci à la communauté Zenk Security http://www.zenk-security.com/).
-> Script compatible PHP 5.3. Attention, la version 5.0.3 est la dernière version d'AlexGuestbook à supporter PHP version 4.x.
-> Script compatible jusqu'à MySQL 5.5
-> Correction de la fonction de déconnexion des administrateurs (supprime la session de la base de données).
-> Amélioration de la recherche de mises à jour du script
-> Ajout d'un lien "Retour au livre d'or" sur la page de connexion à l'administration du livre
-> Correction de l'aperçu du skin lorsque l'option "include" est activée.
-> Changement du copyright.
-> Optimisation de la détection de la langue.
-> Suppressions de caractères "parasites" dans différents fichiers.
-> Mise à disposition d'un script de mise à jour pour faciliter les mises à jour.
+> Fixed several vulnerabilities and potential security problems (many thanks to the Zenk Security community).
+> Script compatible with PHP 5.3. Attention: Version 5.0.3 is the latest version of AlexGuestbook to support PHP 4.x.
+> Script compatible with MySQL up to 5.5
+> Fixed the logout function of the administrators (removes the session from the database).
+> Improved search for script updates
+> Added a link "Back to the guestbook" on the login page to the book administration
+> Fixed the overview of a skin when the option "include" is enabled.
+> Copyright modification.
+> Improved language detection.
+> Deleted "junk" characters in various files
+> Availability of an updating script for easier updates.
 
 Version 5.0.2 (november 2008)
 ===========================
