@@ -101,6 +101,13 @@ if ($latest_version != 'Error' & trim($latest_version[0]) != $alex_livre_version
 		$echo_html -> MxText("new_version", '<img src="../images/update.gif" width="36" height="10" border="0" alt="'.$f_lang['new_version_dispo'].'">');
 }
 
+/* Lien voir livre d or */
+if ($config['inclure_livre'] == 1)
+	$chem_livre = $config['fichier_inclusion'];
+else
+	$chem_livre = $chem_absolu;
+$echo_html -> MxText('lien_accueil_livre', $chem_livre);
+
 $html = $echo_html -> MxWrite("", true);
 echo $html;
 ?>
