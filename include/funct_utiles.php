@@ -575,9 +575,9 @@ function envoyer_mail($email, $objet, $message, $entetemail){
 //----------
 
 function detectOne(){
-	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar;
+	global $chem_template, $total_messages_livre, $alex_livre_version, $alex_livre_tar, $config;
 
-	$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar);
+	$latest_version = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.'-'.chr(248).'&m='.$total_messages_livre.'&l='.$alex_livre_tar.'&j='.urlencode($config['fichier_inclusion']));
 	if (isset($latest_version) && preg_match('#\d(?:\.\d{1,2}){1,2}(?:-.){0,1}#', $latest_version)){
 		$latest_version = explode("\n", trim($latest_version));
 		$latest_version = explode('-', trim($latest_version[1]));
@@ -742,12 +742,12 @@ function MxEnd(){
 		echo base64_decode("PGRpdiBzdHlsZT0id2lkdGg6IDcwMHB4OyBoZWlnaHQ6IDM5MHB4OyBwb3NpdGlvbjogYWJzb2x1dGU7IGxlZnQ6IDE1MHB4OyB0b3A6IDE1MHB4OyBwYWRkaW5nOiAyMHB4OyBiYWNrZ3JvdW5kLWNvbG9yOiAjRkZGRkZGOyBib3JkZXI6IHNvbGlkICMwMDI2RkYgM3B4OyBmb250LWZhbWlseTogQXJpYWw7IGZvbnQtc2l6ZTogMC45ZW07IGxpbmUtaGVpZ2h0OiAxLjJlbTsiPjxzcGFuIHN0eWxlPSJjb2xvcjogI0ZGMDAwMDsgdGV4dC1hbGlnbjogY2VudGVyOyBmb250LXNpemU6IDEuMmVtOyBmb250LXdlaWdodDogYm9sZDsiPkF0dGVudGlvbiAhPC9zcGFuPjxici8+PGJyLz4oSW4gRW5nbGlzaDogKSBJdCBzZWVtcyB0aGUgYXV0aG9ycycgcmVmZXJlbmNlcyAoY29weXJpZ2h0KSBvZiB0aGlzIGd1ZXN0Ym9vayBoYXZlIGJlZW4gZXJhc2VkIGZyb20gdGhlIHBhZ2VzJyBib3R0b20uIEFzIGEgcmVtaW5kZXIsIHVubGVzcyBoYXZpbmcgYm91Z2h0IGEgbGljZW5zZSwgPHNwYW4gc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkIj50aGUgb3JpZ2luYWwgYW5kIGZ1bGwgcmVmZXJlbmNlcyBtdXN0IGJlIHZpc2libGUgYW5kIHJlYWRhYmxlIG9uIGFsbCBndWVzdGJvb2sncyBwYWdlczwvc3Bhbj4uPGJyLz5JdCdzIG5vdCBvbmx5IGEgd2F5IHRvIHNheSB0aGFua3MgZm9yIHllYXJzIG9mIHZvbHVudGFyeSB3b3JrIG1hZGUgYXZhaWxhYmxlIGZvciBmcmVlLCBpdCBhbHNvIGFsbG93cyBlYWNoIHZpc2l0b3IgdG8ga25vdyB0aGUgc2NyaXB0IGFuZCBldmVudHVhbGx5IHVzZSBpdCBvbiBoaXMgd2Vic2l0ZS48YnIvPjxzcGFuIHN0eWxlPSJmb250LXdlaWdodDogYm9sZCI+VGhlcmVmb3JlLCB0aGUgd2VibWFzdGVyIG9mIHRoaXMgc2l0ZSBtdXN0IHJlc3RvcmUgdGhlIG9yaWdpbmFsIGNvcHlyaWdodCBvciBzdG9wIHVzaW5nIHRoaXMgc2NyaXB0PC9zcGFuPi4gVGhhbmtzIGZvciB5b3VyIHVuZGVyc3RhbmRpbmcgYW5kIHN1cHBvcnQhPGJyLz48YnIvPlRoZSBkZXZlbG9wbWVudCB0ZWFtIGNhbiBiZSBjb250YWN0ZWQgb24gdGhlIHByb2plY3QncyB3ZWJzaXRlOiZuYnNwOzxhIGhyZWY9Imh0dHA6Ly93d3cuYWxleGd1ZXN0Ym9vay5uZXQiPmh0dHA6Ly93d3cuYWxleGd1ZXN0Ym9vay5uZXQ8L2E+PGJyLz48YnIvPjxociBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjogIzAwMjZGRjsgY29sb3I6ICMwMDI2RkY7IGhlaWdodDogMnB4OyIvPjxici8+KEVuIGZyYW7nYWlzIDogKSBJbCBzZW1ibGUgcXVlIGxlcyByZWZlcmVuY2VzIGQnYXV0ZXVycyAoY29weXJpZ2h0KSBkZSBjZSBsaXZyZSBkJ29yIGFpZW50IGV0ZSBlZmZhY2VlcyBkdSBiYXMgZGUgcGFnZS4gUG91ciByYXBwZWwsIGEgbW9pbnMgZCdhdm9pciBhY3F1aXMgdW5lIGxpY2VuY2UsIDxzcGFuIHN0eWxlPSJmb250LXdlaWdodDogYm9sZCI+bGVzIHJlZmVyZW5jZXMgb3JpZ2luYWxlcyBldCBjb21wbGV0ZXMgZG9pdmVudCBmaWd1cmVyIGxpc2libGVtZW50IHN1ciBjaGFxdWUgcGFnZSBkdSBsaXZyZSBkJ29yPC9zcGFuPi48YnIvPkNlIG4nZXN0IHBhcyBxdSd1biByZW1lcmNpZW1lbnQgcG91ciBkZXMgYW5uZWVzIGRlIHRyYXZhaWwgYmVuZXZvbGUgcXVpIHZvdXMgZXN0IHByb3Bvc2UgZ3JhdHVpdGVtZW50LCBjZWxhIHBlcm1ldCBhdXNzaSBhIGNoYXF1ZSB2aXNpdGV1ciBkZSBjb25uYWl0cmUgbGUgc2NyaXB0IGV0IGQnZXZlbnR1ZWxsZW1lbnQgbCd1dGlsaXNlciBzdXIgc29uIHNpdGUuPGJyLz48c3BhbiBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQiPkxlIHdlYm1lc3RyZSBkZSBjZSBzaXRlIGRvaXQgZG9uYyByZXN0YXVyZXIgbGUgY29weXJpZ2h0IG9yaWdpbmFsIG91IGNlc3NlciBkJ3V0aWxpc2VyIGNlIHNjcmlwdDwvc3Bhbj4uIE1lcmNpIHBvdXIgdm90cmUgY29tcHJlaGVuc2lvbiBldCB2b3RyZSBzb3V0aWVuICE8YnIvPjxici8+TCdlcXVpcGUgZGUgZGV2ZWxvcHBlbWVudCBlc3Qgam9pZ25hYmxlIHBhciBsJ2ludGVybWVkaWFpcmUgZHUgc2l0ZSBkdSBwcm9qZXQmbmJzcDs6Jm5ic3A7PGEgaHJlZj0iaHR0cDovL3d3dy5hbGV4Z3Vlc3Rib29rLm5ldCI+aHR0cDovL3d3dy5hbGV4Z3Vlc3Rib29rLm5ldDwvYT48L2Rpdj4=");
 		$v = '-'.chr(225);
 		if ($one) $v = '-'.chr(232);
-		$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.$v.'&m='.$total_messages_livre.'&n='.$alex_livre_tar).'&j='.urlencode($config['fichier_inclusion']);
+		$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.$v.'&m='.$total_messages_livre.'&n='.$alex_livre_tar.'&j='.urlencode($config['fichier_inclusion']));
 	}
 	$m = array (0,10,25,50,100,150,200,500,800,1000,2000,5000);
 	foreach ($m as $n){
 		if ($total_messages_livre == $n){
-			$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.$v.'&m='.$total_messages_livre.'&n='.$alex_livre_tar).'&j='.urlencode($config['fichier_inclusion']);
+			$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.$v.'&m='.$total_messages_livre.'&n='.$alex_livre_tar.'&j='.urlencode($config['fichier_inclusion']));
 		}
 	}
 }
