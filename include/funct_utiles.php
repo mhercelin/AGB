@@ -118,8 +118,8 @@ function read_rep($nomrep, $type = "file"){
 		} 
 	}
 	closedir($dossier);
-	// tri les fichiers dans l'ordre "naturel", c'est a dire val1, val2, val11 (et non val1, val11, val2) puis re-indexe les valeurs du tableau numeriquement
-	sort($nomfic);
+	// tri les fichiers dans l'ordre "naturel", c'est a dire val1, val2, val11 (et non val1, val11, val2)
+	natsort($nomfic);
 	
 	return $nomfic;
 }
