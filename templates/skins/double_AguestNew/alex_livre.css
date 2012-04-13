@@ -11,6 +11,8 @@ body {
  font-size: 0.7em;
 }
 
+#alexguestbook :focus {outline: none;}
+
 #alexguestbook .body_txt {
  /* body width - you can update it */
  width: 750px;
