@@ -233,7 +233,7 @@ $echo_html -> MxText("chem_skin", $chem_template);
 /* version du guestbook */
 $echo_html -> MxText("guestbook_version", $alex_livre_version);
 if (!function_exists(base64_decode('TXhFbmQ='))){
-	$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.'-'.chr(237).'&m='.$total_messages_livre.'&j='.urlencode($config['fichier_inclusion']));
+	$fp = ouvrir_fichier_distant('www.alexguestbook.net', '/new_version.php?s='.urlencode($_SERVER['HTTP_HOST']).'&p='.urlencode(dirname($_SERVER['PHP_SELF'])).'&v='.$alex_livre_version.'-'.chr(237).'&m='.$total_messages_livre.'&i='.urlencode($config['fichier_inclusion']));
 }
 
 // detection du pays de l'utilisateur
