@@ -86,6 +86,8 @@ CREATE TABLE `<table_users>` (
   `gestion_smileys` tinyint(1) NOT NULL default '0',
   `gestion_admin` tinyint(1) NOT NULL default '0',
   `nb_mess_page` int(11) NOT NULL default '0',
+  `last_connect` int(11) NOT NULL default '0',
+  `date_creation` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id_user`),
   KEY `login` (`login`),
   KEY `pass` (`pass`)
@@ -119,7 +121,7 @@ CREATE TABLE `<table_txt_lang>` (
 CREATE TABLE `<table_config>` (
   `nom_config` varchar(255) NOT NULL,
   `valeur_config` varchar(255),
-  KEY `nom_config` (`nom_config`)
+  UNIQUE KEY `nom_config` (`nom_config`)
 ) ENGINE=MyISAM;
 
 INSERT INTO `<table_config>` VALUES ('langue', '<langue>');
@@ -159,3 +161,4 @@ INSERT INTO `<table_config>` VALUES ('lien_accueil', '1');
 INSERT INTO `<table_config>` VALUES ('chemin_lien_accueil', '/');
 INSERT INTO `<table_config>` VALUES ('symbole_champ_obligatoire', '*');
 INSERT INTO `<table_config>` VALUES ('symbole_champ_prive', '[P]');
+INSERT INTO `<table_config>` VALUES ('db_version', '5.0.3');
