@@ -7,5 +7,5 @@
 ///////////////////////////////////////////////
 
 // Version du guestbook
-$alex_livre_version = "5.0.3";
+$alex_livre_version = "5.0.4";
 ?>
