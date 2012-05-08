@@ -37,7 +37,7 @@ if (isset($_POST['ajouter'])){
 	$result = $f_db_connexion -> sql_query($query);
 
 	if ($f_db_connexion->sql_numrows($result) < 1){
-		$query = "INSERT INTO ".$name_table['alex_livre_users']." (login, pass, email, receive_email, modif_options, gestion_skins, gestion_reponse_auto, gestion_bdd, gestion_messages, gestion_censure, gestion_bannissement, gestion_smileys, gestion_admin, nb_mess_page) VALUES ('".$_POST['name_admin']."', '".$_POST['passe_admin']."', '".$_POST['email_admin']."', '".$_POST['receive_email']."', '".$_POST['modif_options']."', '".$_POST['gestion_skins']."', '".$_POST['gestion_reponse_auto']."', '".$_POST['gestion_bdd']."', '".$_POST['gestion_messages']."', '".$_POST['gestion_censure']."', '".$_POST['gestion_bannissement']."', '".$_POST['gestion_smileys']."', '".$_POST['gestion_admin']."', '15')";
+		$query = "INSERT INTO ".$name_table['alex_livre_users']." (login, pass, email, receive_email, modif_options, gestion_skins, gestion_reponse_auto, gestion_bdd, gestion_messages, gestion_censure, gestion_bannissement, gestion_smileys, gestion_admin, nb_mess_page, date_creation) VALUES ('".$_POST['name_admin']."', '".$_POST['passe_admin']."', '".$_POST['email_admin']."', '".$_POST['receive_email']."', '".$_POST['modif_options']."', '".$_POST['gestion_skins']."', '".$_POST['gestion_reponse_auto']."', '".$_POST['gestion_bdd']."', '".$_POST['gestion_messages']."', '".$_POST['gestion_censure']."', '".$_POST['gestion_bannissement']."', '".$_POST['gestion_smileys']."', '".$_POST['gestion_admin']."', '15', '".time()."')";
 		$result = $f_db_connexion -> sql_query($query);
 		message_javascript($f_lang['ok_aj_admin']);
 	}
