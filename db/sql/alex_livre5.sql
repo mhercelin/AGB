@@ -51,24 +51,24 @@ CREATE TABLE `<table_smileys>` (
   KEY `numero` (`numero`)
 ) ENGINE=MyISAM;
 
-INSERT INTO `<table_smileys>` VALUES (1, 1, 'smile.gif', ':)');
-INSERT INTO `<table_smileys>` VALUES (2, 2, 'biggrin.gif', ':-D');
-INSERT INTO `<table_smileys>` VALUES (3, 3, 'confused.gif', ':?');
-INSERT INTO `<table_smileys>` VALUES (4, 4, 'cool.gif', '8)');
-INSERT INTO `<table_smileys>` VALUES (5, 5, 'cry.gif', ':cry:');
-INSERT INTO `<table_smileys>` VALUES (6, 6, 'eek.gif', ':shock:');
-INSERT INTO `<table_smileys>` VALUES (7, 7, 'love.gif', ':V)');
-INSERT INTO `<table_smileys>` VALUES (8, 8, 'mad.gif', ':x');
-INSERT INTO `<table_smileys>` VALUES (9, 9, 'lol.gif', ':lol:');
-INSERT INTO `<table_smileys>` VALUES (10, 10, 'surprised.gif', '8-O');
-INSERT INTO `<table_smileys>` VALUES (11, 11, 'wink.gif', ':;');
-INSERT INTO `<table_smileys>` VALUES (12, 12, 'ooops.gif', ':oops:');
-INSERT INTO `<table_smileys>` VALUES (13, 13, 'twisted.gif', ':twisted:');
-INSERT INTO `<table_smileys>` VALUES (14, 14, 'evil.gif', ':evil:');
-INSERT INTO `<table_smileys>` VALUES (15, 15, 'furious.gif', ':GG');
-INSERT INTO `<table_smileys>` VALUES (16, 16, 'mdr.gif', ':mdr:');
-INSERT INTO `<table_smileys>` VALUES (17, 17, 'cheer.gif', ':-)X');
-INSERT INTO `<table_smileys>` VALUES (18, 18, 'acllamer.gif', ':-//');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (1, 1, 'smile.gif', ':)');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (2, 2, 'biggrin.gif', ':-D');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (3, 3, 'confused.gif', ':?');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (4, 4, 'cool.gif', '8)');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (5, 5, 'cry.gif', ':cry:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (6, 6, 'eek.gif', ':shock:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (7, 7, 'love.gif', ':V)');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (8, 8, 'mad.gif', ':x');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (9, 9, 'lol.gif', ':lol:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (10, 10, 'surprised.gif', '8-O');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (11, 11, 'wink.gif', ':;');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (12, 12, 'ooops.gif', ':oops:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (13, 13, 'twisted.gif', ':twisted:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (14, 14, 'evil.gif', ':evil:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (15, 15, 'furious.gif', ':GG');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (16, 16, 'mdr.gif', ':mdr:');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (17, 17, 'cheer.gif', ':-)X');
+INSERT INTO `<table_smileys>` (`id_smiley`, `numero`, `smiley`, `car_replace`) VALUES (18, 18, 'acllamer.gif', ':-//');
 
 CREATE TABLE `<table_users>` (
   `id_user` mediumint(11) unsigned NOT NULL auto_increment,
@@ -93,7 +93,7 @@ CREATE TABLE `<table_users>` (
   KEY `pass` (`pass`)
 ) ENGINE=MyISAM;
 
-INSERT INTO <table_users> VALUES (1, '<login_admin>', '<pass_admin>', '<email_admin>', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15);
+INSERT INTO <table_users> (`id_user`, `login`, `pass`, `email`, `receive_email`, `modif_options`, `gestion_skins`, `gestion_reponse_auto`, `gestion_bdd`, `gestion_messages`, `gestion_censure`, `gestion_bannissement`, `gestion_smileys`, `gestion_admin`, `nb_mess_page`, `date_creation`, `last_connect`) VALUES (1, '<login_admin>', '<pass_admin>', '<email_admin>', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15, '<time>', '<time>');
 
 CREATE TABLE `<table_img_verif_add>` (
   `numero` varchar(10) NOT NULL default '',
@@ -124,41 +124,41 @@ CREATE TABLE `<table_config>` (
   UNIQUE KEY `nom_config` (`nom_config`)
 ) ENGINE=MyISAM;
 
-INSERT INTO `<table_config>` VALUES ('langue', '<langue>');
-INSERT INTO `<table_config>` VALUES ('skin_to_use', 'AguestNew');
-INSERT INTO `<table_config>` VALUES ('temps_session', '1800');
-INSERT INTO `<table_config>` VALUES ('send_mail', '1');
-INSERT INTO `<table_config>` VALUES ('temps_ip_post', '60');
-INSERT INTO `<table_config>` VALUES ('format_date', 'd/m/Y');
-INSERT INTO `<table_config>` VALUES ('admin_valide_messages', '0');
-INSERT INTO `<table_config>` VALUES ('admin_envoyer_remerciement', '0');
-INSERT INTO `<table_config>` VALUES ('admin_add_code_securite', '0');
-INSERT INTO `<table_config>` VALUES ('admin_bannir_mot', '0');
-INSERT INTO `<table_config>` VALUES ('url_interdites', '1');
-INSERT INTO `<table_config>` VALUES ('url_cliquables', '0');
-INSERT INTO `<table_config>` VALUES ('color_txt_code', '#000000');
-INSERT INTO `<table_config>` VALUES ('color_background_code', '#FFFFFF');
-INSERT INTO `<table_config>` VALUES ('champ_pseudo', '0');
-INSERT INTO `<table_config>` VALUES ('champ_email', '0');
-INSERT INTO `<table_config>` VALUES ('champ_site', '0');
-INSERT INTO `<table_config>` VALUES ('champ_pays', '0');
-INSERT INTO `<table_config>` VALUES ('champ_note', '0');
-INSERT INTO `<table_config>` VALUES ('champ_ville', '0');
-INSERT INTO `<table_config>` VALUES ('ok_aff_moteur', '1');
-INSERT INTO `<table_config>` VALUES ('nb_pages', '10');
-INSERT INTO `<table_config>` VALUES ('cut_mots', '75');
-INSERT INTO `<table_config>` VALUES ('maxi_car', '1500');
-INSERT INTO `<table_config>` VALUES ('nb_max_smileys', '20');
-INSERT INTO `<table_config>` VALUES ('url_recharger', 'index.php');
-INSERT INTO `<table_config>` VALUES ('extension_url', '');
-INSERT INTO `<table_config>` VALUES ('decalage_horaire', '0');
-INSERT INTO `<table_config>` VALUES ('autoriser_smileys', '1');
-INSERT INTO `<table_config>` VALUES ('inclure_livre', '0');
-INSERT INTO `<table_config>` VALUES ('fichier_inclusion', '');
-INSERT INTO `<table_config>` VALUES ('donner_focus', '0');
-INSERT INTO `<table_config>` VALUES ('lien_admin', '1');
-INSERT INTO `<table_config>` VALUES ('lien_accueil', '1');
-INSERT INTO `<table_config>` VALUES ('chemin_lien_accueil', '/');
-INSERT INTO `<table_config>` VALUES ('symbole_champ_obligatoire', '*');
-INSERT INTO `<table_config>` VALUES ('symbole_champ_prive', '[P]');
-INSERT INTO `<table_config>` VALUES ('db_version', '5.0.3');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('langue', '<langue>');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('skin_to_use', 'AguestNew');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('temps_session', '1800');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('send_mail', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('temps_ip_post', '60');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('format_date', 'd/m/Y');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('admin_valide_messages', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('admin_envoyer_remerciement', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('admin_add_code_securite', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('admin_bannir_mot', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('url_interdites', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('url_cliquables', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('color_txt_code', '#000000');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('color_background_code', '#FFFFFF');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_pseudo', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_email', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_site', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_pays', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_note', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('champ_ville', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('ok_aff_moteur', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('nb_pages', '10');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('cut_mots', '75');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('maxi_car', '1500');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('nb_max_smileys', '20');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('url_recharger', 'index.php');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('extension_url', '');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('decalage_horaire', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('autoriser_smileys', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('inclure_livre', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('fichier_inclusion', '');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('donner_focus', '0');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('lien_admin', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('lien_accueil', '1');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('chemin_lien_accueil', '/');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('symbole_champ_obligatoire', '*');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('symbole_champ_prive', '[P]');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('db_version', '5.0.3');

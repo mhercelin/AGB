@@ -12,7 +12,7 @@ DEFINE("AGUEST", true);
 $chem_absolu = "./";
 $no_connect = true;
 
-//----------------------- fichiers à inclure
+//----------------------- fichiers a inclure
 if (file_exists($chem_absolu."config/extension.inc")){
 	include($chem_absolu."config/extension.inc");
 	exit("Script is already installed !");
@@ -28,7 +28,7 @@ include($chem_absolu."include/funct_write_files.".$alex_livre_ext);
 //----------------------- chemin template
 $chem_template = "templates/admin/";
 
-//----------------------- génération de la liste des champs textes de la langue
+//----------------------- generation de la liste des champs textes de la langue
 $tab_champs_langue = array(
 	1 => "install_auto",
 	"identi_base",
@@ -62,20 +62,20 @@ $tab_champs_langue = array(
 	"choose_extension"
 );
 
-//----------------------- on récupère toutes les langues disponibles ou toutes les bases de données compatibles
+//----------------------- on recupere toutes les langues disponibles ou toutes les bases de donnees compatibles
 if (!isset($_GET['language_setup'])){
 	$liste_langues = read_rep($chem_absolu."languages/");
 	$options_liste = generate_options($liste_langues, "", "setup.php?language_setup=");
 }
 
-//----------------------- on effectue l'install si on a tous les éléments nécessaires
+//----------------------- on effectue l'install si on a tous les elements necessaires
 if (isset($_POST['installer'])){
 	include($chem_absolu."include/read_backup.".$alex_livre_ext);
 
 	//modif des chmods
 	@chmod($chem_absolu."config/", 0777);
 	
-	//on tente d'enregistrer les infos de connexion à la base de données
+	//on tente d'enregistrer les infos de connexion e la base de donnees
 	$write_object2 = new write_files();
 	$write_object2 -> save_donnees("<?php");
 	$write_object2 -> save_donnees("\$database_type = 'MySQL';\n");
@@ -115,7 +115,7 @@ if (isset($_POST['installer'])){
 	if (!isset($erreur_ecriture)){
 		$chaine_sql = read_page($chem_absolu."db/sql/alex_livre5.sql");
 
-		//remplacement à effectuer dans la chaine sql
+		//remplacement a effectuer dans la chaine sql
 		$tab_table = array(
 			1 => "table_users",
 			"table_censure",
@@ -138,14 +138,17 @@ if (isset($_POST['installer'])){
 		$chaine_sql = str_replace("<pass_admin>", $_POST['pass_admin'], $chaine_sql);		
 		$chaine_sql = str_replace("<email_admin>", $_POST['email_admin'], $chaine_sql);
 		
-		/* remplacement des valeurs pour les paramètres de configuration par défaut */
+		/* remplacement des valeurs pour la date de creation des administrateurs */		
+		$chaine_sql = str_replace("<time>", time(), $chaine_sql);
+		
+		/* remplacement des valeurs pour les parametres de configuration par defaut */
 		$chaine_sql = str_replace("<langue>", $_GET['language_setup'], $chaine_sql);		
 		
-		// Lecture des données SQL à traiter
+		// Lecture des donnees SQL a traiter
 		$tab_requete = array();
 		PMA_splitSqlFile($tab_requete, $chaine_sql);
 
-		//on tente d'établir une connexion
+		//on tente d'etablir une connexion
 		include($chem_absolu."db/MySQL.".$alex_livre_ext);
 		
 		/* connexion */
@@ -159,7 +162,7 @@ if (isset($_POST['installer'])){
 			@unlink($chem_absolu."config/extension.inc");	
 		}
 		else{
-			// Exécution des reqêtes
+			// Execution des requetes
 			foreach ($tab_requete as $value)
 				$first_connexion -> sql_query($value['query']);
 
@@ -169,7 +172,7 @@ if (isset($_POST['installer'])){
 	}
 }
 
-/* teste si on peut écrire dans le dossier /config */
+/* teste si on peut ecrire dans le dossier /config */
 if (isset($_GET['language_setup']) && !isset($_POST['installer'])){
 	//modif des chmods
 	@chmod($chem_absolu."config/", 0777);
@@ -194,7 +197,7 @@ if (isset($_GET['language_setup']) && !isset($_POST['installer'])){
 //----------------------- affichage du formulaire
 if (!isset($_GET['language_setup']) && !isset($_POST['installer']))
 	$echo_html = new ModeliXe("setup1.htm", "", "", "", "", $chem_absolu.$chem_template);
-// on utilise le template3 si on ne peut pas écrire dans le dossier /config
+// on utilise le template3 si on ne peut pas ecrire dans le dossier /config
 else if (isset($_GET['language_setup']) && !isset($_POST['installer']) && isset($erreur_ecriture))
 	$echo_html = new ModeliXe("setup3.htm", "", "", "", "", $chem_absolu.$chem_template);
 else if (!isset($_POST['installer']))
@@ -227,7 +230,7 @@ else if (isset($_POST['installer'])){
 	$echo_html -> MxText("infos_result_install", $f_lang['text_ok_install']);
 }
 
-/* langues ou liste des bases de données */
+/* langues ou liste des bases de donnees */
 if (!isset($_GET['language_setup']))
 	$echo_html -> MxText("options_liste", $options_liste);
 
