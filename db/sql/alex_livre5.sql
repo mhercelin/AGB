@@ -161,4 +161,4 @@ INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('lien_accue
 INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('chemin_lien_accueil', '/');
 INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('symbole_champ_obligatoire', '*');
 INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('symbole_champ_prive', '[P]');
-INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('db_version', '5.0.3');
+INSERT INTO `<table_config>` (`nom_config`, `valeur_config`) VALUES ('db_version', '5.0.4');
