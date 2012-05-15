@@ -2,7 +2,7 @@ Version 5.0.4 (mai 2012)
 
 > Correction d'un bug de la v5.0.3 : impossible de créer un administrateur suivant version MySQL
 > Correction d'un bug de la v5.0.3 : impossible d'utiliser la boite javascript
-> Modification du copyright : dimensions revues à la baisse, fond transparent
+> Modification du copyright : dimensions revues à la baisse, fond transparent (merci Neosw)
 
 
 Version 5.0.3 (avril 2012)

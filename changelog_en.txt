@@ -2,7 +2,7 @@ Version 5.0.4 (may 2012)
 
 > Bug corrected : unable to create user when installing guestbook
 > Bug corrected : unable to use "javascript box"
-> Improved copyright : smaller size, transparent background
+> Improved copyright : smaller size, transparent background (thank to Neosw)
 
 Version 5.0.3 (april 2012)
 ===========================
