@@ -2,7 +2,7 @@
 ///////////////////////////////////////////////
 //                @lex Guestbook             //
 //      by Soulard Alexis (c) 2002 - 2005    //
-//          http://www.alexguestbook.com/      //
+//          http://www.alexguestbook.com/    //
 //              all right reserved           //
 //        polish translation by the nym      //
 ///////////////////////////////////////////////

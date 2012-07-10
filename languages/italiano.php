@@ -10,7 +10,7 @@
 //    TeddyBeer (A.K.A. De-MonHell)          //
 //    damonhill82@hotmail.com                //
 //    http://www.mauropanzeri.netsons.org/   //
-//  Traduzione fino alla 3.3 esclusa::        //
+//  Traduzione fino alla 3.3 esclusa::       //
 //    Gianpaolo Vazza                        //
 //    http://gianpaolo.membres.jexiste.org/  //
 ///////////////////////////////////////////////
