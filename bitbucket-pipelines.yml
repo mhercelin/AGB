@@ -8,7 +8,7 @@ image: php:7
 pipelines:
   default:
     - step:
-        name: "Test1 dÃ©faut"
+        name: "Test1 défaut"
         caches:
           - composer
         script:
@@ -31,4 +31,4 @@ definitions:
       image: mysql:5.7
       environment:
         MYSQL_DATABASE: agb
-        MYSQL_ROOT_PASSWORD: $mysq_root_password
+        MYSQL_ROOT_PASSWORD: $mysql_root_password
