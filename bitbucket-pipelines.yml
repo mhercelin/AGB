@@ -34,8 +34,6 @@ pipelines:
             - composer require friendsofphp/php-cs-fixer
             - php vendor/bin/php-cs-fixer ./
             #- php vendor/bin/php-cs-fixer fix ./
-			
-
           services:
             - mysql
 definitions:
