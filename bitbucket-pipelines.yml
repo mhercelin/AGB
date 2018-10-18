@@ -32,7 +32,7 @@ pipelines:
             #- mysql -h localhost --user=root --password=$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE $MYSQL_DATABASE;"
             #- vendor/bin/phpunit --coverage-clover=coverage.xml
            # - php vendor/bin/phpcs --standard=PSR2 ./
-            - php vendor/bin/php-cs-fixer ./
+            - php vendor/bin/php-cs-fixer fix --dry-run -v --show-progress=dots ./
             #- php vendor/bin/php-cs-fixer fix ./
           services:
             - mysql
