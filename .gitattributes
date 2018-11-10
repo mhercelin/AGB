@@ -1,0 +1,17 @@
+# auto detect text files and perform LF normalization
+* text=auto
+
+# binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.gif binary
+
+# Files excluded from git packages
+tests/ export-ignore
+.coveralls.yml export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+.gitmodules export-ignore
+.scrutinizer.yml export-ignore
+.travis.yml export-ignore
