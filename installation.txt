@@ -1,9 +1,0 @@
->> Voir le dossier "documentation"
->> See "documentation" directory please
-
-
-Pour mettre à jour
-	Voir notre site http://www.alexguestbook.net pour y télécharger le script de mise à jour automatique
-
-To update
-	See our website http://www.alexguestbook.net to download an auto update script

@@ -1,0 +1,35 @@
+CONTRAT DE LICENCE DU SCRIPT @LEX GUESTBOOK
+
+AVIS À L'UTILISATEUR : VEUILLEZ LIRE ATTENTIVEMENT CE CONTRAT. EN UTILISANT, EN COPIANT OU EN DISTRIBUANT TOUT OU PARTIE DU SCRIPT @LEX GUESTBOOK (CI-APRÈS LE "SCRIPT"), VOUS ACCEPTEZ TOUTES LES DISPOSITIONS DU PRÉSENT CONTRAT. VOUS RECONNAISSEZ QUE CE CONTRAT EST EXÉCUTOIRE AU MÊME TITRE QUE TOUT AUTRE CONTRAT ÉCRIT QUE VOUS AURIEZ NÉGOCIÉ ET SIGNÉ. CE CONTRAT VOUS EST OPPOSABLE AINSI QU’À TOUTE ENTITÉ LÉGALE QUI AURAIT OBTENU CE SCRIPT ET POUR LE COMPTE DE LAQUELLE CE SCRIPT SERAIT UTILISÉ.
+
+Les auteurs du Script détiennent tous les droits de propriété intellectuelle liés au Script. Les auteurs vous autorisent à Utiliser le script uniquement conformément aux dispositions du présent Contrat.
+
+1. Définitions. Le terme "Script" désigne (a) tout le contenu des fichiers fournis, ainsi que (b) toutes les mises à niveau, versions modifiées, mises à jour, ajouts et copies du Script. Le terme "Utilisation" désigne l'accès au Script, son installation, son téléchargement, sa copie ou tout autre avantage tiré de l'utilisation de ses fonctionnalités conformément à la Documentation.
+
+2. Concession de Licence. Sous réserve du respect des dispositions du présent contrat (le "Contrat"), les auteurs vous concèdent une licence non exclusive d'Utilisation du Script aux fins décrites dans la Documentation comme suit.
+
+2.1 Utilisation générale. A condition de conserver nos références tel que décrit ci-après, Vous êtes autorisé à installer et à Utiliser une ou plusieurs copie(s) du Script sur un ou plusieurs ordinateurs ainsi que sur un ou plusieurs sites Internet. L'achat d'une licence permet l'installation sans référence visible (cf. § 2.5) sur un seul site, renseigné lors de l'achat de la licence.
+
+2.2 Distribution sur un serveur. Vous pouvez distribuer le Script au départ d'un serveur de fichiers informatiques à condition de mentionner le site Internet du projet http://www.alexguestbook.net/ et, même au cas où vous auriez modifié tout ou partie du Script, de maintenir nos références d'auteurs telles que décrit ci-après. Pour la distribution d'une copie non modifiée, il est vivement recommandé d'inviter les utilisateurs potentiels à venir télécharger le Script sur le site du projet afin qu'ils en obtiennent la dernière version en date et puissent consulter la documentation en ligne.
+
+2.3 Copie de sauvegarde. Vous pouvez effectuer autant de copies de sauvegarde du Script que vous jugerez nécessaire.
+
+2.4 Modifications du Script. Vous êtes autorisé à modifier, à adapter, à traduire ou à créer des produits dérivés à partir du Script à la condition expresse de conserver sans altération aucune les références des auteurs du Script et des skins partout où elles sont indiquées.  Ces références doivent rester visibles et lisibles, veillez donc à adapter les couleurs pour garder un contraste suffisant entre le texte et la couleur du fond de page.  Les liens (URL) doivent rester fonctionnels. En cas de modification du script, vous ajouterez vos références en premier, de la façon suivante : "Nomduscript réalisé par Votrenom sur base du Script @lexGuestbook disponible sur www.alexguestbook.net" et vous ajouterez un fichier texte décrivant les modifications effectuées.
+
+2.5 Par dérogation à l’article précédent, les utilisateurs qui auraient acquis une licence de la part des auteurs peuvent effacer ces références visibles conformément aux instructions qui leur ont été communiquées, par contre ils ne peuvent en aucun cas effacer les références non visibles publiquement (en remarques dans le code source).
+
+3. Limitations.
+
+3.1 Toute copie du Script que vous effectuez et/ou distribuez doit contenir les mêmes mentions de droit d’auteur (« copyright ») et autres mentions de propriété que celles qui apparaissent dans ou sur le Script.
+
+3.2 Que vous ayez acquis ou non une licence de la part des auteurs, vous ne pouvez pas vendre le script ni de licence pour celui-ci.
+
+4. Titularité des Droits de Propriété Intellectuelle. Protection des Droits d’Auteur (« Copyright »). Le Script et toute copie autorisée que vous effectuez sont la propriété intellectuelle des auteurs du Script : Alexis Soulard, Pierre Gieling et Maxime Hercelin. La structure, l'organisation et le code du Script sont librement accessibles selon les dispositions du présent contrat. Sauf disposition expresse des présentes, le présent Contrat ne vous concède aucun droit de propriété intellectuelle sur le Script, et les auteurs se réservent tous les droits qui ne sont pas expressément concédés.
+
+5. EXCLUSION DE GARANTIE. Le Script est livré "EN ÉTAT" et les auteurs ne consentent aucune garantie relative à son Utilisation ou ses performances.
+
+6. LIMITATION DE RESPONSABILITÉ. EN AUCUN CAS LES AUTEURS NE SERONT RESPONSABLES DE TOUS DOMMAGES, RÉCLAMATIONS OU COÛTS DE QUELQUE NATURE QUE CE SOIT, OU POUR TOUS DOMMAGES DIRECTS, INDIRECTS OU INCIDENTS, POUR TOUT MANQUE À GAGNER, ET CE MÊME SI LES AUTEURS ONT ÉTÉ INFORMÉS DE LA POSSIBILITÉ DE TELS DOMMAGES, PERTES, RÉCLAMATIONS OU COÛTS, OU DE TOUTE RÉCLAMATION D’UN TIERS. LES LIMITATIONS ET RESTRICTIONS CI-DESSUS S'APPLIQUENT DANS LA LIMITE PREVUE PAR LA LOI LOCALE APPLICABLE. LA RESPONSABILITÉ GLOBALE DES AUTEURS DANS LE CADRE DE CE CONTRAT OU EN RAPPORT AVEC CE DERNIER, EST LIMITÉE À LA SOMME VERSÉE POUR L’ACQUISITION DU LOGICIEL, S'IL Y A LIEU.
+
+7. Dispositions particulières et exceptions. Vous êtes tenu de prendre toutes les mesures raisonnables pour éviter et réduire les dommages, en particulier de faire des copies de sauvegarde du Script et de vos données informatiques sous réserve des dispositions du présent Contrat.
+
+Si vous avez des questions concernant le présent Contrat ou si vous souhaitez obtenir des informations de la part des auteurs, veuillez vous reporter au site www.alexguestbook.net.

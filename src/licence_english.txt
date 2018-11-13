@@ -1,0 +1,38 @@
+PLEASE NOTE : THIS ENGLISH VERSION IS TRANSLATED AS WELL AS POSSIBLE. IN CASE OF DOUBT, THE FRENCH CONTRACT PREVAILS.
+
+@LEX GUESTBOOK SCRIPT LICENCE CONTRACT
+
+
+NOTICE TO USERS : PLEASE READ THIS CONTRACT CAREFULLY. BY USING, COPYING OR DISTRIBUTING PART OF OR THE WHOLE @LEX GUESTBOOK SCRIPT (HEREAFTER "THE SCRIPT"), YOU AGREE WITH ALL DISPOSITIONS OF THIS CONTRACT. YOU AGREE THAT THIS CONTRACT HAS THE SAME VALUE AS ANY CONTRACT YOU WOULD HAVE NEGOCIATED AND SIGNED. THIS CONTRACT IS APPLICABLE TO YOU AND ANY LEGAL INSTANCE WHO WOULD HAVE OBTAINED THIS SCRIPT AND WHOM THIS SCRIPT WOULD BE USED FOR.
+
+The authors of the script detain and keep all intellectual property rights linked to the script. The authors allow you to use the script only according to the terms of the present contract.
+
+1. Definitions. The term "script" means (a) the whole content of the files, as well as (b) all updates, modified versions, upgardes, add-ons and copies of the script. The term "use" means the access to the script, its installation, its download, its copy or any other advantage obtained by the use of its functions according to the documentation.
+
+2. Licence concession. Under the reserve of this contract's terms, the authors give you a non exclusive user's licence within the documentation's limits and bound to these conditions : 
+
+2.1 General use. At the condition to keep our authors' references as described hereafter, you are allowed to install and use or or several copies of the script on one or more computer as well as on one or more websites. Buying a licence allows to install the script without visible references (see �2.5) on one website, which has to be specified upon purchase.
+
+2.2 Distribution on a server. You are allowed to distribute the script on a file server at the condition to mention the project website http://www.alexguestbook.net/ and, even in the case where you would have modified the script, to maintain our references as described hereafter. To distribute an unmodified version of the script, it is strongly advised to invite your visitors to come download the script on the project website in order to have the latest version and read the documentation.
+
+2.3 Backup copies. You are allowed to make as many backup copies of the script as you like.
+
+2.4 Modifiying the script. You are allowed to modify, adapt, translate or create derived products of the script at the condition to keep our authors' references without any modification everywhere they are including the skins. These references must stay visible and readable, so please adapt the colors in order to maintain enough contrast between the text and the background colors. The links (URL) must stay functionnal. In case of modification, you will add your references in front, as is : "Nameofthescript made by Yourname on basis of the @lexGuestbook script available on www.alexguestbook.net" and you will add a text file describing the modifications you made.
+
+2.5 By derogation to the above, users who would have acquired a licence from the authors may erase these visible references according to the instructions they received, but they may not erase the non publicly visible references (in the source code).
+
+3. Limitations.
+
+3.1 Any copy you make or distribute must contain the same copyright mentions as well as all property mentions in or on the script.
+
+3.2 Whether you acquired a licence or not from the authors, you are not allowed to sell the script nor licences for it.
+
+4. Intellectual rights property. Copyrights. The script and any copy you make of it are the property of its authors : Alexis Soulard, Pierre Gieling and Maxime Hercelin. The structure, the organization and the code of the script are freely accessible under the present contract's terms. Unless otherwise stated, the present contract does not give you any intellectual rights on the script and the authors keep all rights which are not conceded.
+
+5. WARRANTY EXCLUSION. The script is given "as is" ands the authors giove no warranty about its use and performances.
+
+6. LIMITATION OF RESPONSIBILITY. IN NO CASE THE AUTHORS WILL BE HELD RESPONSIBLE OF ANY DAMMAGE, CLAIMS OR COST OF ANY NATURE OR FOR ANY DIRECT, INDIRECT OR INCIDENT DAMMAGE, FOR ANY LOSS OF GAIN, EVEN IF THE AUTHORS WOULD BE INFORMED OF THE POSSIBILITY OF SUCH DAMMAGES, LOSSES, CLAIMS OR COSTS OR OF ANY THIRD PARTY CLAIM. THE ABOVE LIMITS AND RESTRICTIONS ARE APPLICABLE UNDER THE LIMITS OF THE LOCAL APPLICABLE LAWS. THE GLOBAL RESPONSIBILITY OF THE AUTHORS IN THIS CONTRACT TERMS OR IN RELATION WITH IT IS LIMITED TO THE AMOUNT PAID TO ACQUIRE THIS SCRIPT, WHEN APPLICABLE.
+
+7. Exceptions and particular dispositions. You are bound to take all appropriate measures to avoid and reduce dammages, in particular to make backup copies of the script and of your computer data under the reserve of this contract.
+
+If you have questions about this contract or if you wish to obtain informations from the authors, please visit us on www.alexguestbook.net.
