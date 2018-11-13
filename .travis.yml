@@ -1,0 +1,31 @@
+language: php
+php:
+- 5.6
+- 7.0
+- 7.1
+- 7.2
+branches:
+  only:
+  - master
+before_script:
+- travis_retry composer self-update
+- travis_retry composer install --no-interaction --prefer-source --dev
+- mysql -e "create database IF NOT EXISTS agb;" -uroot; fi
+script:
+- vendor/bin/phpunit
+deploy:
+  - provider: heroku
+    api_key:
+      secure: cGnBM83c4TseZU9KDV+1nBejD8J6Q05CrgrM+Hvwvsk9WjJvl9nqXFL12+qluo5GFFQcDZg8r1CF+rAYgs6X5k6gCxTrIz4oCtECdSL1deOEfgrMYYenym5ev6iWovDQH0h8GKNqRwDYhv5j3ro6TWrITRIba1czKfCBlMeBlFG+O05HWnIYoERBrCp9fj2zKkfolYFuTK5e1yQKuPDbbyMfQGfDfoNgpWHAIPPrijHP+4F7OvRKgFwuVsZVb1tMOBw8FDWg74XOYH0YQrWHI3j4mFXEsXA4YaLzsFFTEhwoFJxrJqdNRtP1XQSHaaf2Co29Iz7tBZowten59xF01sEJbzKg2seEZbrZ0cVECDr26I/ecEO61dADmc4kM+EK1qUIxYl5B0eYc0O4lNtFbayui1iA9Nd07J9tFUyM2vo8Gewl+A/SVakSLv0ju/NfPIHv5ZIMEJatnu4e+/NL3UcKd83EyVvVk4F47V/dhfq95KiMsZbCjkCrlvVqLr24FqvU7uZi7TRTvIuvzr3FXe5208kt8lBViC2czln4aVyafFfHQOgWOIFJapHWYVe1ev0Tt4g0tdAloP1Z7RJYVHLGpqr0rFajR993bzXZAXOKzarZWAf6YVO4UvnADQBHAjhaItJx/66uhbRa7SpCgeUozRJcTkF+BESmNhGWr+Y=
+    app: agb
+    on:
+      branch: dev
+  - provider: releases
+    api_key:
+      secure: hha6JKjaz22rUBuwxx5WjVpQV29gQYECea3LXCJLP/SevuyqbFHR7WN2f1mtrag+xZ07FLeHBdsYf9+7ZFN05f1ZiKvYCGY/sPCBH6Q+WwzFPd4/bT7tX72nUQRLB2stp75f50fKuapAEvQ3z/LbCEuHCL2DFd+wwXHoTHo1aWo/nzqEgds+dA/movJoDqOsy3652/z2idQSoOOj2/1UcSmXukbcI0Y78aZymQDYK1ZU6+i6cuLFBtDl9MMWFtn7y/ep+iFgQvUUrJjozuUigyw5d00fhCUN2fVq05QuA1BqgTvHD9fT9KaNqayUe0k2KtVosAJgR7QRlrbsqjOsaJxRs+u3sX75RItam/SFnPE/W4JtkUrDWHlj9FdEzjNXiaMp5hEx7NmxWJ3HJz6gu0Bii+NcML9A7irCjN8ZOuYLbTUjfU6YrwU/esXdIZCg6vAN1EwUiT8pBpQ1uL+yhGtMWUXizYxWo+b7vSLujfHtgF8cPUGpoPup8AaKiY48DcIxHFwqUzS1E1aVcRCZaFwi1dvwfrT3tD3v0i8MhwCnqpu25eI2FRD8QR7IQmYhldtdPjHIyhYgQ3jtIB+zctwR0c8yBXqFzU3zwLM4R07i2XfD2dp1hKojedX/kshVFPq8We78iiaFP2peu+UVOqme9kwgYxWeDXZt+8WMqZA=
+    file: src/
+    on:
+      repo: AlexGuestbook/AGB
+notifications:
+  on_success: never
+  on_failure: always
