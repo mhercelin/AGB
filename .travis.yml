@@ -14,7 +14,7 @@ before_script:
 #- travis_retry composer install --no-interaction --prefer-source --dev
 - mysql -e 'create database IF NOT EXISTS agb;'
 #script:
-#- vendor/bin/phpunit
+# - vendor/bin/phpunit
 deploy:
   - provider: heroku
     api_key:
