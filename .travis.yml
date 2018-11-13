@@ -12,7 +12,7 @@ services:
 before_script:
 #- travis_retry composer self-update
 #- travis_retry composer install --no-interaction --prefer-source --dev
-- mysql -e "create database IF NOT EXISTS agb;" -uroot; fi
+- mysql -e 'create database IF NOT EXISTS agb;'
 script:
 - vendor/bin/phpunit
 deploy:
