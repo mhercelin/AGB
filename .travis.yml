@@ -16,7 +16,7 @@ before_script:
 - mysql -e 'create database IF NOT EXISTS agb;'
 
 script:
-  - phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text
 
 deploy:
   - provider: heroku
