@@ -21,7 +21,7 @@ deploy:
   - provider: heroku
     api_key:
       secure: cGnBM83c4TseZU9KDV+1nBejD8J6Q05CrgrM+Hvwvsk9WjJvl9nqXFL12+qluo5GFFQcDZg8r1CF+rAYgs6X5k6gCxTrIz4oCtECdSL1deOEfgrMYYenym5ev6iWovDQH0h8GKNqRwDYhv5j3ro6TWrITRIba1czKfCBlMeBlFG+O05HWnIYoERBrCp9fj2zKkfolYFuTK5e1yQKuPDbbyMfQGfDfoNgpWHAIPPrijHP+4F7OvRKgFwuVsZVb1tMOBw8FDWg74XOYH0YQrWHI3j4mFXEsXA4YaLzsFFTEhwoFJxrJqdNRtP1XQSHaaf2Co29Iz7tBZowten59xF01sEJbzKg2seEZbrZ0cVECDr26I/ecEO61dADmc4kM+EK1qUIxYl5B0eYc0O4lNtFbayui1iA9Nd07J9tFUyM2vo8Gewl+A/SVakSLv0ju/NfPIHv5ZIMEJatnu4e+/NL3UcKd83EyVvVk4F47V/dhfq95KiMsZbCjkCrlvVqLr24FqvU7uZi7TRTvIuvzr3FXe5208kt8lBViC2czln4aVyafFfHQOgWOIFJapHWYVe1ev0Tt4g0tdAloP1Z7RJYVHLGpqr0rFajR993bzXZAXOKzarZWAf6YVO4UvnADQBHAjhaItJx/66uhbRa7SpCgeUozRJcTkF+BESmNhGWr+Y=
-    app: agb
+    app: alexguestbook
     on:
       branch: master
   - provider: releases
