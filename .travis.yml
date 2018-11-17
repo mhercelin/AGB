@@ -26,10 +26,12 @@ deploy:
       branch: dev
   - provider: releases
     api_key:
-      secure: hha6JKjaz22rUBuwxx5WjVpQV29gQYECea3LXCJLP/SevuyqbFHR7WN2f1mtrag+xZ07FLeHBdsYf9+7ZFN05f1ZiKvYCGY/sPCBH6Q+WwzFPd4/bT7tX72nUQRLB2stp75f50fKuapAEvQ3z/LbCEuHCL2DFd+wwXHoTHo1aWo/nzqEgds+dA/movJoDqOsy3652/z2idQSoOOj2/1UcSmXukbcI0Y78aZymQDYK1ZU6+i6cuLFBtDl9MMWFtn7y/ep+iFgQvUUrJjozuUigyw5d00fhCUN2fVq05QuA1BqgTvHD9fT9KaNqayUe0k2KtVosAJgR7QRlrbsqjOsaJxRs+u3sX75RItam/SFnPE/W4JtkUrDWHlj9FdEzjNXiaMp5hEx7NmxWJ3HJz6gu0Bii+NcML9A7irCjN8ZOuYLbTUjfU6YrwU/esXdIZCg6vAN1EwUiT8pBpQ1uL+yhGtMWUXizYxWo+b7vSLujfHtgF8cPUGpoPup8AaKiY48DcIxHFwqUzS1E1aVcRCZaFwi1dvwfrT3tD3v0i8MhwCnqpu25eI2FRD8QR7IQmYhldtdPjHIyhYgQ3jtIB+zctwR0c8yBXqFzU3zwLM4R07i2XfD2dp1hKojedX/kshVFPq8We78iiaFP2peu+UVOqme9kwgYxWeDXZt+8WMqZA=
-    file: src/
+      #secure: hha6JKjaz22rUBuwxx5WjVpQV29gQYECea3LXCJLP/SevuyqbFHR7WN2f1mtrag+xZ07FLeHBdsYf9+7ZFN05f1ZiKvYCGY/sPCBH6Q+WwzFPd4/bT7tX72nUQRLB2stp75f50fKuapAEvQ3z/LbCEuHCL2DFd+wwXHoTHo1aWo/nzqEgds+dA/movJoDqOsy3652/z2idQSoOOj2/1UcSmXukbcI0Y78aZymQDYK1ZU6+i6cuLFBtDl9MMWFtn7y/ep+iFgQvUUrJjozuUigyw5d00fhCUN2fVq05QuA1BqgTvHD9fT9KaNqayUe0k2KtVosAJgR7QRlrbsqjOsaJxRs+u3sX75RItam/SFnPE/W4JtkUrDWHlj9FdEzjNXiaMp5hEx7NmxWJ3HJz6gu0Bii+NcML9A7irCjN8ZOuYLbTUjfU6YrwU/esXdIZCg6vAN1EwUiT8pBpQ1uL+yhGtMWUXizYxWo+b7vSLujfHtgF8cPUGpoPup8AaKiY48DcIxHFwqUzS1E1aVcRCZaFwi1dvwfrT3tD3v0i8MhwCnqpu25eI2FRD8QR7IQmYhldtdPjHIyhYgQ3jtIB+zctwR0c8yBXqFzU3zwLM4R07i2XfD2dp1hKojedX/kshVFPq8We78iiaFP2peu+UVOqme9kwgYxWeDXZt+8WMqZA=
+      $GITHUB_OAUTH_TOKEN
+    #file: src/
     on:
       repo: AlexGuestbook/AGB
+      tags: true
 
 notifications:
   on_success: never
