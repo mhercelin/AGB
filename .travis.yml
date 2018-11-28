@@ -25,7 +25,6 @@ script:
 
 after_script:
   # Codeclimate
-  - mv ./build/logs/clover.xml clover.xml
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
